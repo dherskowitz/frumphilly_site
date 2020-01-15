@@ -43,9 +43,9 @@ INSTALLED_APPS = [
     "allauth",
     "allauth.account",
     "allauth.socialaccount",
-    'allauth.socialaccount.providers.facebook',
-    'allauth.socialaccount.providers.google',
-    'allauth.socialaccount.providers.github',
+    "allauth.socialaccount.providers.facebook",
+    "allauth.socialaccount.providers.google",
+    "allauth.socialaccount.providers.github",
     # Custom User Model
     "users",
     # Local
@@ -161,3 +161,4 @@ ACCOUNT_AUTHENTICATION_METHOD = "email"
 ACCOUNT_UNIQUE_EMAIL = True
 LOGIN_REDIRECT_URL = "home"
 ACCOUNT_LOGOUT_REDIRECT_URL = "home"
+ACCOUNT_EMAIL_VERIFICATION = "mandatory"
