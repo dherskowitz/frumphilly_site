@@ -1,5 +1,5 @@
 .env
-log.txt
+logs.txt
 venv/
 
 
