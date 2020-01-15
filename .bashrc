@@ -13,4 +13,4 @@ alias super="python manage.py createsuperuser"
 
 # Python Commands
 alias freeze="pip freeze > requirements.txt"
-alias pir='pip install -r requirements.txt
+alias pir="pip install -r requirements.txt"
