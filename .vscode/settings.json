@@ -1,0 +1,14 @@
+{
+    "python.pythonPath": "venv\\Scripts\\python.exe",
+    "python.linting.pylintEnabled": false,
+    "python.linting.pycodestyleEnabled": false,
+    "python.linting.enabled": true,
+    "python.formatting.provider": "black",
+    "editor.formatOnSave": true,
+    "python.linting.flake8Enabled": true,
+    "workbench.colorCustomizations": {
+        "activityBar.background": "#2E300C",
+        "titleBar.activeBackground": "#414310",
+        "titleBar.activeForeground": "#FAFBEF"
+    }
+}
