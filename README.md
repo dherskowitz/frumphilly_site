@@ -12,5 +12,6 @@ The Frum Philly weebsite source code.
 
 ## Get Started
 - Clone repo locally
+- run `pip install -r requirements.txt`
 - run `docker-compose up -d --build`
 - go to `192.168.99.100:8001`
