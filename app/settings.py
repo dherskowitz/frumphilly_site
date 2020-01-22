@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     "users",
     # Local
     "pages",
+    "events",
 ]
 
 MIDDLEWARE = [
