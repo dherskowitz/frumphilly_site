@@ -136,6 +136,14 @@ USE_TZ = True
 
 STATIC_URL = "/static/"
 
+
+# Azure Storage
+DEFAULT_FILE_STORAGE = "app.storage_backends.AzureMediaStorage"
+# STATICFILES_STORAGE = "app.storage_backends.AzureStaticStorage"
+AZURE_CUSTOM_DOMAIN = f'{config("AZURE_ACCOUNT_NAME")}.blob.core.windows.net'
+# STATIC_URL = f'https://{AZURE_CUSTOM_DOMAIN}/{config("AZURE_ASSETS_CONTAINER")}/'
+MEDIA_URL = f'https://{AZURE_CUSTOM_DOMAIN}/{config("AZURE_MEDIA_CONTAINER")}/'
+
 # Custom User Model
 AUTH_USER_MODEL = "users.CustomUser"
 
