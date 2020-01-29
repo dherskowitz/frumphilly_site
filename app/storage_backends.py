@@ -28,5 +28,5 @@ class EventMediaStorage(AzureStorage):
 class EventFileStorage(AzureStorage):
     account_name = config("AZURE_ACCOUNT_NAME")
     account_key = config("AZURE_ACCOUNT_KEY")
-    azure_container = config("AZURE_ASSETS_CONTAINER")
+    azure_container = f'{config("AZURE_ASSETS_CONTAINER")}/events/files'
     expiration_secs = None
