@@ -1,6 +1,7 @@
 .env
 logs.txt
 venv/
+webpack-stats.json
 
 
 # Created by https://www.gitignore.io/api/git,django,python,visualstudiocode
