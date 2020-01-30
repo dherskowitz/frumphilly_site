@@ -3,4 +3,10 @@
 
 {% block main %}
 <h1>Events</h1>
+
+{% for event in events %}
+{{event.name}}
+{{event.email_contact}}
+{% endfor %}
+
 {% endblock main %}
