@@ -48,6 +48,8 @@ INSTALLED_APPS = [
     "allauth.socialaccount.providers.github",
     # Custom User Model
     "users",
+    # Webpack
+    "webpack_loader",
     # Local
     "pages",
     "events",
@@ -135,6 +137,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = "/static/"
+STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"),)
 
 
 # Azure Storage
@@ -171,3 +174,16 @@ ACCOUNT_UNIQUE_EMAIL = True
 LOGIN_REDIRECT_URL = "home"
 ACCOUNT_LOGOUT_REDIRECT_URL = "home"
 ACCOUNT_EMAIL_VERIFICATION = "mandatory"
+
+# Webpack Loader Settings
+WEBPACK_LOADER = {
+    "DEFAULT": {
+        "CACHE": not DEBUG,
+        "BUNDLE_DIR_NAME": "dist/",  # must end with slash
+        "STATS_FILE": os.path.join(BASE_DIR, "webpack-stats.json"),
+        "POLL_INTERVAL": 0.1,
+        "TIMEOUT": None,
+        "IGNORE": [r".+\.hot-update.js", r".+\.map"],
+        "LOADER_CLASS": "webpack_loader.loader.WebpackLoader",
+    }
+}
