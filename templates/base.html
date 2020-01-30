@@ -1,3 +1,5 @@
+{% load render_bundle from webpack_loader %}
+{% load webpack_static from webpack_loader %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,9 +8,20 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{% block meta_title %}{% endblock meta_title %}</title>
     <meta name="description" content="{% block meta_description %}{% endblock meta_description %}">
+    {% render_bundle 'main' 'css' %}
 </head>
 <body>
-    {% block main %}
-    {% endblock main %}
+    <noscript>
+        <div class="noscript">Some features of this site require JavaScript to work.</div>
+    </noscript>
+
+    {% include 'components/navbar.html' %}
+
+    <main>
+        {% block main %}
+        {% endblock main %}
+    </main>
+
+    {% render_bundle 'main' 'js' %}
 </body>
 </html>
