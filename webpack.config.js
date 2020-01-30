@@ -33,6 +33,7 @@ module.exports = {
                 use: [{
                         loader: MiniCssExtractPlugin.loader,
                         options: {
+                            sourceMap: true,
                             hmr: process.env.NODE_ENV === "development"
                         }
                     },
@@ -46,6 +47,7 @@ module.exports = {
                         loader: "postcss-loader",
                         options: {
                             ident: "postcss",
+                            sourceMap: true,
                             plugins: [require("autoprefixer")]
                         }
                     },
@@ -60,7 +62,7 @@ module.exports = {
             {
                 test: /\.js$/,
                 use: ["source-map-loader"],
-                enforce: "pre"
+                enforce: "pre",
             },
             {
                 test: /\.(gif|png|jpe?g|svg)$/i,
@@ -97,9 +99,9 @@ module.exports = {
             chunkFilename: '[id].[hash].css',
             ignoreOrder: false
         }),
-        new CopyPlugin([{
-            from: './static/src/img/**/*',
-            to: './images/[name].[ext]'
-        }, ]),
+        // new CopyPlugin([{
+        //     from: './static/src/img/**/*',
+        //     to: './images/[name].[ext]'
+        // }, ]),
     ]
 }
