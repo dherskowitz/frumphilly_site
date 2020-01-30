@@ -1,0 +1,22 @@
+[{
+    "model": "events.event",
+    "pk": 3,
+    "fields": {
+        "created_by": 1,
+        "event_name": "Test",
+        "event_host": "Test",
+        "event_image": null,
+        "event_attachment": null,
+        "event_link": "http://test.com/event.html",
+        "event_location": "123 Main Street New York NY 11210",
+        "event_description": "At some point someone will replace this block of text with useful words so visitors can learn more about your services/products offered by the website! Hoc damnationem consulto reliquit Latine. Some common names for what you are reading are: filler text, placeholder text, and dummy text.",
+        "event_email_contact": "test@test.com",
+        "event_phone_contact": "123-456-7890",
+        "event_video": "https://www.youtube.com/watch?v=fi4ZjqNcSQc",
+        "event_start_time": "04:45:00",
+        "event_start_date": "2020-02-11",
+        "event_end_date": null,
+        "event_rsvp": true,
+        "event_cost": "10.00"
+    }
+}]
