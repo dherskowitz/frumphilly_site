@@ -25,3 +25,7 @@ class EventForm(forms.ModelForm):
         self.fields["start_time"].widget = TimeInput()
         self.fields["start_date"].widget = DateInput()
         self.fields["end_date"].widget = DateInput()
+
+        # Set placeholder for each field
+        for field in self.fields:
+            self.fields[field].widget.attrs["placeholder"] = self.fields[field].help_text
