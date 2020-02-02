@@ -1,6 +1,7 @@
 from django.db import models
 from django.conf import settings
 from app.storage_backends import EventMediaStorage, EventFileStorage
+from datetime import date
 
 
 # Create your models here.
@@ -82,3 +83,7 @@ class Event(models.Model):
 
     def __str__(self):
         return self.name
+
+    @property
+    def event_in_past(self):
+        return date.today() > self.start_date
