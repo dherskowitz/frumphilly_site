@@ -18,7 +18,8 @@ def events_single(request, event_id):
 
 def events_create(request):
     form = EventForm()
-    context = {"form": form}
+    datetime_fields = ("start_date", "end_date")
+    context = {"form": form, "datetime_fields": datetime_fields}
 
     if request.method == "POST":
         form = EventForm(request)
