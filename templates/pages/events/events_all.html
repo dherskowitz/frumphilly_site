@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+
+{% block main %}
+<h1>Events</h1>
+
+{% for event in events %}
+{{event.name}}
+{{event.id}}
+{{event.email_contact}}
+{{event.start_date}}
+{{event.start_data}}
+<!-- <img src="{{event.image}}" alt=""> -->
+<a href="{%url 'events_single' event.id %}">Go to event</a>
+<br>
+<hr>
+{% endfor %}
+
+{% endblock main %}
