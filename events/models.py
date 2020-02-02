@@ -68,17 +68,22 @@ class Event(models.Model):
         blank=True,
     )
     start_time = models.TimeField(
-        default=None, auto_now=False, auto_now_add=False, null=True, blank=True
+        default=None,
+        auto_now=False,
+        auto_now_add=False,
+        null=True,
+        blank=True,
+        help_text="What time does your event start?",
     )
-    start_date = models.DateField(default=None, auto_now=False, auto_now_add=False)
+    start_date = models.DateField(default=None, auto_now=False, auto_now_add=False, help_text="When will your event take place?")
     end_date = models.DateField(
-        default=None, auto_now=False, auto_now_add=False, null=True, blank=True
+        default=None, auto_now=False, auto_now_add=False, null=True, blank=True, help_text="If your event occurs over multiple days, when will your event end?"
     )
     rsvp = models.BooleanField(
         default=None, help_text="Does your event require RSVP or tickets?"
     )
     cost = models.DecimalField(
-        default=None, max_digits=8, decimal_places=2, null=True, blank=True
+        default=None, max_digits=8, decimal_places=2, null=True, blank=True, help_text="If anything, how much will it cost to attend your event?"
     )
 
     def __str__(self):
