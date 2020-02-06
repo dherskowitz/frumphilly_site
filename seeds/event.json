@@ -4,6 +4,7 @@
         "fields": {
             "created_by": 1,
             "name": "Philadelphia Blackberry",
+            "slug": "philadelphia-blackberry",
             "host": "Langworth-Lebsack",
             "image": "http://dummyimage.com/108x182.bmp/ff4444/ffffff",
             "attachment": null,
@@ -28,6 +29,7 @@
         "fields": {
             "created_by": 1,
             "name": "Cutleaf Balsamroot",
+            "slug": "cutleaf-balsamroot",
             "host": "Cummings-Reinger",
             "image": "http://dummyimage.com/233x128.jpg/ff4444/ffffff",
             "attachment": null,
@@ -52,6 +54,7 @@
         "fields": {
             "created_by": 1,
             "name": "Peltula Lichen",
+            "slug": "peltula-lichen",
             "host": "Fay Inc",
             "image": "http://dummyimage.com/193x155.png/ff4444/ffffff",
             "attachment": null,
@@ -76,6 +79,7 @@
         "fields": {
             "created_by": 1,
             "name": "Showy Goldenrod",
+            "slug": "showy-goldenrod",
             "host": "Miller-Kunde",
             "image": "http://dummyimage.com/250x222.png/cc0000/ffffff",
             "attachment": null,
@@ -100,6 +104,7 @@
         "fields": {
             "created_by": 1,
             "name": "Stemsucker",
+            "slug": "stemsucker",
             "host": "Emmerich, Predovic and Rutherford",
             "image": "http://dummyimage.com/119x217.bmp/cc0000/ffffff",
             "attachment": null,
@@ -124,6 +129,7 @@
         "fields": {
             "created_by": 1,
             "name": "Jaumea",
+            "slug": "jaumea",
             "host": "Pouros and Sons",
             "image": "http://dummyimage.com/231x123.jpg/ff4444/ffffff",
             "attachment": null,
@@ -148,6 +154,7 @@
         "fields": {
             "created_by": 1,
             "name": "Bejuco De Sopla",
+            "slug": "bejuco-de-sopla",
             "host": "Rempel-Gusikowski",
             "image": "http://dummyimage.com/107x178.bmp/cc0000/ffffff",
             "attachment": null,
@@ -172,6 +179,7 @@
         "fields": {
             "created_by": 1,
             "name": "African Senna",
+            "slug": "african-senna",
             "host": "Lind-Gusikowski",
             "image": "http://dummyimage.com/127x163.bmp/cc0000/ffffff",
             "attachment": null,
@@ -196,6 +204,7 @@
         "fields": {
             "created_by": 1,
             "name": "Skeletongrass",
+            "slug": "skeletongrass",
             "host": "Weber, Donnelly and Jakubowski",
             "image": "http://dummyimage.com/246x215.bmp/ff4444/ffffff",
             "attachment": null,
@@ -220,6 +229,7 @@
         "fields": {
             "created_by": 1,
             "name": "Deathcamas",
+            "slug": "deathcamas",
             "host": "Dibbert-Ziemann",
             "image": "http://dummyimage.com/124x230.bmp/dddddd/000000",
             "attachment": null,
@@ -244,6 +254,7 @@
         "fields": {
             "created_by": 1,
             "name": "Paperspine Fishhook Cactus",
+            "slug": "paperspine-fishhook-cactus",
             "host": "Purdy and Sons",
             "image": "http://dummyimage.com/144x228.bmp/5fa2dd/ffffff",
             "attachment": null,
@@ -268,6 +279,7 @@
         "fields": {
             "created_by": 1,
             "name": "American Lopseed",
+            "slug": "american-lopseed",
             "host": "Yundt Group",
             "image": "http://dummyimage.com/153x222.bmp/cc0000/ffffff",
             "attachment": null,
@@ -292,6 +304,7 @@
         "fields": {
             "created_by": 1,
             "name": "Western Rattlesnake Plantain",
+            "slug": "western-rattlesnake-plantain",
             "host": "Brakus-Pagac",
             "image": "http://dummyimage.com/134x235.bmp/dddddd/000000",
             "attachment": null,
@@ -316,6 +329,7 @@
         "fields": {
             "created_by": 1,
             "name": "Flor De Llanten",
+            "slug": "flor-de-llanten",
             "host": "Thompson-Murphy",
             "image": "http://dummyimage.com/142x104.bmp/5fa2dd/ffffff",
             "attachment": null,
@@ -340,6 +354,7 @@
         "fields": {
             "created_by": 1,
             "name": "Nealley's Cloak Fern",
+            "slug": "nealleys-cloak-fern",
             "host": "Kuhic-Medhurst",
             "image": "http://dummyimage.com/201x178.bmp/cc0000/ffffff",
             "attachment": null,
@@ -364,6 +379,7 @@
         "fields": {
             "created_by": 1,
             "name": "Cowbag Clover",
+            "slug": "cowbag-clover",
             "host": "Welch, Roob and Cronin",
             "image": "http://dummyimage.com/212x158.jpg/cc0000/ffffff",
             "attachment": null,
@@ -388,6 +404,7 @@
         "fields": {
             "created_by": 1,
             "name": "Black Calabash",
+            "slug": "black-calabash",
             "host": "O'Kon Group",
             "image": "http://dummyimage.com/134x164.jpg/5fa2dd/ffffff",
             "attachment": null,
@@ -412,6 +429,7 @@
         "fields": {
             "created_by": 1,
             "name": "Waikamoi Peperomia",
+            "slug": "waikamoi-peperomia",
             "host": "Conn-Fisher",
             "image": "http://dummyimage.com/159x180.bmp/dddddd/000000",
             "attachment": null,
@@ -436,6 +454,7 @@
         "fields": {
             "created_by": 1,
             "name": "Venus' Pride",
+            "slug": "venus-pride",
             "host": "Grady, Rowe and Strosin",
             "image": "http://dummyimage.com/242x228.png/dddddd/000000",
             "attachment": null,
@@ -460,6 +479,7 @@
         "fields": {
             "created_by": 1,
             "name": "Sunflower",
+            "slug": "sunflower",
             "host": "Grant-Bergnaum",
             "image": "http://dummyimage.com/203x107.png/5fa2dd/ffffff",
             "attachment": null,
@@ -484,6 +504,7 @@
         "fields": {
             "created_by": 1,
             "name": "Saw-wort",
+            "slug": "saw-wort",
             "host": "Douglas and Sons",
             "image": "http://dummyimage.com/174x250.png/cc0000/ffffff",
             "attachment": null,
@@ -508,6 +529,7 @@
         "fields": {
             "created_by": 1,
             "name": "Demaree's Beeblossom",
+            "slug": "demarees-beeblossom",
             "host": "Balistreri LLC",
             "image": "http://dummyimage.com/148x203.png/ff4444/ffffff",
             "attachment": null,
@@ -532,6 +554,7 @@
         "fields": {
             "created_by": 1,
             "name": "Urena",
+            "slug": "urena",
             "host": "Fay and Sons",
             "image": "http://dummyimage.com/205x177.bmp/ff4444/ffffff",
             "attachment": null,
@@ -556,6 +579,7 @@
         "fields": {
             "created_by": 1,
             "name": "Trumpet Gooseberry",
+            "slug": "trumpet-gooseberry",
             "host": "Bins-Hahn",
             "image": "http://dummyimage.com/138x206.jpg/dddddd/000000",
             "attachment": null,
@@ -580,6 +604,7 @@
         "fields": {
             "created_by": 1,
             "name": "Straggly Gooseberry",
+            "slug": "straggly-gooseberry",
             "host": "Johnson Inc",
             "image": "http://dummyimage.com/226x131.jpg/ff4444/ffffff",
             "attachment": null,
@@ -604,6 +629,7 @@
         "fields": {
             "created_by": 1,
             "name": "Cracked Lichen",
+            "slug": "cracked-lichen",
             "host": "Nienow, DuBuque and Schmidt",
             "image": "http://dummyimage.com/233x235.png/5fa2dd/ffffff",
             "attachment": null,
@@ -628,6 +654,7 @@
         "fields": {
             "created_by": 1,
             "name": "Horn-leaved Takakia",
+            "slug": "horn-leaved-takakia",
             "host": "Kassulke Inc",
             "image": "http://dummyimage.com/184x188.jpg/ff4444/ffffff",
             "attachment": null,
@@ -652,6 +679,7 @@
         "fields": {
             "created_by": 1,
             "name": "Intricate Orthothecium Moss",
+            "slug": "intricate-orthothecium-moss",
             "host": "Zboncak-Beahan",
             "image": "http://dummyimage.com/172x117.png/dddddd/000000",
             "attachment": null,
@@ -676,6 +704,7 @@
         "fields": {
             "created_by": 1,
             "name": "South American Bonnet Orchid",
+            "slug": "south-american-bonnet-orchid",
             "host": "Kshlerin, Bartoletti and Hyatt",
             "image": "http://dummyimage.com/143x223.bmp/dddddd/000000",
             "attachment": null,
@@ -700,6 +729,7 @@
         "fields": {
             "created_by": 1,
             "name": "Mountain Blue-eyed Grass",
+            "slug": "mountain-blue-eyed-grass",
             "host": "Effertz-Kunde",
             "image": "http://dummyimage.com/127x140.bmp/cc0000/ffffff",
             "attachment": null,
@@ -724,6 +754,7 @@
         "fields": {
             "created_by": 1,
             "name": "Pohlia Moss",
+            "slug": "pohlia-moss",
             "host": "Steuber-Lind",
             "image": "http://dummyimage.com/107x150.png/5fa2dd/ffffff",
             "attachment": null,
@@ -748,6 +779,7 @@
         "fields": {
             "created_by": 1,
             "name": "Iowa Rim Lichen",
+            "slug": "iowa-rim-lichen",
             "host": "Lynch Inc",
             "image": "http://dummyimage.com/196x233.png/cc0000/ffffff",
             "attachment": null,
@@ -772,6 +804,7 @@
         "fields": {
             "created_by": 1,
             "name": "Antitrichia Moss",
+            "slug": "antitrichia-moss",
             "host": "Ward-Auer",
             "image": "http://dummyimage.com/170x130.jpg/5fa2dd/ffffff",
             "attachment": null,
@@ -796,6 +829,7 @@
         "fields": {
             "created_by": 1,
             "name": "Calamondin",
+            "slug": "calamondin",
             "host": "Berge and Sons",
             "image": "http://dummyimage.com/200x131.bmp/dddddd/000000",
             "attachment": null,
@@ -820,6 +854,7 @@
         "fields": {
             "created_by": 1,
             "name": "Four-stamen Tamarisk",
+            "slug": "four-stamen-tamarisk",
             "host": "Ferry Inc",
             "image": "http://dummyimage.com/235x145.jpg/ff4444/ffffff",
             "attachment": null,
@@ -844,6 +879,7 @@
         "fields": {
             "created_by": 1,
             "name": "Dense Silkybent",
+            "slug": "dense-silkybent",
             "host": "Dare, Feest and Langosh",
             "image": "http://dummyimage.com/207x112.png/cc0000/ffffff",
             "attachment": null,
@@ -868,6 +904,7 @@
         "fields": {
             "created_by": 1,
             "name": "Prairie Bluebells",
+            "slug": "prairie-bluebells",
             "host": "Kerluke-King",
             "image": "http://dummyimage.com/168x144.bmp/dddddd/000000",
             "attachment": null,
@@ -892,6 +929,7 @@
         "fields": {
             "created_by": 1,
             "name": "Island False Bindweed",
+            "slug": "island-false-bindweed",
             "host": "Gleason-Kshlerin",
             "image": "http://dummyimage.com/161x168.bmp/5fa2dd/ffffff",
             "attachment": null,
@@ -916,6 +954,7 @@
         "fields": {
             "created_by": 1,
             "name": "Pore Lichen",
+            "slug": "pore-lichen",
             "host": "O'Kon, Beahan and Pouros",
             "image": "http://dummyimage.com/171x124.jpg/ff4444/ffffff",
             "attachment": null,
@@ -940,6 +979,7 @@
         "fields": {
             "created_by": 1,
             "name": "Manzanita",
+            "slug": "manzanita",
             "host": "Muller Inc",
             "image": "http://dummyimage.com/125x128.bmp/dddddd/000000",
             "attachment": null,
@@ -964,6 +1004,7 @@
         "fields": {
             "created_by": 1,
             "name": "Spiked False Mannagrass",
+            "slug": "spiked-false-mannagrass",
             "host": "Corkery, Vandervort and Stamm",
             "image": "http://dummyimage.com/154x223.jpg/5fa2dd/ffffff",
             "attachment": null,
@@ -988,6 +1029,7 @@
         "fields": {
             "created_by": 1,
             "name": "Larkspur",
+            "slug": "larkspur",
             "host": "Kemmer, Lebsack and Moore",
             "image": "http://dummyimage.com/211x231.bmp/dddddd/000000",
             "attachment": null,
@@ -1012,6 +1054,7 @@
         "fields": {
             "created_by": 1,
             "name": "Toria",
+            "slug": "toria",
             "host": "Stamm, Abshire and Sanford",
             "image": "http://dummyimage.com/178x250.png/dddddd/000000",
             "attachment": null,
@@ -1036,6 +1079,7 @@
         "fields": {
             "created_by": 1,
             "name": "Constance's Phacelia",
+            "slug": "constances-phacelia",
             "host": "Turner, Wintheiser and Blanda",
             "image": "http://dummyimage.com/158x168.jpg/dddddd/000000",
             "attachment": null,
@@ -1060,6 +1104,7 @@
         "fields": {
             "created_by": 1,
             "name": "Wart Lichen",
+            "slug": "wart-lichen",
             "host": "Bruen, Hartmann and Zulauf",
             "image": "http://dummyimage.com/212x136.bmp/5fa2dd/ffffff",
             "attachment": null,
@@ -1084,6 +1129,7 @@
         "fields": {
             "created_by": 1,
             "name": "Grassleaf Mudplantain",
+            "slug": "grassleaf-mudplantain",
             "host": "Hyatt-Predovic",
             "image": "http://dummyimage.com/235x237.bmp/5fa2dd/ffffff",
             "attachment": null,
@@ -1108,6 +1154,7 @@
         "fields": {
             "created_by": 1,
             "name": "Bryum Moss",
+            "slug": "bryum-moss",
             "host": "Labadie, Stracke and Mayert",
             "image": "http://dummyimage.com/143x130.bmp/5fa2dd/ffffff",
             "attachment": null,
@@ -1132,6 +1179,7 @@
         "fields": {
             "created_by": 1,
             "name": "Tackstem",
+            "slug": "tackstem",
             "host": "Bergstrom, Crist and Toy",
             "image": "http://dummyimage.com/211x185.jpg/5fa2dd/ffffff",
             "attachment": null,
@@ -1156,6 +1204,7 @@
         "fields": {
             "created_by": 1,
             "name": "Butterbough",
+            "slug": "butterbough",
             "host": "Bergstrom, Gislason and Schaefer",
             "image": "http://dummyimage.com/180x101.jpg/5fa2dd/ffffff",
             "attachment": null,
@@ -1180,6 +1229,7 @@
         "fields": {
             "created_by": 1,
             "name": "Letterman's Needlegrass",
+            "slug": "lettermans-needlegrass",
             "host": "Bogisich-Waelchi",
             "image": "http://dummyimage.com/115x128.jpg/dddddd/000000",
             "attachment": null,
@@ -1204,6 +1254,7 @@
         "fields": {
             "created_by": 1,
             "name": "Warminster Broom",
+            "slug": "warminster-broom",
             "host": "Dooley, Renner and Roob",
             "image": "http://dummyimage.com/188x233.bmp/5fa2dd/ffffff",
             "attachment": null,
@@ -1228,6 +1279,7 @@
         "fields": {
             "created_by": 1,
             "name": "Wart Lichen",
+            "slug": "wart-lichen",
             "host": "Stroman-Bogan",
             "image": "http://dummyimage.com/177x124.jpg/cc0000/ffffff",
             "attachment": null,
@@ -1252,6 +1304,7 @@
         "fields": {
             "created_by": 1,
             "name": "San Diego Wild Cabbage",
+            "slug": "san-diego-wild-cabbage",
             "host": "Reynolds, Ritchie and Upton",
             "image": "http://dummyimage.com/212x124.bmp/ff4444/ffffff",
             "attachment": null,
@@ -1276,6 +1329,7 @@
         "fields": {
             "created_by": 1,
             "name": "Taperfruit Shortscale Sedge",
+            "slug": "taperfruit-shortscale-sedge",
             "host": "Blanda-Medhurst",
             "image": "http://dummyimage.com/157x247.bmp/ff4444/ffffff",
             "attachment": null,
@@ -1300,6 +1354,7 @@
         "fields": {
             "created_by": 1,
             "name": "Stickywilly",
+            "slug": "stickywilly",
             "host": "Auer and Sons",
             "image": "http://dummyimage.com/105x127.png/ff4444/ffffff",
             "attachment": null,
@@ -1324,6 +1379,7 @@
         "fields": {
             "created_by": 1,
             "name": "Netleaf Willow",
+            "slug": "netleaf-willow",
             "host": "Schroeder Inc",
             "image": "http://dummyimage.com/120x128.bmp/cc0000/ffffff",
             "attachment": null,
@@ -1348,6 +1404,7 @@
         "fields": {
             "created_by": 1,
             "name": "Silversword",
+            "slug": "silversword",
             "host": "Purdy-Flatley",
             "image": "http://dummyimage.com/214x224.png/cc0000/ffffff",
             "attachment": null,
@@ -1372,6 +1429,7 @@
         "fields": {
             "created_by": 1,
             "name": "Crowned Beggarticks",
+            "slug": "crowned-beggarticks",
             "host": "Pfeffer-Wilkinson",
             "image": "http://dummyimage.com/148x147.jpg/cc0000/ffffff",
             "attachment": null,
@@ -1396,6 +1454,7 @@
         "fields": {
             "created_by": 1,
             "name": "Silky Lupine",
+            "slug": "silky-lupine",
             "host": "Waters, Balistreri and Mraz",
             "image": "http://dummyimage.com/195x188.bmp/dddddd/000000",
             "attachment": null,
@@ -1420,6 +1479,7 @@
         "fields": {
             "created_by": 1,
             "name": "Chinese Hound's Tongue",
+            "slug": "chinese-hounds-tongue",
             "host": "Nikolaus and Sons",
             "image": "http://dummyimage.com/233x105.png/cc0000/ffffff",
             "attachment": null,
@@ -1444,6 +1504,7 @@
         "fields": {
             "created_by": 1,
             "name": "Annual Muhly",
+            "slug": "annual-muhly",
             "host": "Bergnaum-Murphy",
             "image": "http://dummyimage.com/174x234.png/ff4444/ffffff",
             "attachment": null,
@@ -1468,6 +1529,7 @@
         "fields": {
             "created_by": 1,
             "name": "Palm-grass",
+            "slug": "palm-grass",
             "host": "Mayert, Tremblay and Herzog",
             "image": "http://dummyimage.com/199x129.png/dddddd/000000",
             "attachment": null,
@@ -1492,6 +1554,7 @@
         "fields": {
             "created_by": 1,
             "name": "Hachuela",
+            "slug": "hachuela",
             "host": "Haag, Bradtke and Leffler",
             "image": "http://dummyimage.com/171x101.bmp/cc0000/ffffff",
             "attachment": null,
@@ -1516,6 +1579,7 @@
         "fields": {
             "created_by": 1,
             "name": "Idria Buckwheat",
+            "slug": "idria-buckwheat",
             "host": "Tromp-Lemke",
             "image": "http://dummyimage.com/211x140.bmp/ff4444/ffffff",
             "attachment": null,
@@ -1540,6 +1604,7 @@
         "fields": {
             "created_by": 1,
             "name": "Wallflower Orchid",
+            "slug": "wallflower-orchid",
             "host": "Keeling, Leannon and Klein",
             "image": "http://dummyimage.com/174x121.jpg/ff4444/ffffff",
             "attachment": null,
@@ -1564,6 +1629,7 @@
         "fields": {
             "created_by": 1,
             "name": "Appalachian Cliff Fern",
+            "slug": "appalachian-cliff-fern",
             "host": "Koch, Berge and Crist",
             "image": "http://dummyimage.com/145x154.bmp/cc0000/ffffff",
             "attachment": null,
@@ -1588,6 +1654,7 @@
         "fields": {
             "created_by": 1,
             "name": "Gamba-pea",
+            "slug": "gamba-pea",
             "host": "Hoeger LLC",
             "image": "http://dummyimage.com/189x135.png/cc0000/ffffff",
             "attachment": null,
@@ -1612,6 +1679,7 @@
         "fields": {
             "created_by": 1,
             "name": "Winter Squash",
+            "slug": "winter-squash",
             "host": "Romaguera Group",
             "image": "http://dummyimage.com/249x239.bmp/cc0000/ffffff",
             "attachment": null,
@@ -1636,6 +1704,7 @@
         "fields": {
             "created_by": 1,
             "name": "Frenchman's Bluff Grapefern",
+            "slug": "frenchmans-bluff-grapefern",
             "host": "Funk-Boehm",
             "image": "http://dummyimage.com/228x250.png/ff4444/ffffff",
             "attachment": null,
@@ -1660,6 +1729,7 @@
         "fields": {
             "created_by": 1,
             "name": "Tarweed",
+            "slug": "tarweed",
             "host": "Boyle Group",
             "image": "http://dummyimage.com/198x176.jpg/cc0000/ffffff",
             "attachment": null,
@@ -1684,6 +1754,7 @@
         "fields": {
             "created_by": 1,
             "name": "Tepary Bean",
+            "slug": "tepary-bean",
             "host": "Harvey-Carroll",
             "image": "http://dummyimage.com/207x130.bmp/dddddd/000000",
             "attachment": null,
@@ -1708,6 +1779,7 @@
         "fields": {
             "created_by": 1,
             "name": "Compact Dodder",
+            "slug": "compact-dodder",
             "host": "Carter-Batz",
             "image": "http://dummyimage.com/114x125.bmp/ff4444/ffffff",
             "attachment": null,
@@ -1732,6 +1804,7 @@
         "fields": {
             "created_by": 1,
             "name": "Deer Sedge",
+            "slug": "deer-sedge",
             "host": "Schmeler, Fritsch and Sawayn",
             "image": "http://dummyimage.com/177x194.bmp/cc0000/ffffff",
             "attachment": null,
@@ -1756,6 +1829,7 @@
         "fields": {
             "created_by": 1,
             "name": "Hana Clermontia",
+            "slug": "hana-clermontia",
             "host": "Gislason, Zulauf and Feil",
             "image": "http://dummyimage.com/208x152.png/dddddd/000000",
             "attachment": null,
@@ -1780,6 +1854,7 @@
         "fields": {
             "created_by": 1,
             "name": "Buckeye",
+            "slug": "buckeye",
             "host": "Parker and Sons",
             "image": "http://dummyimage.com/244x185.png/dddddd/000000",
             "attachment": null,
@@ -1804,6 +1879,7 @@
         "fields": {
             "created_by": 1,
             "name": "Shield Lichen",
+            "slug": "shield-lichen",
             "host": "Reichert, Koepp and Gutmann",
             "image": "http://dummyimage.com/203x112.bmp/ff4444/ffffff",
             "attachment": null,
@@ -1828,6 +1904,7 @@
         "fields": {
             "created_by": 1,
             "name": "Catasetum",
+            "slug": "catasetum",
             "host": "Hoeger-Rohan",
             "image": "http://dummyimage.com/113x205.jpg/5fa2dd/ffffff",
             "attachment": null,
@@ -1852,6 +1929,7 @@
         "fields": {
             "created_by": 1,
             "name": "Cinclidium Moss",
+            "slug": "cinclidium-moss",
             "host": "Morissette LLC",
             "image": "http://dummyimage.com/218x104.jpg/cc0000/ffffff",
             "attachment": null,
@@ -1876,6 +1954,7 @@
         "fields": {
             "created_by": 1,
             "name": "Hardheads",
+            "slug": "hardheads",
             "host": "Breitenberg-Kuhn",
             "image": "http://dummyimage.com/206x241.jpg/dddddd/000000",
             "attachment": null,
@@ -1900,6 +1979,7 @@
         "fields": {
             "created_by": 1,
             "name": "Macmillan's Fontinalis Moss",
+            "slug": "macmillans-fontinalis-moss",
             "host": "Tremblay-White",
             "image": "http://dummyimage.com/235x167.png/ff4444/ffffff",
             "attachment": null,
@@ -1924,6 +2004,7 @@
         "fields": {
             "created_by": 1,
             "name": "Jones' Townsend Daisy",
+            "slug": "jones-townsend-daisy",
             "host": "Olson, Lebsack and Crooks",
             "image": "http://dummyimage.com/200x236.jpg/dddddd/000000",
             "attachment": null,
@@ -1948,6 +2029,7 @@
         "fields": {
             "created_by": 1,
             "name": "Basella",
+            "slug": "basella",
             "host": "Lebsack Inc",
             "image": "http://dummyimage.com/106x184.jpg/dddddd/000000",
             "attachment": null,
@@ -1972,6 +2054,7 @@
         "fields": {
             "created_by": 1,
             "name": "Smooth Mesquite",
+            "slug": "smooth-mesquite",
             "host": "Abernathy, Pagac and Romaguera",
             "image": "http://dummyimage.com/195x105.bmp/5fa2dd/ffffff",
             "attachment": null,
@@ -1996,6 +2079,7 @@
         "fields": {
             "created_by": 1,
             "name": "Fullstem",
+            "slug": "fullstem",
             "host": "Schmeler-Stark",
             "image": "http://dummyimage.com/175x177.png/cc0000/ffffff",
             "attachment": null,
@@ -2020,6 +2104,7 @@
         "fields": {
             "created_by": 1,
             "name": "Baldwin's Nutrush",
+            "slug": "baldwins-nutrush",
             "host": "Goyette, Hodkiewicz and Macejkovic",
             "image": "http://dummyimage.com/157x172.bmp/ff4444/ffffff",
             "attachment": null,
@@ -2044,6 +2129,7 @@
         "fields": {
             "created_by": 1,
             "name": "European Crab Apple",
+            "slug": "european-crab-apple",
             "host": "Pagac Group",
             "image": "http://dummyimage.com/194x217.png/ff4444/ffffff",
             "attachment": null,
@@ -2068,6 +2154,7 @@
         "fields": {
             "created_by": 1,
             "name": "Woolly Groundsel",
+            "slug": "woolly-groundsel",
             "host": "Windler-Schoen",
             "image": "http://dummyimage.com/113x170.jpg/dddddd/000000",
             "attachment": null,
@@ -2092,6 +2179,7 @@
         "fields": {
             "created_by": 1,
             "name": "Nutrush",
+            "slug": "nutrush",
             "host": "Tromp, Abernathy and Anderson",
             "image": "http://dummyimage.com/242x176.bmp/5fa2dd/ffffff",
             "attachment": null,
@@ -2116,6 +2204,7 @@
         "fields": {
             "created_by": 1,
             "name": "Man To Man",
+            "slug": "man-to-man",
             "host": "Tremblay Group",
             "image": "http://dummyimage.com/135x123.bmp/dddddd/000000",
             "attachment": null,
@@ -2140,6 +2229,7 @@
         "fields": {
             "created_by": 1,
             "name": "Carolina Bugbane",
+            "slug": "carolina-bugbane",
             "host": "Fay-Sporer",
             "image": "http://dummyimage.com/200x146.bmp/dddddd/000000",
             "attachment": null,
@@ -2164,6 +2254,7 @@
         "fields": {
             "created_by": 1,
             "name": "Boccone's Clover",
+            "slug": "boccones-clover",
             "host": "Howell-Hartmann",
             "image": "http://dummyimage.com/107x147.jpg/5fa2dd/ffffff",
             "attachment": null,
@@ -2188,6 +2279,7 @@
         "fields": {
             "created_by": 1,
             "name": "Cooper's Popcornflower",
+            "slug": "coopers-popcornflower",
             "host": "Daugherty Group",
             "image": "http://dummyimage.com/129x221.jpg/ff4444/ffffff",
             "attachment": null,
@@ -2212,6 +2304,7 @@
         "fields": {
             "created_by": 1,
             "name": "Leechbush",
+            "slug": "leechbush",
             "host": "Bogan Group",
             "image": "http://dummyimage.com/230x133.png/dddddd/000000",
             "attachment": null,
@@ -2236,6 +2329,7 @@
         "fields": {
             "created_by": 1,
             "name": "Ainahou Valley Woodfern",
+            "slug": "ainahou-valley-woodfern",
             "host": "Lesch LLC",
             "image": "http://dummyimage.com/141x101.jpg/ff4444/ffffff",
             "attachment": null,
@@ -2260,6 +2354,7 @@
         "fields": {
             "created_by": 1,
             "name": "Analogue Sedge",
+            "slug": "analogue-sedge",
             "host": "McLaughlin LLC",
             "image": "http://dummyimage.com/175x219.png/ff4444/ffffff",
             "attachment": null,
@@ -2284,6 +2379,7 @@
         "fields": {
             "created_by": 1,
             "name": "Hollyleaf Clover",
+            "slug": "hollyleaf-clover",
             "host": "Eichmann, O'Reilly and Casper",
             "image": "http://dummyimage.com/180x147.bmp/cc0000/ffffff",
             "attachment": null,
@@ -2308,6 +2404,7 @@
         "fields": {
             "created_by": 1,
             "name": "Tiny Mousetail",
+            "slug": "tiny-mousetail",
             "host": "Haag Inc",
             "image": "http://dummyimage.com/130x202.jpg/dddddd/000000",
             "attachment": null,
@@ -2332,6 +2429,7 @@
         "fields": {
             "created_by": 1,
             "name": "Lanceleaf Schlotheimia Moss",
+            "slug": "lanceleaf-schlotheimia-moss",
             "host": "Yundt-Mayer",
             "image": "http://dummyimage.com/131x173.jpg/dddddd/000000",
             "attachment": null,
@@ -2356,6 +2454,7 @@
         "fields": {
             "created_by": 1,
             "name": "Sprouting Leaf Willow",
+            "slug": "sprouting-leaf-willow",
             "host": "Kertzmann-Schmidt",
             "image": "http://dummyimage.com/166x161.png/5fa2dd/ffffff",
             "attachment": null,
@@ -2380,6 +2479,7 @@
         "fields": {
             "created_by": 1,
             "name": "Mona Island Swallow-wort",
+            "slug": "mona-island-swallow-wort",
             "host": "Treutel, Frami and Hilpert",
             "image": "http://dummyimage.com/198x181.bmp/5fa2dd/ffffff",
             "attachment": null,
@@ -2404,6 +2504,7 @@
         "fields": {
             "created_by": 1,
             "name": "Scarlet Keckiella",
+            "slug": "scarlet-keckiella",
             "host": "Kunde and Sons",
             "image": "http://dummyimage.com/197x208.jpg/5fa2dd/ffffff",
             "attachment": null,
@@ -2428,6 +2529,7 @@
         "fields": {
             "created_by": 1,
             "name": "Weed's Mariposa Lily",
+            "slug": "weeds-mariposa-lily",
             "host": "Batz and Sons",
             "image": "http://dummyimage.com/144x188.jpg/cc0000/ffffff",
             "attachment": null,
@@ -2452,6 +2554,7 @@
         "fields": {
             "created_by": 1,
             "name": "Serpentine Indian Pink",
+            "slug": "serpentine-indian-pink",
             "host": "McGlynn-Parker",
             "image": "http://dummyimage.com/110x216.png/ff4444/ffffff",
             "attachment": null,
@@ -2476,6 +2579,7 @@
         "fields": {
             "created_by": 1,
             "name": "Birchbark Dot Lichen",
+            "slug": "birchbark-dot-lichen",
             "host": "Abshire-Hirthe",
             "image": "http://dummyimage.com/190x106.jpg/cc0000/ffffff",
             "attachment": null,
@@ -2500,6 +2604,7 @@
         "fields": {
             "created_by": 1,
             "name": "Woodland Tuftedorchid",
+            "slug": "woodland-tuftedorchid",
             "host": "Braun, Bins and Windler",
             "image": "http://dummyimage.com/112x226.bmp/dddddd/000000",
             "attachment": null,
@@ -2524,6 +2629,7 @@
         "fields": {
             "created_by": 1,
             "name": "Lecidea Lichen",
+            "slug": "lecidea-lichen",
             "host": "Kub, Hudson and Conroy",
             "image": "http://dummyimage.com/122x126.png/ff4444/ffffff",
             "attachment": null,
@@ -2548,6 +2654,7 @@
         "fields": {
             "created_by": 1,
             "name": "Hyperbaena",
+            "slug": "hyperbaena",
             "host": "Wilderman Inc",
             "image": "http://dummyimage.com/204x196.jpg/dddddd/000000",
             "attachment": null,
@@ -2572,6 +2679,7 @@
         "fields": {
             "created_by": 1,
             "name": "Polytrichum Moss",
+            "slug": "polytrichum-moss",
             "host": "Douglas-Crist",
             "image": "http://dummyimage.com/192x143.jpg/cc0000/ffffff",
             "attachment": null,
@@ -2596,6 +2704,7 @@
         "fields": {
             "created_by": 1,
             "name": "Fivehorn Smotherweed",
+            "slug": "fivehorn-smotherweed",
             "host": "Marks, Harris and Blanda",
             "image": "http://dummyimage.com/134x167.bmp/dddddd/000000",
             "attachment": null,
@@ -2620,6 +2729,7 @@
         "fields": {
             "created_by": 1,
             "name": "Bodie Hills Rockcress",
+            "slug": "bodie-hills-rockcress",
             "host": "Schuster, Emard and Yost",
             "image": "http://dummyimage.com/208x184.png/dddddd/000000",
             "attachment": null,
@@ -2644,6 +2754,7 @@
         "fields": {
             "created_by": 1,
             "name": "Mountain Goldenrod",
+            "slug": "mountain-goldenrod",
             "host": "Kertzmann, Blick and King",
             "image": "http://dummyimage.com/210x154.bmp/dddddd/000000",
             "attachment": null,
@@ -2668,6 +2779,7 @@
         "fields": {
             "created_by": 1,
             "name": "Rim Lichen",
+            "slug": "rim-lichen",
             "host": "Kris, Smitham and Corkery",
             "image": "http://dummyimage.com/176x200.png/5fa2dd/ffffff",
             "attachment": null,
@@ -2692,6 +2804,7 @@
         "fields": {
             "created_by": 1,
             "name": "Bruneau Milkvetch",
+            "slug": "bruneau-milkvetch",
             "host": "Okuneva-Hahn",
             "image": "http://dummyimage.com/201x180.png/ff4444/ffffff",
             "attachment": null,
@@ -2716,6 +2829,7 @@
         "fields": {
             "created_by": 1,
             "name": "Bright Green Dudleya",
+            "slug": "bright-green-dudleya",
             "host": "Hodkiewicz-Wisozk",
             "image": "http://dummyimage.com/147x127.bmp/dddddd/000000",
             "attachment": null,
@@ -2740,6 +2854,7 @@
         "fields": {
             "created_by": 1,
             "name": "Klamath Rockcress",
+            "slug": "klamath-rockcress",
             "host": "Simonis-Orn",
             "image": "http://dummyimage.com/207x227.png/ff4444/ffffff",
             "attachment": null,
@@ -2764,6 +2879,7 @@
         "fields": {
             "created_by": 1,
             "name": "Common Monolopia",
+            "slug": "common-monolopia",
             "host": "Frami, Kub and Franecki",
             "image": "http://dummyimage.com/142x187.bmp/cc0000/ffffff",
             "attachment": null,
@@ -2788,6 +2904,7 @@
         "fields": {
             "created_by": 1,
             "name": "Turkey Pea",
+            "slug": "turkey-pea",
             "host": "Kemmer, McClure and Flatley",
             "image": "http://dummyimage.com/178x150.bmp/ff4444/ffffff",
             "attachment": null,
@@ -2812,6 +2929,7 @@
         "fields": {
             "created_by": 1,
             "name": "Sylvan Scorzonella",
+            "slug": "sylvan-scorzonella",
             "host": "Batz, Mante and Crist",
             "image": "http://dummyimage.com/115x188.png/dddddd/000000",
             "attachment": null,
@@ -2836,6 +2954,7 @@
         "fields": {
             "created_by": 1,
             "name": "Gordon's Bladderpod",
+            "slug": "gordons-bladderpod",
             "host": "Emard and Sons",
             "image": "http://dummyimage.com/208x187.jpg/dddddd/000000",
             "attachment": null,
@@ -2860,6 +2979,7 @@
         "fields": {
             "created_by": 1,
             "name": "Ribbon Fern",
+            "slug": "ribbon-fern",
             "host": "Hahn, Gutkowski and Cormier",
             "image": "http://dummyimage.com/199x108.png/ff4444/ffffff",
             "attachment": null,
@@ -2884,6 +3004,7 @@
         "fields": {
             "created_by": 1,
             "name": "Southern Suncup",
+            "slug": "southern-suncup",
             "host": "Runte-Dare",
             "image": "http://dummyimage.com/240x156.jpg/5fa2dd/ffffff",
             "attachment": null,
@@ -2908,6 +3029,7 @@
         "fields": {
             "created_by": 1,
             "name": "Dwarf Prairie Clover",
+            "slug": "dwarf-prairie-clover",
             "host": "Jacobson, Rodriguez and Kilback",
             "image": "http://dummyimage.com/169x147.jpg/ff4444/ffffff",
             "attachment": null,
@@ -2932,6 +3054,7 @@
         "fields": {
             "created_by": 1,
             "name": "Hamilton's Spindletree",
+            "slug": "hamiltons-spindletree",
             "host": "Nader-Ondricka",
             "image": "http://dummyimage.com/199x107.bmp/ff4444/ffffff",
             "attachment": null,
@@ -2956,6 +3079,7 @@
         "fields": {
             "created_by": 1,
             "name": "Bouteille's Fellhanera Lichen",
+            "slug": "bouteilles-fellhanera-lichen",
             "host": "Feest, Pollich and Nicolas",
             "image": "http://dummyimage.com/159x112.jpg/ff4444/ffffff",
             "attachment": null,
@@ -2980,6 +3104,7 @@
         "fields": {
             "created_by": 1,
             "name": "Jamaican Sarsaparilla",
+            "slug": "jamaican-sarsaparilla",
             "host": "Jerde, Dach and Rodriguez",
             "image": "http://dummyimage.com/128x137.bmp/dddddd/000000",
             "attachment": null,
@@ -3004,6 +3129,7 @@
         "fields": {
             "created_by": 1,
             "name": "Longleaf Crabgrass",
+            "slug": "longleaf-crabgrass",
             "host": "Murphy-Renner",
             "image": "http://dummyimage.com/220x119.bmp/ff4444/ffffff",
             "attachment": null,
@@ -3028,6 +3154,7 @@
         "fields": {
             "created_by": 1,
             "name": "Small Floating Mannagrass",
+            "slug": "small-floating-mannagrass",
             "host": "Terry, Becker and Nader",
             "image": "http://dummyimage.com/227x193.bmp/cc0000/ffffff",
             "attachment": null,
@@ -3052,6 +3179,7 @@
         "fields": {
             "created_by": 1,
             "name": "Phaeographina Lichen",
+            "slug": "phaeographina-lichen",
             "host": "Harber Inc",
             "image": "http://dummyimage.com/241x144.png/dddddd/000000",
             "attachment": null,
@@ -3076,6 +3204,7 @@
         "fields": {
             "created_by": 1,
             "name": "Hyssopleaf Thoroughwort",
+            "slug": "hyssopleaf-thoroughwort",
             "host": "Dietrich, Thompson and Hirthe",
             "image": "http://dummyimage.com/102x205.bmp/5fa2dd/ffffff",
             "attachment": null,
@@ -3100,6 +3229,7 @@
         "fields": {
             "created_by": 1,
             "name": "Murainagrass",
+            "slug": "murainagrass",
             "host": "Runolfsson-Satterfield",
             "image": "http://dummyimage.com/227x179.png/dddddd/000000",
             "attachment": null,
@@ -3124,6 +3254,7 @@
         "fields": {
             "created_by": 1,
             "name": "Parish's Reinkella Lichen",
+            "slug": "parishs-reinkella-lichen",
             "host": "Konopelski, White and Flatley",
             "image": "http://dummyimage.com/102x207.bmp/cc0000/ffffff",
             "attachment": null,
@@ -3148,6 +3279,7 @@
         "fields": {
             "created_by": 1,
             "name": "Phaeoceros",
+            "slug": "phaeoceros",
             "host": "Towne-Rohan",
             "image": "http://dummyimage.com/120x125.jpg/dddddd/000000",
             "attachment": null,
@@ -3172,6 +3304,7 @@
         "fields": {
             "created_by": 1,
             "name": "Maui Labordia",
+            "slug": "maui-labordia",
             "host": "Predovic Inc",
             "image": "http://dummyimage.com/180x109.jpg/5fa2dd/ffffff",
             "attachment": null,
@@ -3196,6 +3329,7 @@
         "fields": {
             "created_by": 1,
             "name": "Pineland Fern",
+            "slug": "pineland-fern",
             "host": "Weimann LLC",
             "image": "http://dummyimage.com/212x244.bmp/5fa2dd/ffffff",
             "attachment": null,
@@ -3220,6 +3354,7 @@
         "fields": {
             "created_by": 1,
             "name": "Senegal Date Palm",
+            "slug": "senegal-date-palm",
             "host": "Senger and Sons",
             "image": "http://dummyimage.com/218x145.jpg/ff4444/ffffff",
             "attachment": null,
@@ -3244,6 +3379,7 @@
         "fields": {
             "created_by": 1,
             "name": "Platygyrium Moss",
+            "slug": "platygyrium-moss",
             "host": "Mosciski, Littel and Kemmer",
             "image": "http://dummyimage.com/139x212.png/ff4444/ffffff",
             "attachment": null,
@@ -3268,6 +3404,7 @@
         "fields": {
             "created_by": 1,
             "name": "Leafy Reedgrass",
+            "slug": "leafy-reedgrass",
             "host": "Bayer Group",
             "image": "http://dummyimage.com/175x192.bmp/ff4444/ffffff",
             "attachment": null,
@@ -3292,6 +3429,7 @@
         "fields": {
             "created_by": 1,
             "name": "Haussknecht's Atrichum Moss",
+            "slug": "haussknechts-atrichum-moss",
             "host": "Bednar LLC",
             "image": "http://dummyimage.com/186x216.jpg/dddddd/000000",
             "attachment": null,
@@ -3316,6 +3454,7 @@
         "fields": {
             "created_by": 1,
             "name": "Weld",
+            "slug": "weld",
             "host": "Hettinger, Schaden and Spinka",
             "image": "http://dummyimage.com/188x112.png/ff4444/ffffff",
             "attachment": null,
@@ -3340,6 +3479,7 @@
         "fields": {
             "created_by": 1,
             "name": "Shorthook Fishhook Cactus",
+            "slug": "shorthook-fishhook-cactus",
             "host": "Nikolaus Group",
             "image": "http://dummyimage.com/238x214.jpg/dddddd/000000",
             "attachment": null,
@@ -3364,6 +3504,7 @@
         "fields": {
             "created_by": 1,
             "name": "Hygroamblystegium Moss",
+            "slug": "hygroamblystegium-moss",
             "host": "Daugherty, Bechtelar and Goyette",
             "image": "http://dummyimage.com/205x172.png/5fa2dd/ffffff",
             "attachment": null,
@@ -3388,6 +3529,7 @@
         "fields": {
             "created_by": 1,
             "name": "Livermore Nailwort",
+            "slug": "livermore-nailwort",
             "host": "Klein, Botsford and Gulgowski",
             "image": "http://dummyimage.com/143x220.jpg/ff4444/ffffff",
             "attachment": null,
@@ -3412,6 +3554,7 @@
         "fields": {
             "created_by": 1,
             "name": "Western Necklacepod",
+            "slug": "western-necklacepod",
             "host": "Langosh-Green",
             "image": "http://dummyimage.com/207x195.bmp/cc0000/ffffff",
             "attachment": null,
@@ -3436,6 +3579,7 @@
         "fields": {
             "created_by": 1,
             "name": "Jimsonweed",
+            "slug": "jimsonweed",
             "host": "Satterfield Group",
             "image": "http://dummyimage.com/211x232.png/ff4444/ffffff",
             "attachment": null,
@@ -3460,6 +3604,7 @@
         "fields": {
             "created_by": 1,
             "name": "Nuttall's Linanthus",
+            "slug": "nuttalls-linanthus",
             "host": "Schulist-Windler",
             "image": "http://dummyimage.com/172x143.jpg/5fa2dd/ffffff",
             "attachment": null,
@@ -3484,6 +3629,7 @@
         "fields": {
             "created_by": 1,
             "name": "Mauritia",
+            "slug": "mauritia",
             "host": "O'Kon-Jenkins",
             "image": "http://dummyimage.com/145x225.jpg/ff4444/ffffff",
             "attachment": null,
@@ -3508,6 +3654,7 @@
         "fields": {
             "created_by": 1,
             "name": "Basin Saltbush",
+            "slug": "basin-saltbush",
             "host": "Rohan-Volkman",
             "image": "http://dummyimage.com/225x134.png/5fa2dd/ffffff",
             "attachment": null,
@@ -3532,6 +3679,7 @@
         "fields": {
             "created_by": 1,
             "name": "Stalked Bur Grass",
+            "slug": "stalked-bur-grass",
             "host": "Zboncak-Miller",
             "image": "http://dummyimage.com/148x185.jpg/cc0000/ffffff",
             "attachment": null,
@@ -3556,6 +3704,7 @@
         "fields": {
             "created_by": 1,
             "name": "Warnstorfia Moss",
+            "slug": "warnstorfia-moss",
             "host": "Smith-Sauer",
             "image": "http://dummyimage.com/125x156.jpg/ff4444/ffffff",
             "attachment": null,
@@ -3580,6 +3729,7 @@
         "fields": {
             "created_by": 1,
             "name": "Tuckerman's Dot Lichen",
+            "slug": "tuckermans-dot-lichen",
             "host": "Lind, Wiza and Toy",
             "image": "http://dummyimage.com/247x165.png/ff4444/ffffff",
             "attachment": null,
@@ -3604,6 +3754,7 @@
         "fields": {
             "created_by": 1,
             "name": "American Beech",
+            "slug": "american-beech",
             "host": "Roob, Upton and Swift",
             "image": "http://dummyimage.com/146x214.jpg/5fa2dd/ffffff",
             "attachment": null,
@@ -3628,6 +3779,7 @@
         "fields": {
             "created_by": 1,
             "name": "Hooker's Silene",
+            "slug": "hookers-silene",
             "host": "Anderson LLC",
             "image": "http://dummyimage.com/239x234.jpg/cc0000/ffffff",
             "attachment": null,
@@ -3652,6 +3804,7 @@
         "fields": {
             "created_by": 1,
             "name": "Creeping Thyme",
+            "slug": "creeping-thyme",
             "host": "Kassulke, Rolfson and Parisian",
             "image": "http://dummyimage.com/209x198.jpg/ff4444/ffffff",
             "attachment": null,
@@ -3676,6 +3829,7 @@
         "fields": {
             "created_by": 1,
             "name": "Coastal Bluff Beggarticks",
+            "slug": "coastal-bluff-beggarticks",
             "host": "Fay-Franecki",
             "image": "http://dummyimage.com/183x209.png/ff4444/ffffff",
             "attachment": null,
@@ -3700,6 +3854,7 @@
         "fields": {
             "created_by": 1,
             "name": "Brisselet",
+            "slug": "brisselet",
             "host": "Kreiger, Keebler and Hickle",
             "image": "http://dummyimage.com/186x248.bmp/ff4444/ffffff",
             "attachment": null,
@@ -3724,6 +3879,7 @@
         "fields": {
             "created_by": 1,
             "name": "Hovenia",
+            "slug": "hovenia",
             "host": "Little Inc",
             "image": "http://dummyimage.com/174x113.jpg/5fa2dd/ffffff",
             "attachment": null,
@@ -3748,6 +3904,7 @@
         "fields": {
             "created_by": 1,
             "name": "Aceitillo Falso",
+            "slug": "aceitillo-falso",
             "host": "Denesik-Reilly",
             "image": "http://dummyimage.com/160x167.png/cc0000/ffffff",
             "attachment": null,
@@ -3772,6 +3929,7 @@
         "fields": {
             "created_by": 1,
             "name": "Sedge",
+            "slug": "sedge",
             "host": "O'Keefe, Abbott and Feest",
             "image": "http://dummyimage.com/154x239.jpg/dddddd/000000",
             "attachment": null,
@@ -3796,6 +3954,7 @@
         "fields": {
             "created_by": 1,
             "name": "Hobsonia Lichen",
+            "slug": "hobsonia-lichen",
             "host": "Muller, Gutkowski and Zieme",
             "image": "http://dummyimage.com/135x154.bmp/dddddd/000000",
             "attachment": null,
@@ -3820,6 +3979,7 @@
         "fields": {
             "created_by": 1,
             "name": "Plumpseeded Madia",
+            "slug": "plumpseeded-madia",
             "host": "O'Hara Inc",
             "image": "http://dummyimage.com/156x104.bmp/ff4444/ffffff",
             "attachment": null,
@@ -3844,6 +4004,7 @@
         "fields": {
             "created_by": 1,
             "name": "Saw Palmetto",
+            "slug": "saw-palmetto",
             "host": "Kirlin-Koepp",
             "image": "http://dummyimage.com/105x179.bmp/dddddd/000000",
             "attachment": null,
@@ -3868,6 +4029,7 @@
         "fields": {
             "created_by": 1,
             "name": "Rinodina Lichen",
+            "slug": "rinodina-lichen",
             "host": "Rowe LLC",
             "image": "http://dummyimage.com/241x118.png/dddddd/000000",
             "attachment": null,
@@ -3892,6 +4054,7 @@
         "fields": {
             "created_by": 1,
             "name": "Indian Breadroot",
+            "slug": "indian-breadroot",
             "host": "Mosciski, Cassin and Kuvalis",
             "image": "http://dummyimage.com/220x173.png/cc0000/ffffff",
             "attachment": null,
@@ -3916,6 +4079,7 @@
         "fields": {
             "created_by": 1,
             "name": "False Sowthistle",
+            "slug": "false-sowthistle",
             "host": "Murphy-Spencer",
             "image": "http://dummyimage.com/122x169.jpg/dddddd/000000",
             "attachment": null,
@@ -3940,6 +4104,7 @@
         "fields": {
             "created_by": 1,
             "name": "Spurry Buckwheat",
+            "slug": "spurry-buckwheat",
             "host": "Kunze, Bauch and Stokes",
             "image": "http://dummyimage.com/233x178.bmp/ff4444/ffffff",
             "attachment": null,
@@ -3964,6 +4129,7 @@
         "fields": {
             "created_by": 1,
             "name": "Drummond's Sleepydaisy",
+            "slug": "drummonds-sleepydaisy",
             "host": "Conroy-Erdman",
             "image": "http://dummyimage.com/157x161.bmp/dddddd/000000",
             "attachment": null,
@@ -3988,6 +4154,7 @@
         "fields": {
             "created_by": 1,
             "name": "Palaquium",
+            "slug": "palaquium",
             "host": "Gleason Group",
             "image": "http://dummyimage.com/114x194.png/dddddd/000000",
             "attachment": null,
@@ -4012,6 +4179,7 @@
         "fields": {
             "created_by": 1,
             "name": "Summergrass",
+            "slug": "summergrass",
             "host": "Wiza-Dietrich",
             "image": "http://dummyimage.com/198x111.png/ff4444/ffffff",
             "attachment": null,
@@ -4036,6 +4204,7 @@
         "fields": {
             "created_by": 1,
             "name": "Swamp Taro",
+            "slug": "swamp-taro",
             "host": "Kreiger, Anderson and MacGyver",
             "image": "http://dummyimage.com/153x245.bmp/5fa2dd/ffffff",
             "attachment": null,
@@ -4060,6 +4229,7 @@
         "fields": {
             "created_by": 1,
             "name": "Punta Gorda Spiderlily",
+            "slug": "punta-gorda-spiderlily",
             "host": "Glover Inc",
             "image": "http://dummyimage.com/201x145.png/5fa2dd/ffffff",
             "attachment": null,
@@ -4084,6 +4254,7 @@
         "fields": {
             "created_by": 1,
             "name": "Arctic Cinquefoil",
+            "slug": "arctic-cinquefoil",
             "host": "Smith-Cummings",
             "image": "http://dummyimage.com/155x137.bmp/cc0000/ffffff",
             "attachment": null,
@@ -4108,6 +4279,7 @@
         "fields": {
             "created_by": 1,
             "name": "Wassuk Range Bladderpod",
+            "slug": "wassuk-range-bladderpod",
             "host": "Hahn LLC",
             "image": "http://dummyimage.com/178x161.jpg/ff4444/ffffff",
             "attachment": null,
@@ -4132,6 +4304,7 @@
         "fields": {
             "created_by": 1,
             "name": "Hybrid Willow",
+            "slug": "hybrid-willow",
             "host": "Prohaska, Lemke and Balistreri",
             "image": "http://dummyimage.com/236x102.bmp/cc0000/ffffff",
             "attachment": null,
@@ -4156,6 +4329,7 @@
         "fields": {
             "created_by": 1,
             "name": "Woodland Forget-me-not",
+            "slug": "woodland-forget-me-not",
             "host": "Torphy Inc",
             "image": "http://dummyimage.com/232x111.jpg/dddddd/000000",
             "attachment": null,
@@ -4180,6 +4354,7 @@
         "fields": {
             "created_by": 1,
             "name": "Modoc Plateau Milkvetch",
+            "slug": "modoc-plateau-milkvetch",
             "host": "Mante, Rippin and Schmeler",
             "image": "http://dummyimage.com/109x231.png/5fa2dd/ffffff",
             "attachment": null,
@@ -4204,6 +4379,7 @@
         "fields": {
             "created_by": 1,
             "name": "Sticky Blue Eyed Mary",
+            "slug": "sticky-blue-eyed-mary",
             "host": "Gutkowski Group",
             "image": "http://dummyimage.com/169x124.jpg/ff4444/ffffff",
             "attachment": null,
@@ -4228,6 +4404,7 @@
         "fields": {
             "created_by": 1,
             "name": "Narrowpod Sensitive Pea",
+            "slug": "narrowpod-sensitive-pea",
             "host": "Deckow-Schmidt",
             "image": "http://dummyimage.com/128x101.png/ff4444/ffffff",
             "attachment": null,
@@ -4252,6 +4429,7 @@
         "fields": {
             "created_by": 1,
             "name": "Nodding Rockcress",
+            "slug": "nodding-rockcress",
             "host": "Lindgren, Hammes and Pouros",
             "image": "http://dummyimage.com/102x177.bmp/ff4444/ffffff",
             "attachment": null,
@@ -4276,6 +4454,7 @@
         "fields": {
             "created_by": 1,
             "name": "Bartram Oak",
+            "slug": "bartram-oak",
             "host": "McClure-Kunde",
             "image": "http://dummyimage.com/120x235.jpg/5fa2dd/ffffff",
             "attachment": null,
@@ -4300,6 +4479,7 @@
         "fields": {
             "created_by": 1,
             "name": "Moringa",
+            "slug": "moringa",
             "host": "Pagac-Tremblay",
             "image": "http://dummyimage.com/116x155.jpg/cc0000/ffffff",
             "attachment": null,
@@ -4324,6 +4504,7 @@
         "fields": {
             "created_by": 1,
             "name": "Dwarf Checkerbloom",
+            "slug": "dwarf-checkerbloom",
             "host": "Turner Group",
             "image": "http://dummyimage.com/249x135.bmp/cc0000/ffffff",
             "attachment": null,
@@ -4348,6 +4529,7 @@
         "fields": {
             "created_by": 1,
             "name": "Arabian Coffee",
+            "slug": "arabian-coffee",
             "host": "Weber-Schulist",
             "image": "http://dummyimage.com/213x110.jpg/cc0000/ffffff",
             "attachment": null,
@@ -4372,6 +4554,7 @@
         "fields": {
             "created_by": 1,
             "name": "Gyalideopsis Lichen",
+            "slug": "gyalideopsis-lichen",
             "host": "Mante Inc",
             "image": "http://dummyimage.com/238x156.png/ff4444/ffffff",
             "attachment": null,
@@ -4396,6 +4579,7 @@
         "fields": {
             "created_by": 1,
             "name": "Granulose Orange Lichen",
+            "slug": "granulose-orange-lichen",
             "host": "Miller Group",
             "image": "http://dummyimage.com/212x151.jpg/cc0000/ffffff",
             "attachment": null,
@@ -4420,6 +4604,7 @@
         "fields": {
             "created_by": 1,
             "name": "Papyrus",
+            "slug": "papyrus",
             "host": "Graham, Aufderhar and Hoppe",
             "image": "http://dummyimage.com/142x159.bmp/5fa2dd/ffffff",
             "attachment": null,
@@ -4444,6 +4629,7 @@
         "fields": {
             "created_by": 1,
             "name": "Fig",
+            "slug": "fig",
             "host": "Weissnat and Sons",
             "image": "http://dummyimage.com/235x175.png/cc0000/ffffff",
             "attachment": null,
@@ -4468,6 +4654,7 @@
         "fields": {
             "created_by": 1,
             "name": "Donnell's Biscuitroot",
+            "slug": "donnells-biscuitroot",
             "host": "Runolfsson Group",
             "image": "http://dummyimage.com/244x198.png/ff4444/ffffff",
             "attachment": null,
@@ -4492,6 +4679,7 @@
         "fields": {
             "created_by": 1,
             "name": "Fierce Spaniard",
+            "slug": "fierce-spaniard",
             "host": "Jast, Bauch and Kuhlman",
             "image": "http://dummyimage.com/221x126.png/dddddd/000000",
             "attachment": null,
@@ -4516,6 +4704,7 @@
         "fields": {
             "created_by": 1,
             "name": "Tuberous Jerusalem Sage",
+            "slug": "tuberous-jerusalem-sage",
             "host": "Johnston, West and Spencer",
             "image": "http://dummyimage.com/215x217.jpg/cc0000/ffffff",
             "attachment": null,
@@ -4540,6 +4729,7 @@
         "fields": {
             "created_by": 1,
             "name": "Assam Tea",
+            "slug": "assam-tea",
             "host": "Ziemann-Vandervort",
             "image": "http://dummyimage.com/177x216.png/cc0000/ffffff",
             "attachment": null,
@@ -4564,6 +4754,7 @@
         "fields": {
             "created_by": 1,
             "name": "Lanceleaf Figwort",
+            "slug": "lanceleaf-figwort",
             "host": "Runte-Leannon",
             "image": "http://dummyimage.com/149x136.bmp/5fa2dd/ffffff",
             "attachment": null,
@@ -4588,6 +4779,7 @@
         "fields": {
             "created_by": 1,
             "name": "Feltleaf Bluestar",
+            "slug": "feltleaf-bluestar",
             "host": "Ritchie-Kunze",
             "image": "http://dummyimage.com/238x171.jpg/cc0000/ffffff",
             "attachment": null,
@@ -4612,6 +4804,7 @@
         "fields": {
             "created_by": 1,
             "name": "Undulate Plagiothecium Moss",
+            "slug": "undulate-plagiothecium-moss",
             "host": "Morissette, Klein and Ankunding",
             "image": "http://dummyimage.com/141x151.png/cc0000/ffffff",
             "attachment": null,
@@ -4636,6 +4829,7 @@
         "fields": {
             "created_by": 1,
             "name": "New England Bryhnia Moss",
+            "slug": "new-england-bryhnia-moss",
             "host": "Nolan, Effertz and Bernier",
             "image": "http://dummyimage.com/128x182.bmp/ff4444/ffffff",
             "attachment": null,
@@ -4660,6 +4854,7 @@
         "fields": {
             "created_by": 1,
             "name": "Petractis",
+            "slug": "petractis",
             "host": "Boyer-Kemmer",
             "image": "http://dummyimage.com/161x164.jpg/cc0000/ffffff",
             "attachment": null,
@@ -4684,6 +4879,7 @@
         "fields": {
             "created_by": 1,
             "name": "Bryoandersonia Moss",
+            "slug": "bryoandersonia-moss",
             "host": "Kessler, Lemke and Leannon",
             "image": "http://dummyimage.com/109x137.bmp/5fa2dd/ffffff",
             "attachment": null,
@@ -4708,6 +4904,7 @@
         "fields": {
             "created_by": 1,
             "name": "Golden Chaetopappa",
+            "slug": "golden-chaetopappa",
             "host": "Schowalter-Wolf",
             "image": "http://dummyimage.com/151x112.jpg/cc0000/ffffff",
             "attachment": null,
@@ -4732,6 +4929,7 @@
         "fields": {
             "created_by": 1,
             "name": "Inflated Narrow-leaf Sedge",
+            "slug": "inflated-narrow-leaf-sedge",
             "host": "D'Amore, Adams and Torp",
             "image": "http://dummyimage.com/221x100.bmp/cc0000/ffffff",
             "attachment": null,
@@ -4756,6 +4954,7 @@
         "fields": {
             "created_by": 1,
             "name": "Spiny Hopsage",
+            "slug": "spiny-hopsage",
             "host": "Ledner, Rowe and Rowe",
             "image": "http://dummyimage.com/238x189.bmp/cc0000/ffffff",
             "attachment": null,
@@ -4780,6 +4979,7 @@
         "fields": {
             "created_by": 1,
             "name": "Banana",
+            "slug": "banana",
             "host": "Parisian Inc",
             "image": "http://dummyimage.com/204x170.jpg/5fa2dd/ffffff",
             "attachment": null,
@@ -4804,6 +5004,7 @@
         "fields": {
             "created_by": 1,
             "name": "Ash Meadows Blazingstar",
+            "slug": "ash-meadows-blazingstar",
             "host": "Kohler, Jakubowski and Langworth",
             "image": "http://dummyimage.com/199x125.png/5fa2dd/ffffff",
             "attachment": null,
@@ -4828,6 +5029,7 @@
         "fields": {
             "created_by": 1,
             "name": "Goldenfleece",
+            "slug": "goldenfleece",
             "host": "Lynch and Sons",
             "image": "http://dummyimage.com/243x124.png/ff4444/ffffff",
             "attachment": null,
@@ -4852,6 +5054,7 @@
         "fields": {
             "created_by": 1,
             "name": "Sawtooth Oak",
+            "slug": "sawtooth-oak",
             "host": "Krajcik-Lang",
             "image": "http://dummyimage.com/220x173.jpg/cc0000/ffffff",
             "attachment": null,
@@ -4876,6 +5079,7 @@
         "fields": {
             "created_by": 1,
             "name": "Alpine Willow",
+            "slug": "alpine-willow",
             "host": "Thiel-Lebsack",
             "image": "http://dummyimage.com/220x154.jpg/5fa2dd/ffffff",
             "attachment": null,
@@ -4900,6 +5104,7 @@
         "fields": {
             "created_by": 1,
             "name": "Cobwebby Thistle",
+            "slug": "cobwebby-thistle",
             "host": "Hamill-Murray",
             "image": "http://dummyimage.com/173x169.jpg/cc0000/ffffff",
             "attachment": null,
@@ -4924,6 +5129,7 @@
         "fields": {
             "created_by": 1,
             "name": "Broom Sedge",
+            "slug": "broom-sedge",
             "host": "Reichert-Murphy",
             "image": "http://dummyimage.com/148x118.bmp/5fa2dd/ffffff",
             "attachment": null,
@@ -4948,6 +5154,7 @@
         "fields": {
             "created_by": 1,
             "name": "Horehound",
+            "slug": "horehound",
             "host": "Walter-Macejkovic",
             "image": "http://dummyimage.com/198x102.bmp/cc0000/ffffff",
             "attachment": null,
@@ -4972,6 +5179,7 @@
         "fields": {
             "created_by": 1,
             "name": "Wonder Violet",
+            "slug": "wonder-violet",
             "host": "Larson, Bednar and Windler",
             "image": "http://dummyimage.com/139x147.png/5fa2dd/ffffff",
             "attachment": null,
@@ -4996,6 +5204,7 @@
         "fields": {
             "created_by": 1,
             "name": "Tree Cholla",
+            "slug": "tree-cholla",
             "host": "Hudson, Treutel and Nader",
             "image": "http://dummyimage.com/119x224.jpg/dddddd/000000",
             "attachment": null,
@@ -5020,6 +5229,7 @@
         "fields": {
             "created_by": 1,
             "name": "Sclerophora Lichen",
+            "slug": "sclerophora-lichen",
             "host": "Jones-Lockman",
             "image": "http://dummyimage.com/142x190.jpg/cc0000/ffffff",
             "attachment": null,
@@ -5044,6 +5254,7 @@
         "fields": {
             "created_by": 1,
             "name": "Sensitive Fern",
+            "slug": "sensitive-fern",
             "host": "Cole LLC",
             "image": "http://dummyimage.com/104x185.png/ff4444/ffffff",
             "attachment": null,
@@ -5068,6 +5279,7 @@
         "fields": {
             "created_by": 1,
             "name": "Broomsage",
+            "slug": "broomsage",
             "host": "Hodkiewicz-Cruickshank",
             "image": "http://dummyimage.com/215x235.bmp/ff4444/ffffff",
             "attachment": null,
@@ -5092,6 +5304,7 @@
         "fields": {
             "created_by": 1,
             "name": "Red Clover",
+            "slug": "red-clover",
             "host": "Lehner, Ernser and Stehr",
             "image": "http://dummyimage.com/192x222.jpg/dddddd/000000",
             "attachment": null,
@@ -5116,6 +5329,7 @@
         "fields": {
             "created_by": 1,
             "name": "Albizia",
+            "slug": "albizia",
             "host": "Batz Group",
             "image": "http://dummyimage.com/125x154.bmp/ff4444/ffffff",
             "attachment": null,
@@ -5140,6 +5354,7 @@
         "fields": {
             "created_by": 1,
             "name": "New Mexican Nodding Onion",
+            "slug": "new-mexican-nodding-onion",
             "host": "Hintz and Sons",
             "image": "http://dummyimage.com/196x147.png/dddddd/000000",
             "attachment": null,
@@ -5164,6 +5379,7 @@
         "fields": {
             "created_by": 1,
             "name": "Aquatic Milkweed",
+            "slug": "aquatic-milkweed",
             "host": "Cremin Inc",
             "image": "http://dummyimage.com/142x153.jpg/dddddd/000000",
             "attachment": null,
@@ -5188,6 +5404,7 @@
         "fields": {
             "created_by": 1,
             "name": "Cogswell's Hawthorn",
+            "slug": "cogswells-hawthorn",
             "host": "Volkman-Koch",
             "image": "http://dummyimage.com/154x171.jpg/5fa2dd/ffffff",
             "attachment": null,
@@ -5212,6 +5429,7 @@
         "fields": {
             "created_by": 1,
             "name": "Manono",
+            "slug": "manono",
             "host": "Rolfson Group",
             "image": "http://dummyimage.com/193x197.jpg/cc0000/ffffff",
             "attachment": null,
@@ -5236,6 +5454,7 @@
         "fields": {
             "created_by": 1,
             "name": "Olopu",
+            "slug": "olopu",
             "host": "McDermott and Sons",
             "image": "http://dummyimage.com/196x233.jpg/cc0000/ffffff",
             "attachment": null,
@@ -5260,6 +5479,7 @@
         "fields": {
             "created_by": 1,
             "name": "Variable Sedge",
+            "slug": "variable-sedge",
             "host": "Borer, Weber and Gleason",
             "image": "http://dummyimage.com/171x140.bmp/ff4444/ffffff",
             "attachment": null,
@@ -5284,6 +5504,7 @@
         "fields": {
             "created_by": 1,
             "name": "Yellow Jacob's-ladder",
+            "slug": "yellow-jacobs-ladder",
             "host": "Pfannerstill-Ortiz",
             "image": "http://dummyimage.com/103x129.jpg/ff4444/ffffff",
             "attachment": null,
@@ -5308,6 +5529,7 @@
         "fields": {
             "created_by": 1,
             "name": "African Dry Rock Moss",
+            "slug": "african-dry-rock-moss",
             "host": "Larkin-Green",
             "image": "http://dummyimage.com/222x232.bmp/cc0000/ffffff",
             "attachment": null,
@@ -5332,6 +5554,7 @@
         "fields": {
             "created_by": 1,
             "name": "Tuna",
+            "slug": "tuna",
             "host": "Huels-Roob",
             "image": "http://dummyimage.com/192x240.jpg/dddddd/000000",
             "attachment": null,
@@ -5356,6 +5579,7 @@
         "fields": {
             "created_by": 1,
             "name": "Goldenrod",
+            "slug": "goldenrod",
             "host": "Bernier and Sons",
             "image": "http://dummyimage.com/139x129.png/cc0000/ffffff",
             "attachment": null,
@@ -5380,6 +5604,7 @@
         "fields": {
             "created_by": 1,
             "name": "Pore Lichen",
+            "slug": "pore-lichen",
             "host": "O'Conner-Keeling",
             "image": "http://dummyimage.com/211x175.jpg/5fa2dd/ffffff",
             "attachment": null,
@@ -5404,6 +5629,7 @@
         "fields": {
             "created_by": 1,
             "name": "Sweetbush",
+            "slug": "sweetbush",
             "host": "Collins, Funk and Hickle",
             "image": "http://dummyimage.com/194x203.jpg/5fa2dd/ffffff",
             "attachment": null,
@@ -5428,6 +5654,7 @@
         "fields": {
             "created_by": 1,
             "name": "Rigid Sedge",
+            "slug": "rigid-sedge",
             "host": "Reichert-Heidenreich",
             "image": "http://dummyimage.com/203x177.jpg/ff4444/ffffff",
             "attachment": null,
@@ -5452,6 +5679,7 @@
         "fields": {
             "created_by": 1,
             "name": "Tortella Moss",
+            "slug": "tortella-moss",
             "host": "Thiel Group",
             "image": "http://dummyimage.com/206x217.jpg/cc0000/ffffff",
             "attachment": null,
@@ -5476,6 +5704,7 @@
         "fields": {
             "created_by": 1,
             "name": "Argus' Willow",
+            "slug": "argus-willow",
             "host": "Haley-Carroll",
             "image": "http://dummyimage.com/205x190.png/dddddd/000000",
             "attachment": null,
@@ -5500,6 +5729,7 @@
         "fields": {
             "created_by": 1,
             "name": "Twistleaf Goldenrod",
+            "slug": "twistleaf-goldenrod",
             "host": "Moore, Kub and Lynch",
             "image": "http://dummyimage.com/199x216.png/5fa2dd/ffffff",
             "attachment": null,
@@ -5524,6 +5754,7 @@
         "fields": {
             "created_by": 1,
             "name": "Birch",
+            "slug": "birch",
             "host": "Boyer-Schimmel",
             "image": "http://dummyimage.com/220x202.png/dddddd/000000",
             "attachment": null,
@@ -5548,6 +5779,7 @@
         "fields": {
             "created_by": 1,
             "name": "Skin Lichen",
+            "slug": "skin-lichen",
             "host": "Gerlach-Hermiston",
             "image": "http://dummyimage.com/139x163.png/dddddd/000000",
             "attachment": null,
@@ -5572,6 +5804,7 @@
         "fields": {
             "created_by": 1,
             "name": "Reflexed Saxifrage",
+            "slug": "reflexed-saxifrage",
             "host": "Jones-Bashirian",
             "image": "http://dummyimage.com/113x246.png/cc0000/ffffff",
             "attachment": null,
@@ -5596,6 +5829,7 @@
         "fields": {
             "created_by": 1,
             "name": "Marron Bacoba",
+            "slug": "marron-bacoba",
             "host": "Kautzer-Padberg",
             "image": "http://dummyimage.com/212x122.jpg/ff4444/ffffff",
             "attachment": null,
@@ -5620,6 +5854,7 @@
         "fields": {
             "created_by": 1,
             "name": "Woolly Cottonflower",
+            "slug": "woolly-cottonflower",
             "host": "Bogan, Jacobson and Emard",
             "image": "http://dummyimage.com/155x243.png/ff4444/ffffff",
             "attachment": null,
@@ -5644,6 +5879,7 @@
         "fields": {
             "created_by": 1,
             "name": "Brickellbush",
+            "slug": "brickellbush",
             "host": "Champlin and Sons",
             "image": "http://dummyimage.com/232x123.png/cc0000/ffffff",
             "attachment": null,
@@ -5668,6 +5904,7 @@
         "fields": {
             "created_by": 1,
             "name": "Fewleaf Spiderflower",
+            "slug": "fewleaf-spiderflower",
             "host": "Russel-Walter",
             "image": "http://dummyimage.com/176x216.jpg/5fa2dd/ffffff",
             "attachment": null,
@@ -5692,6 +5929,7 @@
         "fields": {
             "created_by": 1,
             "name": "Blanketflower",
+            "slug": "blanketflower",
             "host": "Hauck Group",
             "image": "http://dummyimage.com/211x138.jpg/ff4444/ffffff",
             "attachment": null,
@@ -5716,6 +5954,7 @@
         "fields": {
             "created_by": 1,
             "name": "Butterweed",
+            "slug": "butterweed",
             "host": "Hettinger Inc",
             "image": "http://dummyimage.com/246x214.bmp/cc0000/ffffff",
             "attachment": null,
@@ -5740,6 +5979,7 @@
         "fields": {
             "created_by": 1,
             "name": "Kellogg's Spurred Lupine",
+            "slug": "kelloggs-spurred-lupine",
             "host": "Feil Inc",
             "image": "http://dummyimage.com/147x204.jpg/ff4444/ffffff",
             "attachment": null,
@@ -5764,6 +6004,7 @@
         "fields": {
             "created_by": 1,
             "name": "Brazos Rockcress",
+            "slug": "brazos-rockcress",
             "host": "Brakus-Ledner",
             "image": "http://dummyimage.com/152x208.bmp/ff4444/ffffff",
             "attachment": null,
@@ -5788,6 +6029,7 @@
         "fields": {
             "created_by": 1,
             "name": "St. John's Rosemallow",
+            "slug": "st-johns-rosemallow",
             "host": "Rolfson Inc",
             "image": "http://dummyimage.com/246x121.jpg/5fa2dd/ffffff",
             "attachment": null,
@@ -5812,6 +6054,7 @@
         "fields": {
             "created_by": 1,
             "name": "Indian Headdress",
+            "slug": "indian-headdress",
             "host": "Lockman-Jast",
             "image": "http://dummyimage.com/181x221.bmp/dddddd/000000",
             "attachment": null,
@@ -5836,6 +6079,7 @@
         "fields": {
             "created_by": 1,
             "name": "Zarzabacoa De Monte",
+            "slug": "zarzabacoa-de-monte",
             "host": "Blick LLC",
             "image": "http://dummyimage.com/246x144.jpg/ff4444/ffffff",
             "attachment": null,
@@ -5860,6 +6104,7 @@
         "fields": {
             "created_by": 1,
             "name": "Purple Crowberry",
+            "slug": "purple-crowberry",
             "host": "Brakus-Zieme",
             "image": "http://dummyimage.com/208x209.jpg/dddddd/000000",
             "attachment": null,
@@ -5884,6 +6129,7 @@
         "fields": {
             "created_by": 1,
             "name": "Bluepod Rockcress",
+            "slug": "bluepod-rockcress",
             "host": "Wolff-Abshire",
             "image": "http://dummyimage.com/173x243.bmp/cc0000/ffffff",
             "attachment": null,
@@ -5908,6 +6154,7 @@
         "fields": {
             "created_by": 1,
             "name": "Spirea",
+            "slug": "spirea",
             "host": "McCullough, Balistreri and Johnson",
             "image": "http://dummyimage.com/221x201.png/cc0000/ffffff",
             "attachment": null,
@@ -5932,6 +6179,7 @@
         "fields": {
             "created_by": 1,
             "name": "Creeping Tonguefern",
+            "slug": "creeping-tonguefern",
             "host": "Lebsack-Stracke",
             "image": "http://dummyimage.com/144x153.jpg/ff4444/ffffff",
             "attachment": null,
@@ -5956,6 +6204,7 @@
         "fields": {
             "created_by": 1,
             "name": "Dogstail Grass",
+            "slug": "dogstail-grass",
             "host": "Klein-Runolfsdottir",
             "image": "http://dummyimage.com/197x247.png/5fa2dd/ffffff",
             "attachment": null,
@@ -5980,6 +6229,7 @@
         "fields": {
             "created_by": 1,
             "name": "Map Lichen",
+            "slug": "map-lichen",
             "host": "Hudson, Fadel and Lowe",
             "image": "http://dummyimage.com/229x212.png/ff4444/ffffff",
             "attachment": null,
@@ -6004,6 +6254,7 @@
         "fields": {
             "created_by": 1,
             "name": "Lepanthopsis",
+            "slug": "lepanthopsis",
             "host": "Gleichner Inc",
             "image": "http://dummyimage.com/121x153.png/ff4444/ffffff",
             "attachment": null,
@@ -6028,6 +6279,7 @@
         "fields": {
             "created_by": 1,
             "name": "Cahaba Torch",
+            "slug": "cahaba-torch",
             "host": "Beier-Hane",
             "image": "http://dummyimage.com/103x210.png/5fa2dd/ffffff",
             "attachment": null,
@@ -6052,6 +6304,7 @@
         "fields": {
             "created_by": 1,
             "name": "Hybrid Oak",
+            "slug": "hybrid-oak",
             "host": "Parker, Volkman and Kassulke",
             "image": "http://dummyimage.com/156x233.jpg/cc0000/ffffff",
             "attachment": null,
@@ -6076,6 +6329,7 @@
         "fields": {
             "created_by": 1,
             "name": "Giant Pseudoleskea Moss",
+            "slug": "giant-pseudoleskea-moss",
             "host": "Glover-Carroll",
             "image": "http://dummyimage.com/212x200.png/cc0000/ffffff",
             "attachment": null,
@@ -6100,6 +6354,7 @@
         "fields": {
             "created_by": 1,
             "name": "Rose Rockcress",
+            "slug": "rose-rockcress",
             "host": "Price-Kunze",
             "image": "http://dummyimage.com/141x247.bmp/ff4444/ffffff",
             "attachment": null,
@@ -6124,6 +6379,7 @@
         "fields": {
             "created_by": 1,
             "name": "Doghobble",
+            "slug": "doghobble",
             "host": "O'Hara-Borer",
             "image": "http://dummyimage.com/156x102.png/cc0000/ffffff",
             "attachment": null,
@@ -6148,6 +6404,7 @@
         "fields": {
             "created_by": 1,
             "name": "Jamaican Nightshade",
+            "slug": "jamaican-nightshade",
             "host": "Robel Group",
             "image": "http://dummyimage.com/186x233.bmp/5fa2dd/ffffff",
             "attachment": null,
@@ -6172,6 +6429,7 @@
         "fields": {
             "created_by": 1,
             "name": "Broadleaf Peppermint Gum",
+            "slug": "broadleaf-peppermint-gum",
             "host": "Hegmann and Sons",
             "image": "http://dummyimage.com/145x163.png/ff4444/ffffff",
             "attachment": null,
@@ -6196,6 +6454,7 @@
         "fields": {
             "created_by": 1,
             "name": "Lescuraea Moss",
+            "slug": "lescuraea-moss",
             "host": "Moore LLC",
             "image": "http://dummyimage.com/223x245.png/ff4444/ffffff",
             "attachment": null,
@@ -6220,6 +6479,7 @@
         "fields": {
             "created_by": 1,
             "name": "Phacopsis Lichen",
+            "slug": "phacopsis-lichen",
             "host": "Spencer, Farrell and Schuster",
             "image": "http://dummyimage.com/187x193.bmp/ff4444/ffffff",
             "attachment": null,
@@ -6244,6 +6504,7 @@
         "fields": {
             "created_by": 1,
             "name": "Clokey's Buckwheat",
+            "slug": "clokeys-buckwheat",
             "host": "Morar, VonRueden and Murazik",
             "image": "http://dummyimage.com/111x117.png/dddddd/000000",
             "attachment": null,
@@ -6268,6 +6529,7 @@
         "fields": {
             "created_by": 1,
             "name": "Arizona Brome",
+            "slug": "arizona-brome",
             "host": "Ortiz-Ryan",
             "image": "http://dummyimage.com/171x149.bmp/dddddd/000000",
             "attachment": null,
@@ -6292,6 +6554,7 @@
         "fields": {
             "created_by": 1,
             "name": "Bull's Coraldrops",
+            "slug": "bulls-coraldrops",
             "host": "Gerhold-Prosacco",
             "image": "http://dummyimage.com/120x217.bmp/ff4444/ffffff",
             "attachment": null,
@@ -6316,6 +6579,7 @@
         "fields": {
             "created_by": 1,
             "name": "Englemann's Milkvetch",
+            "slug": "englemanns-milkvetch",
             "host": "Roberts, Bruen and Gaylord",
             "image": "http://dummyimage.com/154x166.jpg/dddddd/000000",
             "attachment": null,
@@ -6340,6 +6604,7 @@
         "fields": {
             "created_by": 1,
             "name": "Ramonia",
+            "slug": "ramonia",
             "host": "Swaniawski Inc",
             "image": "http://dummyimage.com/165x109.png/ff4444/ffffff",
             "attachment": null,
@@ -6364,6 +6629,7 @@
         "fields": {
             "created_by": 1,
             "name": "Moco De Pavo",
+            "slug": "moco-de-pavo",
             "host": "Bogan-Gaylord",
             "image": "http://dummyimage.com/195x230.jpg/5fa2dd/ffffff",
             "attachment": null,
@@ -6388,6 +6654,7 @@
         "fields": {
             "created_by": 1,
             "name": "Lakeshore Sedge",
+            "slug": "lakeshore-sedge",
             "host": "Stehr-McDermott",
             "image": "http://dummyimage.com/102x175.jpg/ff4444/ffffff",
             "attachment": null,
@@ -6412,6 +6679,7 @@
         "fields": {
             "created_by": 1,
             "name": "Domingan Coccocarpia Lichen",
+            "slug": "domingan-coccocarpia-lichen",
             "host": "Greenfelder Group",
             "image": "http://dummyimage.com/104x206.jpg/dddddd/000000",
             "attachment": null,
@@ -6436,6 +6704,7 @@
         "fields": {
             "created_by": 1,
             "name": "Pore Lichen",
+            "slug": "pore-lichen",
             "host": "Schiller, Brown and Fisher",
             "image": "http://dummyimage.com/150x112.bmp/ff4444/ffffff",
             "attachment": null,
@@ -6460,6 +6729,7 @@
         "fields": {
             "created_by": 1,
             "name": "Summer Grape",
+            "slug": "summer-grape",
             "host": "Barrows-Osinski",
             "image": "http://dummyimage.com/101x135.bmp/dddddd/000000",
             "attachment": null,
@@ -6484,6 +6754,7 @@
         "fields": {
             "created_by": 1,
             "name": "Cologania",
+            "slug": "cologania",
             "host": "Morissette, Prosacco and Terry",
             "image": "http://dummyimage.com/213x180.bmp/ff4444/ffffff",
             "attachment": null,
@@ -6508,6 +6779,7 @@
         "fields": {
             "created_by": 1,
             "name": "Horseshoe Vetch",
+            "slug": "horseshoe-vetch",
             "host": "Adams-Flatley",
             "image": "http://dummyimage.com/174x179.jpg/ff4444/ffffff",
             "attachment": null,
@@ -6532,6 +6804,7 @@
         "fields": {
             "created_by": 1,
             "name": "Streambank Wild Hollyhock",
+            "slug": "streambank-wild-hollyhock",
             "host": "Murphy Inc",
             "image": "http://dummyimage.com/192x136.png/ff4444/ffffff",
             "attachment": null,
@@ -6556,6 +6829,7 @@
         "fields": {
             "created_by": 1,
             "name": "Tansy Rosinweed",
+            "slug": "tansy-rosinweed",
             "host": "Collier-Hane",
             "image": "http://dummyimage.com/139x130.png/dddddd/000000",
             "attachment": null,
@@ -6580,6 +6854,7 @@
         "fields": {
             "created_by": 1,
             "name": "Spanish Bayonet",
+            "slug": "spanish-bayonet",
             "host": "Nolan-Beatty",
             "image": "http://dummyimage.com/140x174.png/ff4444/ffffff",
             "attachment": null,
@@ -6604,6 +6879,7 @@
         "fields": {
             "created_by": 1,
             "name": "Sonora Entosthodon Moss",
+            "slug": "sonora-entosthodon-moss",
             "host": "Haley and Sons",
             "image": "http://dummyimage.com/242x135.png/cc0000/ffffff",
             "attachment": null,
@@ -6628,6 +6904,7 @@
         "fields": {
             "created_by": 1,
             "name": "Drummond's Goldenbush",
+            "slug": "drummonds-goldenbush",
             "host": "McDermott Group",
             "image": "http://dummyimage.com/245x127.bmp/ff4444/ffffff",
             "attachment": null,
@@ -6652,6 +6929,7 @@
         "fields": {
             "created_by": 1,
             "name": "Dichelyma Moss",
+            "slug": "dichelyma-moss",
             "host": "Olson-Schmeler",
             "image": "http://dummyimage.com/132x200.bmp/ff4444/ffffff",
             "attachment": null,
@@ -6676,6 +6954,7 @@
         "fields": {
             "created_by": 1,
             "name": "Biennial Cinquefoil",
+            "slug": "biennial-cinquefoil",
             "host": "Herman LLC",
             "image": "http://dummyimage.com/156x180.png/dddddd/000000",
             "attachment": null,
@@ -6700,6 +6979,7 @@
         "fields": {
             "created_by": 1,
             "name": "Sierra Skullcap",
+            "slug": "sierra-skullcap",
             "host": "Roberts-Huels",
             "image": "http://dummyimage.com/126x171.png/cc0000/ffffff",
             "attachment": null,
@@ -6724,6 +7004,7 @@
         "fields": {
             "created_by": 1,
             "name": "Kilauea Hau Kuahiwi",
+            "slug": "kilauea-hau-kuahiwi",
             "host": "Heller Group",
             "image": "http://dummyimage.com/102x185.jpg/5fa2dd/ffffff",
             "attachment": null,
@@ -6748,6 +7029,7 @@
         "fields": {
             "created_by": 1,
             "name": "Grizzlybear Pricklypear",
+            "slug": "grizzlybear-pricklypear",
             "host": "Reichel-Glover",
             "image": "http://dummyimage.com/177x162.jpg/cc0000/ffffff",
             "attachment": null,
@@ -6772,6 +7054,7 @@
         "fields": {
             "created_by": 1,
             "name": "California Wildrose",
+            "slug": "california-wildrose",
             "host": "Rempel, Stark and Prosacco",
             "image": "http://dummyimage.com/104x193.png/cc0000/ffffff",
             "attachment": null,
@@ -6796,6 +7079,7 @@
         "fields": {
             "created_by": 1,
             "name": "Durian",
+            "slug": "durian",
             "host": "Schultz LLC",
             "image": "http://dummyimage.com/154x234.png/cc0000/ffffff",
             "attachment": null,
@@ -6820,6 +7104,7 @@
         "fields": {
             "created_by": 1,
             "name": "Camel Grass",
+            "slug": "camel-grass",
             "host": "Goodwin-Hermiston",
             "image": "http://dummyimage.com/111x101.bmp/dddddd/000000",
             "attachment": null,
@@ -6844,6 +7129,7 @@
         "fields": {
             "created_by": 1,
             "name": "Poleline Pritchardia",
+            "slug": "poleline-pritchardia",
             "host": "Corwin-Wisoky",
             "image": "http://dummyimage.com/190x126.jpg/5fa2dd/ffffff",
             "attachment": null,
@@ -6868,6 +7154,7 @@
         "fields": {
             "created_by": 1,
             "name": "Lavalle Corktree",
+            "slug": "lavalle-corktree",
             "host": "Ernser Group",
             "image": "http://dummyimage.com/208x142.bmp/5fa2dd/ffffff",
             "attachment": null,
@@ -6892,6 +7179,7 @@
         "fields": {
             "created_by": 1,
             "name": "Arborvitae",
+            "slug": "arborvitae",
             "host": "Strosin-Greenholt",
             "image": "http://dummyimage.com/166x233.bmp/dddddd/000000",
             "attachment": null,
@@ -6916,6 +7204,7 @@
         "fields": {
             "created_by": 1,
             "name": "Lescur's Sphagnum",
+            "slug": "lescurs-sphagnum",
             "host": "Douglas, Schmitt and Smith",
             "image": "http://dummyimage.com/172x117.png/dddddd/000000",
             "attachment": null,
@@ -6940,6 +7229,7 @@
         "fields": {
             "created_by": 1,
             "name": "Rio Grande Lovegrass",
+            "slug": "rio-grande-lovegrass",
             "host": "Schulist, Runte and Kshlerin",
             "image": "http://dummyimage.com/163x157.jpg/ff4444/ffffff",
             "attachment": null,
@@ -6964,6 +7254,7 @@
         "fields": {
             "created_by": 1,
             "name": "Manroot",
+            "slug": "manroot",
             "host": "Ullrich-Champlin",
             "image": "http://dummyimage.com/230x221.png/dddddd/000000",
             "attachment": null,
@@ -6988,6 +7279,7 @@
         "fields": {
             "created_by": 1,
             "name": "Pogonatum Moss",
+            "slug": "pogonatum-moss",
             "host": "Schneider-Bayer",
             "image": "http://dummyimage.com/214x202.bmp/5fa2dd/ffffff",
             "attachment": null,
@@ -7012,6 +7304,7 @@
         "fields": {
             "created_by": 1,
             "name": "Draba",
+            "slug": "draba",
             "host": "Hermann and Sons",
             "image": "http://dummyimage.com/173x217.jpg/5fa2dd/ffffff",
             "attachment": null,
@@ -7036,6 +7329,7 @@
         "fields": {
             "created_by": 1,
             "name": "Ogotoruk Creek Ragwort",
+            "slug": "ogotoruk-creek-ragwort",
             "host": "Sporer-Feeney",
             "image": "http://dummyimage.com/145x158.bmp/ff4444/ffffff",
             "attachment": null,
@@ -7060,6 +7354,7 @@
         "fields": {
             "created_by": 1,
             "name": "Nakedwood",
+            "slug": "nakedwood",
             "host": "Lindgren, Macejkovic and Schaden",
             "image": "http://dummyimage.com/135x236.jpg/dddddd/000000",
             "attachment": null,
@@ -7084,6 +7379,7 @@
         "fields": {
             "created_by": 1,
             "name": "Rajador",
+            "slug": "rajador",
             "host": "Kreiger Group",
             "image": "http://dummyimage.com/123x152.png/5fa2dd/ffffff",
             "attachment": null,
@@ -7108,6 +7404,7 @@
         "fields": {
             "created_by": 1,
             "name": "Vanclevea",
+            "slug": "vanclevea",
             "host": "Carroll Inc",
             "image": "http://dummyimage.com/198x217.png/dddddd/000000",
             "attachment": null,
@@ -7132,6 +7429,7 @@
         "fields": {
             "created_by": 1,
             "name": "Roundfruit Hedgehyssop",
+            "slug": "roundfruit-hedgehyssop",
             "host": "Crist, Satterfield and Hayes",
             "image": "http://dummyimage.com/124x181.bmp/cc0000/ffffff",
             "attachment": null,
@@ -7156,6 +7454,7 @@
         "fields": {
             "created_by": 1,
             "name": "Wart Lichen",
+            "slug": "wart-lichen",
             "host": "Batz, Stracke and Tremblay",
             "image": "http://dummyimage.com/118x107.jpg/cc0000/ffffff",
             "attachment": null,
@@ -7180,6 +7479,7 @@
         "fields": {
             "created_by": 1,
             "name": "Ballhead Ipomopsis",
+            "slug": "ballhead-ipomopsis",
             "host": "Larson-D'Amore",
             "image": "http://dummyimage.com/131x134.png/cc0000/ffffff",
             "attachment": null,
@@ -7204,6 +7504,7 @@
         "fields": {
             "created_by": 1,
             "name": "Swamp Doghobble",
+            "slug": "swamp-doghobble",
             "host": "Daugherty-Kohler",
             "image": "http://dummyimage.com/139x134.jpg/ff4444/ffffff",
             "attachment": null,
@@ -7228,6 +7529,7 @@
         "fields": {
             "created_by": 1,
             "name": "Stiff Greenthread",
+            "slug": "stiff-greenthread",
             "host": "Reichert-Eichmann",
             "image": "http://dummyimage.com/176x232.bmp/5fa2dd/ffffff",
             "attachment": null,
@@ -7252,6 +7554,7 @@
         "fields": {
             "created_by": 1,
             "name": "Heller's Plantain",
+            "slug": "hellers-plantain",
             "host": "Becker Group",
             "image": "http://dummyimage.com/117x234.png/cc0000/ffffff",
             "attachment": null,
@@ -7276,6 +7579,7 @@
         "fields": {
             "created_by": 1,
             "name": "Texas Barberry",
+            "slug": "texas-barberry",
             "host": "Wisozk, Pfannerstill and O'Kon",
             "image": "http://dummyimage.com/200x227.jpg/dddddd/000000",
             "attachment": null,
@@ -7300,6 +7604,7 @@
         "fields": {
             "created_by": 1,
             "name": "Shield Lichen",
+            "slug": "shield-lichen",
             "host": "Klein Group",
             "image": "http://dummyimage.com/149x199.bmp/5fa2dd/ffffff",
             "attachment": null,
@@ -7324,6 +7629,7 @@
         "fields": {
             "created_by": 1,
             "name": "Tropical Cupgrass",
+            "slug": "tropical-cupgrass",
             "host": "McKenzie, Graham and Sawayn",
             "image": "http://dummyimage.com/120x165.png/dddddd/000000",
             "attachment": null,
@@ -7348,6 +7654,7 @@
         "fields": {
             "created_by": 1,
             "name": "Savory",
+            "slug": "savory",
             "host": "Morar-Bergnaum",
             "image": "http://dummyimage.com/166x102.bmp/cc0000/ffffff",
             "attachment": null,
@@ -7372,6 +7679,7 @@
         "fields": {
             "created_by": 1,
             "name": "Ambiguous Bran Lichen",
+            "slug": "ambiguous-bran-lichen",
             "host": "Ledner and Sons",
             "image": "http://dummyimage.com/124x102.png/5fa2dd/ffffff",
             "attachment": null,
@@ -7396,6 +7704,7 @@
         "fields": {
             "created_by": 1,
             "name": "Wet Thicket Dewberry",
+            "slug": "wet-thicket-dewberry",
             "host": "Cremin Inc",
             "image": "http://dummyimage.com/121x152.png/5fa2dd/ffffff",
             "attachment": null,
@@ -7420,6 +7729,7 @@
         "fields": {
             "created_by": 1,
             "name": "Hybrid Daffodil",
+            "slug": "hybrid-daffodil",
             "host": "Ankunding and Sons",
             "image": "http://dummyimage.com/197x206.bmp/ff4444/ffffff",
             "attachment": null,
@@ -7444,6 +7754,7 @@
         "fields": {
             "created_by": 1,
             "name": "Hairy Cup Orchid",
+            "slug": "hairy-cup-orchid",
             "host": "Mills Inc",
             "image": "http://dummyimage.com/219x202.jpg/ff4444/ffffff",
             "attachment": null,
@@ -7468,6 +7779,7 @@
         "fields": {
             "created_by": 1,
             "name": "Erichsen's Wart Lichen",
+            "slug": "erichsens-wart-lichen",
             "host": "Zboncak and Sons",
             "image": "http://dummyimage.com/131x175.bmp/dddddd/000000",
             "attachment": null,
@@ -7492,6 +7804,7 @@
         "fields": {
             "created_by": 1,
             "name": "Anderson's Weissia Moss",
+            "slug": "andersons-weissia-moss",
             "host": "Jones, Smith and Bernhard",
             "image": "http://dummyimage.com/192x149.jpg/ff4444/ffffff",
             "attachment": null,
@@ -7516,6 +7829,7 @@
         "fields": {
             "created_by": 1,
             "name": "Browneyes",
+            "slug": "browneyes",
             "host": "Haley Group",
             "image": "http://dummyimage.com/190x232.png/ff4444/ffffff",
             "attachment": null,
@@ -7540,6 +7854,7 @@
         "fields": {
             "created_by": 1,
             "name": "Yellow Stringybark",
+            "slug": "yellow-stringybark",
             "host": "Bashirian, Paucek and Jaskolski",
             "image": "http://dummyimage.com/112x181.jpg/dddddd/000000",
             "attachment": null,
@@ -7564,6 +7879,7 @@
         "fields": {
             "created_by": 1,
             "name": "Blue-oxalis",
+            "slug": "blue-oxalis",
             "host": "Quitzon Inc",
             "image": "http://dummyimage.com/159x145.bmp/ff4444/ffffff",
             "attachment": null,
@@ -7588,6 +7904,7 @@
         "fields": {
             "created_by": 1,
             "name": "Dwarf Mountain Lupine",
+            "slug": "dwarf-mountain-lupine",
             "host": "Doyle and Sons",
             "image": "http://dummyimage.com/124x134.jpg/5fa2dd/ffffff",
             "attachment": null,
@@ -7612,6 +7929,7 @@
         "fields": {
             "created_by": 1,
             "name": "Lynn Haven Goldenaster",
+            "slug": "lynn-haven-goldenaster",
             "host": "Goodwin-Miller",
             "image": "http://dummyimage.com/218x121.jpg/5fa2dd/ffffff",
             "attachment": null,
@@ -7636,6 +7954,7 @@
         "fields": {
             "created_by": 1,
             "name": "Velvet Groundsel",
+            "slug": "velvet-groundsel",
             "host": "Berge Inc",
             "image": "http://dummyimage.com/213x243.png/cc0000/ffffff",
             "attachment": null,
@@ -7660,6 +7979,7 @@
         "fields": {
             "created_by": 1,
             "name": "Lecidea Lichen",
+            "slug": "lecidea-lichen",
             "host": "Rau, Sporer and Wehner",
             "image": "http://dummyimage.com/209x168.bmp/dddddd/000000",
             "attachment": null,
@@ -7684,6 +8004,7 @@
         "fields": {
             "created_by": 1,
             "name": "Amphibious Lupine",
+            "slug": "amphibious-lupine",
             "host": "Schoen LLC",
             "image": "http://dummyimage.com/149x210.jpg/cc0000/ffffff",
             "attachment": null,
@@ -7708,6 +8029,7 @@
         "fields": {
             "created_by": 1,
             "name": "Desert Ceanothus",
+            "slug": "desert-ceanothus",
             "host": "Hodkiewicz, Torp and Wunsch",
             "image": "http://dummyimage.com/188x247.jpg/5fa2dd/ffffff",
             "attachment": null,
@@ -7732,6 +8054,7 @@
         "fields": {
             "created_by": 1,
             "name": "Branched Hedgehyssop",
+            "slug": "branched-hedgehyssop",
             "host": "Cruickshank, Davis and Bins",
             "image": "http://dummyimage.com/247x124.png/cc0000/ffffff",
             "attachment": null,
@@ -7756,6 +8079,7 @@
         "fields": {
             "created_by": 1,
             "name": "Lawngrass",
+            "slug": "lawngrass",
             "host": "Swift-Stroman",
             "image": "http://dummyimage.com/134x175.png/cc0000/ffffff",
             "attachment": null,
@@ -7780,6 +8104,7 @@
         "fields": {
             "created_by": 1,
             "name": "Roundleaf Sundew",
+            "slug": "roundleaf-sundew",
             "host": "Reinger Group",
             "image": "http://dummyimage.com/100x190.png/cc0000/ffffff",
             "attachment": null,
@@ -7804,6 +8129,7 @@
         "fields": {
             "created_by": 1,
             "name": "Gray Gum",
+            "slug": "gray-gum",
             "host": "O'Reilly, Goodwin and Jerde",
             "image": "http://dummyimage.com/182x221.bmp/5fa2dd/ffffff",
             "attachment": null,
@@ -7828,6 +8154,7 @@
         "fields": {
             "created_by": 1,
             "name": "Porcupine Jointvetch",
+            "slug": "porcupine-jointvetch",
             "host": "Sipes, Yost and Donnelly",
             "image": "http://dummyimage.com/212x241.bmp/5fa2dd/ffffff",
             "attachment": null,
@@ -7852,6 +8179,7 @@
         "fields": {
             "created_by": 1,
             "name": "Mountain Paper Birch",
+            "slug": "mountain-paper-birch",
             "host": "Lang and Sons",
             "image": "http://dummyimage.com/225x178.bmp/5fa2dd/ffffff",
             "attachment": null,
@@ -7876,6 +8204,7 @@
         "fields": {
             "created_by": 1,
             "name": "Marumleaf Buckwheat",
+            "slug": "marumleaf-buckwheat",
             "host": "Nitzsche-Robel",
             "image": "http://dummyimage.com/205x144.jpg/5fa2dd/ffffff",
             "attachment": null,
@@ -7900,6 +8229,7 @@
         "fields": {
             "created_by": 1,
             "name": "Cape Blue Waterlily",
+            "slug": "cape-blue-waterlily",
             "host": "Rosenbaum, Hamill and Hammes",
             "image": "http://dummyimage.com/209x212.jpg/ff4444/ffffff",
             "attachment": null,
@@ -7924,6 +8254,7 @@
         "fields": {
             "created_by": 1,
             "name": "Ibex Buckwheat",
+            "slug": "ibex-buckwheat",
             "host": "Funk, Will and Paucek",
             "image": "http://dummyimage.com/195x215.jpg/dddddd/000000",
             "attachment": null,
@@ -7948,6 +8279,7 @@
         "fields": {
             "created_by": 1,
             "name": "Sharpscale Bulrush",
+            "slug": "sharpscale-bulrush",
             "host": "Kunze, Effertz and Stracke",
             "image": "http://dummyimage.com/146x124.jpg/5fa2dd/ffffff",
             "attachment": null,
@@ -7972,6 +8304,7 @@
         "fields": {
             "created_by": 1,
             "name": "Lakecress",
+            "slug": "lakecress",
             "host": "Conroy, Champlin and Cruickshank",
             "image": "http://dummyimage.com/223x198.png/dddddd/000000",
             "attachment": null,
@@ -7996,6 +8329,7 @@
         "fields": {
             "created_by": 1,
             "name": "Glacier Eyebright",
+            "slug": "glacier-eyebright",
             "host": "Kub-Harber",
             "image": "http://dummyimage.com/152x151.jpg/5fa2dd/ffffff",
             "attachment": null,
@@ -8020,6 +8354,7 @@
         "fields": {
             "created_by": 1,
             "name": "Swamp Sawgrass",
+            "slug": "swamp-sawgrass",
             "host": "Boyer-Kiehn",
             "image": "http://dummyimage.com/232x172.jpg/ff4444/ffffff",
             "attachment": null,
@@ -8044,6 +8379,7 @@
         "fields": {
             "created_by": 1,
             "name": "Rat's Ear",
+            "slug": "rats-ear",
             "host": "Kuhlman Group",
             "image": "http://dummyimage.com/214x120.bmp/ff4444/ffffff",
             "attachment": null,
@@ -8068,6 +8404,7 @@
         "fields": {
             "created_by": 1,
             "name": "Miccosukee Gooseberry",
+            "slug": "miccosukee-gooseberry",
             "host": "Watsica-Prosacco",
             "image": "http://dummyimage.com/212x246.bmp/ff4444/ffffff",
             "attachment": null,
@@ -8092,6 +8429,7 @@
         "fields": {
             "created_by": 1,
             "name": "Swamp Paperbark",
+            "slug": "swamp-paperbark",
             "host": "Mosciski, Pollich and Friesen",
             "image": "http://dummyimage.com/169x225.jpg/ff4444/ffffff",
             "attachment": null,
@@ -8116,6 +8454,7 @@
         "fields": {
             "created_by": 1,
             "name": "Antitrichia Moss",
+            "slug": "antitrichia-moss",
             "host": "Lindgren, Becker and Quitzon",
             "image": "http://dummyimage.com/224x204.png/5fa2dd/ffffff",
             "attachment": null,
@@ -8140,6 +8479,7 @@
         "fields": {
             "created_by": 1,
             "name": "Hairy Sandspurry",
+            "slug": "hairy-sandspurry",
             "host": "Hodkiewicz and Sons",
             "image": "http://dummyimage.com/188x211.bmp/dddddd/000000",
             "attachment": null,
@@ -8164,6 +8504,7 @@
         "fields": {
             "created_by": 1,
             "name": "Pinkhead Smartweed",
+            "slug": "pinkhead-smartweed",
             "host": "Hilll-Johnson",
             "image": "http://dummyimage.com/141x192.jpg/dddddd/000000",
             "attachment": null,
@@ -8188,6 +8529,7 @@
         "fields": {
             "created_by": 1,
             "name": "Chapmannia",
+            "slug": "chapmannia",
             "host": "Reichel-Gorczany",
             "image": "http://dummyimage.com/114x232.jpg/cc0000/ffffff",
             "attachment": null,
@@ -8212,6 +8554,7 @@
         "fields": {
             "created_by": 1,
             "name": "Shasta Chaenactis",
+            "slug": "shasta-chaenactis",
             "host": "Bernhard, Dach and Franecki",
             "image": "http://dummyimage.com/188x232.png/dddddd/000000",
             "attachment": null,
@@ -8236,6 +8579,7 @@
         "fields": {
             "created_by": 1,
             "name": "Compact Onion",
+            "slug": "compact-onion",
             "host": "Rutherford-Kovacek",
             "image": "http://dummyimage.com/145x223.jpg/dddddd/000000",
             "attachment": null,
@@ -8260,6 +8604,7 @@
         "fields": {
             "created_by": 1,
             "name": "Epilichen Lichen",
+            "slug": "epilichen-lichen",
             "host": "Gottlieb LLC",
             "image": "http://dummyimage.com/117x246.jpg/dddddd/000000",
             "attachment": null,
@@ -8284,6 +8629,7 @@
         "fields": {
             "created_by": 1,
             "name": "Talus Willowherb",
+            "slug": "talus-willowherb",
             "host": "Skiles, Franecki and Greenholt",
             "image": "http://dummyimage.com/158x213.png/ff4444/ffffff",
             "attachment": null,
@@ -8308,6 +8654,7 @@
         "fields": {
             "created_by": 1,
             "name": "Parasol Whitetop",
+            "slug": "parasol-whitetop",
             "host": "Mante-Olson",
             "image": "http://dummyimage.com/184x194.png/dddddd/000000",
             "attachment": null,
@@ -8332,6 +8679,7 @@
         "fields": {
             "created_by": 1,
             "name": "Cup Lichen",
+            "slug": "cup-lichen",
             "host": "Watsica and Sons",
             "image": "http://dummyimage.com/168x243.jpg/5fa2dd/ffffff",
             "attachment": null,
@@ -8356,6 +8704,7 @@
         "fields": {
             "created_by": 1,
             "name": "Scabiosa",
+            "slug": "scabiosa",
             "host": "Gusikowski Group",
             "image": "http://dummyimage.com/173x187.png/5fa2dd/ffffff",
             "attachment": null,
@@ -8380,6 +8729,7 @@
         "fields": {
             "created_by": 1,
             "name": "El Dorado Bedstraw",
+            "slug": "el-dorado-bedstraw",
             "host": "Haley-Wintheiser",
             "image": "http://dummyimage.com/179x119.jpg/5fa2dd/ffffff",
             "attachment": null,
@@ -8404,6 +8754,7 @@
         "fields": {
             "created_by": 1,
             "name": "Coppery Mesemb",
+            "slug": "coppery-mesemb",
             "host": "Harris and Sons",
             "image": "http://dummyimage.com/166x120.jpg/cc0000/ffffff",
             "attachment": null,
@@ -8428,6 +8779,7 @@
         "fields": {
             "created_by": 1,
             "name": "Hairy Smartweed",
+            "slug": "hairy-smartweed",
             "host": "Deckow-Macejkovic",
             "image": "http://dummyimage.com/170x186.bmp/ff4444/ffffff",
             "attachment": null,
@@ -8452,6 +8804,7 @@
         "fields": {
             "created_by": 1,
             "name": "Caelogyne",
+            "slug": "caelogyne",
             "host": "Larkin, Kilback and Bogisich",
             "image": "http://dummyimage.com/132x198.png/ff4444/ffffff",
             "attachment": null,
@@ -8476,6 +8829,7 @@
         "fields": {
             "created_by": 1,
             "name": "Common Woodrush",
+            "slug": "common-woodrush",
             "host": "Lubowitz and Sons",
             "image": "http://dummyimage.com/139x190.jpg/cc0000/ffffff",
             "attachment": null,
@@ -8500,6 +8854,7 @@
         "fields": {
             "created_by": 1,
             "name": "Northeastern Sedge",
+            "slug": "northeastern-sedge",
             "host": "Kilback, Wiegand and Bernhard",
             "image": "http://dummyimage.com/190x115.jpg/cc0000/ffffff",
             "attachment": null,
@@ -8524,6 +8879,7 @@
         "fields": {
             "created_by": 1,
             "name": "Hideseed",
+            "slug": "hideseed",
             "host": "McKenzie Group",
             "image": "http://dummyimage.com/195x130.png/5fa2dd/ffffff",
             "attachment": null,
@@ -8548,6 +8904,7 @@
         "fields": {
             "created_by": 1,
             "name": "Smooth Lessingia",
+            "slug": "smooth-lessingia",
             "host": "Walsh, Ernser and Harber",
             "image": "http://dummyimage.com/233x148.jpg/dddddd/000000",
             "attachment": null,
@@ -8572,6 +8929,7 @@
         "fields": {
             "created_by": 1,
             "name": "Tall Bluebells",
+            "slug": "tall-bluebells",
             "host": "Bosco Inc",
             "image": "http://dummyimage.com/109x123.bmp/cc0000/ffffff",
             "attachment": null,
@@ -8596,6 +8954,7 @@
         "fields": {
             "created_by": 1,
             "name": "Slender Cryptantha",
+            "slug": "slender-cryptantha",
             "host": "Rogahn, Howe and Koepp",
             "image": "http://dummyimage.com/134x156.jpg/dddddd/000000",
             "attachment": null,
@@ -8620,6 +8979,7 @@
         "fields": {
             "created_by": 1,
             "name": "Pennsylvania Dung Moss",
+            "slug": "pennsylvania-dung-moss",
             "host": "Kohler, Konopelski and Stehr",
             "image": "http://dummyimage.com/124x235.bmp/ff4444/ffffff",
             "attachment": null,
@@ -8644,6 +9004,7 @@
         "fields": {
             "created_by": 1,
             "name": "Orchardgrass",
+            "slug": "orchardgrass",
             "host": "Lynch, Blanda and Skiles",
             "image": "http://dummyimage.com/233x130.jpg/dddddd/000000",
             "attachment": null,
@@ -8668,6 +9029,7 @@
         "fields": {
             "created_by": 1,
             "name": "Lecidea Lichen",
+            "slug": "lecidea-lichen",
             "host": "Lemke-Dickinson",
             "image": "http://dummyimage.com/186x246.png/dddddd/000000",
             "attachment": null,
@@ -8692,6 +9054,7 @@
         "fields": {
             "created_by": 1,
             "name": "Brickellbush",
+            "slug": "brickellbush",
             "host": "Ziemann, Dare and Daniel",
             "image": "http://dummyimage.com/244x107.png/dddddd/000000",
             "attachment": null,
@@ -8716,6 +9079,7 @@
         "fields": {
             "created_by": 1,
             "name": "Alabama Croton",
+            "slug": "alabama-croton",
             "host": "Schaefer, Oberbrunner and Kohler",
             "image": "http://dummyimage.com/200x247.png/5fa2dd/ffffff",
             "attachment": null,
@@ -8740,6 +9104,7 @@
         "fields": {
             "created_by": 1,
             "name": "Rinodina Lichen",
+            "slug": "rinodina-lichen",
             "host": "Daugherty, Bechtelar and Cruickshank",
             "image": "http://dummyimage.com/229x151.jpg/ff4444/ffffff",
             "attachment": null,
@@ -8764,6 +9129,7 @@
         "fields": {
             "created_by": 1,
             "name": "Apalachicola Aster",
+            "slug": "apalachicola-aster",
             "host": "Lesch, Metz and Koelpin",
             "image": "http://dummyimage.com/176x180.jpg/ff4444/ffffff",
             "attachment": null,
@@ -8788,6 +9154,7 @@
         "fields": {
             "created_by": 1,
             "name": "Groundplum Milkvetch",
+            "slug": "groundplum-milkvetch",
             "host": "Denesik-Spencer",
             "image": "http://dummyimage.com/118x117.jpg/cc0000/ffffff",
             "attachment": null,
@@ -8812,6 +9179,7 @@
         "fields": {
             "created_by": 1,
             "name": "Basil Thyme",
+            "slug": "basil-thyme",
             "host": "Stehr-Braun",
             "image": "http://dummyimage.com/153x211.jpg/cc0000/ffffff",
             "attachment": null,
@@ -8836,6 +9204,7 @@
         "fields": {
             "created_by": 1,
             "name": "Bird Spiderflower",
+            "slug": "bird-spiderflower",
             "host": "Rohan-Tromp",
             "image": "http://dummyimage.com/147x171.jpg/5fa2dd/ffffff",
             "attachment": null,
@@ -8860,6 +9229,7 @@
         "fields": {
             "created_by": 1,
             "name": "Yellow Birch",
+            "slug": "yellow-birch",
             "host": "Windler LLC",
             "image": "http://dummyimage.com/129x138.jpg/dddddd/000000",
             "attachment": null,
@@ -8884,6 +9254,7 @@
         "fields": {
             "created_by": 1,
             "name": "Acton's Brittlebush",
+            "slug": "actons-brittlebush",
             "host": "Wilderman-Adams",
             "image": "http://dummyimage.com/217x230.jpg/dddddd/000000",
             "attachment": null,
@@ -8908,6 +9279,7 @@
         "fields": {
             "created_by": 1,
             "name": "Slender Rosette Grass",
+            "slug": "slender-rosette-grass",
             "host": "Lowe and Sons",
             "image": "http://dummyimage.com/147x144.jpg/ff4444/ffffff",
             "attachment": null,
@@ -8932,6 +9304,7 @@
         "fields": {
             "created_by": 1,
             "name": "Swamp Chestnut Oak",
+            "slug": "swamp-chestnut-oak",
             "host": "Robel-Bernier",
             "image": "http://dummyimage.com/194x211.bmp/dddddd/000000",
             "attachment": null,
@@ -8956,6 +9329,7 @@
         "fields": {
             "created_by": 1,
             "name": "Sterculia",
+            "slug": "sterculia",
             "host": "Jaskolski, Zieme and Schroeder",
             "image": "http://dummyimage.com/191x119.png/ff4444/ffffff",
             "attachment": null,
@@ -8980,6 +9354,7 @@
         "fields": {
             "created_by": 1,
             "name": "Wideleaf Pinelandcress",
+            "slug": "wideleaf-pinelandcress",
             "host": "Marvin-Romaguera",
             "image": "http://dummyimage.com/126x154.png/cc0000/ffffff",
             "attachment": null,
@@ -9004,6 +9379,7 @@
         "fields": {
             "created_by": 1,
             "name": "Soapbush",
+            "slug": "soapbush",
             "host": "Hammes, Emard and Beahan",
             "image": "http://dummyimage.com/204x203.bmp/5fa2dd/ffffff",
             "attachment": null,
@@ -9028,6 +9404,7 @@
         "fields": {
             "created_by": 1,
             "name": "Map Lichen",
+            "slug": "map-lichen",
             "host": "Kris-Huel",
             "image": "http://dummyimage.com/117x118.jpg/cc0000/ffffff",
             "attachment": null,
@@ -9052,6 +9429,7 @@
         "fields": {
             "created_by": 1,
             "name": "Pale Purple Coneflower",
+            "slug": "pale-purple-coneflower",
             "host": "Schaefer-Weimann",
             "image": "http://dummyimage.com/118x102.jpg/5fa2dd/ffffff",
             "attachment": null,
@@ -9076,6 +9454,7 @@
         "fields": {
             "created_by": 1,
             "name": "Sweetgale",
+            "slug": "sweetgale",
             "host": "Mills Inc",
             "image": "http://dummyimage.com/162x193.bmp/cc0000/ffffff",
             "attachment": null,
@@ -9100,6 +9479,7 @@
         "fields": {
             "created_by": 1,
             "name": "Script Lichen",
+            "slug": "script-lichen",
             "host": "Sauer and Sons",
             "image": "http://dummyimage.com/223x245.jpg/dddddd/000000",
             "attachment": null,
@@ -9124,6 +9504,7 @@
         "fields": {
             "created_by": 1,
             "name": "Scotch Attorney",
+            "slug": "scotch-attorney",
             "host": "Rath and Sons",
             "image": "http://dummyimage.com/173x197.bmp/cc0000/ffffff",
             "attachment": null,
@@ -9148,6 +9529,7 @@
         "fields": {
             "created_by": 1,
             "name": "Fanleaf Geranium",
+            "slug": "fanleaf-geranium",
             "host": "Boyer Group",
             "image": "http://dummyimage.com/223x156.bmp/cc0000/ffffff",
             "attachment": null,
@@ -9172,6 +9554,7 @@
         "fields": {
             "created_by": 1,
             "name": "Kern Brodiaea",
+            "slug": "kern-brodiaea",
             "host": "Feest LLC",
             "image": "http://dummyimage.com/156x109.jpg/ff4444/ffffff",
             "attachment": null,
@@ -9196,6 +9579,7 @@
         "fields": {
             "created_by": 1,
             "name": "Curly-mesquite",
+            "slug": "curly-mesquite",
             "host": "Ratke, McKenzie and Braun",
             "image": "http://dummyimage.com/190x235.bmp/cc0000/ffffff",
             "attachment": null,
@@ -9220,6 +9604,7 @@
         "fields": {
             "created_by": 1,
             "name": "Saturn Skin Lichen",
+            "slug": "saturn-skin-lichen",
             "host": "Gusikowski LLC",
             "image": "http://dummyimage.com/205x105.jpg/cc0000/ffffff",
             "attachment": null,
@@ -9244,6 +9629,7 @@
         "fields": {
             "created_by": 1,
             "name": "Ehrenberg's Barbula Moss",
+            "slug": "ehrenbergs-barbula-moss",
             "host": "Ziemann-Yost",
             "image": "http://dummyimage.com/149x144.png/5fa2dd/ffffff",
             "attachment": null,
@@ -9268,6 +9654,7 @@
         "fields": {
             "created_by": 1,
             "name": "Fewflower Spikerush",
+            "slug": "fewflower-spikerush",
             "host": "Block, Boyle and Huels",
             "image": "http://dummyimage.com/247x240.jpg/ff4444/ffffff",
             "attachment": null,
@@ -9292,6 +9679,7 @@
         "fields": {
             "created_by": 1,
             "name": "Ehretia",
+            "slug": "ehretia",
             "host": "Pfannerstill-Nienow",
             "image": "http://dummyimage.com/119x125.jpg/ff4444/ffffff",
             "attachment": null,
@@ -9316,6 +9704,7 @@
         "fields": {
             "created_by": 1,
             "name": "Sprawling Signalgrass",
+            "slug": "sprawling-signalgrass",
             "host": "Walter-Beatty",
             "image": "http://dummyimage.com/237x231.png/ff4444/ffffff",
             "attachment": null,
@@ -9340,6 +9729,7 @@
         "fields": {
             "created_by": 1,
             "name": "Japanese Maple",
+            "slug": "japanese-maple",
             "host": "Mante LLC",
             "image": "http://dummyimage.com/128x210.png/ff4444/ffffff",
             "attachment": null,
@@ -9364,6 +9754,7 @@
         "fields": {
             "created_by": 1,
             "name": "Muttonwood",
+            "slug": "muttonwood",
             "host": "Maggio, Grant and West",
             "image": "http://dummyimage.com/199x146.jpg/5fa2dd/ffffff",
             "attachment": null,
@@ -9388,6 +9779,7 @@
         "fields": {
             "created_by": 1,
             "name": "James' Buckwheat",
+            "slug": "james-buckwheat",
             "host": "Lowe and Sons",
             "image": "http://dummyimage.com/229x217.png/cc0000/ffffff",
             "attachment": null,
@@ -9412,6 +9804,7 @@
         "fields": {
             "created_by": 1,
             "name": "Mt. Hamilton Bellflower",
+            "slug": "mt-hamilton-bellflower",
             "host": "Huel Inc",
             "image": "http://dummyimage.com/172x209.png/cc0000/ffffff",
             "attachment": null,
@@ -9436,6 +9829,7 @@
         "fields": {
             "created_by": 1,
             "name": "Blandow's Helodium Moss",
+            "slug": "blandows-helodium-moss",
             "host": "Roberts, Beahan and Wilkinson",
             "image": "http://dummyimage.com/187x168.bmp/dddddd/000000",
             "attachment": null,
@@ -9460,6 +9854,7 @@
         "fields": {
             "created_by": 1,
             "name": "Arizona Lipfern",
+            "slug": "arizona-lipfern",
             "host": "Wolff-Nader",
             "image": "http://dummyimage.com/116x174.jpg/dddddd/000000",
             "attachment": null,
@@ -9484,6 +9879,7 @@
         "fields": {
             "created_by": 1,
             "name": "Stiff Goldenrod",
+            "slug": "stiff-goldenrod",
             "host": "Fay, Herman and King",
             "image": "http://dummyimage.com/244x190.bmp/5fa2dd/ffffff",
             "attachment": null,
@@ -9508,6 +9904,7 @@
         "fields": {
             "created_by": 1,
             "name": "Scotch Broom",
+            "slug": "scotch-broom",
             "host": "Gislason, Rodriguez and Predovic",
             "image": "http://dummyimage.com/218x245.png/5fa2dd/ffffff",
             "attachment": null,
@@ -9532,6 +9929,7 @@
         "fields": {
             "created_by": 1,
             "name": "Sweetpotato",
+            "slug": "sweetpotato",
             "host": "Gislason-Schoen",
             "image": "http://dummyimage.com/180x248.bmp/5fa2dd/ffffff",
             "attachment": null,
@@ -9556,6 +9954,7 @@
         "fields": {
             "created_by": 1,
             "name": "Silver-leaf Ironbark",
+            "slug": "silver-leaf-ironbark",
             "host": "Ortiz and Sons",
             "image": "http://dummyimage.com/112x203.jpg/dddddd/000000",
             "attachment": null,
@@ -9580,6 +9979,7 @@
         "fields": {
             "created_by": 1,
             "name": "Saltmarsh False Foxglove",
+            "slug": "saltmarsh-false-foxglove",
             "host": "Murphy LLC",
             "image": "http://dummyimage.com/135x201.png/5fa2dd/ffffff",
             "attachment": null,
