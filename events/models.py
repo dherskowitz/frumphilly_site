@@ -5,6 +5,7 @@ from django.db import models
 from django.conf import settings
 from app.storage_backends import EventMediaStorage, EventFileStorage
 from datetime import date
+from django.utils.text import slugify
 
 
 def compress(image):
@@ -26,6 +27,7 @@ class Event(models.Model):
     name = models.CharField(
         default="", max_length=150, help_text="What is the name of this event?"
     )
+    slug = models.SlugField(default="",)
     host = models.CharField(
         default="",
         max_length=250,
@@ -121,12 +123,11 @@ class Event(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
+    class Meta:
+        pass
+
     def __str__(self):
         return self.name
-
-    @property
-    def event_in_past(self):
-        return date.today() > self.start_date
 
     def save(self, *args, **kwargs):
         if self.image:
@@ -136,4 +137,12 @@ class Event(models.Model):
             self.image = new_image
             # save
             super().save(*args, **kwargs)
+        self.slug = slugify(self.name)
         super().save(*args, **kwargs)
+
+    def get_absolute_url(self):
+        return f"/events/{self.slug}/"
+
+    @property
+    def event_in_past(self):
+        return date.today() > self.start_date
