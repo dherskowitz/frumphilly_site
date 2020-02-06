@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from .models import Event
 from .forms import EventForm
@@ -11,8 +11,8 @@ def events_all(request):
     return render(request, "pages/events/events_all.html", context)
 
 
-def events_single(request, event_id):
-    event = Event.objects.get(pk=event_id)
+def events_single(request, slug):
+    event = Event.objects.get(slug=slug)
     context = {"event": event}
     return render(request, "pages/events/events_single.html", context)
 
@@ -31,5 +31,25 @@ def events_create(request):
             event = form.save(commit=False)
             event.created_by = request.user
             event.save()
+        return redirect(events_all)
 
     return render(request, "pages/events/events_create.html", context)
+
+
+def events_edit(request, slug):
+    event = Event.objects.get(slug=slug)
+    form = EventForm(instance=event)
+    datetime_fields = ("start_date", "end_date")
+    context = {"form": form, "event": event, "datetime_fields": datetime_fields}
+
+    if request.method == "POST":
+        form = EventForm(request.POST, request.FILES, instance=event)
+        context["form"] = form
+
+        if form.is_valid():
+            event_edit = form.save(commit=False)
+            event_edit.created_by = request.user
+            event_edit.save()
+        return redirect(events_single, slug=event.slug)
+
+    return render(request, "pages/events/events_edit.html", context)
