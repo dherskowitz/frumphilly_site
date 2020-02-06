@@ -26,7 +26,7 @@ class EventForm(forms.ModelForm):
     class Meta:
         model = Event
         fields = "__all__"
-        exclude = ("created_by",)
+        exclude = ("created_by", "slug")
 
     def __init__(self, *args, **kwargs):
         super(EventForm, self).__init__(*args, **kwargs)
@@ -38,9 +38,7 @@ class EventForm(forms.ModelForm):
         self.fields["phone_contact"].widget.attrs[
             "pattern"
         ] = "[0-9]{3}-[0-9]{3}-[0-9]{4}"
-        self.fields["image"].widget.attrs[
-            "accept"
-        ] = "image/png,image/jpg,image/jpeg"
+        self.fields["image"].widget.attrs["accept"] = "image/png,image/jpg,image/jpeg"
 
         # Set placeholder for each field
         for field in self.fields:
