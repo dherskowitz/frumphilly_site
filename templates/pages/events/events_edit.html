@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+
+{% block main %}
+{% include 'components/errors.html' %}
+<form action="{% url 'events_edit' event.slug %}" method="POST" enctype='multipart/form-data'>
+    {% csrf_token %}
+    {% for field in form %}
+    {{ field.label }}
+    {{ field }}<br>
+
+    {% if field.name in datetime_fields %}
+    {{ field.help_text }}
+    {% endif %}
+
+    <br><br>
+    {% endfor %}
+    <input type="submit" value="Submit">
+</form>
+
+
+{% endblock main %}
