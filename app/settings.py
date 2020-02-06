@@ -53,6 +53,8 @@ INSTALLED_APPS = [
     # Local
     "pages",
     "events",
+    # Django Cleanup - stay at bottom
+    "django_cleanup.apps.CleanupConfig",
 ]
 
 MIDDLEWARE = [
