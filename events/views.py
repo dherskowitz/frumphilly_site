@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
+from django.http import HttpResponseForbidden
 from .models import Event
 from .forms import EventForm
 
@@ -36,8 +37,11 @@ def events_create(request):
     return render(request, "pages/events/events_create.html", context)
 
 
+@login_required
 def events_edit(request, slug):
     event = Event.objects.get(slug=slug)
+    if request.user != event.created_by:
+        return HttpResponseForbidden()
     form = EventForm(instance=event)
     datetime_fields = ("start_date", "end_date")
     context = {"form": form, "event": event, "datetime_fields": datetime_fields}
