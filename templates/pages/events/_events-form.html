@@ -1,0 +1,12 @@
+{% for field in form %}
+{{ field.label }}
+{{ field }}<br>
+
+{% if field.name in datetime_fields %}
+{{ field.help_text }}
+{% endif %}
+
+<br><br>
+{% endfor %}
+
+<input type="submit" value="Submit">

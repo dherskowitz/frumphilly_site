@@ -1,22 +1,21 @@
 {% extends 'base.html' %}
-
+{% load webpack_static from webpack_loader %}
 
 {% block main %}
 {% include 'components/errors.html' %}
 <form action="{% url 'events_edit' event.slug %}" method="POST" enctype='multipart/form-data'>
     {% csrf_token %}
-    {% for field in form %}
-    {{ field.label }}
-    {{ field }}<br>
-
-    {% if field.name in datetime_fields %}
-    {{ field.help_text }}
-    {% endif %}
-
-    <br><br>
-    {% endfor %}
-    <input type="submit" value="Submit">
+    {% include 'pages/events/_events-form.html' %}
 </form>
-
-
 {% endblock main %}
+
+{% block template_js %}
+<script src="{% webpack_static 'dist/js/libs/places.js' %}"></script>
+<script>
+    var placesAutocomplete = places({
+        appId: 'plM3ZWFPSCRI',
+        apiKey: 'c6f53472cf6a8edc5fe8bf7f06018d65',
+        container: document.querySelector('#id_location')
+    });
+</script>
+{% endblock template_js %}

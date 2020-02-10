@@ -6,12 +6,26 @@
 
 {% for event in events %}
 {{event.name}}
-{{event.id}}
+
+{% if event.location is not None %}
+{{event.location}}
+{% endif %}
+
+
+{% if event.email_contact is not None %}
 {{event.email_contact}}
+{% endif %}
+
 {{event.start_date}}
 {{event.start_data}}
 <!-- <img src="{{event.image}}" alt=""> -->
-<a href="{%url 'events_single' event.id %}">Go to event</a>
+{{event.get_absolute_url}}
+<a href="{{event.get_absolute_url}}">Go to event</a>
+
+{% if request.user == event.created_by %}
+<a href="{{event.get_absolute_url}}edit">Edit event</a>
+{% endif %}
+
 <br>
 <hr>
 {% endfor %}
