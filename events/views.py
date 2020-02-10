@@ -57,3 +57,15 @@ def events_edit(request, slug):
         return redirect(events_single, slug=event.slug)
 
     return render(request, "pages/events/events_edit.html", context)
+
+
+@login_required
+def events_delete(request, slug):
+    event = Event.objects.get(slug=slug)
+    if request.user != event.created_by:
+        return HttpResponseForbidden()
+    context = {"event": event}
+    if request.method == "POST":
+        event.delete()
+        return redirect(events_all)
+    return render(request, "pages/events/events_delete.html", context)

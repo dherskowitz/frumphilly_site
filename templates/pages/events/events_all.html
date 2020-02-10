@@ -24,6 +24,7 @@
 
 {% if request.user == event.created_by %}
 <a href="{{event.get_absolute_url}}edit">Edit event</a>
+<a href="{{event.get_absolute_url}}delete">Delete event</a>
 {% endif %}
 
 <br>
