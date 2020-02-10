@@ -1,11 +1,13 @@
 from io import BytesIO
 from PIL import Image
+from uuid import uuid4
 from django.core.files import File
 from django.db import models
 from django.conf import settings
 from app.storage_backends import EventMediaStorage, EventFileStorage
 from datetime import date
 from django.utils.text import slugify
+from django.urls import reverse
 
 
 def compress(image):
@@ -124,7 +126,8 @@ class Event(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:
-        pass
+        verbose_name = "event"
+        verbose_name_plural = "events"
 
     def __str__(self):
         return self.name
@@ -137,11 +140,15 @@ class Event(models.Model):
             self.image = new_image
             # save
             super().save(*args, **kwargs)
-        self.slug = slugify(self.name)
+        # Generate UUID4 and take the last segment for unique slug
+        my_uuid = uuid4()
+        my_id = str(my_uuid).rsplit("-")[-1:]
+        self.slug = slugify(f"{self.name} {my_id}")
         super().save(*args, **kwargs)
 
     def get_absolute_url(self):
         return f"/events/{self.slug}/"
+        # return reverse('events_single', args=[str(self.slug)])
 
     @property
     def event_in_past(self):
