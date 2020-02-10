@@ -1,13 +1,22 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseForbidden
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from .models import Event
 from .forms import EventForm
 
 
 # Create your views here.
 def events_all(request):
-    events = Event.objects.order_by("-start_date")
+    events_list = Event.objects.order_by("-start_date")
+    page = request.GET.get("page", 1)
+    paginator = Paginator(events_list, 10)
+    try:
+        events = paginator.page(page)
+    except PageNotAnInteger:
+        events = paginator.page(1)
+    except EmptyPage:
+        events = paginator.page(paginator.num_pages)
     context = {"events": events}
     return render(request, "pages/events/events_all.html", context)
 
