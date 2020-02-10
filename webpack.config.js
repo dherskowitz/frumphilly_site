@@ -99,9 +99,9 @@ module.exports = {
             chunkFilename: '[id].[hash].css',
             ignoreOrder: false
         }),
-        // new CopyPlugin([{
-        //     from: './static/src/img/**/*',
-        //     to: './images/[name].[ext]'
-        // }, ]),
+        new CopyPlugin([{
+            from: './static/src/js/libs/**/*',
+            to: './js/libs/[name].[ext]'
+        }, ]),
     ]
 }
