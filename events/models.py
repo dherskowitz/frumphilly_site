@@ -5,7 +5,7 @@ from django.core.files import File
 from django.db import models
 from django.conf import settings
 from app.storage_backends import EventMediaStorage, EventFileStorage
-from datetime import date
+from datetime import date, datetime, timedelta
 from django.utils.text import slugify
 from django.urls import reverse
 
@@ -158,3 +158,10 @@ class Event(models.Model):
     @property
     def event_in_past(self):
         return date.today() > self.start_date
+
+    def get_upcoming_events():
+        today = datetime.today()
+        future_timedelta = timedelta(days=45)
+        future_date = today + future_timedelta
+        events = Event.objects.filter(start_date__lte=future_date).filter(start_date__gte=today).order_by('start_date')
+        return events

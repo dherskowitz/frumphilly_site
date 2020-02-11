@@ -2,14 +2,25 @@
 {% load webpack_static from webpack_loader %}
 {% load socialaccount %}
 
-{% block meta_title %}{{meta_title}}{% endblock meta_title %}
-{% block meta_description %}{{meta_description}}{% endblock meta_description %}
+{% block meta_title %}{{page_meta.meta_title}}{% endblock meta_title %}
+{% block meta_description %}{{page_meta.meta_description}}{% endblock meta_description %}
 
 {% block main %}
 <section id="home_banner" style="background-image:url({% webpack_static 'img/philadelphia.svg' %})">
     <div id="home_banner__content">
-        <h1 class="title">frum philly</h1>
-        <h2 class="subtitle">Go beyond your "daled amos"</h2>
+        <h1 class="title">{{page_data.banner_title}}</h1>
+        <h2 class="subtitle">{{page_data.banner_subtitle}}</h2>
     </div>
+</section>
+
+<section>
+    <h2 class="title">upcoming events</h2>
+    {% for event in upcoming_events %}
+    {{event.name}}
+    {{event.start_date}}
+    <hr>
+    {% empty %}
+    <p>no upcoming events!</p>
+    {% endfor %}
 </section>
 {% endblock main %}
