@@ -1,0 +1,6 @@
+{% load blocktrans from i18n %}
+
+<footer>
+    {% now "Y" as current_year %}
+    {% blocktrans %}&copy; {{ current_year }} frumPhilly.com{% endblocktrans %}
+</footer>
