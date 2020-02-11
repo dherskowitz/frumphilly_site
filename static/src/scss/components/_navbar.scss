@@ -6,6 +6,28 @@
     align-items: center;
 }
 
+#navbar__brand {
+    z-index: 9;
+}
+
 #navbar__brand__image {
     width: 12rem;
+}
+
+#navbar__nav {
+    position: absolute;
+    height: 100%;
+    background: #fff;
+    top: 0;
+    width: 100vw;
+    transform: translateX(100vw);
+    transition: transform .5s ease-in-out;
+    // padding-top: 4em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+
+    &.open {
+        transform: translateX(0);
+    }
 }
