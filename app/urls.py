@@ -22,4 +22,5 @@ urlpatterns = [
     path("accounts/", include("allauth.urls")),
     path("", include("pages.urls"), name="pages"),
     path("", include("events.urls"), name="events"),
+    path("", include("users.urls"), name="users"),
 ]
