@@ -41,7 +41,7 @@ def events_create(request):
             event = form.save(commit=False)
             event.created_by = request.user
             event.save()
-        return redirect(events_all)
+        return redirect(events_single, slug=event.slug)
 
     return render(request, "pages/events/events_create.html", context)
 
