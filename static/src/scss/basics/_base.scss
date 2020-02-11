@@ -1,0 +1,13 @@
+html,
+body {
+    height: 100%;
+    overflow-x: hidden;
+}
+
+body {
+    position: relative;
+
+    &.menu-open {
+        overflow-y: hidden;
+    }
+}
