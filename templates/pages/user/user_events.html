@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block main %}
+{% for event in events %}
+{{event.name}} <br>
+{{event.start_date}} <br>
+{{event.location}} <br>
+{{event.created_by}} <br>
+<hr>
+{% endfor %}
+{% endblock main %}
