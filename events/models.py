@@ -26,7 +26,10 @@ def compress(image):
 # Create your models here.
 class Event(models.Model):
     created_by = models.ForeignKey(
-        settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True
+        settings.AUTH_USER_MODEL,
+        on_delete=models.SET_NULL,
+        null=True,
+        related_name="events",
     )
     name = models.CharField(
         default="", max_length=150, help_text="What is the name of this event?"
