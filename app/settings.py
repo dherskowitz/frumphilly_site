@@ -181,3 +181,9 @@ WEBPACK_LOADER = {
         "LOADER_CLASS": "webpack_loader.loader.WebpackLoader",
     }
 }
+
+if config("ENV") != 'local':
+    WEBPACK_LOADER.update({
+        'BUNDLE_DIR_NAME': 'dist/',
+        'STATS_FILE': os.path.join(BASE_DIR, 'webpack-stats-prod.json')
+    })
