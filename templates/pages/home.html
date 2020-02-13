@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load webpack_static from webpack_loader %}
 {% load socialaccount %}
+{% load humanize %}
 
 {% block meta_title %}{{page_meta.meta_title}}{% endblock meta_title %}
 {% block meta_description %}{{page_meta.meta_description}}{% endblock meta_description %}
@@ -14,12 +15,12 @@
 </section>
 
 <section>
-    <h2 class="title">upcoming events</h2>
+    <h2 class="title section-title">upcoming events</h2>
     <div class="list">
         {% for event in upcoming_events %}
         <div class="list__item">
             <h2 class="list__title">{{event.name}}</h2>
-            <p class="list__p">{{event.start_date}}</p>
+            <p class="list__date">{{event.start_date|naturalday}}</p>
             <a href="{{ event.get_absolute_url }}" class="list__link">See more</a>
         </div>
         {% empty %}
