@@ -133,7 +133,8 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"),)
 
 # Azure Storage
 DEFAULT_FILE_STORAGE = "app.storage_backends.AzureMediaStorage"
-AZURE_CUSTOM_DOMAIN = f'{config("AZURE_ACCOUNT_NAME")}.blob.core.windows.net'
+# AZURE_CUSTOM_DOMAIN = f'{config("AZURE_ACCOUNT_NAME")}.blob.core.windows.net'
+AZURE_CUSTOM_DOMAIN = 'https://frumphilly.azureedge.net'
 MEDIA_URL = f'https://{AZURE_CUSTOM_DOMAIN}/{config("AZURE_MEDIA_CONTAINER")}/'
 if config("ENV") != "local":
     STATICFILES_STORAGE = "app.storage_backends.AzureStaticStorage"
