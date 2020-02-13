@@ -161,7 +161,7 @@ class Event(models.Model):
 
     def get_upcoming_events():
         today = datetime.today()
-        future_timedelta = timedelta(days=45)
+        future_timedelta = timedelta(days=30)
         future_date = today + future_timedelta
         events = Event.objects.filter(start_date__lte=future_date).filter(start_date__gte=today).order_by('start_date')
         return events
