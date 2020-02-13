@@ -9,3 +9,19 @@
     justify-content: center;
     align-items: center;
 }
+
+@mixin curveAllCorners {
+    border-radius: 6px;
+}
+
+@mixin greenGradientBG {
+    background: linear-gradient(190deg, rgb(94, 231, 223), rgb(180, 144, 202));
+}
+
+@mixin whiteTextBlackShadow {
+    text-shadow: 2px 2px 3px $black;
+}
+
+@mixin boxShadow {
+    box-shadow: 0 4px 6px 0 $silver;
+}
