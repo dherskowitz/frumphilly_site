@@ -95,9 +95,7 @@ WSGI_APPLICATION = "app.wsgi.application"
 
 DATABASES = {}
 DATABASES["default"] = dj_database_url.config(conn_max_age=600)
-DATABASES["default"] = dj_database_url.config(
-    default=config("DATABASE_URL")
-)
+DATABASES["default"] = dj_database_url.config(default=config("DATABASE_URL"))
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
@@ -182,8 +180,10 @@ WEBPACK_LOADER = {
     }
 }
 
-if config("ENV") != 'local':
-    WEBPACK_LOADER['DEFAULT'].update({
-        'BUNDLE_DIR_NAME': 'dist/',
-        'STATS_FILE': os.path.join(BASE_DIR, 'webpack-stats-prod.json'
-    })
+if config("ENV") != "local":
+    WEBPACK_LOADER["DEFAULT"].update(
+        {
+            "BUNDLE_DIR_NAME": "dist/",
+            "STATS_FILE": os.path.join(BASE_DIR, "webpack-stats-prod.json"),
+        }
+    )
