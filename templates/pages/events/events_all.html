@@ -2,51 +2,57 @@
 
 
 {% block main %}
-<h1>Events</h1>
+<section>
+    <h1 class="title section-title">Events</h1>
 
-{% for event in events %}
-{{event.name}}
+    <div class="list">
+        {% for event in events %}
+        <div class="list__item">
+            <h3 class="list__title">{{event.name}}</h3>
 
-{% if event.location is not None %}
-{{event.location}}
-{% endif %}
+            <p class="list__location">
+                {% if event.location is not None %}
+                <a href="https://www.google.com/maps?q={{event.location}}" target="_blank">{{event.location}}</a>
+                {% endif %}
+            </p>
 
 
-{% if event.email_contact is not None %}
-{{event.email_contact}}
-{% endif %}
+            <p class="list__date">{{event.start_date}}</p>
 
-{{event.start_date}}
-{{event.start_data}}
-<!-- <img src="{{event.image}}" alt=""> -->
-{{event.get_absolute_url}}
-<a href="{{event.get_absolute_url}}">Go to event</a>
+            {% if event.end_date is not None %}
+            <p class="list__date">{{event.end_date}}</p>
+            {% endif %}
 
-{% if request.user == event.created_by %}
-<a href="{{event.get_absolute_url}}edit">Edit event</a>
-<a href="{{event.get_absolute_url}}delete">Delete event</a>
-{% endif %}
+            {% if event.email_contact is not None %}
+            <p class="list__email">{{event.email_contact}}</p>
+            {% endif %}
 
-<br>
-<hr>
-{% endfor %}
+            <!-- <img src="{{event.image}}" alt=""> -->
+            <a href="{{ event.get_absolute_url }}" class="list__link">See more</a>
+
+        </div>
+        {% endfor %}
+    </div>
+</section>
 
 {% if events.has_other_pages %}
-<div class="pagination">
-    {% if events.has_previous %}
-    <a href="?page=1">&laquo; First</a>
-    <a href="?page={{ events.previous_page_number }}">&lt; Prev</a>
-    {% endif %}
+<section>
+    <div class="pagination">
+        {% if events.has_previous %}
+        <a href="?page=1">&laquo; First</a>
+        <a href="?page={{ events.previous_page_number }}">&lt; Prev</a>
+        {% endif %}
 
-    <span class="current">
-        Page {{ events.number }} of {{ events.paginator.num_pages }}
-    </span>
+        <span class="current">
+            Page {{ events.number }} of {{ events.paginator.num_pages }}
+        </span>
 
-    {% if events.has_next %}
-    <a href="?page={{ events.next_page_number }}">Next &gt;</a>
-    <a href="?page={{ events.paginator.num_pages }}">Last &raquo;</a>
-    {% endif %}
-</div>
+        {% if events.has_next %}
+        <a href="?page={{ events.next_page_number }}">Next &gt;</a>
+        <a href="?page={{ events.paginator.num_pages }}">Last &raquo;</a>
+        {% endif %}
+    </div>
+</section>
 {% endif %}
 
 {% endblock main %}
