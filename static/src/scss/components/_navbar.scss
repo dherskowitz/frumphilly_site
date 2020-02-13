@@ -22,12 +22,20 @@
     width: 100vw;
     transform: translateX(100vw);
     transition: transform .5s ease-in-out;
-    // padding-top: 4em;
+    margin-top: 4.3em;
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    // justify-content: space-evenly;
 
     &.navbar__nav--open {
         transform: translateX(0);
     }
+}
+
+.navbar__link {
+    @include backgroundGradient;
+    padding: 1.5em;
+    text-align: center;
+    text-decoration: none;
+    margin: 0.4em 0;
 }
