@@ -2,22 +2,22 @@
 {% load socialaccount %}
 
 <div id="navbar">
-    <a id="navbar__brand" href="{% url 'home' %}"><img id="navbar__brand__image"
-            src="{% webpack_static 'img/logos/logo.svg' %}" alt="Frum Philly Logo"></a>
+    <a id="navbar__brand" href="{% url 'home' %}"><img src="{% webpack_static 'img/logos/logo.svg' %}"
+            alt="Frum Philly Logo"></a>
     {% include 'components/menu_icon.html' %}
     <nav id="navbar__nav">
-        <a href="{% url 'home' %}">Home</a>
-        <a href="{% url 'events_all' %}">Events</a>
+        <a class="navbar__link" href="{% url 'home' %}">Home</a>
+        <a class="navbar__link" href="{% url 'events_all' %}">Events</a>
         {% if user.is_authenticated %}
-        <form action="{% url 'account_logout' %}" method="POST">
+        <form class="navbar__link" action="{% url 'account_logout' %}" method="POST">
             {% csrf_token %}
             <input type="submit" value="Log Out">
         </form>
         {% else %}
-        <a href="{% url 'account_login' %}">Log In</a>
+        <a class="navbar__link" href="{% url 'account_login' %}">Log In</a>
         <!-- <a href="{% provider_login_url 'github' %}">Github Login</a> | -->
         <!-- <a href="{% provider_login_url 'google' %}">Google Login</a> | -->
-        <a href="{% url 'account_signup' %}">Sign Up</a>
+        <a class="navbar__link" href="{% url 'account_signup' %}">Sign Up</a>
         {% endif %}
     </nav>
 </div>

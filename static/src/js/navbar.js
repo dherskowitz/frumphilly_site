@@ -1,7 +1,7 @@
-const nav_menu_icon = document.querySelector('#nav_menu_icon');
+const navbar__icon = document.querySelector('#navbar__icon');
 const navbar__nav = document.querySelector('#navbar__nav');
-nav_menu_icon.addEventListener('click', (event) => {
-    document.body.classList.toggle('menu-open');
-    event.currentTarget.classList.toggle('open');
-    navbar__nav.classList.toggle('open');
+navbar__icon.addEventListener('click', (event) => {
+    document.body.classList.toggle('body--menu-open');
+    event.currentTarget.classList.toggle('navbar__icon--open');
+    navbar__nav.classList.toggle('navbar__nav--open');
 });

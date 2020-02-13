@@ -8,10 +8,10 @@
 
 #navbar__brand {
     z-index: 9;
-}
 
-#navbar__brand__image {
-    width: 12rem;
+    &>img {
+        width: 12rem;
+    }
 }
 
 #navbar__nav {
@@ -27,7 +27,7 @@
     flex-direction: column;
     justify-content: space-evenly;
 
-    &.open {
+    &.navbar__nav--open {
         transform: translateX(0);
     }
 }

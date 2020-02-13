@@ -1,4 +1,4 @@
-#nav_menu_icon {
+#navbar__icon {
     display: inline-block;
     cursor: pointer;
     z-index: 9;
@@ -14,16 +14,16 @@
     transition: 0.4s;
 }
 
-.open .bar1 {
+.navbar__icon--open .bar1 {
     -webkit-transform: rotate(-45deg) translate(-9px, 6px);
     transform: rotate(-45deg) translate(-9px, 6px);
 }
 
-.open .bar2 {
+.navbar__icon--open .bar2 {
     opacity: 0;
 }
 
-.open .bar3 {
+.navbar__icon--open .bar3 {
     -webkit-transform: rotate(45deg) translate(-8px, -8px);
     transform: rotate(45deg) translate(-8px, -8px);
 }
