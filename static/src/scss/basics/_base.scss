@@ -2,6 +2,7 @@ html,
 body {
     height: 100%;
     overflow-x: hidden;
+    font-family: 'Raleway', sans-serif;
 }
 
 body {
@@ -10,4 +11,14 @@ body {
     &.body--menu-open {
         overflow-y: hidden;
     }
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+section {
+    padding: 0.5em;
 }
