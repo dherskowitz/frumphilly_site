@@ -31,6 +31,8 @@
             <a href="{{ event.get_absolute_url }}" class="list__link">See more</a>
 
         </div>
+        {% empty %}
+        <p>No events yet!</p>
         {% endfor %}
     </div>
 </section>
