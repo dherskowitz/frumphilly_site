@@ -15,12 +15,16 @@
 
 <section>
     <h2 class="title">upcoming events</h2>
-    {% for event in upcoming_events %}
-    {{event.name}}
-    {{event.start_date}}
-    <hr>
-    {% empty %}
-    <p>no upcoming events!</p>
-    {% endfor %}
+    <div class="list">
+        {% for event in upcoming_events %}
+        <div class="list__item">
+            <h2 class="list__title">{{event.name}}</h2>
+            <p class="list__p">{{event.start_date}}</p>
+            <a href="{{ event.get_absolute_url }}" class="list__link">See more</a>
+        </div>
+        {% empty %}
+        <p>no upcoming events!</p>
+        {% endfor %}
+    </div>
 </section>
 {% endblock main %}
