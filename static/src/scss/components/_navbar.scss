@@ -4,6 +4,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: fixed;
+    background: $white;
 }
 
 #navbar__brand {
@@ -16,16 +18,16 @@
 
 #navbar__nav {
     position: absolute;
-    height: 100%;
+    height: 100vh;
+    width: 100vw;
     background: #fff;
     top: 0;
-    width: 100vw;
     transform: translateX(100vw);
     transition: transform .5s ease-in-out;
-    margin-top: 4.3em;
+    // margin-top: 4em;
     display: flex;
     flex-direction: column;
-    // justify-content: space-evenly;
+    justify-content: center;
 
     &.navbar__nav--open {
         transform: translateX(0);
@@ -34,8 +36,12 @@
 
 .navbar__link {
     @include backgroundGradient;
-    padding: 1.5em;
+    // padding: 1.5em;
     text-align: center;
     text-decoration: none;
     margin: 0.4em 0;
+    height: 5em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
