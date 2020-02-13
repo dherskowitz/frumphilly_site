@@ -1,0 +1,20 @@
+.list {
+    // margin: 0.5em;
+}
+
+.list__item {
+    // border: 1px solid $border-grey;
+    margin: 1em 0;
+    padding: 0.5em;
+    @include curveAllCorners;
+    @include greenGradientBG;
+    @include boxShadow;
+}
+
+.list__title {
+    margin: 0;
+    color: $white;
+    @include whiteTextBlackShadow;
+}
+
+.list__p {}
