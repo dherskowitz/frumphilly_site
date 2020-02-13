@@ -7,7 +7,7 @@
     margin: 1em 0;
     padding: 0.5em;
     @include curveAllCorners;
-    @include greenGradientBG;
+    @include backgroundGradient;
     @include boxShadow;
 }
 
@@ -17,4 +17,6 @@
     @include whiteTextBlackShadow;
 }
 
-.list__p {}
+.list__date {
+    text-transform: capitalize;
+}
