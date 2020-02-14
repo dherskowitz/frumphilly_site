@@ -5,15 +5,15 @@ from django.conf import settings
 # from decouple import config
 
 
-class S3StaticStorage(S3Boto3Storage):
-    location = settings.AWS_STATIC_LOCATION
-    default_acl = None
+# class S3StaticStorage(S3Boto3Storage):
+#     location = settings.AWS_STATIC_LOCATION
+#     default_acl = None
 
 
-class S3PublicMediaStorage(S3Boto3Storage):
-    location = "media/public/"
-    file_overwrite = False
-    default_acl = None
+# class S3PublicMediaStorage(S3Boto3Storage):
+#     location = "media/public/"
+#     file_overwrite = False
+#     default_acl = None
 
 
 class S3EventsMediaStorage(S3Boto3Storage):
