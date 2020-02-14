@@ -152,10 +152,10 @@ AWS_S3_CUSTOM_DOMAIN = AWS_CLOUDFRONT_DOMAIN
 AWS_S3_OBJECT_PARAMETERS = {
     "CacheControl": "max-age=86400",
 }
-AWS_STATIC_LOCATION = "static"
+AWS_STATIC_LOCATION = "static/assets/"
 if config("ENV") != "local":
     STATICFILES_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
-    STATIC_URL = f"https://{AWS_S3_CUSTOM_DOMAIN}/{AWS_STATIC_LOCATION}/assets/"
+    STATIC_URL = f"https://{AWS_S3_CUSTOM_DOMAIN}/{AWS_STATIC_LOCATION}/"
 DEFAULT_FILE_STORAGE = "app.storage_backends.S3PublicMediaStorage"
 
 
