@@ -4,7 +4,7 @@ from uuid import uuid4
 from django.core.files import File
 from django.db import models
 from django.conf import settings
-from app.storage_backends import EventMediaStorage, EventFileStorage
+from app.storage_backends import S3EventsMediaStorage, S3EventsFileStorage
 from datetime import date, datetime, timedelta
 from django.utils.text import slugify
 from django.urls import reverse
@@ -43,14 +43,14 @@ class Event(models.Model):
         blank=True,
     )
     image = models.ImageField(
-        storage=EventMediaStorage(),
+        storage=S3EventsMediaStorage(),
         default=None,
         help_text="Upload an image or poster for this event.",
         null=True,
         blank=True,
     )
     attachment = models.FileField(
-        storage=EventFileStorage(),
+        storage=S3EventsFileStorage(),
         default=None,
         help_text="Upload a PDF file.",
         null=True,

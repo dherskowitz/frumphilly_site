@@ -48,6 +48,8 @@ INSTALLED_APPS = [
     "allauth.socialaccount.providers.facebook",
     "allauth.socialaccount.providers.google",
     "allauth.socialaccount.providers.github",
+    # Django Storages
+    "storages",
     # Custom User Model
     "users",
     # Webpack
@@ -132,13 +134,34 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"),)
 
 
 # Azure Storage
-DEFAULT_FILE_STORAGE = "app.storage_backends.AzureMediaStorage"
-# AZURE_CUSTOM_DOMAIN = f'{config("AZURE_ACCOUNT_NAME")}.blob.core.windows.net'
-AZURE_CUSTOM_DOMAIN = 'frumphilly.azureedge.net'
-MEDIA_URL = f'https://{AZURE_CUSTOM_DOMAIN}/{config("AZURE_MEDIA_CONTAINER")}/'
+# DEFAULT_FILE_STORAGE = "app.storage_backends.AzureMediaStorage"
+# # AZURE_CUSTOM_DOMAIN = f'{config("AZURE_ACCOUNT_NAME")}.blob.core.windows.net'
+# AZURE_CUSTOM_DOMAIN = 'frumphilly.azureedge.net'
+# MEDIA_URL = f'https://{AZURE_CUSTOM_DOMAIN}/{config("AZURE_MEDIA_CONTAINER")}/'
+# if config("ENV") != "local":
+#     STATICFILES_STORAGE = "app.storage_backends.AzureStaticStorage"
+#     STATIC_URL = f'https://{AZURE_CUSTOM_DOMAIN}/{config("AZURE_ASSETS_CONTAINER")}/'
+
+# S3 Storage
+AWS_CLOUDFRONT_DOMAIN = "dqjyem4jnrlaf.cloudfront.net"
+AWS_ACCESS_KEY_ID = config("S3_ACCESS_KEY_ID")
+AWS_SECRET_ACCESS_KEY = config("S3_SECRET_ACCESS_KEY")
+AWS_STORAGE_BUCKET_NAME = config("S3_STORAGE_BUCKET_NAME")
+# AWS_S3_CUSTOM_DOMAIN = f"{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com"
+AWS_S3_CUSTOM_DOMAIN = AWS_CLOUDFRONT_DOMAIN
+AWS_S3_OBJECT_PARAMETERS = {
+    "CacheControl": "max-age=86400",
+}
+AWS_HEADERS = {
+    "Expires": expires,
+    "Cache-Control": "max-age=%d" % (int(two_months.total_seconds())),
+}
+AWS_STATIC_LOCATION = "static"
 if config("ENV") != "local":
-    STATICFILES_STORAGE = "app.storage_backends.AzureStaticStorage"
-    STATIC_URL = f'https://{AZURE_CUSTOM_DOMAIN}/{config("AZURE_ASSETS_CONTAINER")}/'
+    STATICFILES_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
+    STATIC_URL = f"https://{AWS_S3_CUSTOM_DOMAIN}/{AWS_STATIC_LOCATION}/"
+DEFAULT_FILE_STORAGE = "app.storage_backends.S3PublicMediaStorage"
+
 
 # Custom User Model
 AUTH_USER_MODEL = "users.CustomUser"
