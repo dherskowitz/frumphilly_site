@@ -6,7 +6,7 @@ from django.conf import settings
 
 
 class S3StaticStorage(S3Boto3Storage):
-    location = "assets"
+    location = "static"
     default_acl = "public-read"
 
 

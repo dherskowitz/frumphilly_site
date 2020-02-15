@@ -3,7 +3,7 @@ var BundleTracker = require('webpack-bundle-tracker');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CopyPlugin = require('copy-webpack-plugin');
 
-config.output.path = require('path').resolve('./assets/dist');
+config.output.path = require('path').resolve('./static/dist');
 
 config.plugins = [
     new BundleTracker({
@@ -15,7 +15,7 @@ config.plugins = [
         ignoreOrder: false
     }),
     new CopyPlugin([{
-        from: './assets/src/js/libs/**/*',
+        from: './static/src/js/libs/**/*',
         to: './js/libs/[name].[ext]'
     }, ]),
 ]
