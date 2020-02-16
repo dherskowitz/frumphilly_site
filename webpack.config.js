@@ -3,12 +3,13 @@ var path = require('path');
 var BundleTracker = require('webpack-bundle-tracker');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CopyPlugin = require('copy-webpack-plugin');
+const BrowserSyncPlugin = require('browser-sync-webpack-plugin')
 
 module.exports = {
     context: __dirname,
     entry: ["./static/src/js/app.js", "./static/src/scss/app.scss"],
     output: {
-        path: path.resolve("./static/dist/"),
+        path: path.resolve("./static/local/"),
         filename: "[name]-[hash].js"
     },
     devtool: "source-map",
@@ -103,5 +104,10 @@ module.exports = {
             from: './static/src/js/libs/**/*',
             to: './js/libs/[name].[ext]'
         }, ]),
+        new BrowserSyncPlugin({
+            host: 'localhost',
+            port: 3000,
+            proxy: 'http://192.168.99.100:8001/'
+        })
     ]
 }
