@@ -152,7 +152,7 @@ class Event(models.Model):
         super().save(*args, **kwargs)
 
     def get_absolute_url(self):
-        return f"/events/{self.slug}/"
+        return f"/events/{self.slug}"
         # return reverse('events_single', args=[str(self.slug)])
 
     @property
