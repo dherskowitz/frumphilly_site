@@ -1,5 +1,9 @@
-#home_banner {
+#home-banner {
     min-height: 25em;
     @include fullBG;
     @include flexCenterAll;
+}
+
+#home-banner__content {
+    @include whiteTextBlackShadow;
 }
