@@ -15,6 +15,10 @@
 </section>
 
 <section>
+    <p>{{page_data.about|safe}}</p>
+</section>
+
+<section>
 
     {% if events_in_future %}
     <h2 class="title section-title">upcoming events</h2>
@@ -24,11 +28,7 @@
 
     <div class="list">
         {% for event in upcoming_events %}
-        <div class="list__item">
-            <h2 class="list__title">{{event.name}}</h2>
-            <p class="list__date">{{event.start_date|naturalday}}</p>
-            <a href="{{ event.get_absolute_url }}" class="list__link">See more</a>
-        </div>
+        {% include 'components/events_list.html' %}
         {% empty %}
         <p>no upcoming events!</p>
         {% endfor %}
