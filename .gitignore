@@ -2,6 +2,7 @@
 logs.txt
 venv/
 webpack-stats.json
+static/local/
 
 
 # Created by https://www.gitignore.io/api/git,django,python,visualstudiocode
