@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseForbidden
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
@@ -21,8 +21,8 @@ def events_all(request):
     return render(request, "pages/events/events_all.html", context)
 
 
-def events_single(request, slug):
-    event = Event.objects.get(slug=slug)
+def events_single(request, slug, pk):
+    event = get_object_or_404(Event, slug=slug, id=pk)
     context = {"event": event}
     return render(request, "pages/events/events_single.html", context)
 
@@ -41,14 +41,14 @@ def events_create(request):
             event = form.save(commit=False)
             event.created_by = request.user
             event.save()
-        return redirect(events_single, slug=event.slug)
+        return redirect(events_single, slug=event.slug, pk=event.id)
 
     return render(request, "pages/events/events_create.html", context)
 
 
 @login_required
-def events_edit(request, slug):
-    event = Event.objects.get(slug=slug)
+def events_edit(request, slug, pk):
+    event = get_object_or_404(Event, slug=slug, id=pk)
     if request.user != event.created_by:
         return HttpResponseForbidden()
     form = EventForm(instance=event)
@@ -63,14 +63,14 @@ def events_edit(request, slug):
             event_edit = form.save(commit=False)
             event_edit.created_by = request.user
             event_edit.save()
-        return redirect(events_single, slug=event.slug)
+        return redirect(events_single, slug=event.slug, pk=event.id)
 
     return render(request, "pages/events/events_edit.html", context)
 
 
 @login_required
-def events_delete(request, slug):
-    event = Event.objects.get(slug=slug)
+def events_delete(request, slug, pk):
+    event = get_object_or_404(Event, slug=slug, id=pk)
     if request.user != event.created_by:
         return HttpResponseForbidden()
     context = {"event": event}
