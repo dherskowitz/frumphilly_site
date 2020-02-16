@@ -10,5 +10,5 @@ Event location: {{event.location}} <br><br>
     {% csrf_token %}
     <input type="submit" value="yes, delete">
 </form>
-<a href="/events/{{event.slug}}">no! cancel</a>
+<a href="/events/{{event.slug}}-{{event.id}}">no! cancel</a>
 {% endblock main %}

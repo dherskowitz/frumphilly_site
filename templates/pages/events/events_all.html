@@ -28,7 +28,7 @@
             {% endif %}
 
             <!-- <img src="{{event.image}}" alt=""> -->
-            <a href="{{ event.get_absolute_url }}" class="list__link">See more</a>
+            <a href="{{ event.get_absolute_url }}-{{event.id}}" class="list__link">See more</a>
 
         </div>
         {% empty %}

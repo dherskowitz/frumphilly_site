@@ -3,7 +3,7 @@
 
 {% block main %}
 {% include 'components/errors.html' %}
-<form action="{% url 'events_edit' event.slug %}" method="POST" enctype='multipart/form-data'>
+<form action="{% url 'events_edit' event.slug event.id %}" method="POST" enctype='multipart/form-data'>
     {% csrf_token %}
     {% include 'pages/events/_events-form.html' %}
 </form>
