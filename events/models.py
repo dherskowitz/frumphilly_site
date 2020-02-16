@@ -11,7 +11,7 @@ from django.urls import reverse
 
 
 def compress(image):
-    size = 800, 800
+    size = 600, 600
     im = Image.open(image)
     # create a BytesIO object
     im_io = BytesIO()
@@ -163,5 +163,9 @@ class Event(models.Model):
         today = datetime.today()
         future_timedelta = timedelta(days=30)
         future_date = today + future_timedelta
-        events = Event.objects.filter(start_date__lte=future_date).filter(start_date__gte=today).order_by('start_date')
+        events = (
+            Event.objects.filter(start_date__lte=future_date)
+            .filter(start_date__gte=today)
+            .order_by("start_date")
+        )
         return events
