@@ -4,11 +4,12 @@
   "description": "The Frum Philly website source code.",
   "main": "index.js",
   "scripts": {
-    "clean": "del-cli static/dist/**/*.css && del-cli static/dist/**/*.js && del-cli static/dist/**/*.map",
+    "clean:dev": "del-cli static/local/*.css && del-cli static/local/*.js && del-cli static/local/*.map",
+    "clean:prod": "del-cli static/dist/**/*.css && del-cli static/dist/**/*.js && del-cli static/dist/**/*.map",
     "build:dev": "./node_modules/.bin/webpack --config webpack.config.js --watch --mode=development",
     "build:prod": "./node_modules/.bin/webpack --config webpack.prod.config.js --mode=production --optimize-minimize",
-    "watch": "npm run clean && npm run build:dev",
-    "prod": "npm run clean && npm run build:prod"
+    "watch": "npm run clean:dev && npm run build:dev",
+    "prod": "npm run clean:prod && npm run build:prod"
   },
   "repository": {
     "type": "git",
