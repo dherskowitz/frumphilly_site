@@ -5,7 +5,11 @@
 <h1>{{event.name}}</h1>
 
 {{event.id}}
+
+{% if event.email_contact %}
 {{event.email_contact}}
+{% endif %}
+
 {{event.start_date}}
 {{event.start_data}}
 <br>
