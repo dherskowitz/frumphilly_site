@@ -1,23 +1,39 @@
 {% extends 'base.html' %}
-
+{% load webpack_static from webpack_loader %}
 
 {% block main %}
-<h1>{{event.name}}</h1>
+<div class="single-event">
+    <h1 class="single-event__title">{{event.name}}</h1>
+    <p class="single-event__meta">{{event.start_date}} {% if event.start_time %}at {{event.start_time}}{% endif %}</p>
+    <div class="single-event__infobar">
 
-{{event.id}}
+        <span class="single-event__meta--desktop">{{event.start_date}}</span>
+        {% if event.start_time %}at <span class="single-event__meta--desktop">{{event.start_time}}</span>{% endif %}
 
-{% if event.email_contact %}
-{{event.email_contact}}
-{% endif %}
+        {% if event.link %}
+        <span>Link to site</span>
+        {% endif %}
 
-{{event.start_date}}
-{{event.start_data}}
-<br>
+        <span><a href="https://www.google.com/maps?q={{event.location}}" target="_blank" rel="noreferrer">View Map <img
+                    class="inline-icon" src="{% webpack_static 'img/icons/external-link.svg' %}"
+                    aria-hidden="true"></a></span>
+        <span>Requires RSVP: {% if event.rsvp %}<img class="inline-icon"
+                src="{% webpack_static 'img/icons/check-circle.svg' %}" aria-hidden="true">{% else %}<img
+                class="inline-icon" src="{% webpack_static 'img/icons/x-circle.svg' %}"
+                aria-hidden="true">{% endif %}</span>
 
-{% if 'dummyimage' in event.image.url %}
-<img src="https://picsum.photos/600" alt="">
-{% elif event.image %}
-<img src="{{event.image.url}}" alt="{{event.name}} image">
-{% endif %}
+        <span>Price: {% if event.cost %}{{event.cost}}{% else %}Free!{% endif %}</span>
 
+    </div>
+
+    {% if event.email_contact %}
+    {{event.email_contact}}
+    {% endif %}
+
+    <br>
+
+    {% if event.image %}
+    <img src="{{event.image.url}}" alt="{{event.name}}">
+    {% endif %}
+</div>
 {% endblock main %}
