@@ -1,3 +1,10 @@
+// Sizes
+$desktop: 1200px;
+$laptop: 1024px;
+$tablet: 768px;
+$phone: 480px;
+
+// Colors
 $purple: rgba(104, 64, 114, 1);
 $red: rgba(216, 66, 61, 1);
 $success: rgba(27, 163, 156, 1);
@@ -8,3 +15,4 @@ $link-color: rgba(103, 65, 114, 1);
 $white: #fff;
 $black: #000;
 $silver: rgba(191, 191, 191, 1);
+$transparent-red: rgba(211, 67, 62, 0.1);
