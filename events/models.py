@@ -52,7 +52,7 @@ class Event(models.Model):
     attachment = models.FileField(
         storage=S3EventsFileStorage(),
         default=None,
-        help_text="Upload a PDF file.",
+        help_text="Upload a PDF file with more details.",
         null=True,
         blank=True,
     )
@@ -64,7 +64,9 @@ class Event(models.Model):
         help_text="Add a link to your website or the event webpage here.",
     )
     location = models.CharField(
-        max_length=500, default=None, help_text="Where will this event take place?"
+        max_length=500,
+        default=None,
+        help_text="At what address will this event take place?",
     )
     description = models.TextField(
         null=True,
@@ -76,12 +78,14 @@ class Event(models.Model):
         default=None,
         null=True,
         blank=True,
+        verbose_name="Email Contact",
         help_text="Where can people email with any questions?",
     )
     phone_contact = models.CharField(
         max_length=18,
         default=None,
         help_text="Where can people call with any questions?",
+        verbose_name="Phone Contact",
         null=True,
         blank=True,
     )
@@ -96,6 +100,7 @@ class Event(models.Model):
         default=None,
         auto_now=False,
         auto_now_add=False,
+        verbose_name="Start Time",
         null=True,
         blank=True,
         help_text="What time does your event start?",
@@ -104,12 +109,14 @@ class Event(models.Model):
         default=None,
         auto_now=False,
         auto_now_add=False,
+        verbose_name="Start Date",
         help_text="When will your event take place?",
     )
     end_date = models.DateField(
         default=None,
         auto_now=False,
         auto_now_add=False,
+        verbose_name="End Date",
         null=True,
         blank=True,
         help_text="If your event occurs over multiple days, when will your event end?",
