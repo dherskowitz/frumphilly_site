@@ -1,0 +1,9 @@
+// Override Algolia Places form styles
+.ap-input-icon.ap-icon-pin {
+    display: none;
+}
+
+.ap-input,
+.ap-hint {
+    padding: inherit;
+}
