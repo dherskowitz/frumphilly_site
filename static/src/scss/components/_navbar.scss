@@ -7,6 +7,7 @@
     position: fixed;
     background: $white;
     box-shadow: 0 1px 1px 1px $silver;
+    z-index: 999;
 }
 
 #navbar__brand {
@@ -36,13 +37,14 @@
 }
 
 .navbar__link {
-    @include backgroundGradient;
-    // padding: 1.5em;
+    // @include backgroundGradient;
+    padding: 1rem;
     text-align: center;
     text-decoration: none;
-    margin: 0.4em 0;
-    height: 5em;
+    margin: 0.4em;
+    // height: 5em;
     display: flex;
     justify-content: center;
     align-items: center;
+    @include lightBorder;
 }
