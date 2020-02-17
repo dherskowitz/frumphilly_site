@@ -3,7 +3,8 @@
 
     <p class="list__location">
         {% if event.location is not None %}
-        <a href="https://www.google.com/maps?q={{event.location}}" target="_blank">{{event.location}}</a>
+        <a href="https://www.google.com/maps?q={{event.location}}" target="_blank"
+            rel="noreferrer">{{event.location}}</a>
         {% endif %}
     </p>
 
