@@ -30,8 +30,8 @@ def events_single(request, slug, pk):
 @login_required
 def events_create(request):
     form = EventForm()
-    datetime_fields = ("start_date", "end_date")
-    context = {"form": form, "datetime_fields": datetime_fields}
+    helptext_fields = ("start_date", "end_date", "rsvp", "image", "attachment")
+    context = {"form": form, "helptext_fields": helptext_fields}
 
     if request.method == "POST":
         form = EventForm(request.POST, request.FILES)
