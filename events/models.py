@@ -1,6 +1,9 @@
+import requests
+import json
 from io import BytesIO
 from PIL import Image
 from uuid import uuid4
+from decouple import config
 from django.core.files import File
 from django.db import models
 from django.conf import settings
@@ -21,6 +24,21 @@ def compress(image):
     # create a django-friendly Files object
     new_image = File(im_io, name=image.name)
     return new_image
+
+
+def geocode(location):
+    """ Get geocode infomation based on form value """
+    base_url = "https://api.geocod.io/v1.4/geocode"
+    api_key = config("GEOCODING_KEY")
+    req = requests.get(f"{base_url}?q={location}&api_key={api_key}")
+    data = req.json()
+    data_dict = {
+        "formatted_address": data["results"][0]["formatted_address"],
+        "city": data["results"][0]["address_components"]["city"],
+        "state": data["results"][0]["address_components"]["state"],
+        "zip": data["results"][0]["address_components"]["zip"],
+    }
+    return data_dict
 
 
 # Create your models here.
@@ -67,6 +85,9 @@ class Event(models.Model):
         max_length=500,
         default=None,
         help_text="Address where this event take place...",
+    )
+    city = models.CharField(
+        max_length=500, default=None, null=True, blank=True, help_text="",
     )
     description = models.TextField(
         null=True,
@@ -156,6 +177,9 @@ class Event(models.Model):
         my_uuid = uuid4()
         my_id = str(my_uuid).rsplit("-")[-1:]
         self.slug = slugify(f"{self.name} {my_id}")
+        geodata = geocode(self.location)
+        self.location = geodata["formatted_address"]
+        self.city = geodata["city"]
         super().save(*args, **kwargs)
 
     def get_absolute_url(self):
