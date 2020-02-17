@@ -26,7 +26,7 @@ class EventForm(forms.ModelForm):
     class Meta:
         model = Event
         fields = "__all__"
-        exclude = ("created_by", "slug")
+        exclude = ("created_by", "slug", "city")
 
     def __init__(self, *args, **kwargs):
         super(EventForm, self).__init__(*args, **kwargs)
@@ -45,4 +45,7 @@ class EventForm(forms.ModelForm):
             self.fields[field].widget.attrs["placeholder"] = self.fields[
                 field
             ].help_text
-        self.fields["video"].widget.attrs["placeholder"] = "link to a video about your event."
+        self.fields["video"].widget.attrs[
+            "placeholder"
+        ] = "link to a video about your event."
+
