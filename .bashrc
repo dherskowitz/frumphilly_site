@@ -14,6 +14,7 @@ alias super="python manage.py createsuperuser"
 # Python Commands
 alias freeze="pip freeze > requirements.txt"
 alias pir="pip install -r requirements.txt"
+alias manage="python manage.py $1"
 
 # Node Commands
 alias watch="npm run watch"
