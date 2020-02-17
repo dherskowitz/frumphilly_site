@@ -6,3 +6,8 @@
     font-size: 2rem;
     @include textGradient;
 }
+
+.inline-icon {
+    width: 1em;
+    margin-left: 0.25em;
+}
