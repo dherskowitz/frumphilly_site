@@ -26,6 +26,11 @@
     <h2 class="title section-title">our events</h2>
     {% endif %}
 
+    <div>
+        Want to add your event? <a href="/accounts/signup">Sign Up</a> and then you can add your event <a
+            href="/events/create">here!</a>
+    </div>
+
     <div class="list">
         {% for event in upcoming_events %}
         {% include 'components/events_list.html' %}
