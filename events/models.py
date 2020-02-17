@@ -61,12 +61,12 @@ class Event(models.Model):
         max_length=200,
         null=True,
         blank=True,
-        help_text="Add a link to your website or the event webpage here.",
+        help_text="link to your website or event page here...",
     )
     location = models.CharField(
         max_length=500,
         default=None,
-        help_text="At what address will this event take place?",
+        help_text="Address where this event take place...",
     )
     description = models.TextField(
         null=True,
@@ -92,7 +92,7 @@ class Event(models.Model):
     video = models.URLField(
         max_length=300,
         default=None,
-        help_text="Include a video about your event.",
+        help_text="Add a link to a video. Must be a URL not an embed.",
         null=True,
         blank=True,
     )
