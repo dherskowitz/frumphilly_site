@@ -2,7 +2,7 @@
 
 
 {% block main %}
-<section>
+<section class="wrapper">
     <h1 class="title section-title">Events</h1>
 
     <div class="list">
@@ -12,10 +12,8 @@
         <p>No events yet!</p>
         {% endfor %}
     </div>
-</section>
 
-{% if events.has_other_pages %}
-<section>
+    {% if events.has_other_pages %}
     <div class="pagination">
         {% if events.has_previous %}
         <a href="?page=1">&laquo; First</a>
@@ -31,7 +29,7 @@
         <a href="?page={{ events.paginator.num_pages }}">Last &raquo;</a>
         {% endif %}
     </div>
+    {% endif %}
 </section>
-{% endif %}
 
 {% endblock main %}
