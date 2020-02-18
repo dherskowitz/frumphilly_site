@@ -1,0 +1,9 @@
+.btn {
+    background: $purple;
+    color: $white;
+    text-decoration: none;
+    text-shadow: none;
+    padding: 0.5em;
+    @include curveAllCorners;
+    @include boxShadow($black);
+}
