@@ -7,36 +7,44 @@
 {% block meta_description %}{{page_meta.meta_description}}{% endblock meta_description %}
 
 {% block main %}
-<section id="home-banner" style="background-image:url({% webpack_static 'img/philadelphia.svg' %})">
+<section class="wrapper" id="home-banner" style="background-image:url({% webpack_static 'img/philadelphia.svg' %})">
     <div id="home-banner__content">
         <h1 class="title">{{page_data.banner_title}}</h1>
         <h2 class="subtitle">{{page_data.banner_subtitle}}</h2>
+
+        {% if not user.is_authenticated %}
+        <a class="btn" href="/accounts/signup">Create your account!</a>
+        {% endif %}
+
     </div>
 </section>
 
-<section>
-    <p>{{page_data.about|safe}}</p>
+<section class="wrapper container">
+    <div>{{page_data.about|safe}}</div>
 </section>
 
 <section>
+    <div class="wrapper">
+        {% if events_in_future %}
+        <h2 class="title section-title">upcoming events</h2>
+        {% else %}
+        <h2 class="title section-title">our events</h2>
+        {% endif %}
 
-    {% if events_in_future %}
-    <h2 class="title section-title">upcoming events</h2>
-    {% else %}
-    <h2 class="title section-title">our events</h2>
-    {% endif %}
-
-    <div>
-        Want to add your event? <a href="/accounts/signup">Sign Up</a> and then you can add your event <a
-            href="/events/create">here!</a>
-    </div>
-
-    <div class="list">
         {% for event in upcoming_events %}
         {% include 'components/events_list.html' %}
         {% empty %}
         <p>no upcoming events!</p>
         {% endfor %}
+    </div>
+
+    <div class="cta">
+        <h4 class="title">Want people to see your event?</h4>
+        {% if user.is_authenticated %}
+        <a class="btn uppercase" href="/events/create">Add your event here</a>
+        {% else %}
+        <a class="btn uppercase" href="/accounts/signup">Create your account</a>
+        {% endif %}
     </div>
 </section>
 {% endblock main %}
