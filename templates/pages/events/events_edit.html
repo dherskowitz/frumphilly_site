@@ -3,7 +3,7 @@
 
 {% block main %}
 {% include 'components/errors.html' %}
-<section>
+<section class="wrapper">
     <h2 class="title section-title">Edit event</h2>
     <form action="{% url 'events_edit' event.slug event.id %}" method="POST" enctype='multipart/form-data'>
         {% csrf_token %}
