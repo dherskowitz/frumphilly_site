@@ -1,6 +1,4 @@
 {% extends 'base.html' %}
-{% load webpack_static from webpack_loader %}
-
 {% block main %}
 
 <section class="wrapper">
@@ -19,18 +17,5 @@
 {% endblock main %}
 
 {% block template_js %}
-<script src="{% webpack_static 'dist/js/libs/places.js' %}"></script>
-<script>
-    var placesAutocomplete = places({
-        appId: 'plM3ZWFPSCRI',
-        apiKey: 'c6f53472cf6a8edc5fe8bf7f06018d65',
-        container: document.querySelector('#id_location')
-    });
-</script>
-<script>
-    document.getElementById('id_phone_contact').addEventListener('input', function (e) {
-        var x = e.target.value.replace(/\D/g, '').match(/(\d{0,3})(\d{0,3})(\d{0,4})/);
-        e.target.value = !x[2] ? x[1] : '' + x[1] + '-' + x[2] + (x[3] ? '-' + x[3] : '');
-    });
-</script>
+{% include 'pages/events/_events_js.html' %}
 {% endblock template_js %}
