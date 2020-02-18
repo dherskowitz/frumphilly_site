@@ -48,4 +48,7 @@ class EventForm(forms.ModelForm):
         self.fields["video"].widget.attrs[
             "placeholder"
         ] = "link to a video about your event."
+        self.fields["phone_contact"].widget.attrs[
+            "placeholder"
+        ] = "expects 999-999-9999"
 
