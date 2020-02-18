@@ -1,5 +1,6 @@
 #home-banner {
-    min-height: 25em;
+    height: 100vw;
+    max-height: 30em;
     @include fullBG;
     @include flexCenterAll;
 }
