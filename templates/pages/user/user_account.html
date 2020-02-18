@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block main %}
+<section>
+    <h1>My Account</h1>
+    <div>
+        <ul>
+            <a href="{% url 'user_events' %}">
+                <li>My Events</li>
+            </a>
+            <a href="{% url 'account_change_password' %}">
+                <li>Change My password</li>
+            </a>
+            <a href="{% url 'account_email' %}">
+                <li>Change my email</li>
+            </a>
+            <a href="{% url 'socialaccount_connections' %}">
+                <li>Manage social account connections</li>
+            </a>
+        </ul>
+    </div>
+</section>
+{% endblock main %}
