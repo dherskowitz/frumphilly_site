@@ -10,6 +10,7 @@
         <a class="navbar__link" href="{% url 'events_all' %}">Events</a>
         {% if user.is_authenticated %}
         <a class="navbar__link" href="{% url 'events_create' %}">Add Event</a>
+        <a class="navbar__link" href="{% url 'user_account' %}">My Account</a>
         <form class="navbar__link" action="{% url 'account_logout' %}" method="POST">
             {% csrf_token %}
             <input type="submit" value="Log Out">
