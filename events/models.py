@@ -124,7 +124,7 @@ class Event(models.Model):
         verbose_name="Start Time",
         null=True,
         blank=True,
-        help_text="What time does your event start?",
+        help_text="HOUR:MINUTE:AM/PM",
     )
     start_date = models.DateField(
         default=None,
