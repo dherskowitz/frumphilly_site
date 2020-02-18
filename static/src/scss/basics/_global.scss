@@ -1,5 +1,16 @@
+.container {
+    @media (min-width: $laptop) {
+        max-width: $laptop;
+        margin: 0 auto;
+    }
+}
+
 .title {
     text-transform: uppercase;
+}
+
+.subtitle {
+    margin-bottom: 1em;
 }
 
 .section-title {
@@ -10,4 +21,12 @@
 .inline-icon {
     width: 1em;
     margin-left: 0.25em;
+}
+
+.uppercase {
+    text-transform: uppercase;
+}
+
+.wrapper {
+    padding: 0 0.5em;
 }
