@@ -5,11 +5,24 @@
 {% block meta_description %}{{meta_description}}{% endblock meta_description %}
 
 {% block main %}
-<h2>Log In</h2>
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Log In</button>
-</form>
-<a href="{% provider_login_url "github" %}">Github Login</a>
+<section class="signin">
+    <h2 class="section-title">Sign In</h2>
+    <form method="post">
+        {% csrf_token %}
+
+        {% for field in form %}
+        <div class="form-field">
+            <label class="form-field__label" for="{{field.name}}">{{ field.label }}</label>
+            {{ field }}
+
+            {% if field.name in helptext_fields %}
+            <div class="form-field__help-text">{{ field.help_text }}</div>
+            {% endif %}
+        </div>
+        {% endfor %}
+
+        <button type="submit">Sign In</button>
+    </form>
+    {% include 'components/social-signin.html' %}
+</section>
 {% endblock main %}
