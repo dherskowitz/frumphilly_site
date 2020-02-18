@@ -35,8 +35,13 @@
     align-items: center;
 }
 
+@mixin flexCenterVertical {
+    display: flex;
+    align-items: center;
+}
+
 @mixin curveAllCorners {
-    border-radius: 6px;
+    border-radius: 4px;
 }
 
 @mixin backgroundGradient {
@@ -54,8 +59,8 @@
     text-shadow: 2px 2px 3px $black;
 }
 
-@mixin boxShadow {
-    box-shadow: 0 4px 6px 0 $silver;
+@mixin boxShadow($color) {
+    box-shadow: 0 4px 6px 0 $color;
 }
 
 @mixin lightBorder {
