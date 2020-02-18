@@ -28,9 +28,9 @@ main {
     box-sizing: border-box;
 }
 
-section {
-    padding: 0.5em;
-}
+// section {
+//     padding: 0.5em;
+// }
 
 h1,
 h2,
@@ -40,6 +40,7 @@ h5,
 h6 {
     font-family: Verdana, Helvetica, sans-serif;
     font-weight: 600;
+    margin: 0.5em 0;
 }
 
 code,
