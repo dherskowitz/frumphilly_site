@@ -1,0 +1,26 @@
+.signin,
+.signup {
+    padding: 0 0.5em;
+}
+
+.signin__social {
+    margin: 2em 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.signin__social-btn {
+    color: $white;
+    width: 10em;
+    text-align: center;
+    padding: 1em 0;
+    text-decoration: none;
+}
+
+.signin__social-btn--google {
+    background: $google;
+}
+
+.signin__social-btn--facebook {
+    background: $facebook;
+}
