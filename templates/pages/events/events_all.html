@@ -1,10 +1,14 @@
 {% extends 'base.html' %}
+{% load webpack_static from webpack_loader %}
 
 
 {% block main %}
-<section class="wrapper">
-    <h1 class="title section-title">Events</h1>
+<section class="page-banner" style="background-image: url({% webpack_static 'img/illustrations/events.svg' %});">
+    <h1 class="title">Events</h1>
 
+</section>
+
+<section>
     <div class="list">
         {% for event in events %}
         {% include 'components/events_list.html' %}
