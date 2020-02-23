@@ -18,7 +18,10 @@
         {% endif %}
 
         {% if event.link %}
-        <span>Link to site</span>
+        <a class="icon" href="{{event.link}}" target="_blank" rel="noreferrer">
+            <img src="{% webpack_static 'img/icons/external-link.svg' %}" aria-hidden="true">
+            <span class="icon__text">more info</span>
+        </a>
         {% endif %}
 
         <a class="icon" href="https://www.google.com/maps?q={{event.location}}" target="_blank" rel="noreferrer">
@@ -37,7 +40,7 @@
         <span class="icon">
             <img src="{% webpack_static 'img/icons/dollar-sign.svg' %}" aria-hidden="true">
             {% if event.cost %}
-            <span class="icon__text">{{event.cost}}</span>
+            <span class="icon__text">${{event.cost}}</span>
             {% else %}
             <span class="icon__text">free</span>
             {% endif %}
