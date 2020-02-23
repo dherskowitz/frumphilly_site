@@ -18,15 +18,24 @@
     @include textGradient;
 }
 
-.inline-icon {
-    width: 1em;
-    margin-left: 0.25em;
-}
-
 .uppercase {
     text-transform: uppercase;
 }
 
 .wrapper {
     padding: 0 0.5em;
+}
+
+.icon {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.icon__text {
+    font-size: 0.8em;
+    font-weight: 700;
+    text-transform: capitalize;
+    margin-top: 0.5rem;
 }
