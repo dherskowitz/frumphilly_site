@@ -1,12 +1,16 @@
 {% extends 'base.html' %}
+{% load webpack_static from webpack_loader %}
 {% load socialaccount %}
 
 {% block meta_title %}{{meta_title}}{% endblock meta_title %}
 {% block meta_description %}{{meta_description}}{% endblock meta_description %}
 
 {% block main %}
+<section class="page-banner"
+    style="background-image: url({% webpack_static 'img/illustrations/authentication.svg' %});height:45vw;">
+    <h2 class="">Sign In</h2>
+</section>
 <section class="signin">
-    <h2 class="section-title">Sign In</h2>
     <form method="post">
         {% csrf_token %}
 

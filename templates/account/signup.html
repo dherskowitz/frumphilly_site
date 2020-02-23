@@ -1,11 +1,14 @@
 {% extends 'base.html' %}
+{% load webpack_static from webpack_loader %}
 
 {% block meta_title %}{{meta_title}}{% endblock meta_title %}
 {% block meta_description %}{{meta_description}}{% endblock meta_description %}
 
 {% block main %}
+<section class="page-banner" style="background-image: url({% webpack_static 'img/illustrations/signup.svg' %});">
+    <h2 class="">Create Account</h2>
+</section>
 <section class="signup">
-    <h2 class="section-title">Create Account</h2>
     <form method="post">
         {% csrf_token %}
         {% for field in form %}
