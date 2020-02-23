@@ -1,7 +1,6 @@
 #home-banner {
-    height: 100vw;
-    max-height: 30em;
-    @include fullBG;
+    @include pageBanner(100vw);
+    @include fullBG(cover);
     @include flexCenterAll;
 }
 
