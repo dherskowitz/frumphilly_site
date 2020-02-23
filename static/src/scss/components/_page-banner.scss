@@ -1,0 +1,5 @@
+.page-banner {
+    @include pageBanner(70vw);
+    @include fullBG(contain);
+    @include flexCenterAll;
+}
