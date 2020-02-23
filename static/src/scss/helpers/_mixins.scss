@@ -23,10 +23,15 @@
 }
 
 
-@mixin fullBG {
-    background-size: cover;
+@mixin fullBG($backgroundSize) {
+    background-size: $backgroundSize;
     background-repeat: no-repeat;
     background-position: center;
+}
+
+@mixin pageBanner($height) {
+    height: $height;
+    max-height: 30em;
 }
 
 @mixin flexCenterAll {
