@@ -1,0 +1,46 @@
+{% load webpack_static from webpack_loader %}
+<div class="list__item">
+    <h3 class="list__title">{{event.name}}</h3>
+
+    <div class="list__infobar">
+        <span class="icon">
+            <img src="{% webpack_static 'img/icons/calendar.svg' %}" aria-hidden="true">
+            <span class="icon__text">{{event.start_date}}</span>
+        </span>
+
+        {% if event.start_time %}
+        <span class="icon">
+            <img src="{% webpack_static 'img/icons/clock.svg' %}" aria-hidden="true">
+            <span class="icon__text">{{event.start_time}}</span>
+        </span>
+        {% endif %}
+
+        <a class="icon" href="https://www.google.com/maps?q={{event.location}}" target="_blank" rel="noreferrer">
+            <img src="{% webpack_static 'img/icons/map-pin.svg' %}" aria-hidden="true">
+            <span class="icon__text">See Map</span>
+        </a>
+
+        <span class="icon">
+            {% if event.rsvp %}
+            <img src="{% webpack_static 'img/icons/check-circle.svg' %}" aria-hidden="true">
+            {% else %}
+            <img src="{% webpack_static 'img/icons/x-circle.svg' %}" aria-hidden="true">
+            {% endif %}
+            <span class="icon__text">RSVP</span>
+        </span>
+
+        <span class="icon">
+            <img src="{% webpack_static 'img/icons/dollar-sign.svg' %}" aria-hidden="true">
+            {% if event.cost %}
+            <span class="icon__text">${{event.cost}}</span>
+            {% else %}
+            <span class="icon__text">free</span>
+            {% endif %}
+        </span>
+    </div>
+
+    <a class="list__button" href="{{ event.get_absolute_url }}-{{event.id}}" class="list__link">
+        View Event Details
+    </a>
+
+</div>

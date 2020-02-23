@@ -33,7 +33,7 @@
         {% endif %}
 
         {% for event in upcoming_events %}
-        {% include 'components/events_list.html' %}
+        {% include 'pages/events/_events_list.html' %}
         {% empty %}
         <p>no upcoming events!</p>
         {% endfor %}
