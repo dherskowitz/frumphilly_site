@@ -1,0 +1,13 @@
+.account-menu {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.account-menu__item {
+    display: block;
+    padding: 1em 0;
+    margin: 1em 0;
+    @include lightBorder;
+    text-align: center;
+    text-transform: capitalize;
+}
