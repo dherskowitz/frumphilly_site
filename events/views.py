@@ -38,6 +38,8 @@ def events_create(request):
         "attachment",
         "video",
         "start_time",
+        "cost",
+        "link",
     )
     context = {"form": form, "helptext_fields": helptext_fields}
 
@@ -49,7 +51,7 @@ def events_create(request):
             event = form.save(commit=False)
             event.created_by = request.user
             event.save()
-        return redirect(events_single, slug=event.slug, pk=event.id)
+            return redirect(events_single, slug=event.slug, pk=event.id)
 
     return render(request, "pages/events/events_create.html", context)
 
