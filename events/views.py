@@ -6,6 +6,18 @@ from .models import Event
 from .forms import EventForm
 
 
+helptext_fields = (
+    "start_date",
+    "end_date",
+    "rsvp",
+    "image",
+    "attachment",
+    "video",
+    "start_time",
+    "cost",
+    "link",
+)
+
 # Create your views here.
 def events_all(request):
     events_list = Event.objects.order_by("-start_date")
@@ -30,17 +42,6 @@ def events_single(request, slug, pk):
 @login_required
 def events_create(request):
     form = EventForm()
-    helptext_fields = (
-        "start_date",
-        "end_date",
-        "rsvp",
-        "image",
-        "attachment",
-        "video",
-        "start_time",
-        "cost",
-        "link",
-    )
     context = {"form": form, "helptext_fields": helptext_fields}
 
     if request.method == "POST":
@@ -63,7 +64,12 @@ def events_edit(request, slug, pk):
         return HttpResponseForbidden()
     form = EventForm(instance=event)
     datetime_fields = ("start_date", "end_date")
-    context = {"form": form, "event": event, "datetime_fields": datetime_fields}
+    context = {
+        "form": form,
+        "event": event,
+        "datetime_fields": datetime_fields,
+        "helptext_fields": helptext_fields,
+    }
 
     if request.method == "POST":
         form = EventForm(request.POST, request.FILES, instance=event)
