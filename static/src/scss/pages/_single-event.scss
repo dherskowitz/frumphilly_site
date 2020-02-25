@@ -20,3 +20,21 @@
 .single-event__infobar span a {
     display: flex;
 }
+
+.single-event__content {
+    padding: 0.5em;
+}
+
+.single-event__description {
+    margin: 0.5em 0;
+}
+
+.single-event__embed {
+    width: 100%;
+    min-height: 13em;
+}
+
+// .single-event__moreinfo {
+//     @extend .single-event__infobar;
+//     margin: 1em 0;
+// }
