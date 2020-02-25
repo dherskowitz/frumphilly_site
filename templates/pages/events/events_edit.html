@@ -2,9 +2,9 @@
 {% load webpack_static from webpack_loader %}
 
 {% block main %}
-{% include 'components/errors.html' %}
 <section class="wrapper">
     <h2 class="title section-title">Edit event</h2>
+    {% include 'components/errors.html' %}
     <form action="{% url 'events_edit' event.slug event.id %}" method="POST" enctype='multipart/form-data'>
         {% csrf_token %}
         {% include 'pages/events/_events-form.html' %}
