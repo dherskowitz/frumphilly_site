@@ -53,6 +53,10 @@
     border-radius: 0 0 4px 4px;
 }
 
+@mixin curveTopCorners {
+    border-radius: 4px 4px 0 0;
+}
+
 @mixin backgroundGradient {
     background: linear-gradient(190deg, rgb(94, 231, 223), rgb(180, 144, 202));
 }
