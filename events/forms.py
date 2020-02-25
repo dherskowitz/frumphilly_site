@@ -1,9 +1,7 @@
 import requests
 from decouple import config
 from django import forms
-
-# from django.template.defaultfilters import filesizeformat
-# from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import ugettext_lazy as _
 from .models import Event
 
 
@@ -44,7 +42,7 @@ class EventForm(forms.ModelForm):
     class Meta:
         model = Event
         fields = "__all__"
-        exclude = ("created_by", "slug", "city")
+        exclude = ("created_by", "slug")
 
     def __init__(self, *args, **kwargs):
         super(EventForm, self).__init__(*args, **kwargs)
@@ -58,6 +56,14 @@ class EventForm(forms.ModelForm):
         ] = "[0-9]{3}-[0-9]{3}-[0-9]{4}"
         self.fields["image"].widget.attrs["accept"] = "image/png,image/jpg,image/jpeg"
         self.fields["attachment"].widget.attrs["accept"] = "application/pdf"
+
+        # Hidden fields
+        self.fields["suburb"].label = ""
+        self.fields["suburb"].widget = forms.HiddenInput()
+        self.fields["city"].label = ""
+        self.fields["city"].widget = forms.HiddenInput()
+        self.fields["state"].label = ""
+        self.fields["state"].widget = forms.HiddenInput()
 
         # Set placeholder for each field
         for field in self.fields:
@@ -84,7 +90,7 @@ class EventForm(forms.ModelForm):
             if content_type in FILE_CONTENT_TYPES:
                 if attachment.size > MAX_UPLOAD_SIZE:
                     raise forms.ValidationError(
-                        "Attachment file must be less than 5MB."
+                        _("Attachment file must be less than 5MB.")
                     )
             else:
                 raise forms.ValidationError("Attachment only accepts PDF files.")
@@ -96,7 +102,7 @@ class EventForm(forms.ModelForm):
             content_type = image.content_type.split("/")[0]
             if content_type not in IMAGE_CONTENT_TYPES:
                 raise forms.ValidationError(
-                    "Image must be (jpg, jpeg, png, gif) format."
+                    _("Image must be (jpg, jpeg, png, gif) format.")
                 )
         return image
 
@@ -106,6 +112,8 @@ class EventForm(forms.ModelForm):
         api_key = config("GEOCODING_KEY")
         req = requests.get(f"{base_url}?q={location}&api_key={api_key}")
         data = req.json()
-        if data["error"]:
-            raise forms.ValidationError("Please enter a valid location.")
+        if "error" in data:
+            raise forms.ValidationError(
+                _("Please enter a valid US address in location.")
+            )
         return location
