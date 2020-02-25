@@ -1,8 +1,9 @@
-import requests
+# import requests
 from io import BytesIO
 from PIL import Image
 from uuid import uuid4
-from decouple import config
+
+# from decouple import config
 from django.core.files import File
 from django.db import models
 from django.conf import settings
@@ -24,19 +25,32 @@ def compress(image):
     return new_image
 
 
-def geocode(location):
-    """ Get geocode infomation based on form value """
-    base_url = "https://api.geocod.io/v1.4/geocode"
-    api_key = config("GEOCODING_KEY")
-    req = requests.get(f"{base_url}?q={location}&api_key={api_key}")
-    data = req.json()
-    data_dict = {
-        "formatted_address": data["results"][0]["formatted_address"],
-        "city": data["results"][0]["address_components"]["city"],
-        "state": data["results"][0]["address_components"]["state"],
-        "zip": data["results"][0]["address_components"]["zip"],
-    }
-    return data_dict
+# def geocode(location):
+#     """ Get geocode infomation based on form value """
+#     base_url = "https://api.geocod.io/v1.4/geocode"
+#     api_key = config("GEOCODING_KEY")
+#     req = requests.get(f"{base_url}?q={location}&api_key={api_key}")
+#     data = req.json()
+#     address_components = data["results"][0]["address_components"]
+#     number = formatted_street = city = state = my_zip = ""
+#     if "number" in address_components:
+#         number = address_components["number"]
+#     if "formatted_street" in address_components:
+#         formatted_street = address_components["formatted_street"]
+#     if "city" in address_components:
+#         city = address_components["city"]
+#     if "state" in address_components:
+#         state = address_components["state"]
+#     if "zip" in address_components:
+#         my_zip = address_components["zip"]
+#     full_address = f"{number} {formatted_street} {city} {state} {my_zip}".strip()
+#     data_dict = {
+#         "formatted_address": full_address,
+#         "city": address_components["city"],
+#         "state": address_components["state"],
+#         "zip": address_components["zip"],
+#     }
+#     return data_dict
 
 
 # Create your models here.
@@ -84,7 +98,13 @@ class Event(models.Model):
         default=None,
         help_text="Address where this event take place...",
     )
+    suburb = models.CharField(
+        max_length=500, default=None, null=True, blank=True, help_text="",
+    )
     city = models.CharField(
+        max_length=500, default=None, null=True, blank=True, help_text="",
+    )
+    state = models.CharField(
         max_length=500, default=None, null=True, blank=True, help_text="",
     )
     description = models.TextField(
@@ -175,9 +195,9 @@ class Event(models.Model):
         my_uuid = uuid4()
         my_id = str(my_uuid).rsplit("-")[-1:]
         self.slug = slugify(f"{self.name} {my_id}")
-        geodata = geocode(self.location)
-        self.location = geodata["formatted_address"]
-        self.city = geodata["city"]
+        # geodata = geocode(self.location)
+        # self.location = geodata["formatted_address"]
+        # self.city = geodata["city"]
         super().save(*args, **kwargs)
 
     def get_absolute_url(self):
