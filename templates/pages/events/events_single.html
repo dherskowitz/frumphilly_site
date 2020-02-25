@@ -21,7 +21,7 @@
         {% if event.link %}
         <a class="icon" href="{{event.link}}" target="_blank" rel="noreferrer">
             <img src="{% webpack_static 'img/icons/external-link.svg' %}" aria-hidden="true">
-            <span class="icon__text">more info</span>
+            <span class="icon__text">Event Website</span>
         </a>
         {% endif %}
 
@@ -47,20 +47,47 @@
             {% endif %}
         </span>
 
+        {% if event.email_contact %}
+        <a class="icon" href="mailto:{{event.email_contact}}">
+            <img src="{% webpack_static 'img/icons/mail.svg' %}" aria-hidden="true">
+            <span class="icon__text">Email</span>
+        </a>
+        {% endif %}
+
+        {% if event.phone_contact %}
+        <a class="icon" href="tel:+{{event.phone_contact}}">
+            <img src="{% webpack_static 'img/icons/phone-call.svg' %}" aria-hidden="true">
+            <span class="icon__text">{{event.phone_contact}}</span>
+        </a>
+        {% endif %}
+
+        {% if event.attachment %}
+        <a class="icon" href="{{event.attachment.url}}" target="_blank" rel="noreferrer">
+            <img src="{% webpack_static 'img/icons/file-text.svg' %}" aria-hidden="true">
+            <span class="icon__text">More Info</span>
+        </a>
+        {% endif %}
+
     </div>
 
-    {% if event.email_contact %}
-    {{event.email_contact}}
-    {% endif %}
+    <div class="single-event__content">
+        {% if event.image %}
+        <div class="single-event__image">
+            <img src="{{event.image.url}}" alt="{{event.name}}">
+        </div>
+        {% endif %}
 
-    {% if event.attachment %}
-    {{event.attachment.url}}
-    {% endif %}
+        {% if event.description %}
+        <div class="single-event__description">
+            {{event.description}}
+        </div>
+        {% endif %}
 
-    <br>
+        {% if event.video %}
+        <iframe src="https://youtube.com/embed/{{event.video}}" class="single-event__embed" frameborder="0"
+            allowfullscreen></iframe>
+        {% endif %}
+    </div>
 
-    {% if event.image %}
-    <img src="{{event.image.url}}" alt="{{event.name}}">
-    {% endif %}
 </div>
 {% endblock main %}
