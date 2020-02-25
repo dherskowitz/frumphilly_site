@@ -1,9 +1,7 @@
-# import requests
+import re
 from io import BytesIO
 from PIL import Image
 from uuid import uuid4
-
-# from decouple import config
 from django.core.files import File
 from django.db import models
 from django.conf import settings
@@ -13,6 +11,7 @@ from django.utils.text import slugify
 
 
 def compress(image):
+    """"Compress submitted images"""
     size = 600, 600
     im = Image.open(image)
     # create a BytesIO object
@@ -25,32 +24,19 @@ def compress(image):
     return new_image
 
 
-# def geocode(location):
-#     """ Get geocode infomation based on form value """
-#     base_url = "https://api.geocod.io/v1.4/geocode"
-#     api_key = config("GEOCODING_KEY")
-#     req = requests.get(f"{base_url}?q={location}&api_key={api_key}")
-#     data = req.json()
-#     address_components = data["results"][0]["address_components"]
-#     number = formatted_street = city = state = my_zip = ""
-#     if "number" in address_components:
-#         number = address_components["number"]
-#     if "formatted_street" in address_components:
-#         formatted_street = address_components["formatted_street"]
-#     if "city" in address_components:
-#         city = address_components["city"]
-#     if "state" in address_components:
-#         state = address_components["state"]
-#     if "zip" in address_components:
-#         my_zip = address_components["zip"]
-#     full_address = f"{number} {formatted_street} {city} {state} {my_zip}".strip()
-#     data_dict = {
-#         "formatted_address": full_address,
-#         "city": address_components["city"],
-#         "state": address_components["state"],
-#         "zip": address_components["zip"],
-#     }
-#     return data_dict
+def get_video(video_link):
+    """Parse submitted data for youtube video id """
+    video_id = ""
+    if re.search("youtube.com/watch", video_link):
+        video_id = video_link.split("v=")[1]
+        if re.search("&", video_link):
+            temp = video_link.split("&")[0]
+            video_id = temp.split("v=")[-1]
+    elif re.search("youtu.be", video_link) or re.search(
+        "youtube.com/embed", video_link
+    ):
+        video_id = video_link.split("/")[-1]
+    return video_id
 
 
 # Create your models here.
@@ -128,10 +114,10 @@ class Event(models.Model):
         null=True,
         blank=True,
     )
-    video = models.URLField(
+    video = models.CharField(
         max_length=300,
         default=None,
-        help_text="Add a link to a video. Must be a URL not an embed.",
+        help_text="Add a link to a youtube video. Must be a URL not an embed.",
         null=True,
         blank=True,
     )
@@ -195,9 +181,7 @@ class Event(models.Model):
         my_uuid = uuid4()
         my_id = str(my_uuid).rsplit("-")[-1:]
         self.slug = slugify(f"{self.name} {my_id}")
-        # geodata = geocode(self.location)
-        # self.location = geodata["formatted_address"]
-        # self.city = geodata["city"]
+        self.video = get_video(self.video)
         super().save(*args, **kwargs)
 
     def get_absolute_url(self):
