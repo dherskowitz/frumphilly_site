@@ -1,5 +1,4 @@
 import requests
-import json
 from io import BytesIO
 from PIL import Image
 from uuid import uuid4
@@ -10,7 +9,6 @@ from django.conf import settings
 from app.storage_backends import S3EventsMediaStorage, S3EventsFileStorage
 from datetime import date, datetime, timedelta
 from django.utils.text import slugify
-from django.urls import reverse
 
 
 def compress(image):
@@ -184,7 +182,6 @@ class Event(models.Model):
 
     def get_absolute_url(self):
         return f"/events/{self.slug}"
-        # return reverse('events_single', args=[str(self.slug)])
 
     @property
     def event_in_past(self):
