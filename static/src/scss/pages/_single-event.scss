@@ -5,31 +5,18 @@
 }
 
 .single-event__infobar {
-    background: $silver;
+    margin: 0.5em;
+    @include boxShadow($silver);
     padding: 1em 0.5em;
-    display: flex;
-    justify-content: space-around;
-    align-items: cente
+    @include curveAllCorners;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    grid-row-gap: 2em;
+    justify-content: center;
+    align-items: center;
 }
 
 .single-event__infobar span,
 .single-event__infobar span a {
     display: flex;
-}
-
-.single-event__meta {
-    text-align: center;
-    display: block;
-
-    @include tablet {
-        display: none;
-    }
-}
-
-.single-event__meta--desktop {
-    display: none !important;
-
-    @include tablet {
-        display: inherit !important;
-    }
 }
