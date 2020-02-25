@@ -107,5 +107,5 @@ class EventForm(forms.ModelForm):
         req = requests.get(f"{base_url}?q={location}&api_key={api_key}")
         data = req.json()
         if data["error"]:
-            raise forms.ValidationError("Please enter a valid address.")
+            raise forms.ValidationError("Please enter a valid location.")
         return location
