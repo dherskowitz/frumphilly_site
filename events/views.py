@@ -73,7 +73,7 @@ def events_edit(request, slug, pk):
             event_edit = form.save(commit=False)
             event_edit.created_by = request.user
             event_edit.save()
-        return redirect(events_single, slug=event.slug, pk=event.id)
+            return redirect(events_single, slug=event.slug, pk=event.id)
 
     return render(request, "pages/events/events_edit.html", context)
 
