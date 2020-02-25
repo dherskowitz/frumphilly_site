@@ -1,3 +1,5 @@
+import requests
+from decouple import config
 from django import forms
 
 # from django.template.defaultfilters import filesizeformat
@@ -5,7 +7,8 @@ from django import forms
 from .models import Event
 
 
-CONTENT_TYPES = ["pdf"]
+FILE_CONTENT_TYPES = ["pdf"]
+IMAGE_CONTENT_TYPES = ["image"]
 # 2.5MB - 2621440
 # 5MB - 5242880
 # 10MB - 10485760
@@ -76,10 +79,33 @@ class EventForm(forms.ModelForm):
 
     def clean_attachment(self):
         attachment = self.cleaned_data["attachment"]
-        content_type = attachment.content_type.split("/")[1]
-        if content_type in CONTENT_TYPES:
-            if attachment.size > MAX_UPLOAD_SIZE:
-                raise forms.ValidationError("Attachment file must be less than 5MB.")
-        else:
-            raise forms.ValidationError("Attachment only accepts PDF files.")
+        if hasattr(attachment, "content_type"):
+            content_type = attachment.content_type.split("/")[1]
+            if content_type in FILE_CONTENT_TYPES:
+                if attachment.size > MAX_UPLOAD_SIZE:
+                    raise forms.ValidationError(
+                        "Attachment file must be less than 5MB."
+                    )
+            else:
+                raise forms.ValidationError("Attachment only accepts PDF files.")
         return attachment
+
+    def clean_image(self):
+        image = self.cleaned_data["image"]
+        if hasattr(image, "content_type"):
+            content_type = image.content_type.split("/")[0]
+            if content_type not in IMAGE_CONTENT_TYPES:
+                raise forms.ValidationError(
+                    "Image must be (jpg, jpeg, png, gif) format."
+                )
+        return image
+
+    def clean_location(self):
+        location = self.cleaned_data["location"]
+        base_url = "https://api.geocod.io/v1.4/geocode"
+        api_key = config("GEOCODING_KEY")
+        req = requests.get(f"{base_url}?q={location}&api_key={api_key}")
+        data = req.json()
+        if data["error"]:
+            raise forms.ValidationError("Please enter a valid address.")
+        return location
