@@ -63,3 +63,16 @@ input[type=file] {
     font-size: 0.9rem;
     padding-left: 0.2rem;
 }
+
+.alert {
+    padding: 1em 0.5em;
+    // border: 1px solid;
+    margin: 1em 0;
+    @include curveAllCorners;
+    @include boxShadow($purple);
+}
+
+.alert--danger {
+    background: $error;
+    color: #fff;
+}
