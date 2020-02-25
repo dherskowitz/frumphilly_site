@@ -79,7 +79,7 @@ class Event(models.Model):
         max_length=200,
         null=True,
         blank=True,
-        help_text="link to your website or event page here...",
+        help_text="A link to your website or event webpage.",
     )
     location = models.CharField(
         max_length=500,
@@ -153,7 +153,7 @@ class Event(models.Model):
         decimal_places=2,
         null=True,
         blank=True,
-        help_text="If anything, how much will it cost to attend your event?",
+        help_text="numbers only, currency symbol will not work.",
     )
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
