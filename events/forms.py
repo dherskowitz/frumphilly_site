@@ -1,4 +1,5 @@
 import requests
+import bleach
 from decouple import config
 from django import forms
 from django.utils.translation import ugettext_lazy as _
@@ -64,6 +65,7 @@ class EventForm(forms.ModelForm):
         self.fields["city"].widget = forms.HiddenInput()
         self.fields["state"].label = ""
         self.fields["state"].widget = forms.HiddenInput()
+        self.fields["description"].widget = forms.HiddenInput()
 
         # Set placeholder for each field
         for field in self.fields:
@@ -117,3 +119,29 @@ class EventForm(forms.ModelForm):
                 _("Please enter a valid US address in location.")
             )
         return location
+
+    def clean_description(self):
+        tags = [
+            "h1",
+            "div",
+            "a",
+            "abbr",
+            "acronym",
+            "b",
+            "blockquote",
+            "code",
+            "em",
+            "i",
+            "li",
+            "ol",
+            "strong",
+            "ul",
+            "br",
+            "del",
+        ]
+        description = self.cleaned_data["description"]
+        clean_description = bleach.clean(description, tags=tags, attributes=["href"])
+        print("============")
+        print(description)
+        print(clean_description)
+        return clean_description
