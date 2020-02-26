@@ -1,6 +1,7 @@
 # Docker Compose Commands
 alias dc="docker-compose $1"
 alias up="docker-compose up -d"
+alias dn="docker-compose down"
 alias rs="docker-compose restart"
 alias build="docker-compose up -d --build"
 alias log="docker-compose logs > logs.txt"
