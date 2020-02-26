@@ -180,8 +180,10 @@ class Event(models.Model):
         # Generate UUID4 and take the last segment for unique slug
         my_uuid = uuid4()
         my_id = str(my_uuid).rsplit("-")[-1:]
-        self.slug = slugify(f"{self.name} {my_id}")
-        self.video = get_video(self.video)
+        if not self.slug:
+            self.slug = slugify(f"{self.name} {my_id}")
+        if self.video is not None:
+            self.video = get_video(self.video)
         super().save(*args, **kwargs)
 
     def get_absolute_url(self):
