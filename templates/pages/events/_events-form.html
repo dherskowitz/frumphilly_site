@@ -26,6 +26,15 @@
     </div>
     {% endif %}
 </div>
+
+{% elif field.name == 'description' %}
+
+<div class="form-field form-field--description">
+    <label class="form-field__label" for="{{field.name}}">{{ field.label }}</label>
+    {{form.description}}
+    <trix-editor input="{{form.description.auto_id}}"></trix-editor>
+</div>
+
 {% else %}
 
 <div class="form-field {% if field.name == 'rsvp' %}form-field--alt{% endif %}">
@@ -40,4 +49,4 @@
 {% endif %}
 
 {% endfor %}
-<input type="submit" value="Submit">
+<input id="event-submit" type="submit" value="Submit">
