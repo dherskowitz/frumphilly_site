@@ -76,3 +76,12 @@ input[type=file] {
     background: $error;
     color: #fff;
 }
+
+.form-field--description {
+    width: 100%;
+    margin-bottom: 0.5rem;
+    background: rgba(211, 67, 62, 0.1);
+    border-radius: 4px;
+    padding: 3.25em 0.5em 1.2em;
+    border: 1px solid $silver;
+}
