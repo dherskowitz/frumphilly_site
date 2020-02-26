@@ -14,10 +14,10 @@ config.plugins = [
         chunkFilename: '[id].[hash].css',
         ignoreOrder: false
     }),
-    new CopyPlugin([{
-        from: './static/src/js/libs/**/*',
-        to: './js/libs/[name].[ext]'
-    }, ]),
+    // new CopyPlugin([{
+    //     from: './static/src/libs/**/*',
+    //     to: './libs/[name].[ext]'
+    // }, ]),
 ]
 
 // override any other settings here like using Uglify or other things that make sense for production environments.

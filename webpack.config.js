@@ -100,10 +100,10 @@ module.exports = {
             chunkFilename: '[id].[hash].css',
             ignoreOrder: false
         }),
-        new CopyPlugin([{
-            from: './static/src/js/libs/**/*',
-            to: './js/libs/[name].[ext]'
-        }, ]),
+        // new CopyPlugin([{
+        //     from: './static/src/libs/**/*',
+        //     to: './libs/[name].[ext]'
+        // }, ]),
         new BrowserSyncPlugin({
             host: 'localhost',
             port: 3000,
