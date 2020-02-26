@@ -79,7 +79,7 @@
 
         {% if event.description %}
         <div class="single-event__description">
-            {{event.description}}
+            {{event.description|safe}}
         </div>
         {% endif %}
 
