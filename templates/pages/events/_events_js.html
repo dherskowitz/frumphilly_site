@@ -24,6 +24,10 @@
         document.querySelector('#id_state').value = `${e.suggestion.administrative}`
     });
 
+    document.querySelector(".form-field--description").addEventListener("click", function () {
+        document.querySelector("trix-editor").focus();
+    });
+
     addEventListener("trix-file-accept", function (event) {
         event.preventDefault();
     })
