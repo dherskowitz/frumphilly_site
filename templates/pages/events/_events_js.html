@@ -1,5 +1,6 @@
 {% load webpack_static from webpack_loader %}
-<script src="{% webpack_static 'dist/js/libs/places.js' %}"></script>
+<script src="{% webpack_static 'libs/places.js' %}"></script>
+<script src="{% webpack_static 'libs/trix.js' %}"></script>
 <script>
     var placesAutocomplete = places({
         appId: 'plM3ZWFPSCRI',
@@ -22,4 +23,8 @@
         document.querySelector('#id_city').value = `${e.suggestion.city}`
         document.querySelector('#id_state').value = `${e.suggestion.administrative}`
     });
+
+    addEventListener("trix-file-accept", function (event) {
+        event.preventDefault();
+    })
 </script>
