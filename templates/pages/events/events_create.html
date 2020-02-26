@@ -1,5 +1,15 @@
 {% extends 'base.html' %}
 {% load webpack_static from webpack_loader %}
+
+{% block template_css %}
+<link href="{% webpack_static 'libs/trix.css' %}" rel="stylesheet">
+<style>
+    .trix-button-group--file-tools {
+        display: none !important;
+    }
+</style>
+{% endblock template_css %}
+
 {% block main %}
 
 <section class="page-banner" style="background-image: url({% webpack_static 'img/illustrations/form.svg' %});">
