@@ -11,6 +11,8 @@
     <h2 class="">Sign In</h2>
 </section>
 <section class="signin">
+    {% include 'components/errors.html' %}
+
     <form method="post">
         {% csrf_token %}
 
