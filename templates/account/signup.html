@@ -9,6 +9,8 @@
     <h2 class="">Create Account</h2>
 </section>
 <section class="signup">
+    {% include 'components/errors.html' %}
+
     <form method="post">
         {% csrf_token %}
         {% for field in form %}
