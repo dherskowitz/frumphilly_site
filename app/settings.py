@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 import os
 from decouple import config, Csv
 import dj_database_url
+from django.contrib.messages import constants as message_constants
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -207,3 +208,13 @@ if config("ENV") != "local":
             "STATS_FILE": os.path.join(BASE_DIR, "webpack-stats-prod.json"),
         }
     )
+
+
+# Override Message Tags
+MESSAGE_TAGS = {
+    message_constants.DEBUG: "messages__debug",
+    message_constants.INFO: "messages__info",
+    message_constants.SUCCESS: "messages__success",
+    message_constants.WARNING: "messages__warning",
+    message_constants.ERROR: "messages__error",
+}
