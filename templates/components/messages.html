@@ -1,0 +1,11 @@
+{% load webpack_static from webpack_loader %}
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>
+        {{ message|safe }}
+        <img id="messages__icon" src="{% webpack_static 'img/icons/x-circle.svg' %}" aria-hidden="true">
+        </li>
+        {% endfor %}
+</ul>
+{% endif %}
