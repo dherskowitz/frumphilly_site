@@ -25,18 +25,30 @@ def compress(image):
 
 
 def get_video(video_link):
-    """Parse submitted data for youtube video id """
-    video_id = ""
-    if re.search("youtube.com/watch", video_link):
-        video_id = video_link.split("v=")[1]
-        if re.search("&", video_link):
-            temp = video_link.split("&")[0]
-            video_id = temp.split("v=")[-1]
-    elif re.search("youtu.be", video_link) or re.search(
-        "youtube.com/embed", video_link
-    ):
+    """Parse submitted data for video id or iFrame src and normalize url"""
+    video = video_id = ""
+    if re.search("iframe", video_link):
+        """If video is iFrame grab src and set as video"""
+        source = re.findall('src\s*=\s*"(.+?)"', video_link)
+        if len(source) > 0:
+            video = source[0]
+    elif re.search("youtube", video_link) or re.search("youtu.be", video_link):
+        """If video is youtube link get video id and build url for video"""
+        if re.search("youtube.com/watch", video_link):
+            video_id = video_link.split("v=")[1]
+            if re.search("&", video_link):
+                temp = video_link.split("&")[0]
+                video_id = temp.split("v=")[-1]
+        elif re.search("youtu.be", video_link) or re.search(
+            "youtube.com/embed", video_link
+        ):
+            video_id = video_link.split("/")[-1]
+        video = f"https://youtube.com/embed/{video_id}"
+    elif re.search("vimeo", video_link):
+        """If video is vimeo link get video id and build url for video"""
         video_id = video_link.split("/")[-1]
-    return video_id
+        video = f"https://player.vimeo.com/video/{video_id}"
+    return video
 
 
 # Create your models here.
@@ -117,7 +129,7 @@ class Event(models.Model):
     video = models.CharField(
         max_length=300,
         default=None,
-        help_text="Add a link to a youtube video. Must be a URL not an embed.",
+        help_text="Add a link to a youtube/vimeo video.",
         null=True,
         blank=True,
     )
