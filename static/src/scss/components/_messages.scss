@@ -1,0 +1,30 @@
+.messages {
+    position: absolute;
+    @include curveAllCorners;
+    @include boxShadow($purple);
+    width: 25em;
+    max-width: 95vw;
+    left: 0;
+    right: 0;
+    margin: 1em auto;
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.messages__success {
+    position: relative;
+    background: $white;
+    padding: 1em;
+}
+
+#messages__icon {
+    position: absolute;
+    top: -0.5em;
+    right: -0.5em;
+    cursor: pointer;
+}
+
+.messages--hiding {
+    transform: translateX(120vw);
+    transition: transform 0.5s ease 0.25s;
+}
