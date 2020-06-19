@@ -3,13 +3,15 @@ version: "3"
 services:
   db:
     image: postgres
+    container_name: frum_philly_db
     volumes:
       - local_postgres_data:/var/lib/postgresql/data
       - local_postgres_data_backups:/backups
     ports:
-      - 5432:5432
+      - 8056:5432
   web:
     build: .
+    container_name: frum_philly_web
     command: python manage.py runserver 0.0.0.0:8000
     volumes:
       - .:/code
@@ -19,9 +21,10 @@ services:
       - db
       - mailhog
   mailhog:
+    container_name: frum_philly_mailhog
     image: mailhog/mailhog:v1.0.0
     ports:
-      - "8025:8025"
+      - "8055:8025"
 volumes:
   local_postgres_data: {}
   local_postgres_data_backups: {}
