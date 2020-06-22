@@ -7,10 +7,33 @@
 
 .title {
     text-transform: uppercase;
+    color: $white;
+    @include whiteTextBlackShadow;
+    text-align: center;
 }
 
 .subtitle {
     margin-bottom: 1em;
+}
+
+.title-bar {
+    position: relative;
+    font-size: 1rem;
+    text-align: center;
+
+    &>.title-bar__text {
+        background: $white;
+    }
+
+    &::after {
+        content: '';
+        border-bottom: 1px solid $black;
+        position: absolute;
+        width: 100%;
+        left: 0;
+        top: 0.55rem;
+        z-index: -1;
+    }
 }
 
 .section-title {
@@ -38,4 +61,10 @@
     font-weight: 700;
     text-transform: capitalize;
     margin-top: 0.5rem;
+}
+
+.flex_center_spaced {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
