@@ -5,6 +5,8 @@
     padding-left: 0;
     position: fixed;
     margin: 0;
+    z-index: 9999;
+    text-align: center;
 }
 
 .messages__success {
