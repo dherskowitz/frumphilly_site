@@ -18,12 +18,12 @@
 <div class="form-field">
     <label class="form-field__label" for="{{field.name}}">{{ field.label }}</label>
     <input type="file" name="{{ field.html_name }}" id="{{ field.id_for_label }}" accept="application/pdf">
-    {% if event.attachment.name is not Null %}
-    <div class="form-field__help-text">
-        <a href="#" onclick="window.open('{{ event.attachment.url }}', '_blank'
-            , 'location=yes,height=570,width=520,scrollbars=yes,status=yes' );">View
-            Current Attachment</a>
-    </div>
+    {% if event.attachment %}
+        <div class="form-field__help-text">
+            <a href="#" onclick="window.open('{{ event.attachment.url }}', '_blank'
+                , 'location=yes,height=570,width=520,scrollbars=yes,status=yes' );">View
+                Current Attachment</a>
+        </div>
     {% endif %}
 </div>
 
@@ -49,4 +49,4 @@
 {% endif %}
 
 {% endfor %}
-<input id="event-submit" type="submit" value="Submit">
+<input class="btn btn--block" id="event-submit" type="submit" value="Save Changes">
