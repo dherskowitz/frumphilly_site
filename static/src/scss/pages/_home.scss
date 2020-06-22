@@ -1,9 +1,53 @@
-#home-banner {
-    @include pageBanner(100vw);
-    @include fullBG(cover);
+.home-banner {
+    background: #e1f9ff;
+    position: relative;
+    overflow: hidden;
+    height: 40vh;
+    z-index: -1;
+    // @include pageBanner(120vh);
+    // @include fullBG(cover);
     @include flexCenterAll;
+
+    @media (min-width: $tablet) {
+        height: 60vh;
+        justify-content: flex-start;
+        padding: 0 12rem;
+        // max-width: 75vw;
+        // margin: 0 auto;
+    }
 }
 
-#home-banner__content {
+// .home-banner_container {
+//     @media (min-width: 768px) {
+//         max-width: 75vw;
+//         margin: 0 auto;
+//     }
+// }
+
+.home-banner__content {
     @include whiteTextBlackShadow;
+}
+
+.home-banner__image {
+    position: absolute;
+    top: 55%;
+    transform: translateY(-50%);
+    z-index: -1;
+
+    @media (min-width: $tablet) {
+        width: 65rem;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        right: -5rem;
+    }
+}
+
+.home-intro {
+    font-size: 1.5rem;
+    padding: 2rem;
+}
+
+.homepage-events {
+    margin: 2rem;
 }
