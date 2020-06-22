@@ -3,7 +3,14 @@
     color: $white;
     text-decoration: none;
     text-shadow: none;
-    padding: 0.5em;
-    @include curveAllCorners;
-    @include boxShadow($black);
+    padding: 1rem;
+    border: none;
+}
+
+.btn--lg {
+    width: 10rem;
+}
+
+.btn--block {
+    width: 100%;
 }
