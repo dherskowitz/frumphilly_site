@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load webpack_static from webpack_loader %}
+
+{% load i18n %}
+
+{% block meta_title %}Verify Your E-mail Address{% endblock %}
+
+{% block main %}
+<section class="page-banner" style="background-image: url({% webpack_static 'img/illustrations/mobile_inbox.svg' %});">
+    <h1 class="title">Verify Your E-mail Address</h1>
+
+</section>
+    {% comment %} <h1>Verify Your E-mail Address</h1> {% endcomment %}
+
+    <p>{% blocktrans %}We have sent an e-mail to you for verification. Follow the link provided to finalize the signup process. Please contact us if you do not receive it within a few minutes.{% endblocktrans %}</p>
+
+{% endblock %}
