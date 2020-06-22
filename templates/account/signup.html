@@ -1,8 +1,8 @@
 {% extends 'base.html' %}
 {% load webpack_static from webpack_loader %}
 
-{% block meta_title %}{{meta_title}}{% endblock meta_title %}
-{% block meta_description %}{{meta_description}}{% endblock meta_description %}
+{% block meta_title %}Create Account | Frum Philly{% endblock meta_title %}
+{% block meta_description %}Create an account on Frum Philly{% endblock meta_description %}
 
 {% block main %}
 <section class="page-banner" style="background-image: url({% webpack_static 'img/illustrations/signup.svg' %});">
@@ -31,6 +31,7 @@
         </div>
         {% endfor %}
         <button class="btn btn--block" type="submit">Sign Up</button>
+        <p class="text-center"><a href="{% url 'account_login' %}">I already have an account!</a></p>
     </form>
 </section>
 {% endblock main %}
