@@ -13,7 +13,7 @@
         <a class="navbar__link" href="{% url 'user_account' %}">My Account</a>
         <form class="navbar__link" action="{% url 'account_logout' %}" method="POST">
             {% csrf_token %}
-            <input type="submit" value="Log Out">
+            <input class="btn btn--small" type="submit" value="Log Out">
         </form>
         {% else %}
         <a class="navbar__link" href="{% url 'account_login' %}">Sign In</a>
