@@ -1,6 +1,9 @@
 {% extends 'base.html' %}
 {% load webpack_static from webpack_loader %}
 
+{% block meta_title %}{{event.name}} | Frum Philly{% endblock meta_title %}
+{% block meta_description %}{{event.name}}{% endblock meta_description %}
+
 {% block main %}
 <div class="single-event">
     <h1 class="section-title single-event__title">{{event.name}}</h1>

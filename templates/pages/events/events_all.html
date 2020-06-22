@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
 {% load webpack_static from webpack_loader %}
 
+{% block meta_title %}Events | Frum Philly{% endblock meta_title %}
+{% block meta_description %}Upcoming & Past events on Frum Philly{% endblock meta_description %}
 
 {% block main %}
 <section class="page-banner" style="background-image: url({% webpack_static 'img/illustrations/schedule.svg' %});">
