@@ -1,18 +1,40 @@
 .container {
     @media (min-width: $laptop) {
         max-width: $laptop;
-        margin: 0 auto;
+        margin: 1rem auto;
     }
 }
 
 .title {
     text-transform: uppercase;
     color: $white;
+    font-size: 3rem;
     @include whiteTextBlackShadow;
+
+    @media (min-width: $tablet) {
+        font-size: 4rem;
+    }
+}
+
+.title--smaller {
+    text-transform: uppercase;
+    color: $white;
+    font-size: 2rem;
+    @include whiteTextBlackShadow;
+
+    @media (min-width: $tablet) {
+        font-size: 3rem;
+    }
 }
 
 .subtitle {
     margin-bottom: 1em;
+    font-size: 1.25rem;
+    @include whiteTextBlackShadow;
+
+    @media (min-width: $tablet) {
+        font-size: 1.75rem;
+    }
 }
 
 .title-bar {
@@ -37,7 +59,44 @@
 
 .section-title {
     font-size: 2rem;
+    padding: 2rem;
+    position: relative;
+
     // @include textGradient;
+
+    @media (min-width: $tablet) {
+        font-size: 6rem;
+        padding: 0rem;
+    }
+
+    @media (min-width: $laptop) {
+        font-size: 8rem;
+    }
+}
+
+.section-title::after {
+    content: attr(data-text);
+    font-size: 3rem;
+    position: absolute;
+    z-index: -1;
+    display: block;
+    top: 4px;
+    color: #f6f3f3;
+    text-shadow: none;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+
+    @media (min-width: $tablet) {
+        font-size: 7rem;
+        top: -50px;
+        line-height: 0.8;
+    }
+
+    @media (min-width: $laptop) {
+        font-size: 10rem;
+        top: -20px;
+    }
 }
 
 .uppercase {
@@ -46,6 +105,8 @@
 
 .wrapper {
     padding: 0 0.5em;
+    max-width: 750px;
+    margin: 2rem auto;
 }
 
 .icon {
