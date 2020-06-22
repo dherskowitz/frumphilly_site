@@ -30,9 +30,9 @@
 <section>
     <div class="wrapper">
         {% if events_in_future %}
-        <h2 class="title section-title text-center">upcoming events</h2>
+        <h2 class="title section-title text-center" data-text="upcoming events">upcoming events</h2>
         {% else %}
-        <h2 class="title section-title text-center">our events</h2>
+        <h2 class="title section-title text-center"  data-text="our events">our events</h2>
         {% endif %}
 
         {% for event in upcoming_events %}
