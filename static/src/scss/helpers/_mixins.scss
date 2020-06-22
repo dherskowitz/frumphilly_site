@@ -77,6 +77,11 @@
     box-shadow: 0 3px 15px $color;
 }
 
+@mixin bottomBoxShadow($color) {
+    box-shadow: 0 3px 6px -2px $color;
+}
+
+
 @mixin lightBorder {
     border: 1px solid $border-grey;
 }
