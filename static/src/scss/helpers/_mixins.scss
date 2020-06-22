@@ -40,6 +40,10 @@
     align-items: center;
 }
 
+@mixin flexColumn {
+    flex-direction: column;
+}
+
 @mixin flexCenterVertical {
     display: flex;
     align-items: center;
