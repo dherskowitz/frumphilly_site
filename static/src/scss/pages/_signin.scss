@@ -1,6 +1,7 @@
 .signin,
 .signup {
     padding: 0 0.5em;
+    margin-bottom: 2rem;
 }
 
 .signin__social {
@@ -11,7 +12,7 @@
 
 .signin__social-btn {
     color: $white;
-    width: 10em;
+    width: 12em;
     text-align: center;
     padding: 1em 0;
     text-decoration: none;
