@@ -8,27 +8,38 @@
 {% block main %}
 <section class="page-banner"
     style="background-image: url({% webpack_static 'img/illustrations/authentication.svg' %});height:45vw;">
-    <h2 class="">Sign In</h2>
+    <h2 class="title">Sign In</h2>
 </section>
+
+<section class="signup">
+<h2 class="title-bar"><span class="title-bar__text">Sign in with Google or Facebook</span></h2>
+{% include 'components/social-signin.html' %}
+</section>
+
 <section class="signin">
+    <h2 class="title-bar"><span class="title-bar__text">Sign in with Email</span></h2>
     {% include 'components/errors.html' %}
 
     <form method="post">
         {% csrf_token %}
 
         {% for field in form %}
-        <div class="form-field">
-            <label class="form-field__label" for="{{field.name}}">{{ field.label }}</label>
-            {{ field }}
+            {% if field.name != "remember" %}
+                <div class="form-field">
+                    <label class="form-field__label" for="{{field.name}}">{{ field.label }}</label>
+                    {{ field }}
 
-            {% if field.name in helptext_fields %}
-            <div class="form-field__help-text">{{ field.help_text }}</div>
+                    {% if field.name in helptext_fields %}
+                    <div class="form-field__help-text">{{ field.help_text }}</div>
+                    {% endif %}
+                </div>
             {% endif %}
-        </div>
         {% endfor %}
 
-        <button type="submit">Sign In</button>
+        <div class="flex_center_spaced">
+            <span class="form-field--remember"><label for="{{form.remember.id_for_label }}">{{form.remember.label}}</label>{{form.remember}}</span>
+            <button class="btn btn--lg" type="submit">Sign In</button>
+        </div>
     </form>
-    {% include 'components/social-signin.html' %}
 </section>
 {% endblock main %}
