@@ -6,90 +6,94 @@
 
 {% block main %}
 <div class="single-event">
-    <h1 class="section-title single-event__title">{{event.name}}</h1>
-
-    <div class="single-event__infobar">
-        <span class="icon">
-            <img src="{% webpack_static 'img/icons/calendar.svg' %}" aria-hidden="true">
-            <span class="icon__text">{{event.start_date}}</span>
-        </span>
-
-        {% if event.start_time %}
-        <span class="icon">
-            <img src="{% webpack_static 'img/icons/clock.svg' %}" aria-hidden="true">
-            <span class="icon__text">{{event.start_time}}</span>
-        </span>
-        {% endif %}
-
-        {% if event.link %}
-        <a class="icon" href="{{event.link}}" target="_blank" rel="noreferrer">
-            <img src="{% webpack_static 'img/icons/external-link.svg' %}" aria-hidden="true">
-            <span class="icon__text">Event Website</span>
-        </a>
-        {% endif %}
-
-        <a class="icon" href="https://www.google.com/maps?q={{event.location}}" target="_blank" rel="noreferrer">
-            <img src="{% webpack_static 'img/icons/map-pin.svg' %}" aria-hidden="true">
-            <span class="icon__text">See Map</span>
-        </a>
-        <span class="icon">
-            {% if event.rsvp %}
-            <img src="{% webpack_static 'img/icons/check-circle.svg' %}" aria-hidden="true">
-            {% else %}
-            <img src="{% webpack_static 'img/icons/x-circle.svg' %}" aria-hidden="true">
-            {% endif %}
-            <span class="icon__text">RSVP</span>
-        </span>
-
-        <span class="icon">
-            <img src="{% webpack_static 'img/icons/dollar-sign.svg' %}" aria-hidden="true">
-            {% if event.cost %}
-            <span class="icon__text">${{event.cost}}</span>
-            {% else %}
-            <span class="icon__text">free</span>
-            {% endif %}
-        </span>
-
-        {% if event.email_contact %}
-        <a class="icon" href="mailto:{{event.email_contact}}">
-            <img src="{% webpack_static 'img/icons/mail.svg' %}" aria-hidden="true">
-            <span class="icon__text">Email</span>
-        </a>
-        {% endif %}
-
-        {% if event.phone_contact %}
-        <a class="icon" href="tel:+{{event.phone_contact}}">
-            <img src="{% webpack_static 'img/icons/phone-call.svg' %}" aria-hidden="true">
-            <span class="icon__text">{{event.phone_contact}}</span>
-        </a>
-        {% endif %}
-
-        {% if event.attachment %}
-        <a class="icon" href="{{event.attachment.url}}" target="_blank" rel="noreferrer">
-            <img src="{% webpack_static 'img/icons/file-text.svg' %}" aria-hidden="true">
-            <span class="icon__text">More Info</span>
-        </a>
-        {% endif %}
-
+    <div class="single-event__banner">
+        <h1 class="section-title single-event__title">{{event.name}}</h1>
     </div>
 
-    <div class="single-event__content">
-        {% if event.image %}
-        <div class="single-event__image">
-            <img src="{{event.image.url}}" alt="{{event.name}}">
-        </div>
-        {% endif %}
+    <div class="single-event__container">
+        <div class="single-event__infobar">
+            <span class="icon">
+                <img src="{% webpack_static 'img/icons/calendar.svg' %}" aria-hidden="true">
+                <span class="icon__text">{{event.start_date}}</span>
+            </span>
 
-        {% if event.description %}
-        <div class="single-event__description">
-            {{event.description|safe}}
-        </div>
-        {% endif %}
+            {% if event.start_time %}
+            <span class="icon">
+                <img src="{% webpack_static 'img/icons/clock.svg' %}" aria-hidden="true">
+                <span class="icon__text">{{event.start_time}}</span>
+            </span>
+            {% endif %}
 
-        {% if event.video %}
-        <iframe src="https://youtube.com/embed/{{event.video}}" class="single-event__embed" frameborder="0"
-            allowfullscreen></iframe>
-        {% endif %}
+            {% if event.link %}
+            <a class="icon" href="{{event.link}}" target="_blank" rel="noreferrer">
+                <img src="{% webpack_static 'img/icons/external-link.svg' %}" aria-hidden="true">
+                <span class="icon__text">Event Website</span>
+            </a>
+            {% endif %}
+
+            <a class="icon" href="https://www.google.com/maps?q={{event.location}}" target="_blank" rel="noreferrer">
+                <img src="{% webpack_static 'img/icons/map-pin.svg' %}" aria-hidden="true">
+                <span class="icon__text">See Map</span>
+            </a>
+            <span class="icon">
+                {% if event.rsvp %}
+                <img src="{% webpack_static 'img/icons/check-circle.svg' %}" aria-hidden="true">
+                {% else %}
+                <img src="{% webpack_static 'img/icons/x-circle.svg' %}" aria-hidden="true">
+                {% endif %}
+                <span class="icon__text">RSVP Required</span>
+            </span>
+
+            <span class="icon">
+                <img src="{% webpack_static 'img/icons/dollar-sign.svg' %}" aria-hidden="true">
+                {% if event.cost %}
+                <span class="icon__text">${{event.cost}}</span>
+                {% else %}
+                <span class="icon__text">free</span>
+                {% endif %}
+            </span>
+
+            {% if event.email_contact %}
+            <a class="icon" href="mailto:{{event.email_contact}}">
+                <img src="{% webpack_static 'img/icons/mail.svg' %}" aria-hidden="true">
+                <span class="icon__text">Email</span>
+            </a>
+            {% endif %}
+
+            {% if event.phone_contact %}
+            <a class="icon" href="tel:+{{event.phone_contact}}">
+                <img src="{% webpack_static 'img/icons/phone-call.svg' %}" aria-hidden="true">
+                <span class="icon__text">{{event.phone_contact}}</span>
+            </a>
+            {% endif %}
+
+            {% if event.attachment %}
+            <a class="icon" href="{{event.attachment.url}}" target="_blank" rel="noreferrer">
+                <img src="{% webpack_static 'img/icons/file-text.svg' %}" aria-hidden="true">
+                <span class="icon__text">More Info</span>
+            </a>
+            {% endif %}
+
+        </div>
+
+        <div class="single-event__content">
+            {% if event.description %}
+            <div class="single-event__description">
+                {{event.description|safe}}
+            </div>
+            {% endif %}
+
+            {% if event.video %}
+            <iframe src="{{event.video}}" class="single-event__embed" frameborder="0"
+                allowfullscreen></iframe>
+            {% endif %}
+
+            {% if event.image %}
+            <div class="single-event__image">
+                <img src="{{event.image.url}}" alt="{{event.name}}">
+            </div>
+            {% endif %}
+        </div>
     </div>
 
 </div>
