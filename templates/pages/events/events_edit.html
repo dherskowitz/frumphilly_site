@@ -1,6 +1,9 @@
 {% extends 'base.html' %}
 {% load webpack_static from webpack_loader %}
 
+{% block meta_title %}Edit {{ event.name }} Details | Frum Philly{% endblock meta_title %}
+{% block meta_description %}Edit the details of your event on Frum Philly.{% endblock meta_description %}
+
 {% block template_css %}
 <link href="{% webpack_static 'libs/trix.css' %}" rel="stylesheet">
 <style>
@@ -11,8 +14,13 @@
 {% endblock template_css %}
 
 {% block main %}
+<section class="page-banner"
+    style="background-image: url({% webpack_static 'img/illustrations/edit.svg' %});height:45vw;">
+    <h2 class="title text-center">Edit Event</h2>
+    <p class="subtitle text-center">Edit the details of your event.</p>
+</section>
+
 <section class="wrapper">
-    <h2 class="title section-title">Edit event</h2>
     {% include 'components/errors.html' %}
     <form action="{% url 'events_edit' event.slug event.id %}" method="POST" enctype='multipart/form-data'>
         {% csrf_token %}
