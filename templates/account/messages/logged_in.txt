@@ -2,4 +2,4 @@
 {% load i18n %}
 {% user_display user as name %}
 {% comment %} {% blocktrans %}Successfully signed in as {{name}}.{% endblocktrans %} {% endcomment %}
-{% blocktrans %}Successfully signed in. <br><br> Welcome back!{% endblocktrans %}
+{% blocktrans %}Successfully signed in. Welcome back!{% endblocktrans %}
