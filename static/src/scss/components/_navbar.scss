@@ -35,6 +35,15 @@
     &.navbar__nav--open {
         transform: translateX(0);
     }
+
+    @media (min-width: 768px) {
+        transform: translateX(0);
+        position: relative;
+        width: initial;
+        display: flex;
+        flex-direction: row;
+        height: inherit;
+    }
 }
 
 .navbar__link {
@@ -48,4 +57,14 @@
     justify-content: center;
     align-items: center;
     @include lightBorder;
+
+    @media (min-width: 768px) {
+        border: none;
+    }
+}
+
+#navbar__icon {
+    @media (min-width: 768px) {
+        display: none;
+    }
 }
