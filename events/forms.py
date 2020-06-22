@@ -110,7 +110,7 @@ class EventForm(forms.ModelForm):
 
     def clean_location(self):
         location = self.cleaned_data["location"]
-        base_url = "https://api.geocod.io/v1.4/geocode"
+        base_url = "https://api.geocod.io/v1.6/geocode"
         api_key = config("GEOCODING_KEY")
         req = requests.get(f"{base_url}?q={location}&api_key={api_key}")
         data = req.json()
@@ -118,7 +118,7 @@ class EventForm(forms.ModelForm):
             raise forms.ValidationError(
                 _("Please enter a valid US address in location.")
             )
-        return location
+        return data["results"][0]["formatted_address"]
 
     def clean_description(self):
         tags = [
