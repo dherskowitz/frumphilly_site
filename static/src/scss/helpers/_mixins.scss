@@ -29,6 +29,11 @@
     background-position: center;
 }
 
+@mixin bgRight($backgroundSize) {
+    background-size: $backgroundSize;
+    background-position: right
+}
+
 @mixin pageBanner($height) {
     height: $height;
     max-height: 30em;
