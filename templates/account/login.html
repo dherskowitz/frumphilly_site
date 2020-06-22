@@ -2,8 +2,8 @@
 {% load webpack_static from webpack_loader %}
 {% load socialaccount %}
 
-{% block meta_title %}{{meta_title}}{% endblock meta_title %}
-{% block meta_description %}{{meta_description}}{% endblock meta_description %}
+{% block meta_title %}Sign In | Frum Philly{% endblock meta_title %}
+{% block meta_description %}Sign In to Frum Philly{% endblock meta_description %}
 
 {% block main %}
 <section class="page-banner"
@@ -11,7 +11,7 @@
     <h2 class="title">Sign In</h2>
 </section>
 
-<section class="signup">
+<section class="signin">
 <h2 class="title-bar"><span class="title-bar__text">Sign in with Google or Facebook</span></h2>
 {% include 'components/social-signin.html' %}
 </section>
@@ -40,6 +40,7 @@
             <span class="form-field--remember"><label for="{{form.remember.id_for_label }}">{{form.remember.label}}</label>{{form.remember}}</span>
             <button class="btn btn--lg" type="submit">Sign In</button>
         </div>
+        <p class="text-center"><a href="{% url 'account_signup' %}">I don't have an account yet!</a></p>
     </form>
 </section>
 {% endblock main %}
