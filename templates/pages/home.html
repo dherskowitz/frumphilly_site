@@ -7,7 +7,7 @@
 {% block meta_description %}This is the homepage for the Frum Philly website.{% endblock meta_description %}
 
 {% block pagebanner %}
-<section class="home-banner" style="background:url({% webpack_static 'img/images/philly-skyline.jpg' %}) no-repeat center center /cover">
+<section class="home-banner curved-bottom" style="background:url({% webpack_static 'img/images/philly-skyline.jpg' %}) no-repeat center center /cover">
     <div class="home-banner__content">
         <h1 class="title">Frum Philly</h1>
         <h2 class="subtitle">Go beyond your "daled amos"</h2>
@@ -29,11 +29,13 @@
     <h2 class="title section-title text-center"  data-text="events">our events</h2>
     {% endif %}
 
-    {% for event in upcoming_events %}
-    {% include 'pages/events/_events_list.html' %}
-    {% empty %}
-    <p>no upcoming events!</p>
-    {% endfor %}
+    <div class="homepage-events-list">
+        {% for event in upcoming_events %}
+            {% include 'pages/events/_events_list.html' %}
+        {% empty %}
+            <p>no upcoming events!</p>
+        {% endfor %}
+    </div>
 </section>
 
 <section class="cta">
