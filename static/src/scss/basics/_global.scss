@@ -176,3 +176,13 @@
 .flex--align-center {
     align-items: center;
 }
+
+.curved-bottom {
+    border-bottom-left-radius: 50% 30%;
+    border-bottom-right-radius: 50% 30%;
+}
+
+.curved-top {
+    border-top-left-radius: 50% 30%;
+    border-top-right-radius: 50% 30%;
+}
