@@ -10,11 +10,14 @@
 </style>
 {% endblock template_css %}
 
-{% block main %}
-
+{% block pagebanner %}
 <section class="page-banner" style="background-image: url({% webpack_static 'img/illustrations/form.svg' %});">
     <h2 class="title">Create event</h2>
 </section>
+{% endblock pagebanner %}
+
+{% block main %}
+
 
 
 <section class="wrapper">

@@ -13,13 +13,15 @@
 </style>
 {% endblock template_css %}
 
-{% block main %}
+{% block pagebanner %}
 <section class="page-banner"
     style="background-image: url({% webpack_static 'img/illustrations/edit.svg' %});height:45vw;">
     <h2 class="title text-center">Edit Event</h2>
     <p class="subtitle text-center">Edit the details of your event.</p>
 </section>
+{% endblock pagebanner %}
 
+{% block main %}
 <section class="wrapper">
     {% include 'components/errors.html' %}
     <form action="{% url 'events_edit' event.slug event.id %}" method="POST" enctype='multipart/form-data'>

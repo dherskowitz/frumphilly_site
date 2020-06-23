@@ -1,10 +1,13 @@
 {% extends 'base.html' %}
 {% load webpack_static from webpack_loader %}
 
-{% block main %}
+{% block pagebanner %}
 <section class="page-banner" style="background-image: url({% webpack_static 'img/illustrations/settings.svg' %});">
     <h1 class="title">My Account</h1>
 </section>
+{% endblock pagebanner %}
+
+{% block main %}
 <section class="wrapper">
     <ul class="account-menu">
         <a class="account-menu__item" href="{% url 'user_events' %}">
