@@ -9,6 +9,29 @@
     @include curveAllCorners;
     // @include backgroundGradient;
     @include boxShadow($silver);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: all 0.5s ease;
+    text-decoration: none;
+
+    &:hover {
+        background: $dark-purple;
+        color: #fff;
+
+        &>.list__title {
+            color: $white;
+        }
+
+        &>.list__button {
+            background: $white;
+            color: $black;
+        }
+
+        &>.list__infobar>.icon {
+            color: $white;
+        }
+    }
 }
 
 .list__title {
@@ -17,6 +40,9 @@
     font-size: 1rem;
     // color: $white;
     // @include whiteTextBlackShadow;
+    font-size: 2.5rem;
+    color: rebeccapurple;
+    transition: all 0.5s ease;
 }
 
 .list__infobar {
@@ -33,4 +59,10 @@
     color: $white;
     text-decoration: none;
     @include curveBottomCorners;
+    transition: all 0.5s ease;
+}
+
+.icon {
+    color: $outer-space;
+    transition: all 0.5s ease;
 }
