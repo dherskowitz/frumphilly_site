@@ -6,6 +6,7 @@ $phone: 480px;
 
 // Colors
 $purple: rgba(104, 64, 114, 1);
+$dark-purple: darken($purple, 15%);
 $red: rgba(216, 66, 61, 1);
 $success: rgba(27, 163, 156, 1);
 $error: rgba(207, 0, 15, 1);
@@ -16,6 +17,7 @@ $white: #fff;
 $black: #000;
 $silver: rgba(191, 191, 191, 1);
 $transparent-red: rgba(211, 67, 62, 0.1);
+$outer-space: rgba(46, 49, 49, 1);
 
 // Brand Colors
 $facebook: #3b5998;
