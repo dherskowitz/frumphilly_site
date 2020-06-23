@@ -59,43 +59,54 @@
 
 .section-title {
     font-size: 2rem;
-    padding: 2rem;
+    // padding: 2rem;
     position: relative;
 
     // @include textGradient;
 
+    @media (min-width: $phone) {
+        font-size: 3rem;
+        line-height: 0.8;
+    }
+
     @media (min-width: $tablet) {
-        font-size: 6rem;
+        font-size: 4rem;
         padding: 0rem;
     }
 
     @media (min-width: $laptop) {
-        font-size: 8rem;
+        font-size: 4rem;
     }
 }
 
 .section-title::after {
     content: attr(data-text);
-    font-size: 3rem;
+    font-size: 3.5rem;
     position: absolute;
     z-index: -1;
     display: block;
-    top: 4px;
+    top: -35px;
     color: #f6f3f3;
     text-shadow: none;
     left: 50%;
     transform: translateX(-50%);
     width: 100%;
 
-    @media (min-width: $tablet) {
-        font-size: 7rem;
+    @media (min-width: $phone) {
+        font-size: 6rem;
         top: -50px;
+        line-height: 0.8;
+    }
+
+    @media (min-width: $tablet) {
+        font-size: 8rem;
+        top: -60px;
         line-height: 0.8;
     }
 
     @media (min-width: $laptop) {
         font-size: 10rem;
-        top: -20px;
+        top: -60px;
     }
 }
 
