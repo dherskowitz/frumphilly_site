@@ -1,12 +1,13 @@
 {% load webpack_static from webpack_loader %}
 {% load socialaccount %}
 
-<div id="navbar">
+<header id="navbar">
     <a id="navbar__brand" href="{% url 'home' %}"><img src="{% webpack_static 'img/logos/logo.svg' %}"
             alt="Frum Philly Logo"></a>
     {% include 'components/menu_icon.html' %}
     <nav id="navbar__nav">
         <a class="navbar__link" href="{% url 'home' %}">Home</a>
+        <a class="navbar__link" href="{% url 'about' %}">About</a>
         <a class="navbar__link" href="{% url 'events_all' %}">Events</a>
         {% if user.is_authenticated %}
         <a class="navbar__link" href="{% url 'events_create' %}">Add Event</a>
@@ -22,4 +23,4 @@
         <a class="navbar__link" href="{% url 'account_signup' %}">Create Account</a>
         {% endif %}
     </nav>
-</div>
+</header>
