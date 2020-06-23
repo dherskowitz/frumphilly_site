@@ -5,11 +5,18 @@
 {% block meta_title %}Sign In | Frum Philly{% endblock meta_title %}
 {% block meta_description %}Sign In to Frum Philly{% endblock meta_description %}
 
-{% block main %}
+{% block template_css %}
+{% include 'account/_auth-css.html' %}
+{% endblock template_css %}
+
+{% block pagebanner %}
 <section class="page-banner"
-    style="background-image: url({% webpack_static 'img/illustrations/authentication.svg' %});height:45vw;">
+    style="background-image: url({% webpack_static 'img/illustrations/authentication.svg' %});">
     <h2 class="title text-center">Sign In</h2>
 </section>
+{% endblock pagebanner %}
+
+{% block main %}
 
 <section class="signin wrapper">
 <h2 class="title-bar"><span class="title-bar__text">Sign in with Google or Facebook</span></h2>
@@ -20,7 +27,7 @@
     <h2 class="title-bar"><span class="title-bar__text">Sign in with Email</span></h2>
     {% include 'components/errors.html' %}
 
-    <form method="post">
+    <form method="post" id="login-form">
         {% csrf_token %}
 
         {% for field in form %}
@@ -38,9 +45,9 @@
 
         <div class="flex_center_spaced">
             <span class="form-field--remember"><label for="{{form.remember.id_for_label }}">{{form.remember.label}}</label>{{form.remember}}</span>
-            <button class="btn btn--lg" type="submit">Sign In</button>
+            <button class="btn btn--lg btn--form-submit" type="submit"><span>Sign In</span><div class="btn-loader"></div></button>
         </div>
-        <p class="text-center"><a href="{% url 'account_signup' %}">I don't have an account yet!</a></p>
+        <p class="text-center account_link"><a href="{% url 'account_signup' %}">I don't have an account yet!</a></p>
     </form>
 </section>
 {% endblock main %}
