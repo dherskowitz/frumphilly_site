@@ -34,7 +34,7 @@
 
     @media(min-width: $tablet) {
         grid-template-columns: repeat(2, 1fr);
-        width: 100rem;
+        width: 25%;
     }
 }
 
@@ -45,6 +45,11 @@
 
 .single-event__content {
     padding: 0.5em;
+
+    @media(min-width: $tablet) {
+        grid-template-columns: repeat(2, 1fr);
+        width: 75%;
+    }
 }
 
 .single-event__description {
