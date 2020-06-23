@@ -36,7 +36,7 @@
 
 @mixin pageBanner($height) {
     height: $height;
-    max-height: 30em;
+    // max-height: 30em;
 }
 
 @mixin flexCenterAll {
