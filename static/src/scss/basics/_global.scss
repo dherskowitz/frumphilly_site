@@ -1,6 +1,22 @@
+.noscript {
+    background: red;
+    position: fixed;
+    padding: 0.5rem;
+    margin-top: 65px;
+    z-index: 9999999999;
+    width: 100%;
+}
+
+.resize-animation-stopper * {
+    transition: none !important;
+    animation: none !important;
+}
+
 .container {
-    @media (min-width: $laptop) {
-        max-width: $laptop;
+    margin: 3rem;
+
+    @media (min-width: $desktop) {
+        max-width: $desktop;
         margin: 1rem auto;
     }
 }
@@ -75,7 +91,7 @@
     }
 
     @media (min-width: $laptop) {
-        font-size: 4rem;
+        font-size: 6rem;
     }
 }
 
@@ -89,6 +105,7 @@
     color: #f6f3f3;
     text-shadow: none;
     left: 50%;
+    will-change: transform;
     transform: translateX(-50%);
     width: 100%;
 
@@ -106,7 +123,7 @@
 
     @media (min-width: $laptop) {
         font-size: 10rem;
-        top: -60px;
+        top: -80px;
     }
 }
 
@@ -142,4 +159,20 @@
 
 .text-center {
     text-align: center;
+}
+
+.account_link {
+    margin-top: 2rem;
+}
+
+.flex {
+    display: flex;
+}
+
+.flex--space-between {
+    justify-content: space-between;
+}
+
+.flex--align-center {
+    align-items: center;
 }
