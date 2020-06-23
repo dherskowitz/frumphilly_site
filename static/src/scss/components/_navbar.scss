@@ -25,6 +25,7 @@
     width: 100vw;
     background: #fff;
     top: 0;
+    will-change: transform;
     transform: translateX(100vw);
     transition: transform .5s ease-in-out;
     // margin-top: 4em;
@@ -33,10 +34,12 @@
     justify-content: center;
 
     &.navbar__nav--open {
+        will-change: transform;
         transform: translateX(0);
     }
 
     @media (min-width: 768px) {
+        will-change: transform;
         transform: translateX(0);
         position: relative;
         width: initial;

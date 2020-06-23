@@ -7,6 +7,7 @@
     margin: 0;
     z-index: 9999;
     text-align: center;
+    top: 4em;
 }
 
 .messages__success {
@@ -27,10 +28,12 @@
     right: 8px;
     cursor: pointer;
     width: 2rem;
+    will-change: transform;
     transform: translateY(-50%);
 }
 
 .messages--hiding {
+    will-change: transform;
     transform: translateY(-25rem);
     transition: transform 0.5s ease 0.25s;
 }
