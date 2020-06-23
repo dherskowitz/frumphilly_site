@@ -54,3 +54,14 @@
 .homepage-events {
     margin-top: 6rem;
 }
+
+.homepage-events-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    grid-gap: 1rem;
+    margin: 2rem 0;
+
+    &>.list__item {
+        margin: 0;
+    }
+}
