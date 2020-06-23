@@ -25,3 +25,14 @@
 .signin__social-btn--facebook {
     background: $facebook;
 }
+
+.accounts-container {
+    margin: 0 auto;
+    width: 1200px;
+    margin-top: 4rem;
+}
+
+.accounts-container>section,
+.accounts-container>div {
+    width: 45%;
+}
