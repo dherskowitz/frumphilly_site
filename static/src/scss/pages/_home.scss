@@ -1,9 +1,10 @@
 .home-banner {
-    background: #e1f9ff;
+    // background: #e1f9ff;
     position: relative;
     overflow: hidden;
     height: 40vh;
     z-index: 1;
+    // margin-top: 65px;
     // @include pageBanner(120vh);
     // @include fullBG(cover);
     @include flexCenterAll;
@@ -31,13 +32,15 @@
 .home-banner__image {
     position: absolute;
     top: 55%;
+    will-change: transform;
     transform: translateY(-50%);
     z-index: -1;
 
     @media (min-width: $tablet) {
         width: 65rem;
         position: absolute;
-        top: 50%;
+        top: 55%;
+        will-change: transform;
         transform: translateY(-50%);
         right: -5rem;
     }
@@ -49,5 +52,5 @@
 }
 
 .homepage-events {
-    margin: 2rem;
+    margin-top: 6rem;
 }
