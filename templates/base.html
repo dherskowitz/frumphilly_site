@@ -9,8 +9,8 @@
     <title>{% block meta_title %}{% endblock meta_title %}</title>
     <link rel="shortcut icon" href="{% webpack_static 'img/favicon/favicon.ico' %}" type="image/x-icon" />
     <meta name="description" content="{% block meta_description %}{% endblock meta_description %}">
-    {% block template_css %}{% endblock template_css %}
     {% render_bundle 'main' 'css' %}
+    {% block template_css %}{% endblock template_css %}
 </head>
 <body>
     <noscript>
@@ -20,9 +20,13 @@
     {% include 'components/navbar.html' %}
 
     <main>
+        {% block pagebanner %}
+        {% endblock pagebanner %}
         {% include 'components/messages.html' %}
-        {% block main %}
-        {% endblock main %}
+        <div class="container">
+            {% block main %}
+            {% endblock main %}
+        </div>
     </main>
 
     {% include 'components/footer.html' %}
