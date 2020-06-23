@@ -21,3 +21,7 @@ def home(request):
         "events_in_future": events_in_future,
     }
     return render(request, "pages/home.html", context)
+
+
+def about(request):
+    return render(request, "pages/about.html")
