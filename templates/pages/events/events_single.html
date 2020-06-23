@@ -20,7 +20,7 @@
             {% if event.start_time %}
             <span class="icon">
                 <img src="{% webpack_static 'img/icons/clock.svg' %}" aria-hidden="true">
-                <span class="icon__text">{{event.start_time}}</span>
+                <span class="icon__text">{{event.start_time|time:"H:i A"}}</span>
             </span>
             {% endif %}
 
@@ -56,7 +56,7 @@
             {% if event.email_contact %}
             <a class="icon" href="mailto:{{event.email_contact}}">
                 <img src="{% webpack_static 'img/icons/mail.svg' %}" aria-hidden="true">
-                <span class="icon__text">Email</span>
+                <span class="icon__text">Email Host</span>
             </a>
             {% endif %}
 
