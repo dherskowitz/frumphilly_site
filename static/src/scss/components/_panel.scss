@@ -1,0 +1,27 @@
+.panel {
+    background-color: $white;
+    padding: 3rem 1rem;
+    @include curveAllCorners;
+    @include boxShadow($silver)
+}
+
+.panel__banner {
+    margin: 0;
+    height: 22rem;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.panel__title {
+    margin: 0;
+}
+
+.panel__content {
+    margin: 2rem 0 0;
+}
+
+.panel__text {
+    margin: 1rem auto 0;
+    max-width: 800px;
+}
