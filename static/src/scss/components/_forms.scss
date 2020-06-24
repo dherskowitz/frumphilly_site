@@ -1,3 +1,14 @@
+form {
+    background: #fff;
+    padding: 1rem;
+    @include curveAllCorners;
+    @include boxShadow($silver);
+}
+
+form.navbar__link {
+    box-shadow: none;
+}
+
 .form-field {
     margin: 1rem 0;
     position: relative;
