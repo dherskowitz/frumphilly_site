@@ -1,7 +1,15 @@
-.footer__copyright {
-    text-align: center;
+.footer__bottom {
+    // text-align: center;
     background: $dark-purple;
-    color: #fff;
-    padding: 1em;
+    color: $mid-grey;
+    padding: 1rem 3rem;
     font-size: 0.9rem;
+    margin: 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer__bottom__links a {
+    color: $mid-grey;
+    padding: 0 1rem;
 }

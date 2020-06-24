@@ -1,8 +1,14 @@
 {% load blocktrans from i18n %}
 
 <footer id="footer">
-    <div class="footer__copyright">
-        {% now "Y" as current_year %}
-        {% blocktrans %}Copyright &copy; {{ current_year }} frumPhilly.com{% endblocktrans %}
-    </div>
+    <section class="footer__bottom">
+        <div class="footer__bottom__copyright">
+            {% now "Y" as current_year %}
+            {% blocktrans %}&copy; Copyright {{ current_year }} Frum Philly. All Rights Reserved.{% endblocktrans %}
+        </div>
+        <div class="footer__bottom__links">
+            <a href="{% url 'terms' %}">Terms of Service</a>
+            <a href="{% url 'privacy' %}">Privacy Policy</a>
+        </div>
+    </section>
 </footer>
