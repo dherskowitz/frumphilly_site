@@ -1,14 +1,16 @@
 {% load blocktrans from i18n %}
 
 <footer id="footer">
-    <section class="footer__bottom">
-        <div class="footer__bottom__copyright">
-            {% now "Y" as current_year %}
-            {% blocktrans %}&copy; Copyright {{ current_year }} Frum Philly. All Rights Reserved.{% endblocktrans %}
-        </div>
-        <div class="footer__bottom__links">
-            <a href="{% url 'terms' %}">Terms of Service</a>
-            <a href="{% url 'privacy' %}">Privacy Policy</a>
-        </div>
-    </section>
+    <div class="container">
+        <section class="footer__bottom">
+            <div class="footer__bottom__copyright">
+                {% now "Y" as current_year %}
+                {% blocktrans %}&copy; Copyright {{ current_year }} Frum Philly. All Rights Reserved.{% endblocktrans %}
+            </div>
+            <div class="footer__bottom__links">
+                <a href="{% url 'terms' %}">Terms of Service</a>
+                <a href="{% url 'privacy' %}">Privacy Policy</a>
+            </div>
+        </section>
+    </div>
 </footer>
