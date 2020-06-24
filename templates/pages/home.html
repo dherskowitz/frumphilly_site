@@ -30,7 +30,7 @@
     <h2 class="title section-title text-center"  data-text="events">our events</h2>
     {% endif %} {% endcomment %}
 
-    <div class="list">
+    <div class="list list--home">
         {% for event in upcoming_events %}
             {% include 'pages/events/_events_list.html' %}
         {% empty %}
@@ -51,7 +51,7 @@
 
 <section class="">
 <h2 class="title section-title text-center" data-text="coming soon"><span class="section-title__text">coming soon</span></h2>
-<div class="list">
+<div class="list list--home">
     <div class="list__item">
         <h3 class="">Lorem, ipsum.</h3>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae at ducimus porro!</p>
