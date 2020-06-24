@@ -28,10 +28,6 @@ main {
     box-sizing: border-box;
 }
 
-// section {
-//     padding: 0.5em;
-// }
-
 h1,
 h2,
 h3,
@@ -55,4 +51,13 @@ pre {
 
 img {
     max-width: 100%;
+}
+
+section {
+    margin: 5rem 0;
+}
+
+section.home-banner,
+section.page-banner {
+    margin: 0;
 }
