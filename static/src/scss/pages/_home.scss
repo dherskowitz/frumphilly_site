@@ -1,20 +1,19 @@
 .home-banner {
-    // background: #e1f9ff;
     position: relative;
     overflow: hidden;
     height: 40vh;
     z-index: 1;
-    // margin-top: 65px;
-    // @include pageBanner(120vh);
-    // @include fullBG(cover);
     @include flexCenterAll;
+
 
     @media (min-width: $tablet) {
         height: 60vh;
         justify-content: flex-start;
+        padding: 0 4rem;
+    }
+
+    @media (min-width: $desktop) {
         padding: 0 12rem;
-        // max-width: 75vw;
-        // margin: 0 auto;
     }
 }
 
@@ -27,6 +26,11 @@
 
 .home-banner__content {
     @include whiteTextBlackShadow;
+    text-align: center;
+
+    @media (min-width: $tablet) {
+        text-align: left;
+    }
 }
 
 .home-banner__image {
@@ -49,19 +53,4 @@
 .home-intro {
     font-size: 1.5rem;
     padding: 2rem;
-}
-
-.homepage-events {
-    margin-top: 6rem;
-}
-
-.homepage-events-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
-    grid-gap: 1rem;
-    margin: 2rem 0;
-
-    &>.list__item {
-        margin: 0;
-    }
 }
