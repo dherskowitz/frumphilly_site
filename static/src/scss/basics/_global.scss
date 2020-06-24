@@ -13,7 +13,7 @@
 }
 
 .container {
-    margin: 3rem;
+    margin: 1rem;
 
     @media (min-width: $desktop) {
         max-width: $desktop;
@@ -44,7 +44,7 @@
 }
 
 .subtitle {
-    margin-bottom: 1em;
+    margin-bottom: 1.5em;
     font-size: 1.25rem;
     @include whiteTextBlackShadow;
 
@@ -74,57 +74,65 @@
 }
 
 .section-title {
-    font-size: 2rem;
-    // padding: 2rem;
+    font-size: 1.25rem;
     position: relative;
 
-    // @include textGradient;
-
     @media (min-width: $phone) {
-        font-size: 3rem;
-        line-height: 0.8;
+        font-size: 1.5rem;
     }
 
     @media (min-width: $tablet) {
-        font-size: 4rem;
-        padding: 0rem;
+        font-size: 3rem;
     }
 
-    @media (min-width: $laptop) {
-        font-size: 6rem;
-    }
+    // @media (min-width: $laptop) {
+    //     font-size: 4rem;
+    // }
+}
+
+.section-title__text {
+    background-color: $white;
 }
 
 .section-title::after {
-    content: attr(data-text);
-    font-size: 3.5rem;
+    content: '';
+    border-bottom: 5px solid $dark-purple;
+    border-radius: 15px;
     position: absolute;
+    width: 85vw;
     z-index: -1;
-    display: block;
-    top: -35px;
-    color: #f6f3f3;
-    text-shadow: none;
+    top: 50%;
     left: 50%;
-    will-change: transform;
-    transform: translateX(-50%);
-    width: 100%;
+    transform: translate(-50%, -50%);
+    // content: attr(data-text);
+    // font-size: 2.5rem;
+    // position: absolute;
+    // z-index: -1;
+    // display: block;
+    // top: -150%;
+    // color: #f6f3f3;
+    // text-shadow: none;
+    // left: 50%;
+    // will-change: transform;
+    // transform: translateX(-50%);
+    // width: 120vw;
 
-    @media (min-width: $phone) {
-        font-size: 6rem;
-        top: -50px;
-        line-height: 0.8;
-    }
+    // @media (min-width: $phone) {
+    //     font-size: 4rem;
+    //     // top: -50px;
+    //     line-height: 0.8;
+    // }
 
-    @media (min-width: $tablet) {
-        font-size: 8rem;
-        top: -60px;
-        line-height: 0.8;
-    }
+    // @media (min-width: $tablet) {
+    //     // font-size: 8rem;
+    //     top: 120px;
+    //     line-height: 0.8;
+    // }
 
-    @media (min-width: $laptop) {
-        font-size: 10rem;
-        top: -80px;
-    }
+    // @media (min-width: $laptop) {
+    //     font-size: 10rem;
+    //     top: -80px;
+    // }
 }
 
 .uppercase {
