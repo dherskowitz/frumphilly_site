@@ -60,6 +60,8 @@ INSTALLED_APPS = [
     "events",
     # Django Cleanup - stay at bottom
     "django_cleanup.apps.CleanupConfig",
+    # 3rd Party
+    "django_extensions",
 ]
 
 MIDDLEWARE = [
