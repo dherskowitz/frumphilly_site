@@ -36,6 +36,7 @@
 
 @mixin pageBanner($height) {
     height: $height;
+    background-color: $mystic-grey;
     // max-height: 30em;
 }
 
