@@ -1,21 +1,19 @@
 .list {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
     grid-gap: 1rem;
-    margin: 2rem 0;
+}
+
+.list--home {
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
 
     &>.list__item {
         margin: 0;
     }
 }
 
-
 .list__item {
-    // border: 1px solid $border-grey;
     margin: 1em 0;
-    // padding: 0.5em;
     @include curveAllCorners;
-    // @include backgroundGradient;
     @include boxShadow($silver);
     display: flex;
     flex-direction: column;
@@ -23,6 +21,7 @@
     transition: all 0.5s ease;
     text-decoration: none;
     padding: 1rem;
+    background-color: $white;
 
     &:hover {
         background: $dark-purple;
@@ -43,18 +42,15 @@
     }
 }
 
+.list--events>.list__item {
+    margin: 0;
+}
+
 .list__title {
     margin: 0;
-    // padding: 0 0.5em 0;
-    // color: $white;
-    // @include whiteTextBlackShadow;
     font-size: 1.25rem;
     color: rebeccapurple;
     transition: all 0.5s ease;
-
-    // @media (min-width: $phone) {
-    //     font-size: 2rem;
-    // }
 
     @media (min-width: $desktop) {
         font-size: 2.25rem;
