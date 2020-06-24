@@ -1,8 +1,11 @@
+footer {
+    background: $dark-purple;
+}
+
 .footer__bottom {
     // text-align: center;
-    background: $dark-purple;
     color: $mid-grey;
-    padding: 1rem 3rem;
+    // padding: 1rem 3rem;
     font-size: 0.9rem;
     margin: 0;
     display: flex;
