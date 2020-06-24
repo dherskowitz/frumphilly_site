@@ -3,4 +3,5 @@
     @include fullBG(contain);
     @include flexCenterAll;
     @include flexColumn;
+    @include bottomBoxShadow($silver);
 }
