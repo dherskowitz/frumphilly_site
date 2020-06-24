@@ -11,6 +11,7 @@ body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
+    background-color: $mid-grey;
 
     &.body--menu-open {
         overflow-y: hidden;
@@ -60,4 +61,9 @@ section {
 section.home-banner,
 section.page-banner {
     margin: 0;
+}
+
+.resize-animation-stopper * {
+    transition: none !important;
+    animation: none !important;
 }
