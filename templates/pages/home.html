@@ -23,13 +23,14 @@
 
 {% block main %}
 <section class="homepage-events">
-    {% if events_in_future %}
+    <h2 class="title section-title text-center" data-text="events"><span class="section-title__text">featured events</span></h2>
+    {% comment %} {% if events_in_future %}
     <h2 class="title section-title text-center" data-text="events">upcoming events</h2>
     {% else %}
     <h2 class="title section-title text-center"  data-text="events">our events</h2>
-    {% endif %}
+    {% endif %} {% endcomment %}
 
-    <div class="homepage-events-list">
+    <div class="list">
         {% for event in upcoming_events %}
             {% include 'pages/events/_events_list.html' %}
         {% empty %}
@@ -45,5 +46,23 @@
     {% else %}
     <a class="btn uppercase" href="/accounts/signup">Create your account</a>
     {% endif %}
+</section>
+
+<section class="">
+<h2 class="title section-title text-center" data-text="coming soon"><span class="section-title__text">coming soon</span></h2>
+<div class="list">
+    <div class="list__item">
+        <h3 class="">Lorem, ipsum.</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae at ducimus porro!</p>
+    </div>
+    <div class="list__item">
+        <h3 class="">Lorem, ipsum.</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae at ducimus porro!</p>
+    </div>
+    <div class="list__item">
+        <h3 class="">Lorem, ipsum.</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae at ducimus porro!</p>
+    </div>
+</div>
 </section>
 {% endblock main %}
