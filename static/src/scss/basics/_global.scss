@@ -7,11 +7,6 @@
     width: 100%;
 }
 
-.resize-animation-stopper * {
-    transition: none !important;
-    animation: none !important;
-}
-
 .container {
     margin: 1rem;
 
@@ -76,6 +71,7 @@
 .section-title {
     font-size: 1.25rem;
     position: relative;
+    margin-bottom: 1rem;
 
     @media (min-width: $phone) {
         font-size: 1.5rem;
@@ -84,14 +80,10 @@
     @media (min-width: $tablet) {
         font-size: 3rem;
     }
-
-    // @media (min-width: $laptop) {
-    //     font-size: 4rem;
-    // }
 }
 
 .section-title__text {
-    background-color: $white;
+    background-color: $mid-grey;
 }
 
 .section-title::after {
@@ -104,35 +96,6 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    // content: attr(data-text);
-    // font-size: 2.5rem;
-    // position: absolute;
-    // z-index: -1;
-    // display: block;
-    // top: -150%;
-    // color: #f6f3f3;
-    // text-shadow: none;
-    // left: 50%;
-    // will-change: transform;
-    // transform: translateX(-50%);
-    // width: 120vw;
-
-    // @media (min-width: $phone) {
-    //     font-size: 4rem;
-    //     // top: -50px;
-    //     line-height: 0.8;
-    // }
-
-    // @media (min-width: $tablet) {
-    //     // font-size: 8rem;
-    //     top: 120px;
-    //     line-height: 0.8;
-    // }
-
-    // @media (min-width: $laptop) {
-    //     font-size: 10rem;
-    //     top: -80px;
-    // }
 }
 
 .uppercase {
@@ -177,6 +140,10 @@
     display: flex;
 }
 
+.flex--center {
+    justify-content: center;
+}
+
 .flex--space-between {
     justify-content: space-between;
 }
@@ -185,8 +152,16 @@
     justify-content: space-between;
 }
 
+.flex--space-evenly {
+    justify-content: space-evenly;
+}
+
 .flex--align-center {
     align-items: center;
+}
+
+.flex--align-start {
+    align-items: flex-start;
 }
 
 .curved-bottom {
