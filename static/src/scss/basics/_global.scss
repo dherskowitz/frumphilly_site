@@ -91,7 +91,8 @@
     border-bottom: 5px solid $dark-purple;
     border-radius: 15px;
     position: absolute;
-    width: 85vw;
+    width: 100%;
+    max-width: 1200px;
     z-index: -1;
     top: 50%;
     left: 50%;
