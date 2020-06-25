@@ -23,10 +23,9 @@
         {% block pagebanner %}
         {% endblock pagebanner %}
         {% include 'components/messages.html' %}
-        <div class="container">
-            {% block main %}
-            {% endblock main %}
-        </div>
+
+        {% block main %}
+        {% endblock main %}
     </main>
 
     {% include 'components/footer.html' %}

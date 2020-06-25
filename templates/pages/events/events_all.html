@@ -11,48 +11,48 @@
 {% endblock pagebanner %}
 
 {% block main %}
+<div class="container">
+    <section class="flex flex--space-evenly flex--align-start">
+        <div class="list list--events">
+            {% for event in events %}
+            {% include 'pages/events/_events_list.html' %}
+            {% empty %}
+            <p>No events yet!</p>
+            {% endfor %}
+        </div>
 
-<section class="flex flex--space-evenly flex--align-start">
-    <div class="list list--events">
-        {% for event in events %}
-        {% include 'pages/events/_events_list.html' %}
-        {% empty %}
-        <p>No events yet!</p>
-        {% endfor %}
-    </div>
+        <div class="rightbar">
+            <div class="rightbar__box" style="border: 1px solid grey;height: 15rem;width: 20rem;display: flex;justify-content: center;align-items: center;padding: 1rem;margin-bottom: 1rem;">
+                Example. Your Ad Here.
+            </div>
+            <div class="rightbar__box" style="border: 1px solid grey;height: 15rem;width: 20rem;display: flex;justify-content: center;align-items: center;padding: 1rem;margin-bottom: 1rem;">
+                Example. Your Ad Here.
+            </div>
+            <div class="rightbar__box" style="border: 1px solid grey;height: 15rem;width: 20rem;display: flex;justify-content: center;align-items: center;padding: 1rem;margin-bottom: 1rem;">
+                Example. Your Ad Here.
+            </div>
+            <div class="rightbar__box" style="border: 1px solid grey;height: 15rem;width: 20rem;display: flex;justify-content: center;align-items: center;padding: 1rem;margin-bottom: 1rem;">
+                Example. Your Ad Here.
+            </div>
+        </div>
 
-    <div class="rightbar">
-        <div class="rightbar__box" style="border: 1px solid grey;height: 15rem;width: 20rem;display: flex;justify-content: center;align-items: center;padding: 1rem;margin-bottom: 1rem;">
-            Example. Your Ad Here.
-        </div>
-        <div class="rightbar__box" style="border: 1px solid grey;height: 15rem;width: 20rem;display: flex;justify-content: center;align-items: center;padding: 1rem;margin-bottom: 1rem;">
-            Example. Your Ad Here.
-        </div>
-        <div class="rightbar__box" style="border: 1px solid grey;height: 15rem;width: 20rem;display: flex;justify-content: center;align-items: center;padding: 1rem;margin-bottom: 1rem;">
-            Example. Your Ad Here.
-        </div>
-        <div class="rightbar__box" style="border: 1px solid grey;height: 15rem;width: 20rem;display: flex;justify-content: center;align-items: center;padding: 1rem;margin-bottom: 1rem;">
-            Example. Your Ad Here.
-        </div>
-    </div>
+        {% if events.has_other_pages %}
+        <div class="pagination">
+            {% if events.has_previous %}
+            <a href="?page=1">&laquo; First</a>
+            <a href="?page={{ events.previous_page_number }}">&lt; Prev</a>
+            {% endif %}
 
-    {% if events.has_other_pages %}
-    <div class="pagination">
-        {% if events.has_previous %}
-        <a href="?page=1">&laquo; First</a>
-        <a href="?page={{ events.previous_page_number }}">&lt; Prev</a>
+            <span class="current">
+                Page {{ events.number }} of {{ events.paginator.num_pages }}
+            </span>
+
+            {% if events.has_next %}
+            <a href="?page={{ events.next_page_number }}">Next &gt;</a>
+            <a href="?page={{ events.paginator.num_pages }}">Last &raquo;</a>
+            {% endif %}
+        </div>
         {% endif %}
-
-        <span class="current">
-            Page {{ events.number }} of {{ events.paginator.num_pages }}
-        </span>
-
-        {% if events.has_next %}
-        <a href="?page={{ events.next_page_number }}">Next &gt;</a>
-        <a href="?page={{ events.paginator.num_pages }}">Last &raquo;</a>
-        {% endif %}
-    </div>
-    {% endif %}
-</section>
-
+    </section>
+</div>
 {% endblock main %}
