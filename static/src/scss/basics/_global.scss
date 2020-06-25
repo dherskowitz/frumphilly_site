@@ -19,11 +19,11 @@
 .title {
     text-transform: uppercase;
     color: $white;
-    font-size: 3rem;
+    font-size: 2rem;
     @include whiteTextBlackShadow;
 
     @media (min-width: $tablet) {
-        font-size: 4rem;
+        font-size: 3rem;
     }
 }
 
@@ -52,6 +52,7 @@
     position: relative;
     font-size: 1rem;
     text-align: center;
+    z-index: 1;
 
     &>.title-bar__text {
         background: $white;
@@ -66,6 +67,10 @@
         top: 0.55rem;
         z-index: -1;
     }
+}
+
+.home_section {
+    margin: 5rem 0;
 }
 
 .section-title {
@@ -145,6 +150,10 @@
     display: flex;
 }
 
+.flex--column {
+    flex-direction: column;
+}
+
 .flex--center {
     justify-content: center;
 }
@@ -159,6 +168,10 @@
 
 .flex--space-evenly {
     justify-content: space-evenly;
+
+    &>section {
+        width: 48%;
+    }
 }
 
 .flex--align-center {
@@ -177,4 +190,12 @@
 .curved-top {
     border-top-left-radius: 50% 30%;
     border-top-right-radius: 50% 30%;
+}
+
+.height--100 {
+    height: 100%;
+}
+
+.container-height--100 {
+    height: calc(100% - 2rem);
 }
