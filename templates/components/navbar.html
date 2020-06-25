@@ -18,8 +18,6 @@
         </form>
         {% else %}
         <a class="navbar__link" href="{% url 'account_login' %}">Sign In</a>
-        <!-- <a href="{% provider_login_url 'github' %}">Github Login</a> | -->
-        <!-- <a href="{% provider_login_url 'google' %}">Google Login</a> | -->
         <a class="navbar__link" href="{% url 'account_signup' %}">Create Account</a>
         {% endif %}
     </nav>
