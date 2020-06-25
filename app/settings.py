@@ -200,9 +200,29 @@ ACCOUNT_SESSION_REMEMBER = None
 
 SOCIALACCOUNT_PROVIDERS = {
     "google": {
-        "SCOPE": ["profile", "email",],
-        "AUTH_PARAMS": {"access_type": "online",},
-    }
+        "SCOPE": ["profile", "email"],
+        "AUTH_PARAMS": {"access_type": "online"},
+    },
+    "facebook": {
+        "METHOD": "oauth2",
+        "SCOPE": ["email", "public_profile"],
+        "INIT_PARAMS": {"cookie": True},
+        "FIELDS": [
+            "id",
+            "email",
+            "name",
+            "first_name",
+            "last_name",
+            "verified",
+            "locale",
+            "timezone",
+            "link",
+            "gender",
+            "updated_time",
+        ],
+        "VERIFIED_EMAIL": False,
+        "VERSION": "v7.0",
+    },
 }
 
 # Webpack Loader Settings
