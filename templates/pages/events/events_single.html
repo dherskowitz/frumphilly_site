@@ -10,7 +10,7 @@
 {% block main %}
 <div class="single-event">
     <div class="single-event__banner">
-        <h1 class="section-title single-event__title">{{event.name}}</h1>
+        <h1 class="title section-title single-event__title"><span class="section-title__text">{{event.name}}</span></h1>
     </div>
 
     <div class="single-event__container">
@@ -81,14 +81,15 @@
 
         <div class="single-event__content">
             {% if event.description %}
-            <div class="single-event__description">
-                {{event.description|safe}}
-            </div>
+                <div class="single-event__description">
+                    {{event.description|safe}}
+                </div>
             {% endif %}
 
             {% if event.video %}
-            <iframe src="{{event.video}}" class="single-event__embed" frameborder="0"
-                allowfullscreen></iframe>
+                <div class="single-event__video">
+                    <iframe src="{{event.video}}" class="single-event__embed" frameborder="0" allowfullscreen></iframe>
+                </div>
             {% endif %}
 
             {% if event.image %}
