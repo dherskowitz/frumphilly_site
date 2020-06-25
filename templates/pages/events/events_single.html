@@ -71,10 +71,15 @@
             {% endif %}
 
             {% if event.attachment %}
-            <a class="icon" href="{{event.attachment.url}}" target="_blank" rel="noreferrer">
+            <a class="icon" href="#" onclick="window.open('{{event.attachment.url}}', '_blank'
+                , 'location=yes,height=570,width=520,scrollbars=yes,status=yes' );">
                 <img src="{% webpack_static 'img/icons/file-text.svg' %}" aria-hidden="true">
                 <span class="icon__text">More Info</span>
             </a>
+            {% comment %} <a class="icon" href="{{event.attachment.url}}" target="_blank" rel="noreferrer">
+                <img src="{% webpack_static 'img/icons/file-text.svg' %}" aria-hidden="true">
+                <span class="icon__text">More Info</span>
+            </a> {% endcomment %}
             {% endif %}
 
         </div>
