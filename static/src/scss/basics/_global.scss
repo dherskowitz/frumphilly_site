@@ -94,9 +94,13 @@
     width: 100%;
     max-width: 1200px;
     z-index: -1;
-    top: 50%;
+    top: 45%;
     left: 50%;
     transform: translate(-50%, -50%);
+
+    @media (min-width: $tablet) {
+        top: 50%;
+    }
 }
 
 .uppercase {
