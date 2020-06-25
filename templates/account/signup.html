@@ -4,40 +4,39 @@
 {% block meta_title %}Create Account | Frum Philly{% endblock meta_title %}
 {% block meta_description %}Create an account on Frum Philly{% endblock meta_description %}
 
-{% block template_css %}
-{% include 'account/_auth-css.html' %}
-{% endblock template_css %}
-
-{% block pagebanner %}
-<section class="page-banner" style="background-image: url({% webpack_static 'img/illustrations/signup.svg' %});">
-    <h2 class="title text-center">Create Account</h2>
-</section>
-{% endblock pagebanner %}
-
 {% block main %}
-<section class="signup wrapper">
-<h2 class="title-bar"><span class="title-bar__text">Sign up with Google or Facebook</span></h2>
-{% include 'components/social-signin.html' %}
-</section>
+<div class="container container-height--100 flex flex--column flex--center">
+    <div class="panel panel--auth">
+        <section class="auth-banner" style="background-image: url({% webpack_static 'img/illustrations/signup.svg' %});">
+            <h2 class="title text-center">Create Account</h2>
+        </section>
+        <section>
+            <section class="signup wrapper">
+                <h2 class="title-bar"><span class="title-bar__text">Sign up with Google or Facebook</span></h2>
+                {% include 'components/social-signin.html' %}
+            </section>
 
-<section class="signup wrapper">
-    <h2 class="title-bar"><span class="title-bar__text">Sign up with Email</span></h2>
-    {% include 'components/errors.html' %}
+            <section class="signup wrapper">
+                <h2 class="title-bar"><span class="title-bar__text">Sign up with Email</span></h2>
+                {% include 'components/errors.html' %}
 
-    <form method="post" id="signup-form">
-        {% csrf_token %}
-        {% for field in form %}
-        <div class="form-field">
-            <label class="form-field__label" for="{{field.name}}">{{ field.label }}</label>
-            {{ field }}
+                <form method="post" id="signup-form">
+                    {% csrf_token %}
+                    {% for field in form %}
+                    <div class="form-field">
+                        <label class="form-field__label" for="{{field.name}}">{{ field.label }}</label>
+                        {{ field }}
 
-            {% if field.name in helptext_fields %}
-            <div class="form-field__help-text">{{ field.help_text }}</div>
-            {% endif %}
-        </div>
-        {% endfor %}
-        <button class="btn btn--block btn--form-submit" type="submit"><span>Sign Up</span><div class="btn-loader"></div></button>
-        <p class="text-center account_link"><a href="{% url 'account_login' %}">I already have an account!</a></p>
-    </form>
-</section>
+                        {% if field.name in helptext_fields %}
+                        <div class="form-field__help-text">{{ field.help_text }}</div>
+                        {% endif %}
+                    </div>
+                    {% endfor %}
+                    <button class="btn btn--block btn--form-submit" type="submit"><span>Sign Up</span><div class="btn-loader"></div></button>
+                    <p class="text-center account_link"><a href="{% url 'account_login' %}">I already have an account!</a></p>
+                </form>
+            </section>
+        </section>
+    </div>
+</div>
 {% endblock main %}

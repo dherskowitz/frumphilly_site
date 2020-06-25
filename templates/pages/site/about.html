@@ -6,19 +6,16 @@
 {% block meta_title %}About | Frum Philly{% endblock meta_title %}
 {% block meta_description %}All there is to know about Frum Philly.{% endblock meta_description %}
 
-{% block pagebanner %}
-
-{% endblock pagebanner %}
-
-
 {% block main %}
-<section class="panel">
-    <section class="panel__banner flex flex--center flex--align-center" style="background-image: url({% webpack_static 'img/illustrations/settings.svg' %});">
-        <h1 class="title panel__title">About Us</h1>
+<div class="container container-height--100 flex flex--column flex--center">
+    <section class="panel">
+        <section class="panel__banner flex flex--center flex--align-center" style="background-image: url({% webpack_static 'img/illustrations/settings.svg' %});">
+            <h1 class="title panel__title">About Us</h1>
+        </section>
+        <section class="panel__content">
+            <p class="panel__text">Frum Philly is where the Philadelphia and South Jersey Jewish communities come together to find out what's happening. It's where people can connect and find out about events, jobs, sales, and more.</p>
+            <p class="panel__text">Frum Philly is here to help you discover more about your community. Find out how to contribute to our growing Jewish communities and the neighborhoods that surround you by <a href="/accounts/signup">signing up</a>.</p>
+        </section>
     </section>
-    <section class="panel__content">
-        <p class="panel__text">Frum Philly is where the Philadelphia and South Jersey Jewish communities come together to find out what's happening. It's where people can connect and find out about events, jobs, sales, and more.</p>
-        <p class="panel__text">Frum Philly is here to help you discover more about your community. Find out how to contribute to our growing Jewish communities and the neighborhoods that surround you by <a href="/accounts/signup">signing up</a>.</p>
-</section>
-</section>
+</div>
 {% endblock %}

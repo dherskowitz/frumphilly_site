@@ -5,49 +5,50 @@
 {% block meta_title %}Sign In | Frum Philly{% endblock meta_title %}
 {% block meta_description %}Sign In to Frum Philly{% endblock meta_description %}
 
-{% block template_css %}
-{% include 'account/_auth-css.html' %}
-{% endblock template_css %}
-
-{% block pagebanner %}
-<section class="page-banner"
-    style="background-image: url({% webpack_static 'img/illustrations/authentication.svg' %});">
-    <h2 class="title text-center">Sign In</h2>
-</section>
-{% endblock pagebanner %}
-
 {% block main %}
+<div class="container container-height--100 flex flex--column flex--center">
+    <div class="panel panel--auth">
 
-<section class="signin wrapper">
-<h2 class="title-bar"><span class="title-bar__text">Sign in with Google or Facebook</span></h2>
-{% include 'components/social-signin.html' %}
-</section>
+        <section class="auth-banner"
+            style="background-image: url({% webpack_static 'img/illustrations/authentication.svg' %});">
+            <h2 class="title text-center">Sign In</h2>
+        </section>
 
-<section class="signin wrapper">
-    <h2 class="title-bar"><span class="title-bar__text">Sign in with Email</span></h2>
-    {% include 'components/errors.html' %}
+        <section>
+            <div class="signin wrapper">
+            <h2 class="title-bar"><span class="title-bar__text">Sign in with Google or Facebook</span></h2>
+            {% include 'components/social-signin.html' %}
+            </div>
 
-    <form method="post" id="login-form">
-        {% csrf_token %}
+            <div class="signin wrapper">
+                <h2 class="title-bar"><span class="title-bar__text">Sign in with Email</span></h2>
+                {% include 'components/errors.html' %}
 
-        {% for field in form %}
-            {% if field.name != "remember" %}
-                <div class="form-field">
-                    <label class="form-field__label" for="{{field.name}}">{{ field.label }}</label>
-                    {{ field }}
+                <form method="post" id="login-form">
+                    {% csrf_token %}
 
-                    {% if field.name in helptext_fields %}
-                    <div class="form-field__help-text">{{ field.help_text }}</div>
-                    {% endif %}
-                </div>
-            {% endif %}
-        {% endfor %}
+                    {% for field in form %}
+                        {% if field.name != "remember" %}
+                            <div class="form-field">
+                                <label class="form-field__label" for="{{field.name}}">{{ field.label }}</label>
+                                {{ field }}
 
-        <div class="flex_center_spaced">
-            <span class="form-field--remember"><label for="{{form.remember.id_for_label }}">{{form.remember.label}}</label>{{form.remember}}</span>
-            <button class="btn btn--lg btn--form-submit" type="submit"><span>Sign In</span><div class="btn-loader"></div></button>
-        </div>
-        <p class="text-center account_link"><a href="{% url 'account_signup' %}">I don't have an account yet!</a></p>
-    </form>
-</section>
+                                {% if field.name in helptext_fields %}
+                                <div class="form-field__help-text">{{ field.help_text }}</div>
+                                {% endif %}
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+
+                    <div class="flex_center_spaced">
+                        <span class="form-field--remember"><label for="{{form.remember.id_for_label }}">{{form.remember.label}}</label>{{form.remember}}</span>
+                        <button class="btn btn--lg btn--form-submit" type="submit"><span>Sign In</span><div class="btn-loader"></div></button>
+                    </div>
+                    <p class="text-center account_link"><a href="{% url 'account_signup' %}">I don't have an account yet!</a></p>
+                </form>
+            </div>
+        </section>
+
+    </div>
+</div>
 {% endblock main %}
