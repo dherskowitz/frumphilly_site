@@ -1,7 +1,9 @@
 import re
+import requests
 from io import BytesIO
 from PIL import Image
 from uuid import uuid4
+from decouple import config
 from django.core.files import File
 from django.db import models
 from django.conf import settings
@@ -182,6 +184,14 @@ class Event(models.Model):
         return self.name
 
     def save(self, *args, **kwargs):
+        if self.location:
+            base_url = "https://api.geocod.io/v1.6/geocode"
+            api_key = config("GEOCODING_KEY")
+            req = requests.get(f"{base_url}?q={self.location}&api_key={api_key}")
+            data = req.json()
+            self.suburb = data["results"][0]["address_components"]["county"]
+            self.city = data["results"][0]["address_components"]["city"]
+            self.state = data["results"][0]["address_components"]["state"]
         if self.image:
             # call the compress function
             new_image = compress(self.image)
