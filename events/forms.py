@@ -74,13 +74,13 @@ class EventForm(forms.ModelForm):
             ].help_text
         self.fields["video"].widget.attrs[
             "placeholder"
-        ] = "link to a video about your event."
+        ] = "Link to a video about your event."
         self.fields["phone_contact"].widget.attrs[
             "placeholder"
-        ] = "expects 999-999-9999"
+        ] = "Where can people call for more info"
         self.fields["link"].widget.attrs[
             "placeholder"
-        ] = "requires full URL e.g. http://example.com"
+        ] = "Requires full URL e.g. http://example.com"
         self.fields["cost"].widget.attrs[
             "placeholder"
         ] = "If your event has a cost to attend."
