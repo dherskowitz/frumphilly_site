@@ -1,56 +1,11 @@
-import re
 import requests
-from io import BytesIO
-from PIL import Image
+import utils
 from uuid import uuid4
 from decouple import config
-from django.core.files import File
 from django.db import models
 from django.conf import settings
 from app.storage_backends import S3EventsMediaStorage, S3EventsFileStorage
 from datetime import date, datetime, timedelta
-from django.utils.text import slugify
-
-
-def compress(image):
-    """"Compress submitted images"""
-    size = 600, 600
-    im = Image.open(image)
-    # create a BytesIO object
-    im_io = BytesIO()
-    # save image to BytesIO object
-    im.thumbnail(size, Image.ANTIALIAS)
-    im.save(im_io, "JPEG", quality=70)
-    # create a django-friendly Files object
-    new_image = File(im_io, name=image.name)
-    return new_image
-
-
-def get_video(video_link):
-    """Parse submitted data for video id or iFrame src and normalize url"""
-    video = video_id = ""
-    if re.search("iframe", video_link):
-        """If video is iFrame grab src and set as video"""
-        source = re.findall('src\s*=\s*"(.+?)"', video_link)
-        if len(source) > 0:
-            video = source[0]
-    elif re.search("youtube", video_link) or re.search("youtu.be", video_link):
-        """If video is youtube link get video id and build url for video"""
-        if re.search("youtube.com/watch", video_link):
-            video_id = video_link.split("v=")[1]
-            if re.search("&", video_link):
-                temp = video_link.split("&")[0]
-                video_id = temp.split("v=")[-1]
-        elif re.search("youtu.be", video_link) or re.search(
-            "youtube.com/embed", video_link
-        ):
-            video_id = video_link.split("/")[-1]
-        video = f"https://youtube.com/embed/{video_id}"
-    elif re.search("vimeo", video_link):
-        """If video is vimeo link get video id and build url for video"""
-        video_id = video_link.split("/")[-1]
-        video = f"https://player.vimeo.com/video/{video_id}"
-    return video
 
 
 # Create your models here.
@@ -194,7 +149,7 @@ class Event(models.Model):
             self.state = data["results"][0]["address_components"]["state"]
         if self.image:
             # call the compress function
-            new_image = compress(self.image)
+            new_image = utils.compress(self.image)
             # set self.image to new_image
             self.image = new_image
             # save
@@ -205,7 +160,7 @@ class Event(models.Model):
         if not self.slug:
             self.slug = slugify(f"{self.name} {my_id}")
         if self.video is not None:
-            self.video = get_video(self.video)
+            self.video = utils.get_video(self.video)
         super().save(*args, **kwargs)
 
     def get_absolute_url(self):
