@@ -67,6 +67,19 @@
     }
 }
 
+.navbar__link.active {
+    position: relative;
+}
+
+.navbar__link.active::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    max-width: 10rem;
+    border-bottom: 3px solid;
+    bottom: 0.5rem;
+}
+
 #navbar__icon {
     @media (min-width: 768px) {
         display: none;
