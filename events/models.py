@@ -225,3 +225,7 @@ class Event(models.Model):
             .order_by("start_date")
         )
         return events
+
+    def filter_by_city(city):
+        events = Event.objects.filter(city__icontains=city).order_by("-start_date")
+        return events

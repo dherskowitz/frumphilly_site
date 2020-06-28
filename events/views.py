@@ -41,6 +41,20 @@ def events_single(request, slug, pk):
     return render(request, "pages/events/events_single.html", context)
 
 
+def events_filter_city(request, city):
+    events_list = Event.filter_by_city(city)
+    page = request.GET.get("page", 1)
+    paginator = Paginator(events_list, 10)
+    try:
+        events = paginator.page(page)
+    except PageNotAnInteger:
+        events = paginator.page(1)
+    except EmptyPage:
+        events = paginator.page(paginator.num_pages)
+    context = {"events": events}
+    return render(request, "pages/events/events_all.html", context)
+
+
 @login_required
 def events_create(request):
     form = EventForm()

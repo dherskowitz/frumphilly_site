@@ -11,4 +11,5 @@ urlpatterns = [
         views.events_delete,
         name="events_delete",
     ),
+    path("events/city/<str:city>", views.events_filter_city, name="events_filter_city"),
 ]
