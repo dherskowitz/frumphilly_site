@@ -226,6 +226,9 @@ class Event(models.Model):
         )
         return events
 
+    def get_cities():
+        # events = Event.objects.get()
+        return Event.objects.order_by("city").values("city").distinct()
+
     def filter_by_city(city):
-        events = Event.objects.filter(city__icontains=city).order_by("-start_date")
-        return events
+        return Event.objects.filter(city__icontains=city).order_by("-start_date")

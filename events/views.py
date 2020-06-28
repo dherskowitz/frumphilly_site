@@ -31,7 +31,7 @@ def events_all(request):
         events = paginator.page(1)
     except EmptyPage:
         events = paginator.page(paginator.num_pages)
-    context = {"events": events}
+    context = {"events": events, "cities": Event.get_cities()}
     return render(request, "pages/events/events_all.html", context)
 
 
@@ -51,7 +51,7 @@ def events_filter_city(request, city):
         events = paginator.page(1)
     except EmptyPage:
         events = paginator.page(paginator.num_pages)
-    context = {"events": events}
+    context = {"events": events, "cities": Event.get_cities()}
     return render(request, "pages/events/events_all.html", context)
 
 

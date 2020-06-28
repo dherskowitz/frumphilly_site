@@ -14,6 +14,11 @@
 <div class="container">
     <section class="flex flex--space-evenly flex--align-start">
         <div class="list list--events">
+        {% if cities %}
+            {% for city in cities %}
+                <a href="{% url "events_filter_city" city.city|lower %}">{{city.city}}</a>
+            {% endfor %}
+        {% endif %}
             {% for event in events %}
             {% include 'pages/events/_events_list.html' %}
             {% empty %}
