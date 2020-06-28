@@ -116,7 +116,15 @@ class EventForm(forms.ModelForm):
         data = req.json()
         if "error" in data:
             raise forms.ValidationError(
-                _("Please enter a valid US address in location.")
+                _(
+                    "Please enter a valid US address in location. (Including city and state)"
+                )
+            )
+        if len(data["results"]) == 0:
+            raise forms.ValidationError(
+                _(
+                    "Please enter a valid US address in location. (Including city and state)"
+                )
             )
         return data["results"][0]["formatted_address"]
 
