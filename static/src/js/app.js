@@ -1,6 +1,6 @@
 require("./messages");
 require("./navbar");
-require("./auth");
+require("./submit");
 require("./events");
 
 let resizeTimer;
