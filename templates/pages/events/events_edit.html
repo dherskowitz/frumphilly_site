@@ -24,7 +24,7 @@
 {% block main %}
 <section class="wrapper">
     {% include 'components/errors.html' %}
-    <form action="{% url 'events_edit' event.slug event.id %}" method="POST" enctype='multipart/form-data'>
+    <form class="events_form" action="{% url 'events_edit' event.slug event.id %}" method="POST" enctype='multipart/form-data'>
         {% csrf_token %}
         {% include 'pages/events/_events-form.html' %}
         <input class="btn btn--block" id="event-submit" type="submit" value="Save Changes">
@@ -33,5 +33,6 @@
 {% endblock main %}
 
 {% block template_js %}
-{% include 'pages/events/_events_js.html' %}
+{% comment %} <script src="{% webpack_static 'libs/places.js' %}"></script> {% endcomment %}
+<script src="{% webpack_static 'libs/trix.js' %}"></script>
 {% endblock template_js %}

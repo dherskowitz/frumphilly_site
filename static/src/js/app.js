@@ -1,6 +1,7 @@
 require("./messages");
 require("./navbar");
 require("./auth");
+require("./events");
 
 let resizeTimer;
 window.addEventListener("resize", () => {
