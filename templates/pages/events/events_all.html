@@ -19,6 +19,24 @@
             {% empty %}
             <p>No events yet!</p>
             {% endfor %}
+
+            {% if events.has_other_pages %}
+            <div class="pagination">
+                {% if events.has_previous %}
+                <a href="?page=1">&laquo; First</a>
+                <a href="?page={{ events.previous_page_number }}">&lt; Prev</a>
+                {% endif %}
+
+                <span class="current">
+                    Page {{ events.number }} of {{ events.paginator.num_pages }}
+                </span>
+
+                {% if events.has_next %}
+                <a href="?page={{ events.next_page_number }}">Next &gt;</a>
+                <a href="?page={{ events.paginator.num_pages }}">Last &raquo;</a>
+                {% endif %}
+            </div>
+            {% endif %}
         </div>
 
         <div class="rightbar">
@@ -35,24 +53,6 @@
                 Example. Your Ad Here.
             </div>
         </div>
-
-        {% if events.has_other_pages %}
-        <div class="pagination">
-            {% if events.has_previous %}
-            <a href="?page=1">&laquo; First</a>
-            <a href="?page={{ events.previous_page_number }}">&lt; Prev</a>
-            {% endif %}
-
-            <span class="current">
-                Page {{ events.number }} of {{ events.paginator.num_pages }}
-            </span>
-
-            {% if events.has_next %}
-            <a href="?page={{ events.next_page_number }}">Next &gt;</a>
-            <a href="?page={{ events.paginator.num_pages }}">Last &raquo;</a>
-            {% endif %}
-        </div>
-        {% endif %}
     </section>
 
     <section class="cta">
