@@ -53,13 +53,16 @@ class Event(models.Model):
         default=None,
         help_text="Address where this event take place...",
     )
-    suburb = models.CharField(
-        max_length=500, default=None, null=True, blank=True, help_text="",
-    )
     city = models.CharField(
         max_length=500, default=None, null=True, blank=True, help_text="",
     )
     state = models.CharField(
+        max_length=500, default=None, null=True, blank=True, help_text="",
+    )
+    zipcode = models.CharField(
+        max_length=500, default=None, null=True, blank=True, help_text="",
+    )
+    location_type = models.CharField(
         max_length=500, default=None, null=True, blank=True, help_text="",
     )
     description = models.TextField(
@@ -139,14 +142,6 @@ class Event(models.Model):
         return self.name
 
     def save(self, *args, **kwargs):
-        if self.location:
-            base_url = "https://api.geocod.io/v1.6/geocode"
-            api_key = config("GEOCODING_KEY")
-            req = requests.get(f"{base_url}?q={self.location}&api_key={api_key}")
-            data = req.json()
-            self.suburb = data["results"][0]["address_components"]["county"]
-            self.city = data["results"][0]["address_components"]["city"]
-            self.state = data["results"][0]["address_components"]["state"]
         if self.image:
             # call the compress function
             new_image = utils.compress(self.image)
