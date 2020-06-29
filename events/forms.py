@@ -59,12 +59,16 @@ class EventForm(forms.ModelForm):
         self.fields["attachment"].widget.attrs["accept"] = "application/pdf"
 
         # Hidden fields
-        self.fields["suburb"].label = ""
-        self.fields["suburb"].widget = forms.HiddenInput()
+        # self.fields["suburb"].label = ""
+        # self.fields["suburb"].widget = forms.HiddenInput()
         self.fields["city"].label = ""
         self.fields["city"].widget = forms.HiddenInput()
         self.fields["state"].label = ""
         self.fields["state"].widget = forms.HiddenInput()
+        self.fields["zipcode"].label = ""
+        self.fields["zipcode"].widget = forms.HiddenInput()
+        self.fields["location_type"].label = ""
+        self.fields["location_type"].widget = forms.HiddenInput()
         self.fields["description"].widget = forms.HiddenInput()
 
         # Set placeholder for each field
@@ -109,6 +113,7 @@ class EventForm(forms.ModelForm):
         return image
 
     def clean_location(self):
+        """ Validate address using additional geolocation """
         location = self.cleaned_data["location"]
         base_url = "https://api.geocod.io/v1.6/geocode"
         api_key = config("GEOCODING_KEY")
@@ -126,7 +131,7 @@ class EventForm(forms.ModelForm):
                     "Please enter a valid US address in location. (Including city and state)"
                 )
             )
-        return data["results"][0]["formatted_address"]
+        return self.cleaned_data["location"]
 
     def clean_description(self):
         tags = [
