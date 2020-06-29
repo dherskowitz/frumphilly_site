@@ -42,5 +42,12 @@
     "webpack": "^4.36.1",
     "webpack-bundle-tracker": "^0.4.2-beta",
     "webpack-cli": "^3.3.6"
+  },
+  "prettier": {
+    "tabWidth": 4,
+    "semi": true,
+    "trailingComma-comma": "es5",
+    "bracketSpacing": true,
+    "arrowParens": "always"
   }
 }
