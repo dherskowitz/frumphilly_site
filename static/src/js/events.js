@@ -2,11 +2,17 @@ let eventsFrom = document.querySelector(".events_form");
 
 if (eventsFrom) {
     // format phone on keypress
-    document.getElementById('id_name').focus();
-    document.getElementById('id_phone_contact').addEventListener('input', function (e) {
-        var x = e.target.value.replace(/\D/g, '').match(/(\d{0,3})(\d{0,3})(\d{0,4})/);
-        e.target.value = !x[2] ? x[1] : '' + x[1] + '-' + x[2] + (x[3] ? '-' + x[3] : '');
-    });
+    document.getElementById("id_name").focus();
+    document
+        .getElementById("id_phone_contact")
+        .addEventListener("input", function (e) {
+            var x = e.target.value
+                .replace(/\D/g, "")
+                .match(/(\d{0,3})(\d{0,3})(\d{0,4})/);
+            e.target.value = !x[2]
+                ? x[1]
+                : "" + x[1] + "-" + x[2] + (x[3] ? "-" + x[3] : "");
+        });
 
     // trix wysiwyg editor prevent file upload
     addEventListener("trix-file-accept", function (event) {
@@ -14,14 +20,32 @@ if (eventsFrom) {
     });
 
     // google places autocomplete
-    var input = document.getElementById('id_location');
+    var input = document.getElementById("id_location");
+    var city = document.getElementById("id_city");
+    var state = document.getElementById("id_state");
+    var zipcode = document.getElementById("id_zipcode");
+    var location_type = document.getElementById("id_location_type");
     var options = {
-        componentRestrictions: { country: 'us' }
+        types: ["address"],
+        componentRestrictions: {
+            country: "us",
+        },
     };
-    google.maps.event.addDomListener(input, 'keydown', function (event) {
+    const autocomplete = new google.maps.places.Autocomplete(input, options);
+    google.maps.event.addDomListener(input, "keydown", function (event) {
         if (event.keyCode === 13) {
             event.preventDefault();
         }
     });
-    autocomplete = new google.maps.places.Autocomplete(input, options);
+
+    google.maps.event.addListener(autocomplete, "place_changed", () => {
+        // console.log(autocomplete.getPlace());
+        let place = autocomplete.getPlace();
+
+        city.value = place.vicinity;
+        location_type.value = place.types[0];
+        state.value = place.address_components.find(element => element.types.includes("administrative_area_level_1")).short_name;
+        zipcode.value = place.address_components.find(element => element.types.includes("postal_code")).long_name;
+    });
+
 }
