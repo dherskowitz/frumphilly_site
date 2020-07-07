@@ -2,26 +2,29 @@
 {% load webpack_static from webpack_loader %}
 
 {% block pagebanner %}
-<section class="page-banner" style="background-image: url({% webpack_static 'img/illustrations/settings.svg' %});">
+<section class="page-banner curved-bottom" style="background-image: url({% webpack_static 'img/illustrations/settings.svg' %});">
     <h1 class="title">My Account</h1>
 </section>
 {% endblock pagebanner %}
 
 {% block main %}
-<section class="wrapper">
-    <ul class="account-menu">
-        <a class="account-menu__item" href="{% url 'user_events' %}">
-            <li>Manage my Events</li>
-        </a>
-        <a class="account-menu__item" href="{% url 'account_change_password' %}">
-            <li>Change my password</li>
-        </a>
-        <a class="account-menu__item" href="{% url 'account_email' %}">
-            <li>Change my email</li>
-        </a>
-        <a class="account-menu__item" href="{% url 'socialaccount_connections' %}">
-            <li>Manage my social account connections</li>
-        </a>
-    </ul>
-</section>
+
+<div class="container flex flex--column flex--center">
+    <section class="panel">
+        <ul class="account-menu">
+            <a class="account-menu__item" href="{% url 'user_events' %}">
+                <li>Manage my Events</li>
+            </a>
+            <a class="account-menu__item" href="{% url 'account_change_password' %}">
+                <li>Change my password</li>
+            </a>
+            <a class="account-menu__item" href="{% url 'account_email' %}">
+                <li>Change my email</li>
+            </a>
+            <a class="account-menu__item" href="{% url 'socialaccount_connections' %}">
+                <li>Manage my social account connections</li>
+            </a>
+        </ul>
+    </section>
+</div>
 {% endblock main %}
