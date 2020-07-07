@@ -4,7 +4,15 @@
 {% block meta_description %}Social Network Login Failure{% endblock meta_description %}
 
 {% block main %}
-<h1>Social Network Login Failure</h1>
 
-<p>An error occurred while attempting to login via your social network account.</p>
+    <div class="container container-height--100 flex flex--column flex--center">
+        <section class="panel">
+            <section class="panel__content">
+                <h1 class="panel__title">Social Network Login Failure</h1>
+                {% url 'account_login' as login_url %}
+                <p class="panel__text">An error occurred while attempting to login via your social network account.</p>
+            </section>
+        </section>
+    </div>
+
 {% endblock %}
