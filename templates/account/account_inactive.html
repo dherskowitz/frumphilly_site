@@ -1,12 +1,15 @@
 {% extends "base.html" %}
+{% load webpack_static from webpack_loader %}
 
-{% load i18n %}
-
-{% block meta_title %} | Frum Philly{% endblock meta_title %}
-{% block meta_description %}{% endblock meta_description %}
+{% block meta_title %}Account Inactive | Frum Philly{% endblock meta_title %}
+{% block meta_description %}This account is no longer active.{% endblock meta_description %}
 
 {% block main %}
-<h1>Account Inactive</h1>
-
-<p>This account is inactive.</p>
+<div class="container container-height--100 flex flex--column flex--center">
+    <section class="panel">
+        <section class="panel__banner flex flex--center flex--align-center" style="background-image: url({% webpack_static 'img/illustrations/settings.svg' %});">
+            <h1 class="title panel__title">This account is inactive.</h1>
+        </section>
+    </section>
+</div>
 {% endblock %}
