@@ -207,3 +207,12 @@
     background: $mid-grey;
     color: darken($mid-grey, 30%);
 }
+
+.tag {
+    background: $purple;
+    color: $white;
+    padding: 0.25rem 0.5rem;
+    margin: 0 0.25rem;
+    @include curveAllCorners;
+    @include boxShadow($silver);
+}
