@@ -1,0 +1,13 @@
+{% if cities %}
+<div class="dropdown">
+    <input type="checkbox" id="dropdown__toggle" class="visually-hidden">
+    <label class="btn btn--block dropdown__btn" for="toggle">Filter Location <svg class="dropdown__btn__icon" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v3.586L7.707 9.293a1 1 0 00-1.414 1.414l3 3a1 1 0 001.414 0l3-3a1 1 0 00-1.414-1.414L11 10.586V7z" clip-rule="evenodd"></path></svg></label>
+    <div class="dropdown__list">
+    {% with url_name=request.resolver_match.kwargs.city  %}
+        {% for city in cities %}
+            <a class="dropdown__item {% if url_name == city.city|lower %} disabled{% endif %}" href="{% url "events_filter_city" city.city|lower %}">{{city.city}}</a>
+        {% endfor %}
+    {% endwith %}
+    </div>
+</div>
+{% endif %}
