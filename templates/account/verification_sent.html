@@ -1,17 +1,20 @@
 {% extends "base.html" %}
 {% load webpack_static from webpack_loader %}
 
-{% load i18n %}
-
-{% block meta_title %}Verify Your E-mail Address{% endblock %}
+{% block meta_title %}Verify Your E-mail Address | Frum Philly{% endblock meta_title %}
+{% block meta_description %}An email has been sent to verify your email address.{% endblock meta_description %}
 
 {% block main %}
-<section class="page-banner" style="background-image: url({% webpack_static 'img/illustrations/mobile_inbox.svg' %});">
-    <h1 class="title text-center">Verify Your E-mail Address</h1>
 
-</section>
-    {% comment %} <h1>Verify Your E-mail Address</h1> {% endcomment %}
-
-    <p>{% blocktrans %}We have sent an e-mail to you for verification. Follow the link provided to finalize the signup process. Please contact us if you do not receive it within a few minutes.{% endblocktrans %}</p>
+<div class="container container-height--100 flex flex--column flex--center">
+    <section class="panel">
+        <section class="panel__banner flex flex--center flex--align-center" style="background-image: url({% webpack_static 'img/illustrations/mobile_inbox.svg' %});">
+            <h1 class="title panel__title">Verify Your E-mail Address</h1>
+        </section>
+        <section class="panel__content">
+            <p class="panel__text text-center">We have sent an e-mail to you for verification. Follow the link provided to finalize the signup process. Please contact us if you do not receive it within a few minutes.</p>
+        </section>
+    </section>
+</div>
 
 {% endblock %}
