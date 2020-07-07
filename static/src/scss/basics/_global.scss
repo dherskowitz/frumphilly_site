@@ -199,3 +199,11 @@
 .container-height--100 {
     height: calc(100% - 2rem);
 }
+
+
+.disabled {
+    pointer-events: none;
+    cursor: context-menu;
+    background: $mid-grey;
+    color: darken($mid-grey, 30%);
+}
