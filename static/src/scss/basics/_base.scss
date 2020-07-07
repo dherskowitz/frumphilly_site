@@ -37,7 +37,7 @@ h5,
 h6 {
     font-family: Verdana, Helvetica, sans-serif;
     font-weight: 600;
-    margin: 0.25rem 0;
+    // margin: 0.25rem 0;
 }
 
 p {
@@ -52,6 +52,11 @@ pre {
 
 img {
     max-width: 100%;
+}
+
+*+* {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
 }
 
 .resize-animation-stopper * {
