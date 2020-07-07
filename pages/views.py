@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.http import HttpResponse
 from pages.models import Page, PageContent
 from events.models import Event
 
@@ -25,6 +26,10 @@ def home(request):
 
 def about(request):
     return render(request, "pages/site/about.html")
+
+
+def contact(request):
+    return HttpResponse("Contact page")
 
 
 def terms(request):
