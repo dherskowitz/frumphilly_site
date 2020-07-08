@@ -7,8 +7,6 @@
         {% for event in events %}
             <div class="tablerow">
                 <span class="tablecell" data-tablecell-title="Event Name">{{event.name}}</span>
-                {% comment %} <span class="tablecell" data-tablecell-title="Event Date">{{event.start_date}}</span> {% endcomment %}
-                {% comment %} <span class="tablecell" data-tablecell-title="Event Location">{{event.location}}</span> {% endcomment %}
                 <span class="tablecell" data-tablecell-title="Posted On">{{event.created_at}}</span>
                 <span class="tablecell text-center tablecell--action" data-tablecell-title="">
                     <a class="btn btn--small" href="{% url 'events_edit' event.slug event.id %}">Edit Event</a>
