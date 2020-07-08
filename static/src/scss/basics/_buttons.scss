@@ -6,6 +6,12 @@
     padding: 1rem;
     border: none;
     cursor: pointer;
+    will-change: transition;
+    transition: background 0.3s ease;
+
+    &:hover {
+        background: darken($purple, 15%);
+    }
 }
 
 .btn--small {
@@ -25,4 +31,10 @@
 .btn--danger {
     color: $white;
     background-color: $red;
+    will-change: transition;
+    transition: background 0.3s ease;
+
+    &:hover {
+        background: darken($red, 15%);
+    }
 }
