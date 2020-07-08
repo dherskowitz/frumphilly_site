@@ -1,11 +1,24 @@
 {% extends 'base.html' %}
 
 {% block main %}
-{% for event in events %}
-{{event.name}} <br>
-{{event.start_date}} <br>
-{{event.location}} <br>
-{{event.created_by}} <br>
-<hr>
-{% endfor %}
+
+<div class="container flex flex--column flex--center">
+    <section class="table">
+        {% for event in events %}
+            <div class="tablerow">
+                <span class="tablecell" data-tablecell-title="Event Name">{{event.name}}</span>
+                {% comment %} <span class="tablecell" data-tablecell-title="Event Date">{{event.start_date}}</span> {% endcomment %}
+                {% comment %} <span class="tablecell" data-tablecell-title="Event Location">{{event.location}}</span> {% endcomment %}
+                <span class="tablecell" data-tablecell-title="Posted On">{{event.created_at}}</span>
+                <span class="tablecell text-center tablecell--action" data-tablecell-title="">
+                    <a class="btn btn--small" href="{% url 'events_edit' event.slug event.id %}">Edit Event</a>
+                </span>
+                <span class="tablecell text-center tablecell--action" data-tablecell-title="">
+                    <a class="btn btn--danger btn--small" href="{% url 'events_delete' event.slug event.id %}">Delete Event</a>
+                </span>
+            </div>
+        {% endfor %}
+    </section>
+</div>
+
 {% endblock main %}
