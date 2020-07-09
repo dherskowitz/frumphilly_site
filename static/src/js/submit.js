@@ -1,12 +1,10 @@
 if (document.getElementById("id_email")) {
-    document.getElementById("id_email").focus();
+  document.getElementById("id_email").focus();
 }
 
 let submitBtn = document.querySelector(".btn--form-submit");
 let loader = document.querySelector(".btn-loader");
-let signupForm = document.querySelector("#signup-form");
-let loginForm = document.querySelector("#login-form");
-let events_form = document.querySelector(".events_form");
+let form = document.querySelector(".form");
 
 const loaderSVG = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="margin: auto; background: none repeat scroll 0% 0%; display: block; shape-rendering: auto;" width="3rem" height="2.125rem" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
 <rect x="17.5" y="30" width="15" height="40" fill="#ff9478">
@@ -24,17 +22,12 @@ const loaderSVG = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://w
 </svg>`;
 
 function showLoading() {
-    submitBtn.innerText = "";
-    submitBtn.style.padding = "0.5rem";
-    submitBtn.innerHTML = loaderSVG;
+  submitBtn.innerText = "";
+  submitBtn.style.padding = "0.5rem";
+  submitBtn.style.pointerEvents = "none";
+  form.style.pointerEvents = "none"
+  submitBtn.innerHTML = loaderSVG;
 }
-if (signupForm) {
-    signupForm.addEventListener("submit", showLoading);
+if (form) {
+  form.addEventListener("submit", showLoading);
 }
-if (loginForm) {
-    loginForm.addEventListener("submit", showLoading);
-}
-if (events_form) {
-    events_form.addEventListener("submit", showLoading);
-}
-

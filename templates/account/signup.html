@@ -20,7 +20,7 @@
                 <h2 class="title-bar"><span class="title-bar__text">Sign up with Email</span></h2>
                 {% include 'components/errors.html' %}
 
-                <form method="post" id="signup-form">
+                <form method="post" id="signup-form" class="form">
                     {% csrf_token %}
                     {% for field in form %}
                     <div class="form-field">

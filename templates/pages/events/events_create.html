@@ -25,7 +25,7 @@
     <div>
         <!-- <p>Not all fields are required but the more information you can provide, the better it will look on the site. -->
         </p>
-        <form class="events_form" action="{% url 'events_create' %}" method="POST" enctype='multipart/form-data'>
+        <form class="form" action="{% url 'events_create' %}" method="POST" enctype='multipart/form-data'>
             {% csrf_token %}
             {% include 'pages/events/_events-form.html' %}
             {% include 'components/submit_btn.html' with value='Create Event' class="btn btn--block btn--form-submit" %}

@@ -6,7 +6,7 @@
 Event name: {{event.name}} <br>
 Event date: {{event.start_date}} <br>
 Event location: {{event.location}} <br><br>
-<form action="{{events_delete}}" method="POST">
+<form action="{{events_delete}}" method="POST" class="form">
     {% csrf_token %}
     <input type="submit" value="yes, delete">
 </form>

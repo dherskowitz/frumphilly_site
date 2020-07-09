@@ -24,7 +24,7 @@
                 <h2 class="title-bar"><span class="title-bar__text">Sign in with Email</span></h2>
                 {% include 'components/errors.html' %}
 
-                <form method="post" id="login-form">
+                <form class="form" method="post" id="login-form" class="form">
                     {% csrf_token %}
 
                     {% for field in form %}
