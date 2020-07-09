@@ -32,7 +32,7 @@
                         {% endif %}
                     </div>
                     {% endfor %}
-                    <button class="btn btn--block btn--form-submit" type="submit"><span>Sign Up</span><div class="btn-loader"></div></button>
+                    {% include 'components/submit_btn.html' with value='Sign Up' class="btn btn--block btn--form-submit" %}
                     <p class="text-center account_link"><a href="{% url 'account_login' %}">I already have an account!</a></p>
                 </form>
             </section>

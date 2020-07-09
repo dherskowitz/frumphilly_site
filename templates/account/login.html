@@ -42,7 +42,7 @@
 
                     <div class="flex_center_spaced">
                         <span class="form-field--remember"><label for="{{form.remember.id_for_label }}">{{form.remember.label}}</label>{{form.remember}}</span>
-                        <button class="btn btn--lg btn--form-submit" type="submit"><span>Sign In</span><div class="btn-loader"></div></button>
+                        {% include 'components/submit_btn.html' with value='Sign In' class="btn btn--lg btn--form-submit" %}
                     </div>
                     <p class="text-center account_link"><a href="{% url 'account_signup' %}">I don't have an account yet!</a></p>
                 </form>
