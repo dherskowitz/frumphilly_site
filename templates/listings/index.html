@@ -3,8 +3,10 @@
 
 {% block main %}
     <h1>Listings Page</h1>
+
     
     {% for listing in listings %}
+        <a href="{{ listing.get_absolute_url }}-{{listing.id}}">View Listing</a> <br>
         {{listing.business_name}} <br>
         {{listing.sun_thu_hours}} <br>
         {{listing.location}} <br>
