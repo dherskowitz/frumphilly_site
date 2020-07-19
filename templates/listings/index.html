@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+
+{% block main %}
+    <h1>Listings Page</h1>
+    
+    {% for listing in listings %}
+        {{listing.business_name}} <br>
+        {{listing.sun_thu_hours}} <br>
+        {{listing.location}} <br>
+        Credit: {{listing.accept_cc}} <br>
+    {% endfor %}
+        
+{% endblock main %}
+    
