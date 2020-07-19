@@ -2,9 +2,10 @@
 
 
 {% block main %}
+<div class="container">
     <h1>Listings Page</h1>
 
-    
+
     {% for listing in listings %}
         <a href="{{ listing.get_absolute_url }}-{{listing.id}}">View Listing</a> <br>
         {{listing.business_name}} <br>
@@ -12,6 +13,5 @@
         {{listing.location}} <br>
         Credit: {{listing.accept_cc}} <br>
     {% endfor %}
-        
+</div>
 {% endblock main %}
-    

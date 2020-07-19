@@ -2,10 +2,16 @@
 
 
 {% block main %}
+<div class="container">
     <h1>{{listing.business_name}}</h1>
+
+    {% for c in listing.categories.all %}
+        <span>{{c}}</span>
+    {% endfor %}
+    <br>
+
     {{listing.sun_thu_hours}} <br>
     {{listing.location}} <br>
     Credit: {{listing.accept_cc}} <br>
-        
+</div>
 {% endblock main %}
-    
