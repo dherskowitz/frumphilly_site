@@ -146,6 +146,7 @@ class Listing(models.Model):
     premium = models.BooleanField(default=False)
     approved = models.BooleanField(default=False)
     accept_cc = models.BooleanField(default=False)
+    delivers = models.BooleanField(default=False)
     wheelchair_access = models.BooleanField(default=False)
     slug = models.SlugField(default="", blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
@@ -165,7 +166,7 @@ class Listing(models.Model):
         super().save(*args, **kwargs)
 
     def get_absolute_url(self):
-        return f"/events/{self.slug}"
+        return f"/listings/{self.slug}"
 
     def get_listings():
         return Listing.objects.all()
