@@ -5,6 +5,7 @@ from django.utils.text import slugify
 
 class Category(models.Model):
     title = models.CharField(default="", blank=False, max_length=50)
+    slug = models.SlugField(default="", blank=True)
 
     class Meta:
         verbose_name = "category"
@@ -12,6 +13,14 @@ class Category(models.Model):
 
     def __str__(self):
         return self.title
+
+    def save(self, *args, **kwargs):
+        # if not self.slug:
+        self.slug = slugify(f"{self.title}")
+        super().save(*args, **kwargs)
+
+    def get_category_by_slug(slug):
+        return Category.objects.filter(slug=slug)
 
 
 class Listing(models.Model):
@@ -51,19 +60,19 @@ class Listing(models.Model):
         blank=True,
         help_text="Enter the URL of your Instagram page if you have one.",
     )
-    whatsapp = models.CharField(
-        max_length=18,
-        default=None,
-        null=True,
-        blank=True,
-        help_text="Enter your WhatsApp number if you have one.",
-    )
     phone = models.CharField(
         max_length=18,
         default=None,
         null=True,
         blank=True,
         help_text="Enter your Phone number.",
+    )
+    fax = models.CharField(
+        max_length=18,
+        default=None,
+        null=True,
+        blank=True,
+        help_text="Enter your Fax number.",
     )
     mobile = models.CharField(
         max_length=18,
@@ -72,12 +81,12 @@ class Listing(models.Model):
         blank=True,
         help_text="Enter your mobile number.",
     )
-    fax = models.CharField(
+    whatsapp = models.CharField(
         max_length=18,
         default=None,
         null=True,
         blank=True,
-        help_text="Enter your Fax number.",
+        help_text="Enter your WhatsApp number if you have one.",
     )
     email = models.EmailField(
         max_length=254,
@@ -170,3 +179,6 @@ class Listing(models.Model):
 
     def get_listings():
         return Listing.objects.all()
+
+    def get_listings_by_category(slug):
+        return Listing.objects.filter(categories__slug=slug)
