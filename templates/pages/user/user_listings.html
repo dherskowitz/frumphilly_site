@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block meta_title %}Manage Your Listings | Frum Philly{% endblock meta_title %}
+{% block meta_description %}Manage the listings you have published on Frum Philly.{% endblock meta_description %}
+
+{% block main %}
+
+<div class="container flex flex--column flex--center">
+    <section class="table">
+        {% for listing in listings %}
+            <div class="tablerow">
+                <span class="tablecell" data-tablecell-title="Listing Name">
+                    <a href="{% url 'listing_single' listing.slug listing.id %}">{{listing.business_name}}</a>
+                </span>
+                <span class="tablecell" data-tablecell-title="Posted On">{{listing.created_at}}</span>
+                <span class="tablecell text-center tablecell--action" data-tablecell-title="">
+                    <a class="btn btn--small" href="{% url 'listings_edit' listing.slug listing.id %}">Edit Listing</a>
+                </span>
+                <span class="tablecell text-center tablecell--action" data-tablecell-title="">
+                    <a class="btn btn--danger btn--small" href="{% url 'listings_delete' listing.slug listing.id %}">Delete Event</a>
+                </span>
+            </div>
+        {% endfor %}
+    </section>
+</div>
+
+{% endblock main %}
