@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block main %}
+<h1>Really delete?</h1>
+<h3>This cannot be undone!!</h3>
+Listing name: {{listing.business_name}} <br>
+<form action="{{listings_delete}}" method="POST" class="form">
+    {% csrf_token %}
+    <input type="submit" value="yes, delete">
+</form>
+<a href="/listings/{{listing.slug}}-{{listing.id}}">no! cancel</a>
+{% endblock main %}

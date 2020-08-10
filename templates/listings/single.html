@@ -13,5 +13,9 @@
     {{listing.sun_thu_hours}} <br>
     {{listing.location}} <br>
     Credit: {{listing.accept_cc}} <br>
+
+    {% for category in listing.categories.all %}
+        <a href="{% url 'listings_category' category.slug %}">{{ category }}</a> {% if not forloop.last %} / {% endif %}
+    {% endfor %}
 </div>
 {% endblock main %}

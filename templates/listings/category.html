@@ -3,21 +3,20 @@
 
 {% block main %}
 <div class="container">
-    <h1>Listings Page</h1>
+    
+
+    {% for name in category %}
+        <h1>{{ name }}</h1>
+    {% endfor %}
+
 
 
     {% for listing in listings %}
         <a href="{{ listing.get_absolute_url }}-{{listing.id}}">View Listing</a> <br>
         {{listing.business_name}} <br>
-        {% if listing.sun_thu_hours %}{{listing.sun_thu_hours}} <br>{% endif %}
+        {{listing.sun_thu_hours}} <br>
         {{listing.location}} <br>
         Credit: {{listing.accept_cc}} <br>
-
-
-        {% for category in listing.categories.all %}
-            <a href="{% url 'listings_category' category.slug %}">{{ category }}</a> {% if not forloop.last %} / {% endif %}
-        {% endfor %}
-        <hr>
     {% endfor %}
 </div>
 {% endblock main %}
