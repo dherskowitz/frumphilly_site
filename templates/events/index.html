@@ -14,9 +14,9 @@
 <div class="container">
     <section class="flex flex--space-between flex--align-start">
         <div class="list list--events">
-            {% include 'pages/events/_events_filter.html' %}
+            {% include 'events/_filter.html' %}
             {% for event in events %}
-            {% include 'pages/events/_events_list.html' %}
+            {% include 'events/_list.html' %}
             {% empty %}
             <p>No events yet!</p>
             {% endfor %}

@@ -32,13 +32,13 @@ def events_all(request):
     except EmptyPage:
         events = paginator.page(paginator.num_pages)
     context = {"events": events, "cities": Event.get_cities()}
-    return render(request, "pages/events/events_all.html", context)
+    return render(request, "events/index.html", context)
 
 
 def events_single(request, slug, pk):
     event = get_object_or_404(Event, slug=slug, id=pk)
     context = {"event": event}
-    return render(request, "pages/events/events_single.html", context)
+    return render(request, "events/single.html", context)
 
 
 def events_filter_city(request, city):
@@ -52,7 +52,7 @@ def events_filter_city(request, city):
     except EmptyPage:
         events = paginator.page(paginator.num_pages)
     context = {"events": events, "cities": Event.get_cities()}
-    return render(request, "pages/events/events_all.html", context)
+    return render(request, "events/all.html", context)
 
 
 @login_required
@@ -71,7 +71,7 @@ def events_create(request):
             messages.success(request, "Event created successfully!")
             return redirect(events_single, slug=event.slug, pk=event.id)
 
-    return render(request, "pages/events/events_create.html", context)
+    return render(request, "events/create.html", context)
 
 
 @login_required
@@ -99,7 +99,7 @@ def events_edit(request, slug, pk):
             messages.success(request, "Event updated successfully!")
             return redirect(events_single, slug=event.slug, pk=event.id)
 
-    return render(request, "pages/events/events_edit.html", context)
+    return render(request, "events/edit.html", context)
 
 
 @login_required
@@ -111,4 +111,4 @@ def events_delete(request, slug, pk):
     if request.method == "POST":
         event.delete()
         return redirect(events_all)
-    return render(request, "pages/events/events_delete.html", context)
+    return render(request, "events/delete.html", context)
