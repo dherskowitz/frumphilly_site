@@ -44,10 +44,6 @@
     }
 }
 
-.list--events>.list__item {
-    margin: 0;
-}
-
 .list__title {
     margin: 0;
     font-size: 1.25rem;
@@ -79,4 +75,9 @@
 .icon {
     color: $outer-space;
     transition: all 0.5s ease;
+}
+
+
+.list--m0>.list__item {
+    margin: 0;
 }
