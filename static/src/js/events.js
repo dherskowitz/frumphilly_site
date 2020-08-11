@@ -1,19 +1,15 @@
-let eventsFrom = document.querySelector(".events_form");
+let form = document.querySelector(".form");
 
-if (eventsFrom) {
-    // format phone on keypress
-    document.getElementById("id_name").focus();
-    document
-        .getElementById("id_phone_contact")
-        .addEventListener("input", function (e) {
-            var x = e.target.value
-                .replace(/\D/g, "")
-                .match(/(\d{0,3})(\d{0,3})(\d{0,4})/);
-            e.target.value = !x[2]
-                ? x[1]
-                : "" + x[1] + "-" + x[2] + (x[3] ? "-" + x[3] : "");
-        });
+formatPhone = (e) => {
+    var x = e.target.value
+        .replace(/\D/g, "")
+        .match(/(\d{0,3})(\d{0,3})(\d{0,4})/);
+    e.target.value = !x[2]
+        ? x[1]
+        : "" + x[1] + "-" + x[2] + (x[3] ? "-" + x[3] : "");
+};
 
+if (form) {
     // trix wysiwyg editor prevent file upload
     addEventListener("trix-file-accept", function (event) {
         event.preventDefault();
@@ -44,8 +40,11 @@ if (eventsFrom) {
 
         city.value = place.vicinity;
         location_type.value = place.types[0];
-        state.value = place.address_components.find(element => element.types.includes("administrative_area_level_1")).short_name;
-        zipcode.value = place.address_components.find(element => element.types.includes("postal_code")).long_name;
+        state.value = place.address_components.find((element) =>
+            element.types.includes("administrative_area_level_1")
+        ).short_name;
+        zipcode.value = place.address_components.find((element) =>
+            element.types.includes("postal_code")
+        ).long_name;
     });
-
 }
