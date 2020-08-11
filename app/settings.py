@@ -57,6 +57,7 @@ INSTALLED_APPS = [
     # Local
     "pages",
     "events",
+    "listings.apps.ListingsConfig",
     # Django Cleanup - stay at bottom
     "django_cleanup.apps.CleanupConfig",
     # 3rd Party

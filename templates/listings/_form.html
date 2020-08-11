@@ -1,0 +1,71 @@
+{% for field in form %}
+
+    {% if field.name in check_fields %}
+        {{continue}}
+    {% elif field.name == 'categories' %}
+        {{continue}}
+    {% else %}
+        <div class="form-field">
+
+            <label class="form-field__label" for="{{field.id_for_label}}">{{ field.label }} {% if field.field.required %}<span
+                    class="form-field__label--required">(required)</span>{% endif %}</label>
+            {{ field }}
+
+            {% if field.name in helptext_fields %}
+            <div class="form-field__help-text">{{ field.help_text }}</div>
+            {% endif %}
+        </div>
+    {% endif %}
+
+{% endfor %}
+
+{% comment %} Features Checkboxes {% endcomment %}
+<div class="form-field check_fields">
+
+        <label class="form-field__label">Business Features</label>
+        <div class="check_field">
+            <label class="form-field__label" for="{{form.accept_cc.id_for_label }}">{{ form.accept_cc.label }}</label>
+            {{ form.accept_cc }}
+
+            {% if form.accept_cc.name in helptext_fields %}
+            <div class="form-field__help-text">{{ field.help_text }}</div>
+            {% endif %}
+        </div>
+        <div class="check_field">
+            <label class="form-field__label" for="{{form.delivers.id_for_label }}">{{ form.delivers.label }}</label>
+            {{ form.delivers }}
+
+            {% if form.delivers.name in helptext_fields %}
+            <div class="form-field__help-text">{{ field.help_text }}</div>
+            {% endif %}
+        </div>
+        <div class="check_field">
+            <label class="form-field__label" for="{{form.wheelchair_access.id_for_label }}">{{ form.wheelchair_access.label }}</label>
+            {{ form.wheelchair_access }}
+
+            {% if form.wheelchair_access.name in helptext_fields %}
+            <div class="form-field__help-text">{{ field.help_text }}</div>
+            {% endif %}
+        </div>
+
+</div>
+
+{% comment %} categories {% endcomment %}
+
+<div class="form-field form-field--multiselect">
+    <label class="form-field__label" for="{{form.categories.id_for_label }}">{{ form.categories.label }} {% if form.categories.field.required %}<span class="form-field__label--required">(required)</span>{% endif %}
+        {% comment %} <p><small>Please select at least one category:</small></p> {% endcomment %}
+        {% if form.categories.errors %}
+        <p class="error"><small>Please select at least one category:</small></p>
+        {% else %}
+        <p><small>Please select at least one category:</small></p>
+        {% endif %}
+    </label>
+    <div class="check_field">
+        {{ form.categories }}
+
+        {% if form.categories.name in helptext_fields %}
+        <div class="form-field__help-text">{{ form.categories.help_text }}</div>
+        {% endif %}
+    </div>
+</div>

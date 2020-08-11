@@ -1,7 +1,3 @@
-if (document.getElementById("id_email")) {
-  document.getElementById("id_email").focus();
-}
-
 let submitBtn = document.querySelector(".btn--form-submit");
 let loader = document.querySelector(".btn-loader");
 let form = document.querySelector(".form");
@@ -22,12 +18,12 @@ const loaderSVG = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://w
 </svg>`;
 
 function showLoading() {
-  submitBtn.innerText = "";
-  submitBtn.style.padding = "0.5rem";
-  submitBtn.style.pointerEvents = "none";
-  form.style.pointerEvents = "none"
-  submitBtn.innerHTML = loaderSVG;
+    submitBtn.innerText = "";
+    submitBtn.style.padding = "0.5rem";
+    submitBtn.style.pointerEvents = "none";
+    form.style.pointerEvents = "none";
+    submitBtn.innerHTML = loaderSVG;
 }
 if (form) {
-  form.addEventListener("submit", showLoading);
+    form.addEventListener("submit", showLoading);
 }
