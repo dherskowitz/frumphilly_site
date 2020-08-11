@@ -154,7 +154,4 @@ class EventForm(forms.ModelForm):
         ]
         description = self.cleaned_data["description"]
         clean_description = bleach.clean(description, tags=tags, attributes=["href"])
-        print("============")
-        print(description)
-        print(clean_description)
         return clean_description
