@@ -1,7 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from django.http import HttpResponseForbidden
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from .models import Event
 from .forms import EventForm
@@ -78,7 +77,7 @@ def events_create(request):
 def events_edit(request, slug, pk):
     event = get_object_or_404(Event, slug=slug, id=pk)
     if request.user != event.created_by:
-        return HttpResponseForbidden()
+        return render(request, "403.html")
     form = EventForm(instance=event)
     datetime_fields = ("start_date", "end_date")
     context = {
@@ -106,7 +105,7 @@ def events_edit(request, slug, pk):
 def events_delete(request, slug, pk):
     event = get_object_or_404(Event, slug=slug, id=pk)
     if request.user != event.created_by:
-        return HttpResponseForbidden()
+        return render(request, "403.html")
     context = {"event": event}
     if request.method == "POST":
         event.delete()

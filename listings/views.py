@@ -1,7 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponseForbidden
 from .models import Listing, Category
 from .forms import ListingForm
 
@@ -55,7 +54,7 @@ def listings_create(request):
 def listings_edit(request, slug, pk):
     listing = get_object_or_404(Listing, slug=slug, id=pk)
     if request.user != listing.created_by:
-        return HttpResponseForbidden()
+        return render(request, "403.html")
     form = ListingForm(instance=listing)
     check_fields = [
         "claimed",
@@ -85,7 +84,7 @@ def listings_edit(request, slug, pk):
 def listings_delete(request, slug, pk):
     listing = get_object_or_404(Listing, slug=slug, id=pk)
     if request.user != listing.created_by:
-        return HttpResponseForbidden()
+        return render(request, "403.html")
     context = {"listing": listing}
     if request.method == "POST":
         listing.delete()
