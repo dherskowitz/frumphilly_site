@@ -33,7 +33,7 @@
 
         <div class="list list--home">
             {% for event in upcoming_events %}
-                {% include 'pages/events/_events_list.html' %}
+                {% include 'events/_list.html' %}
             {% empty %}
                 <p>no upcoming events!</p>
             {% endfor %}
