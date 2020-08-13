@@ -7,7 +7,7 @@ from listings.models import Listing
 # Create your views here.
 @login_required
 def user_account(request):
-    return render(request, "pages/user/user_account.html")
+    return render(request, "user/user_account.html")
 
 
 @login_required
@@ -16,7 +16,7 @@ def user_events(request):
     context = {
         "events": events,
     }
-    return render(request, "pages/user/user_events.html", context)
+    return render(request, "user/user_events.html", context)
 
 
 @login_required
@@ -25,4 +25,4 @@ def user_listings(request):
     context = {
         "listings": listings,
     }
-    return render(request, "pages/user/user_listings.html", context)
+    return render(request, "user/user_listings.html", context)

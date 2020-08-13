@@ -12,20 +12,20 @@ def home(request):
         "upcoming_events": upcoming_events,
         "events_in_future": events_in_future,
     }
-    return render(request, "pages/site/home.html", context)
+    return render(request, "pages/home.html", context)
 
 
 def about(request):
-    return render(request, "pages/site/about.html")
+    return render(request, "pages/about.html")
 
 
 def contact(request):
-    return render(request, "pages/site/contact.html")
+    return render(request, "pages/contact.html")
 
 
 def terms(request):
-    return render(request, "pages/site/terms.html")
+    return render(request, "pages/terms.html")
 
 
 def privacy(request):
-    return render(request, "pages/site/privacy.html")
+    return render(request, "pages/privacy.html")

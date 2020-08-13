@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load webpack_static from webpack_loader %}
+{% load socialaccount %}
+{% load humanize %}
+
+{% block meta_title %}About | Frum Philly{% endblock meta_title %}
+{% block meta_description %}All there is to know about Frum Philly.{% endblock meta_description %}
+
+{% block main %}
+<div class="container container-height--100 flex flex--column flex--center">
+    <section class="panel">
+        <section class="panel__banner flex flex--center flex--align-center" style="background-image: url({% webpack_static 'img/illustrations/settings.svg' %});">
+            <h1 class="title panel__title">Contact Us</h1>
+        </section>
+        <section class="panel__content">
+            <p class="panel__text">Contact meeee. pleassssse!!!!</p>
+        </section>
+    </section>
+</div>
+{% endblock %}
