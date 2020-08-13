@@ -30,7 +30,7 @@
                     {% for field in form %}
                         {% if field.name != "remember" %}
                             <div class="form-field">
-                                <label class="form-field__label" for="{{field.name}}">{{ field.label }}</label>
+                                <label class="form-field__label" for="{{field.id_for_label}}">{{ field.label }}</label>
                                 {{ field }}
 
                                 {% if field.name in helptext_fields %}
