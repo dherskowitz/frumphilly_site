@@ -2,25 +2,27 @@
 {% load socialaccount %}
 
 <header id="navbar">
-    <a id="navbar__brand" href="{% url 'home' %}"><img src="{% webpack_static 'img/logos/logo.svg' %}"
-            alt="Frum Philly Logo"></a>
-    {% include 'components/menu_icon.html' %}
-    <nav id="navbar__nav">
-        {% with url_name=request.resolver_match.url_name  %}
-            <a class="navbar__link {% if url_name == 'home' %} active{% endif %}" href="{% url 'home' %}">Home</a>
-            <a class="navbar__link {% if url_name == 'about' %} active{% endif %}" href="{% url 'about' %}">About</a>
-            <a class="navbar__link {% if url_name == 'events_all' %} active{% endif %}" href="{% url 'events_all' %}">Events</a>
-            {% if user.is_authenticated %}
-            {% comment %} <a class="navbar__link {% if url_name == 'events_create' %} active{% endif %}" href="{% url 'events_create' %}">Add Event</a> {% endcomment %}
-            <a class="navbar__link {% if url_name == 'user_account' %} active{% endif %}" href="{% url 'user_account' %}">My Account</a>
-            <form class="navbar__link" action="{% url 'account_logout' %}" method="POST">
-                {% csrf_token %}
-                <input class="btn btn--small" type="submit" value="Log Out">
-            </form>
-            {% else %}
-            <a class="navbar__link {% if url_name == 'account_login' %} active{% endif %}" href="{% url 'account_login' %}">Sign In</a>
-            <a class="navbar__link {% if url_name == 'account_signup' %} active{% endif %}" href="{% url 'account_signup' %}">Create Account</a>
-            {% endif %}
-        {% endwith %}
-    </nav>
+    <div class="container">
+        <a id="navbar__brand" href="{% url 'home' %}"><img src="{% webpack_static 'img/logos/logo.svg' %}"
+                alt="Frum Philly Logo"></a>
+        {% include 'components/menu_icon.html' %}
+        <nav id="navbar__nav">
+            {% with url_name=request.resolver_match.url_name  %}
+                <a class="navbar__link {% if url_name == 'home' %} active{% endif %}" href="{% url 'home' %}">Home</a>
+                <a class="navbar__link {% if url_name == 'about' %} active{% endif %}" href="{% url 'about' %}">About</a>
+                <a class="navbar__link {% if url_name == 'events_all' %} active{% endif %}" href="{% url 'events_all' %}">Events</a>
+                {% if user.is_authenticated %}
+                {% comment %} <a class="navbar__link {% if url_name == 'events_create' %} active{% endif %}" href="{% url 'events_create' %}">Add Event</a> {% endcomment %}
+                <a class="navbar__link {% if url_name == 'user_account' %} active{% endif %}" href="{% url 'user_account' %}">My Account</a>
+                <form class="navbar__link" action="{% url 'account_logout' %}" method="POST">
+                    {% csrf_token %}
+                    <input class="btn btn--small" type="submit" value="Log Out">
+                </form>
+                {% else %}
+                <a class="navbar__link {% if url_name == 'account_signup' %} active{% endif %}" href="{% url 'account_signup' %}">Create Account</a>
+                <a class="navbar__link {% if url_name == 'account_login' %} active{% endif %}" href="{% url 'account_login' %}">Sign In</a>
+                {% endif %}
+            {% endwith %}
+        </nav>
+    </div>
 </header>
