@@ -16,6 +16,11 @@
     }
 }
 
+.container__no-x-margin {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
 .title {
     text-transform: uppercase;
     color: $white;
