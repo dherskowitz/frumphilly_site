@@ -51,7 +51,7 @@ def events_filter_city(request, city):
     except EmptyPage:
         events = paginator.page(paginator.num_pages)
     context = {"events": events, "cities": Event.get_cities()}
-    return render(request, "events/all.html", context)
+    return render(request, "events/index.html", context)
 
 
 @login_required
