@@ -1,9 +1,45 @@
 {% extends 'base.html' %}
+{% load webpack_static from webpack_loader %}
+
+{% block meta_title %}Listings | Frum Philly{% endblock meta_title %}
+{% block meta_description %}Frum Philly Business Listings{% endblock meta_description %}
+
+{% block pagebanner %}
+<section class="page-banner curved-bottom" style="background-image: url({% webpack_static 'img/illustrations/form.svg' %});background-size: 30rem;">
+    <h1 class="title">Listings</h1>
+</section>
+{% endblock pagebanner %}
 
 
 {% block main %}
 <div class="container">
-    <h1>Listings Page</h1>
+<section class="flex flex--space-between flex--align-start">
+    <div class="list list--m0">
+        {% for listing in listings %}
+            {% include 'listings/_list.html' %}
+            {% empty %}
+            <p>No listing yet!</p>
+        {% endfor %}
+    </div>
+    <div class="rightbar">
+            <div class="rightbar__box" style="border: 1px solid grey;height: 15rem;width: 20rem;display: flex;justify-content: center;align-items: center;padding: 1rem;margin-bottom: 1rem;">
+                Example. Your Ad Here.
+            </div>
+            <div class="rightbar__box" style="border: 1px solid grey;height: 15rem;width: 20rem;display: flex;justify-content: center;align-items: center;padding: 1rem;margin-bottom: 1rem;">
+                Example. Your Ad Here.
+            </div>
+            <div class="rightbar__box" style="border: 1px solid grey;height: 15rem;width: 20rem;display: flex;justify-content: center;align-items: center;padding: 1rem;margin-bottom: 1rem;">
+                Example. Your Ad Here.
+            </div>
+            <div class="rightbar__box" style="border: 1px solid grey;height: 15rem;width: 20rem;display: flex;justify-content: center;align-items: center;padding: 1rem;margin-bottom: 1rem;">
+                Example. Your Ad Here.
+            </div>
+        </div>
+</section>
+
+
+
+    {% comment %} <h1>Listings Page</h1>
 
 
     {% for listing in listings %}
@@ -18,6 +54,6 @@
             <a href="{% url 'listings_category' category.slug %}">{{ category }}</a> {% if not forloop.last %} / {% endif %}
         {% endfor %}
         <hr>
-    {% endfor %}
+    {% endfor %} {% endcomment %}
 </div>
 {% endblock main %}
