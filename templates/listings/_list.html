@@ -1,0 +1,5 @@
+{% load webpack_static from webpack_loader %}
+<a class="list__item" href="{{ listing.get_absolute_url }}-{{listing.id}}">
+    <h3 class="list__title">{{listing.business_name}}</h3>
+    <p>{{ listing.location }}</p>
+</a>
