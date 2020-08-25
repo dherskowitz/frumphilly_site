@@ -37,6 +37,7 @@
     "node-sass": "^4.12.0",
     "optimize-css-assets-webpack-plugin": "^5.0.3",
     "postcss-loader": "^3.0.0",
+    "purgecss-webpack-plugin": "^2.3.0",
     "sass-loader": "^7.1.0",
     "source-map-loader": "^0.2.4",
     "webpack": "^4.36.1",
@@ -49,5 +50,8 @@
     "trailingComma-comma": "es5",
     "bracketSpacing": true,
     "arrowParens": "always"
+  },
+  "dependencies": {
+    "tailwindcss": "^1.7.3"
   }
 }

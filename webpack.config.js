@@ -1,22 +1,23 @@
-var path = require('path');
+var path = require("path");
 // var webpack = require('webpack');
-var BundleTracker = require('webpack-bundle-tracker');
+var BundleTracker = require("webpack-bundle-tracker");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const CopyPlugin = require('copy-webpack-plugin');
-const BrowserSyncPlugin = require('browser-sync-webpack-plugin')
+const CopyPlugin = require("copy-webpack-plugin");
+const BrowserSyncPlugin = require("browser-sync-webpack-plugin");
+const PurgecssPlugin = require("purgecss-webpack-plugin");
 
 module.exports = {
     context: __dirname,
-    entry: ["./static/src/js/app.js", "./static/src/scss/app.scss"],
+    entry: ["./static/src/js/app.js", "./static/src/main.css"],
     output: {
         path: path.resolve("./static/local/"),
-        filename: "[name]-[hash].js"
+        filename: "[name]-[hash].js",
     },
     devtool: "source-map",
     devServer: {
         contentBase: path.join(__dirname, "/"),
         compress: true,
-        port: 9000
+        port: 9000,
     },
     module: {
         rules: [{
@@ -25,9 +26,9 @@ module.exports = {
                 use: {
                     loader: "babel-loader",
                     options: {
-                        presets: ["@babel/preset-env"]
-                    }
-                }
+                        presets: ["@babel/preset-env"],
+                    },
+                },
             },
             {
                 test: /\.(sa|sc|c)ss$/,
@@ -35,30 +36,33 @@ module.exports = {
                         loader: MiniCssExtractPlugin.loader,
                         options: {
                             sourceMap: true,
-                            hmr: process.env.NODE_ENV === "development"
-                        }
+                            hmr: process.env.NODE_ENV === "development",
+                        },
                     },
                     {
                         loader: "css-loader",
                         options: {
-                            sourceMap: true
-                        }
+                            sourceMap: true,
+                        },
                     },
                     {
                         loader: "postcss-loader",
                         options: {
                             ident: "postcss",
                             sourceMap: true,
-                            plugins: [require("autoprefixer")]
-                        }
+                            plugins: [
+                                require("tailwindcss"),
+                                require("autoprefixer"),
+                            ],
+                        },
                     },
                     {
                         loader: "sass-loader",
                         options: {
-                            sourceMap: true
-                        }
+                            sourceMap: true,
+                        },
                     },
-                ]
+                ],
             },
             {
                 test: /\.js$/,
@@ -68,46 +72,51 @@ module.exports = {
             {
                 test: /\.(gif|png|jpe?g|svg)$/i,
                 use: [
-                    'file-loader',
+                    "file-loader",
                     {
-                        loader: 'image-webpack-loader',
+                        loader: "image-webpack-loader",
                         options: {
                             mozjpeg: {
                                 progressive: true,
-                                quality: 65
+                                quality: 65,
                             },
                             optipng: {
                                 enabled: false,
                             },
                             pngquant: {
-                                quality: '65-90',
-                                speed: 4
+                                quality: "65-90",
+                                speed: 4,
                             },
                             bypassOnDebug: true, // webpack@1.x
                             disable: true, // webpack@2.x and newer
                         },
                     },
                 ],
-            }
-        ]
+            },
+        ],
     },
     plugins: [
         new BundleTracker({
-            filename: './webpack-stats.json'
+            filename: "./webpack-stats.json",
         }),
         new MiniCssExtractPlugin({
-            filename: '[name].[hash].css',
-            chunkFilename: '[id].[hash].css',
-            ignoreOrder: false
+            filename: "[name].[hash].css",
+            chunkFilename: "[id].[hash].css",
+            ignoreOrder: false,
         }),
+        // new PurgecssPlugin({
+        //     content: ["./templates/**/*.html"],
+        //     defaultExtractor: (content) =>
+        //         content.match(/[\w-/:]+(?<!:)/g) || [],
+        // }),
         // new CopyPlugin([{
         //     from: './static/src/libs/**/*',
         //     to: './libs/[name].[ext]'
         // }, ]),
         new BrowserSyncPlugin({
-            host: 'localhost',
+            host: "localhost",
             port: 3000,
-            proxy: 'http://192.168.99.100:8001/'
-        })
-    ]
-}
+            proxy: "http://192.168.99.100:8001/",
+        }),
+    ],
+};
