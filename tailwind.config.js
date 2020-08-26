@@ -15,14 +15,18 @@ module.exports = {
         100: '100vh'
       },
       inset: {
-        'avoid-header': '4rem'
+        'avoid-header': '4rem',
+        '-2': '-2rem',
+        '-4': '-3.5rem'
       }
     },
     textShadow: {
       'default': '2px 2px 3px #000',
     }
   },
-  variants: {},
+  variants: {
+    textColor: ['group-hover'],
+  },
   plugins: [
     plugin(function ({
       addUtilities
