@@ -7,15 +7,15 @@
 {% block meta_description %}All there is to know about Frum Philly.{% endblock meta_description %}
 
 {% block main %}
-<div class="container container-height--100 flex flex--column flex--center">
-    <section class="panel">
-        <section class="panel__banner flex flex--center flex--align-center" style="background-image: url({% webpack_static 'img/illustrations/settings.svg' %});">
-            <h1 class="title panel__title">About Us</h1>
+<section class="container my-6 md:my-0 mx-auto flex flex-col justify-center items-center md:h-cust-screen">
+    <section class="bg-white rounded-md shadow-md p-6 pt-12 max-w-4xl mx-4">
+        <section class="lg:h-auto mb-6 lg:mb-0 flex items-center justify-center object-cover" style="background-image: url({% webpack_static 'img/illustrations/settings.svg' %});background-size:contain;background-repeat:no-repeat;background-position:center;height:20rem;">
+            <h1 class="text-6xl font-bold text-white text-shadow">About Us</h1>
         </section>
-        <section class="panel__content">
-            <p class="panel__text">Frum Philly is where the Philadelphia and South Jersey Jewish communities come together to find out what's happening. It's where people can connect and find out about events, jobs, sales, and more.</p>
-            <p class="panel__text">Frum Philly is here to help you discover more about your community. Find out how to contribute to our growing Jewish communities and the neighborhoods that surround you by <a href="/accounts/signup">signing up</a>.</p>
+        <section class="md:px-24">
+            <p class="my-6">Frum Philly is where the Philadelphia and South Jersey Jewish communities come together to find out what's happening. It's where people can connect and find out about events, jobs, sales, and more.</p>
+            <p class="my-6">Frum Philly is here to help you discover more about your community. Find out how to contribute to our growing Jewish communities and the neighborhoods that surround you by <a href="/accounts/signup">signing up</a>.</p>
         </section>
     </section>
-</div>
+</section>
 {% endblock %}
