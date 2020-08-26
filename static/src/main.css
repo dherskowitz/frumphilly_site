@@ -66,5 +66,19 @@
         transition: transform 0.5s ease-in-out;
     }
 }
+/* section titles */
+.section-title {
+    @apply text-center border-black border-t-4 relative flex justify-center;
+}
+
+.section-title__text {
+    @apply absolute -top-2 capitalize text-4xl text-white text-shadow font-bold bg-bgGrey;
+}
+
+@media (min-width: 1024px) {
+    .section-title__text {
+        @apply -top-4 text-6xl;
+    }
+}
 
 @tailwind utilities;
