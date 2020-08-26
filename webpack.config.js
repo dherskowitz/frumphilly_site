@@ -20,7 +20,8 @@ module.exports = {
         port: 9000,
     },
     module: {
-        rules: [{
+        rules: [
+            {
                 test: /\.m?js$/,
                 exclude: /(node_modules|bower_components)/,
                 use: {
@@ -32,7 +33,8 @@ module.exports = {
             },
             {
                 test: /\.(sa|sc|c)ss$/,
-                use: [{
+                use: [
+                    {
                         loader: MiniCssExtractPlugin.loader,
                         options: {
                             sourceMap: true,
