@@ -68,7 +68,7 @@
 }
 /* section titles */
 .section-title {
-    @apply text-center border-black border-t-4 relative flex justify-center;
+    @apply text-center border-black border-t-4 relative flex justify-center -z-1;
 }
 
 .section-title__text {
