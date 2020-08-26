@@ -1,54 +1,62 @@
-const plugin = require('tailwindcss/plugin')
+const plugin = require("tailwindcss/plugin");
 
 module.exports = {
     purge: [],
     theme: {
         extend: {
             colors: {
-                bgGrey: 'rgba(210, 215, 211, 1)',
+                bgGrey: "rgba(210, 215, 211, 1)",
+                silver: "rgba(191, 191, 191, 1)",
+                "transparent-red": "rgba(211, 67, 62, 0.1)",
+                google: "#ea4335",
+                facebook: "#3b5998",
             },
             height: {
-                25: '25vh',
-                40: '40vh',
-                50: '50vh',
-                60: '60vh',
-                100: '100vh'
+                25: "25vh",
+                40: "40vh",
+                50: "50vh",
+                60: "60vh",
+                100: "100vh",
             },
             inset: {
-                'avoid-header': '4rem',
-                '-2': '-2rem',
-                '-4': '-3.5rem'
+                "avoid-header": "4rem",
+                "-1": "-1rem",
+                "-2": "-2rem",
+                "-4": "-3.5rem",
             },
             zIndex: {
-                '-1': '-1',
+                "-1": "-1",
             },
             fontSize: {
-                '4.5xl': '2.5rem'
-            }
+                "4.5xl": "2.5rem",
+            },
+            height: {
+                "cust-screen": "calc(100vh - 8rem)",
+                "half-screen": "60vh",
+                "vh-full": "100vh",
+            },
         },
-        textShadow: {
-            'default': '2px 2px 3px #000',
-        }
+    },
+    textShadow: {
+        default: "2px 2px 3px #000",
     },
     variants: {
-        textColor: ['group-hover'],
-        textShadow: ['responsive'],
+        textColor: ["group-hover"],
+        textShadow: ["responsive"],
     },
     plugins: [
-        plugin(function({
-            addUtilities
-        }) {
+        plugin(function ({ addUtilities }) {
             const addShadows = {
-                '.text-shadow': {
-                    'text-shadow': '2px 2px 3px #000',
+                ".text-shadow": {
+                    "text-shadow": "2px 2px 3px #000",
                 },
-                '.text-shadow-0': {
-                    'text-shadow': 'none',
+                ".text-shadow-0": {
+                    "text-shadow": "none",
                 },
-            }
+            };
             addUtilities(addShadows, {
-                variants: ['responsive'],
-            })
-        })
+                variants: ["responsive"],
+            });
+        }),
     ],
-}
+};
