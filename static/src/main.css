@@ -19,16 +19,6 @@ body {
     clip-path: polygon(25% 0, 100% 0, 75% 100%, 0% 100%);
 }
 
-/* navigation links */
-.navlink {
-    @apply p-4 border-b-4 border-transparent;
-}
-
-.navlink:hover,
-.navlink.active {
-    @apply border-red-600;
-}
-
 /* buttons */
 .btn {
     @apply bg-purple-900 text-white rounded-md shadow-md px-4 py-2 cursor-pointer;
@@ -82,6 +72,22 @@ body {
         transition: transform 0.5s ease-in-out;
     }
 }
+
+/* navigation links */
+.navlink {
+    @apply p-4 border-b-4 border-transparent;
+}
+
+.navlink:hover {
+    @apply bg-purple-900 opacity-75 text-white transition-all duration-75 ease-in;
+}
+@media (min-width: 768px) {
+    .navlink:hover,
+    .navlink.active {
+        @apply border-red-600;
+    }
+}
+
 /* section titles */
 .section-title {
     @apply text-center border-black border-t-4 relative flex justify-center -z-1;
