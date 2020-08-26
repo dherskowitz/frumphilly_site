@@ -22,6 +22,9 @@ module.exports = {
     },
     textShadow: {
       'default': '2px 2px 3px #000',
+    },
+    zIndex: {
+      '-1': '-1',
     }
   },
   variants: {
