@@ -2,6 +2,14 @@
 
 @tailwind components;
 
+body {
+    font-family: Helvetica, Arial, sans-serif;
+    min-height: 100vh;
+}
+.body--menu-open {
+    overflow-y: hidden;
+}
+
 .curved-bottom {
     border-bottom-left-radius: 50% 30%;
     border-bottom-right-radius: 50% 30%;
