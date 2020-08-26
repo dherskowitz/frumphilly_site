@@ -38,6 +38,10 @@ body {
     @apply px-6 py-4;
 }
 
+.btn-block {
+    @apply block w-full;
+}
+
 /* Navbar hamburger */
 .bar1,
 .bar2,
@@ -91,6 +95,72 @@ body {
     .section-title__text {
         @apply -top-4 text-6xl;
     }
+}
+
+/* forms */
+form {
+    @apply bg-white p-4 rounded-md;
+}
+
+.form-field {
+    @apply my-4 relative;
+}
+
+.form-field input {
+    @apply h-8 border-silver border-2;
+}
+
+.form-field input,
+.form-field textarea {
+    @apply w-full mb-2 bg-transparent-red rounded-md pt-12 px-2 pb-5;
+}
+
+.form-field input[type="checkbox"],
+.form-field input[type="checkbox"]:checked {
+    height: 20px;
+    width: 20px;
+    @apply bg-transparent-red;
+}
+
+.form-field__label {
+    top: 8px;
+    left: 8px;
+    @apply block font-bold mb-1 absolute;
+}
+
+.form-field--alt {
+    @apply bg-purple-900 rounded-md py-5 px-2 border-silver border-2;
+}
+
+.form-field--alt .form-field__label {
+    position: initial;
+    @apply float-left mr-4;
+}
+
+.form-field__label--required {
+    @apply text-xs;
+}
+
+.form-field--remember {
+    @apply flex items-center;
+}
+
+.form-field--remember label {
+    @apply mr-2;
+}
+
+input[type="file"] {
+    @apply py-12 px-2;
+}
+
+input[type="checkbox"],
+input[type="checkbox"]:checked {
+    width: 1rem;
+    height: 1rem;
+}
+
+.form-field__help-text {
+    @apply text-sm pl-1;
 }
 
 @tailwind utilities;
