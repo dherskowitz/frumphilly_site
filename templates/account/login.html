@@ -6,56 +6,58 @@
 {% block meta_description %}Sign In to Frum Philly{% endblock meta_description %}
 
 {% block main %}
-<div class="container container-height--100 flex flex--column flex--center">
-    <div class="panel panel--auth">
+<section class="container my-6 lg:my-0 mx-auto flex flex-col justify-center items-center lg:h-cust-screen">
+    <div class="bg-white rounded-md shadow-md flex lg:w-full w-11/12 flex-col lg:flex-row p-6">
 
-        <section class="auth-banner"
-            style="background-image: url({% webpack_static 'img/illustrations/authentication.svg' %});">
-            <h2 class="title text-center">Sign In</h2>
+        <section class="lg:w-1/2 h-64 lg:h-auto mb-6 lg:mb-0 flex items-center justify-center object-cover" style="background-image: url({% webpack_static 'img/illustrations/authentication.svg' %});background-size:contain;background-repeat:no-repeat;background-position:center;">
+            <h2 class="text-6xl font-bold text-white text-shadow">Sign In</h2>
         </section>
 
-        <section>
-            <div class="signin wrapper">
-            <h2 class="title-bar"><span class="title-bar__text">Sign in with Google or Facebook</span></h2>
-            {% include 'components/social-signin.html' %}
+        <section class="lg:w-1/2">
+            <div class="m-6">
+                <h2 class="relative text-center border-t-2 border-black flex items-center justify-center z-0">
+                    <span class="-top-1 absolute text-lg font-semibold bg-white">Sign in with Google or Facebook</span>
+                </h2>
+                {% include 'components/social-signin.html' %}
             </div>
 
-            <div class="signin wrapper">
-                <h2 class="title-bar"><span class="title-bar__text">Sign in with Email</span></h2>
+            <div class="m-6">
+                <h2 class="relative text-center border-t-2 border-black flex items-center justify-center mb-6">
+                    <span class="-top-1 absolute text-lg font-semibold bg-white">Sign in with Email</span>
+                </h2>
                 {% include 'components/errors.html' %}
 
-                <form class="form" method="post" id="login-form" class="form">
+                <form class="form py-6 lg:py-0" method="post" id="login-form">
                     {% csrf_token %}
 
                     {% for field in form %}
-                        {% if field.name != "remember" %}
-                            <div class="form-field">
-                                <label class="form-field__label" for="{{field.id_for_label}}">{{ field.label }}</label>
-                                {{ field }}
+                    {% if field.name != "remember" %}
+                    <div class="form-field">
+                        <label class="form-field__label" for="{{field.id_for_label}}">{{ field.label }}</label>
+                        {{ field }}
 
-                                {% if field.name in helptext_fields %}
-                                <div class="form-field__help-text">{{ field.help_text }}</div>
-                                {% endif %}
-                            </div>
+                        {% if field.name in helptext_fields %}
+                        <div class="form-field__help-text">{{ field.help_text }}</div>
                         {% endif %}
+                    </div>
+                    {% endif %}
                     {% endfor %}
 
-                    <div class="flex_center_spaced">
+                    <div class="flex justify-between">
                         <span class="form-field--remember"><label for="{{form.remember.id_for_label }}">{{form.remember.label}}</label>{{form.remember}}</span>
-                        {% include 'components/submit_btn.html' with value='Sign In' class="btn btn--lg btn--form-submit" %}
+                        {% include 'components/submit_btn.html' with value='Sign In' class="btn btn-lg btn--form-submit" %}
                     </div>
-                    <p class="text-center account_link"><a href="{% url 'account_signup' %}">I don't have an account yet!</a></p>
+                    <p class="text-center mt-6 font-bold underline"><a href="{% url 'account_signup' %}">I don't have an account yet!</a></p>
                 </form>
             </div>
         </section>
 
     </div>
-</div>
+</section>
 {% endblock main %}
 
 {% block template_js %}
-    <script>
-        document.getElementById("id_email").focus();
-    </script>
+<script>
+    document.getElementById("id_login").focus();
+</script>
 {% endblock template_js %}
-    
