@@ -1,7 +1,7 @@
 {% load webpack_static from webpack_loader %}
 
-<section class="my-16 mx-4 md:mx-0 md:bg-gray-600 rounded-md shadow-md font-bold flex items-center justify-center text-center md:text-left">
-    <div class="w-full md:ml-6 md:w-1/2 text-white text-shadow md:text-shadow-0">
+<section class="relative my-16 mx-4 md:mx-0 bg-gray-600 rounded-md shadow-md font-bold flex flex-col md:flex-row items-center justify-center text-center md:text-left">
+    <div class="absolute w-full md:ml-6 md:w-1/2 text-white text-shadow md:text-shadow-0 opacity-100 z-10">
         <h4 class="text-3xl lg:text-4.5xl">Want people to see your event?</h4>
         {% if user.is_authenticated %}
         <a class="btn btn-lg uppercase" href="/events/create">Add your event here</a>
@@ -10,16 +10,7 @@
         <a class="btn btn-lg inline-block uppercase mt-4 lg:mt-8" href="/accounts/signup">Create your account</a>
         {% endif %}
     </div>
-    <div class="move-left w-full md:w-1/2">
-        <img class="rounded-md md:rounded-tl-none md:rounded-bl-none md:rounded-tr-md md:rounded-br-md object-cover" src="{% webpack_static 'img/images/events_cta.jpg' %}" alt="">
+    <div class="w-full md:w-1/2">
+        <img class="rounded-md md:rounded-tl-none md:rounded-bl-none md:rounded-tr-md md:rounded-br-md object-cover opacity-75" src="{% webpack_static 'img/images/events_cta.jpg' %}" alt="">
     </div>
 </section>
-
-<style>
-    @media (max-width:768px) {
-        .move-left {
-            margin-left: -100%;
-            z-index: -1;
-        }
-    }
-</style>
