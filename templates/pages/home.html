@@ -8,7 +8,7 @@
 
 {% block pagebanner %}
 <section class="curved-bottom h-40 md:h-60" style="background:url({% webpack_static 'img/images/philly-skyline.jpg' %}) no-repeat center center /cover">
-    <div class="container mx-auto h-full flex flex-col justify-center items-start top-0 px-2">
+    <div class="container mx-auto h-full flex flex-col justify-center items-center md:items-start top-0 px-2">
         <h1 class="text-6xl text-white font-bold text-shadow">Frum Philly</h1>
         <h2 class="text-2xl text-white font-bold text-shadow">Go beyond your "daled amos"</h2>
 
@@ -21,16 +21,18 @@
 
 
 {% block main %}
-<div class="container">
-    <section class="homepage-events home_section">
-        <h2 class="title section-title text-center" data-text="events"><span class="section-title__text">featured events</span></h2>
+<div class="container mx-auto">
+    <section class="my-16 mx-4 md:mx-0">
+        <h2 class="title section-title">
+            <span class="section-title__text">featured events</span>
+        </h2>
         {% comment %} {% if events_in_future %}
         <h2 class="title section-title text-center" data-text="events">upcoming events</h2>
         {% else %}
         <h2 class="title section-title text-center"  data-text="events">our events</h2>
         {% endif %} {% endcomment %}
 
-        <div class="list list--home">
+        <div class="grid gap-3 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-16">
             {% for event in upcoming_events %}
                 {% include 'events/_list.html' %}
             {% empty %}
