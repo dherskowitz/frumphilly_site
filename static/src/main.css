@@ -7,6 +7,10 @@
     border-bottom-right-radius: 50% 30%;
 }
 
+.angle-img {
+    clip-path: polygon(25% 0, 100% 0, 75% 100%, 0% 100%);
+}
+
 /* navigation links */
 .navlink {
     @apply p-4 border-b-4 border-transparent;
