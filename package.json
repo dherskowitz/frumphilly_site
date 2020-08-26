@@ -1,57 +1,57 @@
 {
-  "name": "frum_philly",
-  "version": "1.0.0",
-  "description": "The Frum Philly website source code.",
-  "main": "index.js",
-  "scripts": {
-    "clean:dev": "del-cli static/local/*.css && del-cli static/local/*.js && del-cli static/local/*.map",
-    "clean:prod": "del-cli static/dist/**/*.css && del-cli static/dist/**/*.js && del-cli static/dist/**/*.map",
-    "build:dev": "./node_modules/.bin/webpack --config webpack.config.js --watch --mode=development",
-    "build:prod": "./node_modules/.bin/webpack --config webpack.prod.config.js --mode=production --optimize-minimize",
-    "watch": "npm run clean:dev && npm run build:dev",
-    "prod": "npm run clean:prod && npm run build:prod"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/daniel-frumphilly/site.git"
-  },
-  "keywords": [],
-  "author": "Daniel Herskowitz",
-  "bugs": {
-    "url": "https://github.com/daniel-frumphilly/site/issues"
-  },
-  "homepage": "https://github.com/daniel-frumphilly/site#readme",
-  "devDependencies": {
-    "@babel/core": "^7.5.5",
-    "@babel/preset-env": "^7.5.5",
-    "autoprefixer": "^9.6.1",
-    "babel": "^6.23.0",
-    "babel-loader": "^8.0.6",
-    "browser-sync": "^2.26.7",
-    "browser-sync-webpack-plugin": "^2.2.2",
-    "copy-webpack-plugin": "^5.0.4",
-    "css-loader": "^3.1.0",
-    "del-cli": "^2.0.0",
-    "image-webpack-loader": "^5.0.0",
-    "mini-css-extract-plugin": "^0.8.0",
-    "node-sass": "^4.12.0",
-    "optimize-css-assets-webpack-plugin": "^5.0.3",
-    "postcss-loader": "^3.0.0",
-    "purgecss-webpack-plugin": "^2.3.0",
-    "sass-loader": "^7.1.0",
-    "source-map-loader": "^0.2.4",
-    "webpack": "^4.36.1",
-    "webpack-bundle-tracker": "^0.4.2-beta",
-    "webpack-cli": "^3.3.6"
-  },
-  "prettier": {
-    "tabWidth": 4,
-    "semi": true,
-    "trailingComma-comma": "es5",
-    "bracketSpacing": true,
-    "arrowParens": "always"
-  },
-  "dependencies": {
-    "tailwindcss": "^1.7.3"
-  }
+    "name": "frum_philly",
+    "version": "1.0.0",
+    "description": "The Frum Philly website source code.",
+    "main": "index.js",
+    "scripts": {
+        "clean:dev": "del-cli static/local/*.css && del-cli static/local/*.js && del-cli static/local/*.map",
+        "clean:prod": "del-cli static/dist/**/*.css && del-cli static/dist/**/*.js && del-cli static/dist/**/*.map",
+        "build:dev": "./node_modules/.bin/webpack --config webpack.config.js --watch --mode=development",
+        "build:prod": "./node_modules/.bin/webpack --config webpack.prod.config.js --mode=production --optimize-minimize",
+        "watch": "npm run clean:dev && npm run build:dev",
+        "prod": "npm run clean:prod && npm run build:prod"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/daniel-frumphilly/site.git"
+    },
+    "keywords": [],
+    "author": "Daniel Herskowitz",
+    "bugs": {
+        "url": "https://github.com/daniel-frumphilly/site/issues"
+    },
+    "homepage": "https://github.com/daniel-frumphilly/site#readme",
+    "devDependencies": {
+        "@babel/core": "^7.5.5",
+        "@babel/preset-env": "^7.5.5",
+        "autoprefixer": "^9.6.1",
+        "babel": "^6.23.0",
+        "babel-loader": "^8.0.6",
+        "browser-sync": "^2.26.7",
+        "browser-sync-webpack-plugin": "^2.2.2",
+        "copy-webpack-plugin": "^5.0.4",
+        "css-loader": "^3.1.0",
+        "del-cli": "^2.0.0",
+        "image-webpack-loader": "^5.0.0",
+        "mini-css-extract-plugin": "^0.8.0",
+        "node-sass": "^4.12.0",
+        "optimize-css-assets-webpack-plugin": "^5.0.3",
+        "postcss-loader": "^3.0.0",
+        "purgecss-webpack-plugin": "^2.3.0",
+        "sass-loader": "^7.1.0",
+        "source-map-loader": "^0.2.4",
+        "webpack": "^4.36.1",
+        "webpack-bundle-tracker": "^0.4.2-beta",
+        "webpack-cli": "^3.3.6"
+    },
+    "prettier": {
+        "tabWidth": 4,
+        "semi": true,
+        "trailingComma-comma": "es5",
+        "bracketSpacing": true,
+        "arrowParens": "always"
+    },
+    "dependencies": {
+        "tailwindcss": "^1.7.3"
+    }
 }
