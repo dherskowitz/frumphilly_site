@@ -1,8 +1,8 @@
 {% load webpack_static from webpack_loader %}
 {% load socialaccount %}
 
-<header id="navbar" class="bg-white fixed w-full top-0 px-2 md:px-0 py-1 h-16 z-50">
-    <div class="md:container flex justify-between items-center md:mx-auto">
+<header id="navbar" class="bg-white fixed w-full top-0 px-2 md:px-0  h-16 z-50">
+    <div class="md:container flex justify-between items-center md:mx-auto h-full">
         <a id="navbar__brand" href="{% url 'home' %}">
             <img class="w-40" src="{% webpack_static 'img/logos/logo.svg' %}" alt="Frum Philly Logo">
         </a>
@@ -11,22 +11,80 @@
             <div class="bar2"></div>
             <div class="bar3"></div>
         </div>
-        <nav id="navbar__nav" class="top-avoid-header md:top-0 absolute md:relative h-100 md:h-auto bg-white md:bg-transparent w-full h-vh-full flex md:inline-block flex-col justify-center left-0 text-center md:text-right z-50">
+        <nav class="h-full hidden md:flex justify-center items-center">
             {% with url_name=request.resolver_match.url_name  %}
             <a class="navlink{% if url_name == 'home' %} active{% endif %}" href="{% url 'home' %}">Home</a>
             <a class="navlink{% if url_name == 'about' %} active{% endif %}" href="{% url 'about' %}">About</a>
+            <a class="navlink{% if url_name == 'listings' %} active{% endif %}" href="{% url 'listings' %}">Listings</a>
             <a class="navlink{% if url_name == 'events_all' %} active{% endif %}" href="{% url 'events_all' %}">Events</a>
             {% if user.is_authenticated %}
-            <a class="navlink{% if url_name == 'user_account' %} active{% endif %}" href="{% url 'user_account' %}">My Account</a>
-            <form class="block mt-8 md:mt-0 mx-12 md:mx-0 md:ml-4" action="{% url 'account_logout' %}" method="POST">
-                {% csrf_token %}
-                <input class="btn btn-block" type="submit" value="Log Out">
-            </form>
+
+
+            <div class="mx-4 my-4 flex items-center cursor-pointer relative">
+                <img class="w-10 rounded-full" src="https://randomuser.me/api/portraits/men/32.jpg" alt="">
+                <span class="ml-1"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-down" width="20" height="20" viewBox="0 0 24 24" stroke-width="2" stroke="#607D8B" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" />
+                        <polyline points="6 9 12 15 18 9" />
+                    </svg></span>
+                <div class="absolute top-avoid-header p-2 right-0 bg-white rounded-md shadow-md w-40 flex flex-col">
+                    <a class="p-2 hover:bg-gray-200" href="{% url 'user_account' %}">My Account</a>
+                    <form class="bg-transparent hover:bg-gray-200 p-2 m-0" action="{% url 'account_logout' %}" method="POST">
+                        {% csrf_token %}
+                        <input class="bg-transparent" type="submit" value="Log Out">
+                    </form>
+                </div>
+            </div>
+
             {% else %}
             <a class="navlink{% if url_name == 'account_login' %} active{% endif %}" href="{% url 'account_login' %}">Sign In</a>
-            <a class="btn mt-8 md:mt-0 mx-12 md:mx-0 md:ml-4{% if url_name == 'account_signup' %} active{% endif %}" href="{% url 'account_signup' %}">Create Account</a>
+            <a class="btn btn-md md:flex items-center justify-center mt-8 md:mt-0 mx-12 md:mx-0 md:ml-4{% if url_name == 'account_signup' %} active{% endif %}" href="{% url 'account_signup' %}">Create Account</a>
             {% endif %}
             {% endwith %}
         </nav>
     </div>
 </header>
+
+
+{% comment %} mobile nav {% endcomment %}
+<div id="mobile_nav" class="block md:hidden fixed top-avoid-header w-full z-50 bg-bgGrey p-4 shadow-md opacity-0 pointer-events-none" style="top:6rem;transition: all 0.25s ease-out;will-change: top;">
+    {% with url_name=request.resolver_match.url_name  %}
+    <a class="mobilelink{% if url_name == 'home' %} active{% endif %}" href="{% url 'home' %}" href="{% url 'home' %}">Home</a>
+
+    <a class="mobilelink{% if url_name == 'about' %} active{% endif %}" href="{% url 'home' %}" href="{% url 'about' %}">About</a>
+
+    <a class="mobilelink{% if url_name == 'events' %} active{% endif %}" href="{% url 'home' %}" href="{% url 'events_all' %}">Events</a>
+
+    {% if user.is_authenticated %}
+    <hr class="border-blue-900">
+    <div class="mx-4 my-4 flex items-center">
+        <img class="w-12 rounded-full" src="https://randomuser.me/api/portraits/men/32.jpg" alt="">
+        <span class="ml-4">
+            <p>{{ user.first_name }} {{ user.last_name }}</p>
+            <p>{{ user.email }}</p>
+        </span>
+    </div>
+
+    <a class="mobilelink{% if url_name == 'user_account' %} active{% endif %}" href="{% url 'home' %}" href="{% url 'user_account' %}">My Account</a>
+
+    <form class="bg-transparent mobilelink" action="{% url 'account_logout' %}" method="POST">
+        {% csrf_token %}
+        <input class="bg-transparent" type="submit" value="Log Out">
+    </form>
+
+    {% else %}
+
+    <a class="mobilelink{% if url_name == 'account_login' %} active{% endif %}" href="{% url 'account_login' %}" href="{% url 'account_login' %}">Sign In</a>
+
+    <a class="btn btn-md md:flex items-center justify-center mt-8 md:mt-0 mx-12 md:mx-0 md:ml-4{% if url_name == 'account_signup' %} active{% endif %}" href="{% url 'account_signup' %}">Create Account</a>
+    {% endif %}
+
+    {% endwith %}
+</div>
+
+<style>
+    .mobile_nav--open {
+        top: 4rem !important;
+        opacity: 1;
+        pointer-events: initial;
+    }
+</style>
