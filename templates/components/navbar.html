@@ -14,23 +14,27 @@
         <nav class="h-full hidden md:flex justify-center items-center">
             {% with url_name=request.resolver_match.url_name  %}
             <a class="navlink{% if url_name == 'home' %} active{% endif %}" href="{% url 'home' %}">Home</a>
-            <a class="navlink{% if url_name == 'about' %} active{% endif %}" href="{% url 'about' %}">About</a>
+            {% comment %} <a class="navlink{% if url_name == 'about' %} active{% endif %}" href="{% url 'about' %}">About</a> {% endcomment %}
             <a class="navlink{% if url_name == 'listings' %} active{% endif %}" href="{% url 'listings' %}">Listings</a>
             <a class="navlink{% if url_name == 'events_all' %} active{% endif %}" href="{% url 'events_all' %}">Events</a>
             {% if user.is_authenticated %}
 
 
-            <div class="mx-4 my-4 flex items-center cursor-pointer relative">
-                <img class="w-10 rounded-full" src="https://randomuser.me/api/portraits/men/32.jpg" alt="">
-                <span class="ml-1"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-down" width="20" height="20" viewBox="0 0 24 24" stroke-width="2" stroke="#607D8B" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                        <path stroke="none" d="M0 0h24v24H0z" />
-                        <polyline points="6 9 12 15 18 9" />
-                    </svg></span>
+            <div class="mx-4 my-4 flex items-center relative">
+                <div>
+                    <button class="max-w-xs flex items-center text-sm rounded-full text-white focus:outline-none focus:shadow-solid cursor-pointer" id="user-menu" aria-label="User menu" aria-haspopup="true">
+                        <img class="h-10 w-10 rounded-full" src="https://randomuser.me/api/portraits/men/32.jpg" alt="">
+                        <span class="ml-1"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-down" width="20" height="20" viewBox="0 0 24 24" stroke-width="2" stroke="#607D8B" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" />
+                                <polyline points="6 9 12 15 18 9" />
+                            </svg></span>
+                    </button>
+                </div>
                 <div class="absolute top-avoid-header p-2 right-0 bg-white rounded-md shadow-md w-40 flex flex-col">
                     <a class="p-2 hover:bg-gray-200" href="{% url 'user_account' %}">My Account</a>
                     <form class="bg-transparent hover:bg-gray-200 p-2 m-0" action="{% url 'account_logout' %}" method="POST">
                         {% csrf_token %}
-                        <input class="bg-transparent" type="submit" value="Log Out">
+                        <input class="bg-transparent w-full text-left" type="submit" value="Log Out">
                     </form>
                 </div>
             </div>
