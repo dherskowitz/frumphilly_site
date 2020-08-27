@@ -78,9 +78,12 @@ body {
     @apply p-4 border-b-4 border-transparent;
 }
 
-.navlink:hover {
-    @apply bg-purple-900 opacity-75 text-white transition-all duration-75 ease-in;
+@media (max-width: 768px) {
+    .navlink:hover {
+        @apply bg-purple-900 opacity-75 text-white transition-all duration-75 ease-in;
+    }
 }
+
 @media (min-width: 768px) {
     .navlink:hover,
     .navlink.active {
