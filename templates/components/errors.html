@@ -1,11 +1,28 @@
+{% comment %} <div class="alert alert--danger bg-red-200">
+    <h3 class="flex items-center bg-red-600 p-2 text-xl text-white"><svg class="mr-2" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" />
+            <circle cx="12" cy="12" r="9" />
+            <line x1="12" y1="8" x2="12" y2="12" />
+            <line x1="12" y1="16" x2="12.01" y2="16" />
+        </svg>Error:</h3>
+    <ul class="p-6">
+        <li>Lorem ipsum dolor sit amet.</li>
+    </ul>
+</div> {% endcomment %}
+
 {% if form.errors %}
-<div class="alert alert--danger">
-    <h3 class="">Error:</h3>
-    <ul>
+<div class="alert alert--danger bg-red-200">
+    <h3 class="flex items-center bg-red-600 p-2 text-xl text-white"><svg class="mr-2" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" />
+            <circle cx="12" cy="12" r="9" />
+            <line x1="12" y1="8" x2="12" y2="12" />
+            <line x1="12" y1="16" x2="12.01" y2="16" />
+        </svg>Error:</h3>
+    <ul class="p-6">
         {% for field in form %}
-            {% for error in field.errors %}
-            <li>{{ field.label }}: {{ error|escape }}</li>
-            {% endfor %}
+        {% for error in field.errors %}
+        <li>{{ field.label }}: {{ error|escape }}</li>
+        {% endfor %}
         {% endfor %}
         {% for error in form.non_field_errors %}
         <li>{{ error|escape }}</li>
