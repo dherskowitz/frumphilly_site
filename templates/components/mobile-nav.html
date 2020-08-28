@@ -33,17 +33,10 @@
 
         <a class="mobilelink{% if url_name == 'account_login' %} active{% endif %}" href="{% url 'account_login' %}" href="{% url 'account_login' %}">Sign In</a>
 
-        <a class="btn btn-md md:flex items-center justify-center mt-8 md:mt-0 mx-12 md:mx-0 md:ml-4{% if url_name == 'account_signup' %} active{% endif %}" href="{% url 'account_signup' %}">Create Account</a>
+        <a class="btn btn-md block text-center md:text-left md:flex items-center justify-center mt-8 md:mt-0 md:ml-4{% if url_name == 'account_signup' %} active{% endif %}" href="{% url 'account_signup' %}">Create Account</a>
+
         {% endif %}
 
         {% endwith %}
     </div>
 </div>
-<style>
-    .mobile_nav--open {
-        top: 4rem !important;
-        opacity: 1;
-        pointer-events: initial;
-    }
-</style>
-{% comment %} style="top:6rem;transition: all 0.25s ease-out;will-change: top;" {% endcomment %}
