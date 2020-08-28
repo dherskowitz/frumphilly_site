@@ -36,6 +36,10 @@ module.exports = {
                 "vh-full": "100vh",
             },
         },
+        container: {
+            center: true,
+            padding: "1rem",
+        },
     },
     textShadow: {
         default: "2px 2px 3px #000",
@@ -45,7 +49,9 @@ module.exports = {
         textShadow: ["responsive"],
     },
     plugins: [
-        plugin(function ({ addUtilities }) {
+        plugin(function({
+            addUtilities
+        }) {
             const addShadows = {
                 ".text-shadow": {
                     "text-shadow": "2px 2px 3px #000",
