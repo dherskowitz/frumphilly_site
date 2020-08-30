@@ -6,9 +6,21 @@ body {
     font-family: Helvetica, Arial, sans-serif;
     min-height: 100vh;
 }
-/* .body--menu-open {
-    overflow-y: hidden;
-} */
+
+.embed {
+    width: 100%;
+    min-height: 18rem;
+}
+@media (min-width: 768px) {
+    .embed {
+        min-height: 20rem;
+    }
+}
+@media (min-width: 1024px) {
+    .embed {
+        min-height: 30rem;
+    }
+}
 
 .curved-bottom {
     border-bottom-left-radius: 50% 30%;
