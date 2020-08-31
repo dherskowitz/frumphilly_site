@@ -1,6 +1,8 @@
+import utils
 from django.db import models
 from django.conf import settings
 from django.utils.text import slugify
+from app.storage_backends import S3ListingsMediaStorage
 
 
 class Category(models.Model):
@@ -35,6 +37,13 @@ class Listing(models.Model):
         max_length=200,
         blank=False,
         help_text="What is the name of this business?",
+    )
+    cover_image = models.ImageField(
+        storage=S3ListingsMediaStorage(),
+        default=None,
+        help_text="Upload a cover image for your listing.",
+        null=True,
+        blank=True,
     )
     website = models.URLField(
         default="",
@@ -170,6 +179,13 @@ class Listing(models.Model):
         return self.business_name
 
     def save(self, *args, **kwargs):
+        if self.cover_image:
+            # call the compress function
+            new_image = utils.compress(self.cover_image)
+            # set self.image to new_image
+            self.cover_image = new_image
+            # save
+            super().save(*args, **kwargs)
         if not self.slug:
             self.slug = slugify(f"{self.business_name}")
         super().save(*args, **kwargs)
