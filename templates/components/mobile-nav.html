@@ -8,9 +8,9 @@
         {% with url_name=request.resolver_match.url_name  %}
         <a class=" mobilelink{% if url_name == 'home' %} active{% endif %}" href="{% url 'home' %}" href="{% url 'home' %}">Home</a>
 
-        <a class="mobilelink{% if url_name == 'about' %} active{% endif %}" href="{% url 'home' %}" href="{% url 'about' %}">About</a>
+        <a class="mobilelink{% if url_name == 'events' %} active{% endif %}" href="{% url 'events_all' %}" href="{% url 'events_all' %}">Events</a>
 
-        <a class="mobilelink{% if url_name == 'events' %} active{% endif %}" href="{% url 'home' %}" href="{% url 'events_all' %}">Events</a>
+        <a class="mobilelink{% if url_name == 'listings' %} active{% endif %}" href="{% url 'listings' %}" href="{% url 'listings' %}">Listings</a>
 
         {% if user.is_authenticated %}
         <hr class="border-blue-900">
