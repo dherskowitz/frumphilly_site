@@ -23,6 +23,8 @@
         </div>
 
         <a class="mobilelink{% if url_name == 'user_account' %} active{% endif %}" href="{% url 'home' %}" href="{% url 'user_account' %}">My Account</a>
+        <a class="mobilelink{% if url_name == 'listings_select' %} active{% endif %}" href="{% url 'home' %}"" href=" {% url 'listings_select' %}">Create Listing</a>
+        <a class="mobilelink{% if url_name == 'events_create' %} active{% endif %}" href="{% url 'home' %}"" href=" {% url 'events_create' %}">Create Event</a>
 
         <form class="bg-transparent mobilelink" action="{% url 'account_logout' %}" method="POST">
             {% csrf_token %}
