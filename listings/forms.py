@@ -38,6 +38,33 @@ class DateInput(forms.DateInput):
         super().__init__(**kwargs)
 
 
+class RetailForm(forms.ModelForm):
+    categories = forms.ModelMultipleChoiceField(
+        queryset=Category.objects.all(), widget=forms.CheckboxSelectMultiple
+    )
+
+    class Meta:
+        model = Listing
+        fields = "__all__"
+        exclude = ("created_by", "slug", "claimed", "premium", "approved", "kashrut")
+
+    def __init__(self, *args, **kwargs):
+        super(RetailForm, self).__init__(*args, **kwargs)
+        self.fields["sun_thu_hours"].label = "Hours Sun-Thurs"
+        self.fields["friday_hours"].label = "Hours Friday"
+        self.fields["saturday_hours"].label = "Hours Saturday"
+        self.fields["accept_cc"].label = "Accepts Credit Cards"
+        # Hidden Fields
+        self.fields["city"].label = ""
+        self.fields["city"].widget = forms.HiddenInput()
+        self.fields["state"].label = ""
+        self.fields["state"].widget = forms.HiddenInput()
+        self.fields["zipcode"].label = ""
+        self.fields["zipcode"].widget = forms.HiddenInput()
+        self.fields["location_type"].label = ""
+        self.fields["location_type"].widget = forms.HiddenInput()
+
+
 class ListingForm(forms.ModelForm):
     categories = forms.ModelMultipleChoiceField(
         queryset=Category.objects.all(), widget=forms.CheckboxSelectMultiple
