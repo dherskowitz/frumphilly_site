@@ -28,6 +28,12 @@ class S3EventsFileStorage(S3Boto3Storage):
     default_acl = None
 
 
+class S3ListingsMediaStorage(S3Boto3Storage):
+    location = "media/listings/images"
+    file_overwrite = False
+    default_acl = None
+
+
 # class AzureMediaStorage(AzureStorage):
 #     account_name = config("AZURE_ACCOUNT_NAME")
 #     account_key = config("AZURE_ACCOUNT_KEY")

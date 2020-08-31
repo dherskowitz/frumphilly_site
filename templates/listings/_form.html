@@ -1,59 +1,58 @@
 {% for field in form %}
 
-    {% if field.name in check_fields %}
-        {{continue}}
-    {% elif field.name == 'categories' %}
-        {{continue}}
-    {% else %}
-        <div class="form-field">
+{% if field.name in check_fields %}
+{{continue}}
+{% elif field.name == 'categories' %}
+{{continue}}
+{% else %}
+<div class="form-field">
 
-            <label class="form-field__label" for="{{field.id_for_label}}">{{ field.label }} {% if field.field.required %}<span
-                    class="form-field__label--required">(required)</span>{% endif %}</label>
-            {{ field }}
+    <label class="form-field__label" for="{{field.id_for_label}}">{{ field.label }} {% if field.field.required %}<span class="form-field__label--required">(required)</span>{% endif %}</label>
+    {{ field }}
 
-            {% if field.name in helptext_fields %}
-            <div class="form-field__help-text">{{ field.help_text }}</div>
-            {% endif %}
-        </div>
+    {% if field.name in helptext_fields %}
+    <div class="form-field__help-text">{{ field.help_text }}</div>
     {% endif %}
+</div>
+{% endif %}
 
 {% endfor %}
 
 {% comment %} Features Checkboxes {% endcomment %}
-<div class="form-field check_fields">
+<div class="my-4 relative w-full mb-2 bg-transparent-red rounded-md px-2 pb-5 border-silver border-2">
 
-        <label class="form-field__label">Business Features</label>
-        <div class="check_field">
-            <label class="form-field__label" for="{{form.accept_cc.id_for_label }}">{{ form.accept_cc.label }}</label>
-            {{ form.accept_cc }}
+    <label class="top-0 block font-bold my-2">Business Features</label>
+    <div class="flex items-center">
+        {{ form.accept_cc }}
+        <label class="ml-2" for="{{form.accept_cc.id_for_label }}">{{ form.accept_cc.label }}</label>
 
-            {% if form.accept_cc.name in helptext_fields %}
-            <div class="form-field__help-text">{{ field.help_text }}</div>
-            {% endif %}
-        </div>
-        <div class="check_field">
-            <label class="form-field__label" for="{{form.delivers.id_for_label }}">{{ form.delivers.label }}</label>
-            {{ form.delivers }}
+        {% if form.accept_cc.name in helptext_fields %}
+        <div class="form-field__help-text">{{ field.help_text }}</div>
+        {% endif %}
+    </div>
+    <div class="flex items-center">
+        {{ form.delivers }}
+        <label class="ml-2" for="{{form.delivers.id_for_label }}">{{ form.delivers.label }}</label>
 
-            {% if form.delivers.name in helptext_fields %}
-            <div class="form-field__help-text">{{ field.help_text }}</div>
-            {% endif %}
-        </div>
-        <div class="check_field">
-            <label class="form-field__label" for="{{form.wheelchair_access.id_for_label }}">{{ form.wheelchair_access.label }}</label>
-            {{ form.wheelchair_access }}
+        {% if form.delivers.name in helptext_fields %}
+        <div class="form-field__help-text">{{ field.help_text }}</div>
+        {% endif %}
+    </div>
+    <div class="flex items-center">
+        {{ form.wheelchair_access }}
+        <label class="ml-2" for="{{form.wheelchair_access.id_for_label }}">{{ form.wheelchair_access.label }}</label>
 
-            {% if form.wheelchair_access.name in helptext_fields %}
-            <div class="form-field__help-text">{{ field.help_text }}</div>
-            {% endif %}
-        </div>
+        {% if form.wheelchair_access.name in helptext_fields %}
+        <div class="form-field__help-text">{{ field.help_text }}</div>
+        {% endif %}
+    </div>
 
 </div>
 
 {% comment %} categories {% endcomment %}
 
-<div class="form-field form-field--multiselect">
-    <label class="form-field__label" for="{{form.categories.id_for_label }}">{{ form.categories.label }} {% if form.categories.field.required %}<span class="form-field__label--required">(required)</span>{% endif %}
+<div class="my-4 relative w-full mb-2 bg-transparent-red rounded-md px-2 pb-5 border-silver border-2">
+    <label class="top-0 block font-bold my-2" for="{{form.categories.id_for_label }}">{{ form.categories.label }} {% if form.categories.field.required %}<span class="">(required)</span>{% endif %}
         {% comment %} <p><small>Please select at least one category:</small></p> {% endcomment %}
         {% if form.categories.errors %}
         <p class="error"><small>Please select at least one category:</small></p>

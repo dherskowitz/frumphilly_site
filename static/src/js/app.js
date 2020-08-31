@@ -1,5 +1,7 @@
-require("./messages");
-require("./navbar");
+require("alpinejs");
+// import 'alpinejs'
+// require("./messages");
+// require("./navbar");
 require("./submit");
 require("./events");
 

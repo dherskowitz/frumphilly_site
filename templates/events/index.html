@@ -5,18 +5,20 @@
 {% block meta_description %}Upcoming & Past events on Frum Philly{% endblock meta_description %}
 
 {% block pagebanner %}
-<section class="page-banner curved-bottom" style="background-image: url({% webpack_static 'img/illustrations/schedule.svg' %});background-size: 30rem;">
-    <h1 class="title">Events</h1>
+<section class="h-half-screen curved-bottom flex justify-center items-center" style="background-image: url({% webpack_static 'img/illustrations/schedule.svg' %});background-size: 30rem;background-repeat:no-repeat;background-position:center;">
+    <h1 class="text-6xl text-white font-bold text-shadow">Events</h1>
 </section>
 {% endblock pagebanner %}
 
 {% block main %}
-<div class="container">
-    <section class="flex flex--space-between flex--align-start">
-        <div class="list list--m0">
+<section class="container">
+    <div class="md:flex justify-between my-6">
+        <div class="md:w-3/4 md:mr-6">
             {% include 'events/_filter.html' %}
             {% for event in events %}
-            {% include 'events/_list.html' %}
+            <div class="grid gap-3 grid-cols-1 my-4">
+                {% include 'events/_list.html' %}
+            </div>
             {% empty %}
             <p>No events yet!</p>
             {% endfor %}
@@ -40,24 +42,24 @@
             {% endif %}
         </div>
 
-        <div class="rightbar">
-            <div class="rightbar__box" style="border: 1px solid grey;height: 15rem;width: 20rem;display: flex;justify-content: center;align-items: center;padding: 1rem;margin-bottom: 1rem;">
+        <div class="pt-4 md:w-1/4">
+            <div class="rightbar__box" style="border: 1px solid grey;height: 15rem;display: flex;justify-content: center;align-items: center;padding: 1rem;margin-bottom: 1rem;">
                 Example. Your Ad Here.
             </div>
-            <div class="rightbar__box" style="border: 1px solid grey;height: 15rem;width: 20rem;display: flex;justify-content: center;align-items: center;padding: 1rem;margin-bottom: 1rem;">
+            <div class="rightbar__box" style="border: 1px solid grey;height: 15rem;display: flex;justify-content: center;align-items: center;padding: 1rem;margin-bottom: 1rem;">
                 Example. Your Ad Here.
             </div>
-            <div class="rightbar__box" style="border: 1px solid grey;height: 15rem;width: 20rem;display: flex;justify-content: center;align-items: center;padding: 1rem;margin-bottom: 1rem;">
+            <div class="rightbar__box" style="border: 1px solid grey;height: 15rem;display: flex;justify-content: center;align-items: center;padding: 1rem;margin-bottom: 1rem;">
                 Example. Your Ad Here.
             </div>
-            <div class="rightbar__box" style="border: 1px solid grey;height: 15rem;width: 20rem;display: flex;justify-content: center;align-items: center;padding: 1rem;margin-bottom: 1rem;">
+            <div class="rightbar__box" style="border: 1px solid grey;height: 15rem;display: flex;justify-content: center;align-items: center;padding: 1rem;margin-bottom: 1rem;">
                 Example. Your Ad Here.
             </div>
         </div>
-    </section>
+    </div>
 
+    {% include 'components/events_cta.html' %}
     <section class="cta">
-        {% include 'components/events_cta.html' %}
     </section>
-</div>
+</section>
 {% endblock main %}

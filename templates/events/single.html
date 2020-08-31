@@ -8,37 +8,40 @@
 {% endblock pagebanner %}
 
 {% block main %}
-<div class="single-event">
-    <div class="single-event__banner">
-        <h1 class="title section-title single-event__title"><span class="section-title__text">{{event.name}}</span></h1>
-    </div>
 
-    <div class="single-event__container">
-        <div class="single-event__infobar">
-            <span class="icon">
+
+<div class="container md:flex justify-between my-6">
+    <div id="left" class="md:w-3/4 md:mr-6">
+        {% comment %} Title {% endcomment %}
+        <div class="mb-4">
+            <h1 class="text-3xl md:text-5xl text-center text-white text-shadow">{{event.name}}</h1>
+        </div>
+        {% comment %} Infobar {% endcomment %}
+        <div class="grid grid-cols-3 lg:grid-cols-5 gap-6 flex-wrap text-center bg-white p-3 rounded-sm shadow-sm mb-4">
+            <span class="flex flex-col justify-center">
                 <img src="{% webpack_static 'img/icons/calendar.svg' %}" aria-hidden="true">
                 <span class="icon__text">{{event.start_date}}</span>
             </span>
 
             {% if event.start_time %}
-            <span class="icon">
+            <span class="flex flex-col justify-center">
                 <img src="{% webpack_static 'img/icons/clock.svg' %}" aria-hidden="true">
                 <span class="icon__text">{{event.start_time|time:"H:i A"}}</span>
             </span>
             {% endif %}
 
             {% if event.link %}
-            <a class="icon" href="{{event.link}}" target="_blank" rel="noreferrer">
+            <a class="flex flex-col justify-center" href="{{event.link}}" target="_blank" rel="noreferrer">
                 <img src="{% webpack_static 'img/icons/external-link.svg' %}" aria-hidden="true">
                 <span class="icon__text">Event Website</span>
             </a>
             {% endif %}
 
-            <a class="icon" href="https://www.google.com/maps?q={{event.location}}" target="_blank" rel="noreferrer">
+            <a class="flex flex-col justify-center" href="https://www.google.com/maps?q={{event.location}}" target="_blank" rel="noreferrer">
                 <img src="{% webpack_static 'img/icons/map-pin.svg' %}" aria-hidden="true">
                 <span class="icon__text">See Map</span>
             </a>
-            <span class="icon">
+            <span class="flex flex-col justify-center">
                 {% if event.rsvp %}
                 <img src="{% webpack_static 'img/icons/check-circle.svg' %}" aria-hidden="true">
                 {% else %}
@@ -47,7 +50,7 @@
                 <span class="icon__text">RSVP Required</span>
             </span>
 
-            <span class="icon">
+            <span class="flex flex-col justify-center">
                 <img src="{% webpack_static 'img/icons/dollar-sign.svg' %}" aria-hidden="true">
                 {% if event.cost %}
                 <span class="icon__text">${{event.cost}}</span>
@@ -57,53 +60,52 @@
             </span>
 
             {% if event.email_contact %}
-            <a class="icon" href="mailto:{{event.email_contact}}">
+            <a class="flex flex-col justify-center" href="mailto:{{event.email_contact}}">
                 <img src="{% webpack_static 'img/icons/mail.svg' %}" aria-hidden="true">
                 <span class="icon__text">Email Host</span>
             </a>
             {% endif %}
 
             {% if event.phone_contact %}
-            <a class="icon" href="tel:+{{event.phone_contact}}">
+            <a class="flex flex-col justify-center" href="tel:+{{event.phone_contact}}">
                 <img src="{% webpack_static 'img/icons/phone-call.svg' %}" aria-hidden="true">
                 <span class="icon__text">{{event.phone_contact}}</span>
             </a>
             {% endif %}
 
             {% if event.attachment %}
-            <a class="icon" href="#" onclick="window.open('{{event.attachment.url}}', '_blank'
+            <a class="flex flex-col justify-center" href="#" onclick="window.open('{{event.attachment.url}}', '_blank'
                 , 'location=yes,height=570,width=520,scrollbars=yes,status=yes' );">
                 <img src="{% webpack_static 'img/icons/file-text.svg' %}" aria-hidden="true">
                 <span class="icon__text">More Info</span>
             </a>
-            {% comment %} <a class="icon" href="{{event.attachment.url}}" target="_blank" rel="noreferrer">
-                <img src="{% webpack_static 'img/icons/file-text.svg' %}" aria-hidden="true">
-                <span class="icon__text">More Info</span>
-            </a> {% endcomment %}
             {% endif %}
-
         </div>
-
-        <div class="single-event__content">
+        {% comment %} Main Content {% endcomment %}
+        <div class="">
             {% if event.description %}
-                <div class="single-event__description">
-                    {{event.description|safe}}
-                </div>
+            <div class="bg-white p-3 rounded-sm shadow-sm mb-4">
+                {{event.description|safe}}
+            </div>
             {% endif %}
 
             {% if event.video %}
-                <div class="single-event__video">
-                    <iframe src="{{event.video}}" class="single-event__embed" frameborder="0" allowfullscreen></iframe>
-                </div>
+            <div class="bg-white p-3 rounded-sm shadow-sm mb-4">
+                <iframe src="{{event.video}}" class="embed" frameborder="0" allowfullscreen></iframe>
+            </div>
             {% endif %}
 
             {% if event.image %}
-            <div class="single-event__image">
-                <img src="{{event.image.url}}" alt="{{event.name}}">
+            <div class="bg-white p-3 rounded-sm shadow-sm mb-4 flex justify-center">
+                <img width="400" height="600" src="{{event.image.url}}" alt="{{event.name}}">
             </div>
             {% endif %}
         </div>
     </div>
-
+    <div id="right" class="pt-4 md:w-1/4">
+        <div class="rightbar__box" style="border: 1px solid grey;height: 15rem;display: flex;justify-content: center;align-items: center;padding: 1rem;margin-bottom: 1rem;">
+            Example. Your Ad Here.
+        </div>
+    </div>
 </div>
 {% endblock main %}

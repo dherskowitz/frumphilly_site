@@ -14,8 +14,7 @@
 {% endblock template_css %}
 
 {% block pagebanner %}
-<section class="page-banner curved-bottom"
-    style="background-image: url({% webpack_static 'img/illustrations/edit.svg' %});background-size: 30rem;">
+<section class="page-banner curved-bottom" style="background-image: url({% webpack_static 'img/illustrations/edit.svg' %});background-size: 30rem;">
     <h2 class="title text-center">Edit Event</h2>
     <p class="subtitle text-center">Edit the details of your event.</p>
 </section>
@@ -35,9 +34,9 @@
 {% endblock main %}
 
 {% block template_js %}
-    <script>
-        document.getElementById("id_name").focus();
-        document.getElementById("id_phone_contact").addEventListener("input", (e) => formatPhone(e));
-    </script>
-    <script src="{% webpack_static 'libs/trix.js' %}"></script>
+<script>
+    document.getElementById("id_name").focus();
+    document.getElementById("id_phone_contact").addEventListener("input", (e) => formatPhone(e));
+</script>
+<script src="{% webpack_static 'libs/trix.js' %}"></script>
 {% endblock template_js %}

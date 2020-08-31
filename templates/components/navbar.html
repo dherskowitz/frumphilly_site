@@ -1,28 +1,47 @@
 {% load webpack_static from webpack_loader %}
 {% load socialaccount %}
 
-<header id="navbar">
-    <div class="container">
-        <a id="navbar__brand" href="{% url 'home' %}"><img src="{% webpack_static 'img/logos/logo.svg' %}"
-                alt="Frum Philly Logo"></a>
-        {% include 'components/menu_icon.html' %}
-        <nav id="navbar__nav">
+<header id="navbar" class="bg-white fixed w-full top-0 px-2 md:px-0  h-16 z-50">
+    <div class="md:container flex justify-between items-center md:mx-auto h-full">
+        <a id="navbar__brand" href="{% url 'home' %}">
+            <img class="w-40" src="{% webpack_static 'img/logos/logo.svg' %}" alt="Frum Philly Logo">
+        </a>
+        <nav class="h-full hidden md:flex justify-center items-center">
             {% with url_name=request.resolver_match.url_name  %}
-                <a class="navbar__link {% if url_name == 'home' %} active{% endif %}" href="{% url 'home' %}">Home</a>
-                <a class="navbar__link {% if url_name == 'about' %} active{% endif %}" href="{% url 'about' %}">About</a>
-                <a class="navbar__link {% if url_name == 'events_all' %} active{% endif %}" href="{% url 'events_all' %}">Events</a>
-                {% if user.is_authenticated %}
-                {% comment %} <a class="navbar__link {% if url_name == 'events_create' %} active{% endif %}" href="{% url 'events_create' %}">Add Event</a> {% endcomment %}
-                <a class="navbar__link {% if url_name == 'user_account' %} active{% endif %}" href="{% url 'user_account' %}">My Account</a>
-                <form class="navbar__link" action="{% url 'account_logout' %}" method="POST">
-                    {% csrf_token %}
-                    <input class="btn btn--small" type="submit" value="Log Out">
-                </form>
-                {% else %}
-                <a class="navbar__link {% if url_name == 'account_signup' %} active{% endif %}" href="{% url 'account_signup' %}">Create Account</a>
-                <a class="navbar__link {% if url_name == 'account_login' %} active{% endif %}" href="{% url 'account_login' %}">Sign In</a>
-                {% endif %}
+            <a class="navlink{% if url_name == 'home' %} active{% endif %}" href="{% url 'home' %}">Home</a>
+            {% comment %} <a class="navlink{% if url_name == 'about' %} active{% endif %}" href="{% url 'about' %}">About</a> {% endcomment %}
+            <a class="navlink{% if url_name == 'listings' %} active{% endif %}" href="{% url 'listings' %}">Listings</a>
+            <a class="navlink{% if url_name == 'events_all' %} active{% endif %}" href="{% url 'events_all' %}">Events</a>
+            {% if user.is_authenticated %}
+
+
+            <div class="mx-4 my-4 flex items-center relative" x-data="{ showAccountMenu: false }">
+                <div>
+                    <button @click="showAccountMenu = !showAccountMenu" class="max-w-xs flex items-center text-sm rounded-full text-white focus:outline-none focus:shadow-solid cursor-pointer" id="user-menu" aria-label="User menu" aria-haspopup="true">
+                        <img class="h-10 w-10 rounded-full" src="https://randomuser.me/api/portraits/men/32.jpg" alt="">
+                        <span class="ml-1"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-down" width="20" height="20" viewBox="0 0 24 24" stroke-width="2" stroke="#607D8B" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" />
+                                <polyline points="6 9 12 15 18 9" />
+                            </svg></span>
+                    </button>
+                </div>
+                <div class="absolute top-avoid-header p-2 right-0 bg-white rounded-md shadow-md w-40 flex flex-col" x-show="showAccountMenu" @click.away="showAccountMenu = false" x-transition:enter="transition ease-out duration-100" x-transition:enter-start="opacity-0 transform scale-90" x-transition:enter-end="opacity-100 transform scale-100" x-transition:leave="transition ease-in duration-100" x-transition:leave-start="opacity-100 transform scale-100" x-transition:leave-end="opacity-0 transform scale-90">
+                    <a class="p-2 hover:bg-gray-200" href="{% url 'user_account' %}">My Account</a>
+                    <a class="p-2 hover:bg-gray-200" href="{% url 'listings_select' %}">Create Listing</a>
+                    <a class="p-2 hover:bg-gray-200" href="{% url 'events_create' %}">Create Event</a>
+                    <form class="bg-transparent p-0" action="{% url 'account_logout' %}" method="POST">
+                        {% csrf_token %}
+                        <input class="bg-transparent hover:bg-gray-200 p-2 w-full text-left cursor-pointer" type="submit" value="Log Out">
+                    </form>
+                </div>
+            </div>
+
+            {% else %}
+            <a class="navlink{% if url_name == 'account_login' %} active{% endif %}" href="{% url 'account_login' %}">Sign In</a>
+            <a class="btn btn-md md:flex items-center justify-center mt-8 md:mt-0 mx-12 md:mx-0 md:ml-4{% if url_name == 'account_signup' %} active{% endif %}" href="{% url 'account_signup' %}">Create Account</a>
+            {% endif %}
             {% endwith %}
         </nav>
+        {% include 'components/mobile-nav.html' %}
     </div>
 </header>

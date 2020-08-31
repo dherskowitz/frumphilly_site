@@ -2,6 +2,7 @@
 {% load webpack_static from webpack_loader %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,14 +13,15 @@
     {% render_bundle 'main' 'css' %}
     {% block template_css %}{% endblock template_css %}
 </head>
-<body>
+
+<body class="pt-16 relative flex flex-col bg-bgGrey">
     <noscript>
         <div class="noscript">Some features of this site require JavaScript to work.</div>
     </noscript>
 
     {% include 'components/navbar.html' %}
 
-    <main>
+    <main class="flex-1">
         {% block pagebanner %}
         {% endblock pagebanner %}
         {% include 'components/messages.html' %}
@@ -32,4 +34,5 @@
     {% render_bundle 'main' 'js' %}
     {% block template_js %}{% endblock template_js %}
 </body>
+
 </html>

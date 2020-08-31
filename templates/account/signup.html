@@ -5,19 +5,23 @@
 {% block meta_description %}Create an account on Frum Philly{% endblock meta_description %}
 
 {% block main %}
-<div class="container container-height--100 flex flex--column flex--center">
-    <div class="panel panel--auth">
-        <section class="auth-banner" style="background-image: url({% webpack_static 'img/illustrations/signup.svg' %});">
-            <h2 class="title text-center">Create Account</h2>
+<section class="container my-6 lg:my-0 mx-auto flex flex-col justify-center items-center lg:h-cust-screen">
+    <div class="bg-white rounded-md shadow-md flex lg:w-full w-11/12 flex-col lg:flex-row p-3 md:p-6">
+        <section class="lg:w-1/2 h-64 lg:h-auto mb-6 lg:mb-0 hidden md:flex items-center justify-center object-cover" style="background-image: url({% webpack_static 'img/illustrations/signup.svg' %});background-size:contain;background-repeat:no-repeat;background-position:center;">
+            <h2 class="text-6xl font-bold text-white text-shadow text-center">Create Account</h2>
         </section>
-        <section>
-            <section class="signup wrapper">
-                <h2 class="title-bar"><span class="title-bar__text">Sign up with Google or Facebook</span></h2>
+        <section class="lg:w-1/2">
+            <section class="m-6">
+                <h2 class="relative text-center border-t-2 border-black flex items-center justify-center">
+                    <span class="-top-1 absolute text-lg font-semibold bg-white">Sign up with Google or Facebook</span>
+                </h2>
                 {% include 'components/social-signin.html' %}
             </section>
 
-            <section class="signup wrapper">
-                <h2 class="title-bar"><span class="title-bar__text">Sign up with Email</span></h2>
+            <section class="m-6 mb-0">
+                <h2 class="relative text-center border-t-2 border-black flex items-center justify-center mb-6">
+                    <span class="-top-1 absolute text-lg font-semibold bg-white">Sign up with Email</span>
+                </h2>
                 {% include 'components/errors.html' %}
 
                 <form method="post" id="signup-form" class="form">
@@ -32,17 +36,17 @@
                         {% endif %}
                     </div>
                     {% endfor %}
-                    {% include 'components/submit_btn.html' with value='Sign Up' class="btn btn--block btn--form-submit" %}
-                    <p class="text-center account_link"><a href="{% url 'account_login' %}">I already have an account!</a></p>
+                    {% include 'components/submit_btn.html' with value='Sign Up' class="btn btn-block" %}
+                    <p class="text-center mt-6 font-bold underline"><a href="{% url 'account_login' %}">I already have an account!</a></p>
                 </form>
             </section>
         </section>
     </div>
-</div>
+</section>
 {% endblock main %}
 
 {% block template_js %}
-    <script>
-        document.getElementById("id_email").focus();
-    </script>
+<script>
+    document.getElementById("id_email").focus();
+</script>
 {% endblock template_js %}

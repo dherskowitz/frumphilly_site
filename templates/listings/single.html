@@ -5,8 +5,10 @@
 <div class="container">
     <h1>{{listing.business_name}}</h1>
 
+    <img src="{{listing.cover_image.url}}" alt="{{listing.name}}">
+
     {% for c in listing.categories.all %}
-        <span>{{c}}</span>
+    <span>{{c}}</span>
     {% endfor %}
     <br>
 
@@ -15,7 +17,7 @@
     Credit: {{listing.accept_cc}} <br>
 
     {% for category in listing.categories.all %}
-        <a href="{% url 'listings_category' category.slug %}">{{ category }}</a> {% if not forloop.last %} / {% endif %}
+    <a href="{% url 'listings_category' category.slug %}">{{ category }}</a> {% if not forloop.last %} / {% endif %}
     {% endfor %}
 </div>
 {% endblock main %}
