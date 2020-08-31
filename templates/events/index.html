@@ -11,9 +11,9 @@
 {% endblock pagebanner %}
 
 {% block main %}
-<section class="container mx-auto">
-    <div class="flex space-between align-start">
-        <div class="w-3/4 mx-2">
+<section class="container">
+    <div class="md:flex justify-between my-6">
+        <div class="md:w-3/4 md:mr-6">
             {% include 'events/_filter.html' %}
             {% for event in events %}
             <div class="grid gap-3 grid-cols-1 my-4">
@@ -42,17 +42,17 @@
             {% endif %}
         </div>
 
-        <div class="w-1/4  mx-2">
-            <div class="rightbar__box" style="border: 1px solid grey;height: 15rem;width: 20rem;display: flex;justify-content: center;align-items: center;padding: 1rem;margin-bottom: 1rem;">
+        <div class="pt-4 md:w-1/4">
+            <div class="rightbar__box" style="border: 1px solid grey;height: 15rem;display: flex;justify-content: center;align-items: center;padding: 1rem;margin-bottom: 1rem;">
                 Example. Your Ad Here.
             </div>
-            <div class="rightbar__box" style="border: 1px solid grey;height: 15rem;width: 20rem;display: flex;justify-content: center;align-items: center;padding: 1rem;margin-bottom: 1rem;">
+            <div class="rightbar__box" style="border: 1px solid grey;height: 15rem;display: flex;justify-content: center;align-items: center;padding: 1rem;margin-bottom: 1rem;">
                 Example. Your Ad Here.
             </div>
-            <div class="rightbar__box" style="border: 1px solid grey;height: 15rem;width: 20rem;display: flex;justify-content: center;align-items: center;padding: 1rem;margin-bottom: 1rem;">
+            <div class="rightbar__box" style="border: 1px solid grey;height: 15rem;display: flex;justify-content: center;align-items: center;padding: 1rem;margin-bottom: 1rem;">
                 Example. Your Ad Here.
             </div>
-            <div class="rightbar__box" style="border: 1px solid grey;height: 15rem;width: 20rem;display: flex;justify-content: center;align-items: center;padding: 1rem;margin-bottom: 1rem;">
+            <div class="rightbar__box" style="border: 1px solid grey;height: 15rem;display: flex;justify-content: center;align-items: center;padding: 1rem;margin-bottom: 1rem;">
                 Example. Your Ad Here.
             </div>
         </div>
