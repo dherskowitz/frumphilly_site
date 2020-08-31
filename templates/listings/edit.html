@@ -2,36 +2,35 @@
 {% load webpack_static from webpack_loader %}
 
 {% block pagebanner %}
-<section class="page-banner curved-bottom" style="background-image: url({% webpack_static 'img/illustrations/form.svg' %});background-size: 30rem;">
-    <h2 class="title">Edit Listing</h2>
+<section class="h-half-screen curved-bottom flex flex-col justify-center items-center" style="background-image: url({% webpack_static 'img/illustrations/edit.svg' %});background-size: 30rem;background-repeat:no-repeat;background-position:center;">
+    <h2 class="text-6xl text-white text-center text-shadow">Edit Listing</h2>
+    <p class="text-3xl text-white text-center text-shadow">Edit the details of your listing.</p>
 </section>
 {% endblock pagebanner %}
 
 
 {% block main %}
 
-    <section class="wrapper">
+<section class="container max-w-4xl mb-10">
 
-        {% include 'components/errors.html' %}
-        <form class="form" action="{% url 'listings_edit' listing.slug listing.id %}" method="POST" enctype='multipart/form-data'>
-            {% csrf_token %}
-            {% include 'listings/_form.html' %}
-            {% include 'components/submit_btn.html' with value='Save Listing' class="btn btn--block btn--form-submit" %}
-        </form>
+    {% include 'components/errors.html' %}
+    <form class="form" action="{% url 'listings_edit' listing.slug listing.id %}" method="POST" enctype='multipart/form-data'>
+        {% csrf_token %}
+        {% include 'listings/_form.html' %}
+        {% include 'components/submit_btn.html' with value='Save Listing' class="btn btn-block btn-lg btn--form-submit" %}
+    </form>
 
-    </section>
+</section>
 
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCVHtWZFQ4D4WQ2ie8Fe8FaW7_VHlfQPuk&libraries=places&region=US&types=(regions)"></script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCVHtWZFQ4D4WQ2ie8Fe8FaW7_VHlfQPuk&libraries=places&region=US&types=(regions)"></script>
 {% endblock main %}
 
 {% block template_js %}
-    <script>
-        document.getElementById("id_business_name").focus();
-        document.getElementById("id_phone").addEventListener("input", (e) => formatPhone(e));
-        document.getElementById("id_whatsapp").addEventListener("input", (e) => formatPhone(e));
-        document.getElementById("id_mobile").addEventListener("input", (e) => formatPhone(e));
-        document.getElementById("id_fax").addEventListener("input", (e) => formatPhone(e));
-    </script>
+<script>
+    document.getElementById("id_business_name").focus();
+    document.getElementById("id_phone").addEventListener("input", (e) => formatPhone(e));
+    document.getElementById("id_whatsapp").addEventListener("input", (e) => formatPhone(e));
+    document.getElementById("id_mobile").addEventListener("input", (e) => formatPhone(e));
+    document.getElementById("id_fax").addEventListener("input", (e) => formatPhone(e));
+</script>
 {% endblock template_js %}
-
-
