@@ -147,12 +147,12 @@ form {
 }
 
 .form-field input {
-    @apply h-8 border-silver border-2;
+    @apply h-8;
 }
 
 .form-field input,
 .form-field textarea {
-    @apply w-full mb-2 bg-transparent-red rounded-md pt-12 px-2 pb-5;
+    @apply w-full mb-2 bg-transparent-red rounded-md pt-12 px-2 pb-5 border-silver border-2;
 }
 
 .form-field input[type="checkbox"],
