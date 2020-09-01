@@ -1,8 +1,8 @@
 {% load webpack_static from webpack_loader %}
 
-<div class="w-64 mr-4 overflow-y-hidden max-w-lg text-white">
+<div class="hidden md:block md:w-48 lg:w-64 mr-4 overflow-y-hidden max-w-lg text-white">
     {% with url_name=request.resolver_match.url_name  %}
-    <nav class="mt-10 w-48 bg-gray-700 p-2 rounded-md shadow-md fixed">
+    <nav class="mt-10 md:w-48 lg:w-64 bg-gray-700 p-2 rounded-md shadow-md fixed">
 
         <div>
             <a class="w-full block p-4 rounded-md hover:bg-teal-900{% if url_name == 'user_account' %} bg-gray-900 border-r-4 border-white{% endif %}" href="{% url 'user_account' %}">
