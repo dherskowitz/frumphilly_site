@@ -2,12 +2,17 @@ from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from events.models import Event
 from listings.models import Listing
+from .models import CustomUser
 
 
 # Create your views here.
 @login_required
 def user_account(request):
-    return render(request, "user/user_account.html")
+    context = {
+        "events_count": CustomUser.get_events_count(),
+        "listings_count": CustomUser.get_listings_count(),
+    }
+    return render(request, "user/user_account.html", context)
 
 
 @login_required
