@@ -47,6 +47,7 @@ module.exports = {
     variants: {
         textColor: ["group-hover"],
         textShadow: ["responsive"],
+        backgroundColor: ['responsive', 'hover', 'even'],
     },
     plugins: [
         plugin(function({
