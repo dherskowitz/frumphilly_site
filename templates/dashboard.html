@@ -1,0 +1,41 @@
+{% load render_bundle from webpack_loader %}
+{% load webpack_static from webpack_loader %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{% block meta_title %}{% endblock meta_title %}</title>
+    <link rel="shortcut icon" href="{% webpack_static 'img/favicon/favicon.ico' %}" type="image/x-icon" />
+    <meta name="description" content="{% block meta_description %}{% endblock meta_description %}">
+    {% render_bundle 'main' 'css' %}
+    {% block template_css %}{% endblock template_css %}
+</head>
+
+<body class="pt-16 relative flex flex-col bg-bgGrey">
+    <noscript>
+        <div class="noscript">Some features of this site require JavaScript to work.</div>
+    </noscript>
+
+    {% include 'components/navbar.html' %}
+
+    <main class="flex-1">
+        {% include 'components/messages.html' %}
+
+        <div class="container flex">
+            {% include 'user/_sidebar.html' %}
+            <div class="w-full">
+                {% block main %}
+                {% endblock main %}
+            </div>
+        </div>
+    </main>
+
+    {% include 'components/footer.html' %}
+    {% render_bundle 'main' 'js' %}
+    {% block template_js %}{% endblock template_js %}
+</body>
+
+</html>
