@@ -1,5 +1,5 @@
-{% extends 'base.html' %}
-{% load humanize %} 
+{% extends 'dashboard.html' %}
+{% load humanize %}
 {% block meta_title %}Manage Your Events | Frum Philly{% endblock meta_title %}
 {% block meta_description %}Manage the events you have published on Frum Philly.{% endblock meta_description %}
 
@@ -8,18 +8,18 @@
 <div class="container flex flex--column flex--center">
     <section class="table">
         {% for event in events %}
-            <div class="tablerow">
-                <span class="tablecell" data-tablecell-title="Event Name">
-                    <a href="{% url 'events_single' event.slug event.id %}">{{event.name}}</a>
-                </span>
-                <span class="tablecell" data-tablecell-title="Posted On">{{event.created_at|naturalday}}</span>
-                <span class="tablecell text-center tablecell--action" data-tablecell-title="">
-                    <a class="btn btn--small" href="{% url 'events_edit' event.slug event.id %}">Edit Event</a>
-                </span>
-                <span class="tablecell text-center tablecell--action" data-tablecell-title="">
-                    <a class="btn btn--danger btn--small" href="{% url 'events_delete' event.slug event.id %}">Delete Event</a>
-                </span>
-            </div>
+        <div class="tablerow">
+            <span class="tablecell" data-tablecell-title="Event Name">
+                <a href="{% url 'events_single' event.slug event.id %}">{{event.name}}</a>
+            </span>
+            <span class="tablecell" data-tablecell-title="Posted On">{{event.created_at|naturalday}}</span>
+            <span class="tablecell text-center tablecell--action" data-tablecell-title="">
+                <a class="btn btn--small" href="{% url 'events_edit' event.slug event.id %}">Edit Event</a>
+            </span>
+            <span class="tablecell text-center tablecell--action" data-tablecell-title="">
+                <a class="btn btn--danger btn--small" href="{% url 'events_delete' event.slug event.id %}">Delete Event</a>
+            </span>
+        </div>
         {% endfor %}
     </section>
 </div>

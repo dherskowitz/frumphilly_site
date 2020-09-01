@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'dashboard.html' %}
 {% load webpack_static from webpack_loader %}
 
 {% block template_css %}
@@ -10,21 +10,12 @@
 </style>
 {% endblock template_css %}
 
-{% block pagebanner %}
-<section class="page-banner curved-bottom" style="background-image: url({% webpack_static 'img/illustrations/form.svg' %});background-size: 30rem;">
-    <h2 class="title">Create event</h2>
-</section>
-{% endblock pagebanner %}
-
 {% block main %}
 
-
-
-<section class="wrapper">
+<section class="my-10">
+    <h2 class="text-5xl text-white text-shadow my-4">Create New Event</h2>
     {% include 'components/errors.html' %}
     <div>
-        <!-- <p>Not all fields are required but the more information you can provide, the better it will look on the site. -->
-        </p>
         <form class="form" action="{% url 'events_create' %}" method="POST" enctype='multipart/form-data'>
             {% csrf_token %}
             {% include 'events/_form.html' %}
@@ -37,9 +28,9 @@
 {% endblock main %}
 
 {% block template_js %}
-    <script>
-        document.getElementById("id_name").focus();
-        document.getElementById("id_phone_contact").addEventListener("input", (e) => formatPhone(e));
-    </script>
-    <script src="{% webpack_static 'libs/trix.js' %}"></script>
+<script>
+    document.getElementById("id_name").focus();
+    document.getElementById("id_phone_contact").addEventListener("input", (e) => formatPhone(e));
+</script>
+<script src="{% webpack_static 'libs/trix.js' %}"></script>
 {% endblock template_js %}

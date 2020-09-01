@@ -1,18 +1,21 @@
-{% extends 'base.html' %}
+{% extends 'dashboard.html' %}
 {% load webpack_static from webpack_loader %}
 
-{% block pagebanner %}
+{% comment %} {% block pagebanner %}
 <section class="h-half-screen curved-bottom flex flex-col justify-center items-center" style="background-image: url({% webpack_static 'img/illustrations/edit.svg' %});background-size: 30rem;background-repeat:no-repeat;background-position:center;">
     <h2 class="text-6xl text-white text-center text-shadow">Edit Listing</h2>
     <p class="text-3xl text-white text-center text-shadow">Edit the details of your listing.</p>
 </section>
-{% endblock pagebanner %}
+{% endblock pagebanner %} {% endcomment %}
 
 
 {% block main %}
 
-<section class="container max-w-4xl mb-10">
-
+<section class="mb-10">
+    <div class="text-white text-shadow my-4">
+        <h2 class="text-3xl">Edit Listing</h2>
+        <p class="text-xl">Edit the details of your listing.</p>
+    </div>
     {% include 'components/errors.html' %}
     <form class="form" action="{% url 'listings_edit' listing.slug listing.id %}" method="POST" enctype='multipart/form-data'>
         {% csrf_token %}
