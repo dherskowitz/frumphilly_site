@@ -168,8 +168,18 @@ form {
     @apply block font-bold mb-1 absolute;
 }
 
-.form-field--alt {
-    @apply bg-purple-900 rounded-md py-5 px-2 border-silver border-2;
+.form-field--alt,
+.form-field--description {
+    @apply bg-transparent-red rounded-md py-5 px-2 border-silver border-2;
+}
+
+.form-field--description {
+    width: 100%;
+    margin-bottom: 0.5rem;
+    background: rgba(211, 67, 62, 0.1);
+    border-radius: 4px;
+    padding: 3.25em 0.5em 1.2em;
+    border: 1px solid #bfbfbf;
 }
 
 .form-field--alt .form-field__label {
@@ -201,6 +211,10 @@ input[type="checkbox"]:checked {
 
 .form-field__help-text {
     @apply text-sm pl-1;
+}
+
+::placeholder {
+    color: #67809f !important;
 }
 
 @tailwind utilities;
