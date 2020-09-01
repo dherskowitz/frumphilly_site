@@ -5,23 +5,26 @@
 
 {% block main %}
 
-<div class="container flex flex--column flex--center">
-    <section class="table">
+<div class="flex items-center justify-center my-6">
+    <section class="md:rounded-md md:shadow-md my-4 w-full">
         {% for listing in listings %}
-        <div class="tablerow">
-            <span class="tablecell" data-tablecell-title="Listing Name">
+        <div class="grid gap-4 md:items-start bg-white grid-cols-1 sm:grid-cols-2 sm:gap-8 lg:gap-0 lg:grid-cols-4 m-0 border px-4 pb-6 pt-4 sm:pt-8 mb-6 md:mb-0 shadow-md rounded-md md:shadow-none md:rounded-none md:even:bg-teal-200">
+            <span class="relative text-center lg:text-left pt-2">
+                <div class="flex justify-center lg:absolute -top-1 text-sm font-bold uppercase">Listing Name</div>
                 <a href="{% url 'listing_single' listing.slug listing.id %}">{{listing.business_name}}</a>
             </span>
-            <span class="tablecell" data-tablecell-title="Posted On">{{listing.created_at}}</span>
-            <span class="tablecell text-center tablecell--action" data-tablecell-title="">
-                <a class="btn btn--small" href="{% url 'listings_edit' listing.slug listing.id %}">Edit Listing</a>
+            <span class="relative text-center lg:text-left pt-2">
+                <div class="flex justify-center lg:absolute -top-1 text-sm font-bold uppercase">Posted</div>
+                {{listing.created_at}}
             </span>
-            <span class="tablecell text-center tablecell--action" data-tablecell-title="">
-                <a class="btn btn--danger btn--small" href="{% url 'listings_delete' listing.slug listing.id %}">Delete Event</a>
+            <span class="text-center lg:text-left my-6 sm:my-0 pt-2">
+                <a class="py-2 px-4 bg-purple-800 text-white rounded-md shadow-md" href="{% url 'listings_edit' listing.slug listing.id %}">Edit Listing</a>
+            </span>
+            <span class="text-center lg:text-left pt-2">
+                <a class="py-2 px-4 bg-orange-500 text-white rounded-md shadow-md" href="{% url 'listings_delete' listing.slug listing.id %}">Delete Listing</a>
             </span>
         </div>
         {% endfor %}
     </section>
 </div>
-
 {% endblock main %}
