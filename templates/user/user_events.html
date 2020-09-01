@@ -5,23 +5,26 @@
 
 {% block main %}
 
-<div class="container flex flex--column flex--center">
-    <section class="table">
+<div class="flex items-center justify-center my-6">
+    <section class="md:rounded-md md:shadow-md my-4 w-full">
         {% for event in events %}
-        <div class="tablerow">
-            <span class="tablecell" data-tablecell-title="Event Name">
+        <div class="grid gap-4 md:items-start bg-white grid-cols-1 sm:grid-cols-2 sm:gap-8 lg:gap-0 lg:grid-cols-4 m-0 border px-4 pb-6 pt-4 md:pt-8 mb-6 md:mb-0 shadow-md rounded-md md:shadow-none md:rounded-none">
+            <span class="relative text-center lg:text-left pt-2">
+                <div class="flex justify-center lg:absolute -top-1 text-sm font-bold uppercase">Event Name</div>
                 <a href="{% url 'events_single' event.slug event.id %}">{{event.name}}</a>
             </span>
-            <span class="tablecell" data-tablecell-title="Posted On">{{event.created_at|naturalday}}</span>
-            <span class="tablecell text-center tablecell--action" data-tablecell-title="">
-                <a class="btn btn--small" href="{% url 'events_edit' event.slug event.id %}">Edit Event</a>
+            <span class="relative text-center lg:text-left pt-2">
+                <div class="flex justify-center lg:absolute -top-1 text-sm font-bold uppercase">Posted</div>
+                {{event.created_at|naturalday}}
             </span>
-            <span class="tablecell text-center tablecell--action" data-tablecell-title="">
-                <a class="btn btn--danger btn--small" href="{% url 'events_delete' event.slug event.id %}">Delete Event</a>
+            <span class="text-center lg:text-left my-6 sm:my-0 pt-2">
+                <a class="py-2 px-4 bg-purple-800 text-white rounded-md shadow-md" href="{% url 'events_edit' event.slug event.id %}">Edit Event</a>
+            </span>
+            <span class="text-center lg:text-left pt-2">
+                <a class="py-2 px-4 bg-orange-500 text-white rounded-md shadow-md" href="{% url 'events_delete' event.slug event.id %}">Delete Event</a>
             </span>
         </div>
         {% endfor %}
     </section>
 </div>
-
 {% endblock main %}
