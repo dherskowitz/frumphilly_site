@@ -11,7 +11,7 @@
 
 {% block main %}
 
-<section class="mb-10">
+<section class="my-10">
     <div class="text-white text-shadow my-4">
         <h2 class="text-3xl">Edit Listing</h2>
         <p class="text-xl">Edit the details of your listing.</p>
@@ -20,7 +20,7 @@
     <form class="form" action="{% url 'listings_edit' listing.slug listing.id %}" method="POST" enctype='multipart/form-data'>
         {% csrf_token %}
         {% include 'listings/_form.html' %}
-        {% include 'components/submit_btn.html' with value='Save Listing' class="btn btn-block btn-lg btn--form-submit" %}
+        {% include 'components/submit_btn.html' with value='Save Listing' class="btn btn-block btn-lg btn--form-submit mt-6" %}
     </form>
 
 </section>
