@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'dashboard.html' %}
 {% load webpack_static from webpack_loader %}
 
 {% block meta_title %}Edit {{ event.name }} Details | Frum Philly{% endblock meta_title %}
@@ -13,15 +13,19 @@
 </style>
 {% endblock template_css %}
 
-{% block pagebanner %}
+{% comment %} {% block pagebanner %}
 <section class="page-banner curved-bottom" style="background-image: url({% webpack_static 'img/illustrations/edit.svg' %});background-size: 30rem;">
     <h2 class="title text-center">Edit Event</h2>
     <p class="subtitle text-center">Edit the details of your event.</p>
 </section>
-{% endblock pagebanner %}
+{% endblock pagebanner %} {% endcomment %}
 
 {% block main %}
-<section class="wrapper">
+<section class="my-8">
+    <div class="text-white text-shadow my-4">
+        <h2 class="text-3xl">Edit Event</h2>
+        <p class="text-xl">Edit the details of your event.</p>
+    </div>
     {% include 'components/errors.html' %}
     <form class="form" action="{% url 'events_edit' event.slug event.id %}" method="POST" enctype='multipart/form-data'>
         {% csrf_token %}
