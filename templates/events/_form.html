@@ -2,9 +2,8 @@
 
 {% if field.name == 'image' %}
 <div class="form-field">
-    <label class="form-field__label" for="{{field.name}}">{{ field.label }}</label>
-    <input type="file" name="{{ field.html_name }}" id="{{ field.id_for_label }}"
-        accept="image/png,image/jpg,image/jpeg">
+    <label class="form-field__label" for="{{field.id_for_label}}">{{ field.label }}</label>
+    <input type="file" name="{{ field.html_name }}" id="{{ field.id_for_label }}" accept="image/png,image/jpg,image/jpeg">
     {% if event.image.name is not Null %}
     <div class="form-field__help-text">
         <a href="#" onclick="window.open('{{ event.image.url }}', '_blank'
@@ -16,21 +15,21 @@
 
 {% elif field.name == 'attachment' %}
 <div class="form-field">
-    <label class="form-field__label" for="{{field.name}}">{{ field.label }}</label>
+    <label class="form-field__label" for="{{field.id_for_label}}">{{ field.label }}</label>
     <input type="file" name="{{ field.html_name }}" id="{{ field.id_for_label }}" accept="application/pdf">
     {% if event.attachment %}
-        <div class="form-field__help-text">
-            <a href="#" onclick="window.open('{{ event.attachment.url }}', '_blank'
+    <div class="form-field__help-text">
+        <a href="#" onclick="window.open('{{ event.attachment.url }}', '_blank'
                 , 'location=yes,height=570,width=520,scrollbars=yes,status=yes' );">View
-                Current Attachment</a>
-        </div>
+            Current Attachment</a>
+    </div>
     {% endif %}
 </div>
 
 {% elif field.name == 'description' %}
 
 <div class="form-field form-field--description">
-    <label class="form-field__label" for="{{field.name}}">{{ field.label }}</label>
+    <label class="form-field__label" for="{{field.id_for_label}}">{{ field.label }}</label>
     {{form.description}}
     <trix-editor input="{{form.description.auto_id}}"></trix-editor>
 </div>
@@ -38,8 +37,7 @@
 {% else %}
 
 <div class="form-field {% if field.name == 'rsvp' %}form-field--alt{% endif %}">
-    <label class="form-field__label" for="{{field.name}}">{{ field.label }} {% if field.field.required %}<span
-            class="form-field__label--required">(required)</span>{% endif %}</label>
+    <label class="form-field__label" for="{{field.id_for_label}}">{{ field.label }} {% if field.field.required %}<span class="form-field__label--required">(required)</span>{% endif %}</label>
     {{ field }}
 
     {% if field.name in helptext_fields %}
@@ -49,4 +47,3 @@
 {% endif %}
 
 {% endfor %}
-
