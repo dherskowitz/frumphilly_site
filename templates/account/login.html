@@ -14,7 +14,7 @@
         </section>
 
         <section class="lg:w-1/2">
-            <div class="m-6">
+            <div class="m-6 mb-10">
                 <h2 class="relative text-center border-t-2 border-black flex items-center justify-center z-0">
                     <span class="-top-1 absolute text-lg font-semibold bg-white">Sign in with Google or Facebook</span>
                 </h2>
@@ -22,7 +22,7 @@
             </div>
 
             <div class="m-6 mb-0">
-                <h2 class="relative text-center border-t-2 border-black flex items-center justify-center mb-6">
+                <h2 class="relative text-center border-t-2 border-black flex items-center justify-center my-6">
                     <span class="-top-1 absolute text-lg font-semibold bg-white">Sign in with Email</span>
                 </h2>
                 {% include 'components/errors.html' %}
@@ -35,6 +35,15 @@
                     <div class="form-field">
                         <label class="form-field__label" for="{{field.id_for_label}}">{{ field.label }}</label>
                         {{ field }}
+                        {% if field.name == "password" %}
+                        <div class="flex flex-row justify-between">
+                            <span class="flex">
+                                <label class="mr-2" for="{{form.remember.id_for_label }}">{{form.remember.label}}</label>
+                                {{form.remember}}
+                            </span>
+                            <a href="{% url 'account_reset_password' %}" class="text-right text-sm text-red-400 underline">Forgot Password</a>
+                        </div>
+                        {% endif %}
 
                         {% if field.name in helptext_fields %}
                         <div class="form-field__help-text">{{ field.help_text }}</div>
@@ -43,10 +52,8 @@
                     {% endif %}
                     {% endfor %}
 
-                    <div class="flex justify-between">
-                        <span class="form-field--remember"><label for="{{form.remember.id_for_label }}">{{form.remember.label}}</label>{{form.remember}}</span>
-                        {% include 'components/submit_btn.html' with value='Sign In' class="btn btn-lg btn--form-submit" %}
-                    </div>
+                    {% include 'components/submit_btn.html' with value='Sign In' class="btn btn-lg btn--form-submit btn-block" %}
+
                     <p class="text-center mt-6 font-bold underline"><a href="{% url 'account_signup' %}">I don't have an account yet!</a></p>
                 </form>
             </div>
