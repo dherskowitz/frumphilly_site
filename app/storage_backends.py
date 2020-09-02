@@ -10,10 +10,10 @@ class S3StaticStorage(S3Boto3Storage):
     default_acl = "public-read"
 
 
-# class S3PublicMediaStorage(S3Boto3Storage):
-#     location = "media/public/"
-#     file_overwrite = False
-#     default_acl = None
+class S3UserAccountStorage(S3Boto3Storage):
+    location = "media/accounts"
+    file_overwrite = False
+    default_acl = None
 
 
 class S3EventsMediaStorage(S3Boto3Storage):
