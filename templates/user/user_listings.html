@@ -4,8 +4,11 @@
 {% block meta_description %}Manage the listings you have published on Frum Philly.{% endblock meta_description %}
 
 {% block main %}
-
-<div class="flex items-center justify-center my-6">
+<div class="my-10">
+    <div class="flex flex-row justify-between align-center">
+        <div class="text-4xl text-white text-shadow">My Listing</div>
+        <a class="btn btn-md flex items-center" href="{% url 'listings_select' %}">Create Listing</a>
+    </div>
     <section class="md:rounded-md md:shadow-md my-4 w-full">
         {% for listing in listings %}
         <div class="grid gap-4 md:items-start bg-white grid-cols-1 sm:grid-cols-2 sm:gap-8 lg:gap-0 lg:grid-cols-4 m-0 border px-4 pb-6 pt-4 sm:pt-8 mb-6 md:mb-0 shadow-md rounded-md md:shadow-none md:rounded-none md:even:bg-teal-200">
