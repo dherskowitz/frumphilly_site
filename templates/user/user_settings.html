@@ -1,0 +1,36 @@
+{% extends 'dashboard.html' %}
+{% load humanize %}
+{% block meta_title %}Manage Your Settings | Frum Philly{% endblock meta_title %}
+{% block meta_description %}Manage the Frum Philly user settings.{% endblock meta_description %}
+
+{% block main %}
+<section class="my-10">
+    <h1 class="capitalize text-4xl text-white text-shadow mb-4">user settings</h1>
+    <form class="form" action="{% url 'user_settings' %}" method="POST" enctype='multipart/form-data'>
+        {% csrf_token %}
+        {% for field in form %}
+        {% if field.name == 'avatar' %}
+        <div class="form-field">
+            <div class=" relative">
+                <label class="form-field__label" for="{{field.name}}">{{ field.label }}</label>
+                <input type="file" name="{{ field.html_name }}" id="{{ field.id_for_label }}" accept="image/png,image/jpg,image/jpeg">
+                {% if user.avatar.name is not Null %}
+                <span class="ml-4 absolute right-0 pointer-events-none">
+                    <p class="text-xs mt-3 mr-2">Current Avatar</p>
+                    <img class="h-12 w-12 mt-3 mx-auto rounded-full object-cover" src="{{ user.avatar.url }}" alt="" width="40" height="40">
+                </span>
+            </div>
+            {% endif %}
+        </div>
+        {% elif field.name != 'password' %}
+        <div class="form-field">
+            <label class="form-field__label" for="{{field.id_for_label}}">{{ field.label }}</label>
+            {{ field }}
+        </div>
+        {% endif %}
+        {% endfor %}
+
+        {% include 'components/submit_btn.html' with value='Save' class="btn btn-block btn-lg btn--form-submit mt-6" %}
+    </form>
+</section>
+{% endblock main %}
