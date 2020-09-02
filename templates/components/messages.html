@@ -1,7 +1,7 @@
 {% load webpack_static from webpack_loader %}
 {% if messages %}
 <template x-if="!hide" x-data="{ hide: false }">
-    <ul class="messages fixed top-avoid-header bg-blue-800 w-full text-white p-4" x-transition:leave="transition ease-in duration-300" x-transition:leave-start="opacity-100 transform translate-y-0" x-transition:leave-end="opacity-0 transform -translate-y-4">
+    <ul class="messages fixed top-avoid-header bg-blue-800 w-full text-white p-4" x-transition:leave="transition ease-in duration-300" x-transition:leave-start="opacity-100 transform translate-y-0" x-transition:leave-end="opacity-0 transform -translate-y-4" style="z-index: 9;">
         {% for message in messages %}
         <li class="container mx-auto flex justify-between items-center{% if message.tags %}&nbsp;{{ message.tags }}{% endif %}">
             <span class="flex items-center">{{ message|safe }}</span>
