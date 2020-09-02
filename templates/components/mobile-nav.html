@@ -1,5 +1,8 @@
+{% load webpack_static from webpack_loader %}
+{% load socialaccount %}
+
 <div x-data="{ showMobileMenu: false }" class="md:hidden">
-    <div @click="showMobileMenu = !showMobileMenu" class="mr-4" :class="{ 'navbar__icon--open' : showMobileMenu}">
+    <div @click="showMobileMenu = !showMobileMenu" class="mr-4 cursor-pointer" :class="{ 'navbar__icon--open' : showMobileMenu}">
         <div class="bar1"></div>
         <div class="bar2"></div>
         <div class="bar3"></div>
@@ -15,7 +18,13 @@
         {% if user.is_authenticated %}
         <hr class="border-blue-900">
         <div class="mx-4 my-4 flex items-center">
-            <img class="w-12 rounded-full" src="https://randomuser.me/api/portraits/men/32.jpg" alt="">
+            {% if user.avatar %}
+            <img class="h-10 w-10 rounded-full object-cover" src="{{ user.avatar.url }}" alt="" width="10" height="10">
+            {% elif user.socialaccount_set.all.0.get_avatar_url %}
+            <img class="h-10 w-10 rounded-full object-cover" src="{{ user.socialaccount_set.all.0.get_avatar_url }}" alt="" width="10" height="10">
+            {% else %}
+            <img class="h-10 w-10 rounded-full object-cover" src="{% webpack_static 'img/images/blank_avatar.jpg' %}" alt="" width="10" height="10">
+            {% endif %}
             <span class="ml-4">
                 <p>{{ user.first_name }} {{ user.last_name }}</p>
                 <p>{{ user.email }}</p>
