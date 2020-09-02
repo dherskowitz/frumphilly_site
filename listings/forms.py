@@ -1,8 +1,5 @@
-import requests
 import bleach
-from decouple import config
 from django import forms
-from django.utils.translation import ugettext_lazy as _
 from .models import Listing, Category
 
 FILE_CONTENT_TYPES = ["pdf"]
@@ -38,33 +35,6 @@ class DateInput(forms.DateInput):
         super().__init__(**kwargs)
 
 
-class RetailForm(forms.ModelForm):
-    categories = forms.ModelMultipleChoiceField(
-        queryset=Category.objects.all(), widget=forms.CheckboxSelectMultiple
-    )
-
-    class Meta:
-        model = Listing
-        fields = "__all__"
-        exclude = ("created_by", "slug", "claimed", "premium", "approved", "kashrut")
-
-    def __init__(self, *args, **kwargs):
-        super(RetailForm, self).__init__(*args, **kwargs)
-        self.fields["sun_thu_hours"].label = "Hours Sun-Thurs"
-        self.fields["friday_hours"].label = "Hours Friday"
-        self.fields["saturday_hours"].label = "Hours Saturday"
-        self.fields["accept_cc"].label = "Accepts Credit Cards"
-        # Hidden Fields
-        self.fields["city"].label = ""
-        self.fields["city"].widget = forms.HiddenInput()
-        self.fields["state"].label = ""
-        self.fields["state"].widget = forms.HiddenInput()
-        self.fields["zipcode"].label = ""
-        self.fields["zipcode"].widget = forms.HiddenInput()
-        self.fields["location_type"].label = ""
-        self.fields["location_type"].widget = forms.HiddenInput()
-
-
 class ListingForm(forms.ModelForm):
     categories = forms.ModelMultipleChoiceField(
         queryset=Category.objects.all(), widget=forms.CheckboxSelectMultiple
@@ -75,10 +45,15 @@ class ListingForm(forms.ModelForm):
         fields = "__all__"
         exclude = ("created_by", "slug", "claimed", "premium", "approved")
 
-        # widgets = {"categories": forms.CheckboxSelectMultiple}
-
     def __init__(self, *args, **kwargs):
+        listing_type = kwargs.pop("listing_type")
         super(ListingForm, self).__init__(*args, **kwargs)
+        retail_exclude = ("kashrut",)
+        if listing_type == "retail":
+            for item in retail_exclude:
+                del self.fields[item]
+
+        # Set custom inputs
         self.fields["whatsapp"].widget = PhoneInput()
         self.fields["phone"].widget = PhoneInput()
         self.fields["mobile"].widget = PhoneInput()
@@ -88,6 +63,7 @@ class ListingForm(forms.ModelForm):
         self.fields["friday_hours"].widget = TimeInput()
         self.fields["saturday_hours"].widget = TimeInput()
 
+        # Change labels
         self.fields["sun_thu_hours"].label = "Hours Sun-Thurs"
         self.fields["friday_hours"].label = "Hours Friday"
         self.fields["saturday_hours"].label = "Hours Saturday"
@@ -95,7 +71,7 @@ class ListingForm(forms.ModelForm):
         self.fields["delivers"].label = "Offers Delivery"
         self.fields["wheelchair_access"].label = "Wheelchair Accessible"
 
-        # Hidden Fields
+        # Hide Fields
         self.fields["city"].label = ""
         self.fields["city"].widget = forms.HiddenInput()
         self.fields["state"].label = ""

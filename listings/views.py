@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .models import Listing, Category
-from .forms import ListingForm, RetailForm
+from .forms import ListingForm
 
 
 def listings(request):
@@ -26,10 +26,7 @@ def listings_category(request, slug):
 
 @login_required
 def listings_create(request, listing_type):
-    if listing_type == "retail":
-        form = RetailForm()
-    else:
-        form = ListingForm()
+    form = ListingForm(listing_type=listing_type)
     check_fields = [
         "claimed",
         "premium",
@@ -49,7 +46,7 @@ def listings_create(request, listing_type):
             listing.save()
             messages.success(request, "Listing created successfully!")
             return redirect(listing_single, slug=listing.slug, pk=listing.id)
-    context["listing_type"] = listing_type
+    context["listing_type"] = " & ".join(listing_type.strip().split("-")).title()
     return render(request, "listings/create.html", context)
 
 
