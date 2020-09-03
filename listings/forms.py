@@ -52,6 +52,8 @@ class ListingForm(forms.ModelForm):
         if listing_type == "retail":
             for item in retail_exclude:
                 del self.fields[item]
+        elif listing_type == "food-drink":
+            self.fields["kashrut"].required = True
 
         # Set custom inputs
         self.fields["whatsapp"].widget = PhoneInput()
