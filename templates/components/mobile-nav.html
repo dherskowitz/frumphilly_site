@@ -1,7 +1,7 @@
 {% load webpack_static from webpack_loader %}
 {% load socialaccount %}
 
-<div x-data="{ showMobileMenu: false }" class="md:hidden">
+<div x-data="{ showMobileMenu: false }" class="md:hidden" x-cloak>
     <div @click="showMobileMenu = !showMobileMenu" class="mr-4 cursor-pointer" :class="{ 'navbar__icon--open' : showMobileMenu}">
         <div class="bar1"></div>
         <div class="bar2"></div>
