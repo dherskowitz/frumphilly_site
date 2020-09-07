@@ -1,7 +1,6 @@
-import requests
 import utils
 from uuid import uuid4
-from decouple import config
+from django.utils.text import slugify
 from django.db import models
 from django.conf import settings
 from app.storage_backends import S3EventsMediaStorage, S3EventsFileStorage
