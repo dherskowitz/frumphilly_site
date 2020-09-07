@@ -23,7 +23,7 @@ def get_video(video_link):
     video = video_id = ""
     if re.search("iframe", video_link):
         """If video is iFrame grab src and set as video"""
-        source = re.findall('src\s*=\s*"(.+?)"', video_link)
+        source = re.findall('src\\s*=\\s*"(.+?)"', video_link)
         if len(source) > 0:
             video = source[0]
     elif re.search("youtube", video_link) or re.search("youtu.be", video_link):
