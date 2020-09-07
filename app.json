@@ -1,7 +1,7 @@
 {
     "scripts": {
         "dokku": {
-            "predeploy": "python manage.py migrate --noinput && npm run build"
+            "predeploy": "python manage.py migrate --noinput && npm run prod"
         }
     }
 }
