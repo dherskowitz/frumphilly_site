@@ -3,20 +3,25 @@
 
 {% block main %}
 <div class="container">
-    
+
 
     {% for name in category %}
-        <h1>{{ name }}</h1>
+    <h1>{{ name }}</h1>
     {% endfor %}
+    <hr class="my-4 border-gray-600">
 
 
 
     {% for listing in listings %}
-        <a href="{{ listing.get_absolute_url }}-{{listing.id}}">View Listing</a> <br>
-        {{listing.business_name}} <br>
-        {{listing.sun_thu_hours}} <br>
-        {{listing.location}} <br>
-        Credit: {{listing.accept_cc}} <br>
+    {{listing.business_name}} <br>
+
+    {% if listing.sun_thu_hours %}
+    {{listing.sun_thu_hours}} <br>
+    {% endif %}
+    {{listing.location}} <br>
+    Credit: {{listing.accept_cc}} <br>
+    <a class="btn btn-md" href="{{ listing.get_absolute_url }}-{{listing.id}}">View Listing</a> <br>
+    <hr class="my-4 border-gray-600">
     {% endfor %}
 </div>
 {% endblock main %}

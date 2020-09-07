@@ -24,9 +24,8 @@
                     <img class="h-10 w-10 rounded-full object-cover" src="{% webpack_static 'img/images/blank_avatar.jpg' %}" alt="" width="10" height="10">
                     {% endif %}
                     <span class="ml-1"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-down" width="20" height="20" viewBox="0 0 24 24" stroke-width="2" stroke="#607D8B" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                            <path stroke="none" d="M0 0h24v24H0z" />
-                            <polyline points="6 9 12 15 18 9" />
-                        </svg></span>
+                            <path d="M0 0h24v24H0z" stroke="none" />
+                            <path d="M6 9l6 6 6-6" /></svg></span>
                 </button>
                 <div class="absolute top-avoid-header p-2 right-0 bg-white rounded-md shadow-md w-40 flex flex-col" x-show="showAccountMenu" @click.away="showAccountMenu = false" x-transition:enter="transition ease-out duration-100" x-transition:enter-start="opacity-0 transform scale-90" x-transition:enter-end="opacity-100 transform scale-100" x-transition:leave="transition ease-in duration-100" x-transition:leave-start="opacity-100 transform scale-100" x-transition:leave-end="opacity-0 transform scale-90">
                     <a class="p-2 hover:bg-gray-200" href="{% url 'user_account' %}">My Account</a>
