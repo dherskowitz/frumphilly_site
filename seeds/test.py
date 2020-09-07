@@ -23,4 +23,3 @@ for i in parsed_json:
 #     data = json.load(json_file)
 #     for i in json_data[0]:
 #         print(i.fields.name)
-
