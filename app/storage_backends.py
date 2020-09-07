@@ -1,6 +1,7 @@
 # from storages.backends.azure_storage import AzureStorage
 from storages.backends.s3boto3 import S3Boto3Storage
-from django.conf import settings
+
+# from django.conf import settings
 
 # from decouple import config
 
