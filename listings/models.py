@@ -2,12 +2,47 @@ import utils
 from django.db import models
 from django.conf import settings
 from django.utils.text import slugify
-from app.storage_backends import S3ListingsMediaStorage
+from itertools import chain
+from app.storage_backends import S3ListingsMediaStorage, S3SiteImagesStorage
+
+
+class CategoryGroup(models.Model):
+    title = models.CharField(default="", blank=False, max_length=50)
+    description = models.TextField(default="", blank=True)
+    slug = models.SlugField(default="", blank=True)
+    image = models.ImageField(
+        storage=S3SiteImagesStorage(), default=None, null=True, blank=True,
+    )
+
+    class Meta:
+        verbose_name = "category group"
+        verbose_name_plural = "category groups"
+
+    def __str__(self):
+        return self.title
+
+    def save(self, *args, **kwargs):
+        if self.image:
+            # call the compress function
+            new_image = utils.compress(self.image)
+            # set self.image to new_image
+            self.image = new_image
+            # save
+            super().save(*args, **kwargs)
+        if not self.slug:
+            self.slug = slugify(f"{self.title}")
+        super().save(*args, **kwargs)
+
+    def get_all_listing_types():
+        return CategoryGroup.objects.all()
 
 
 class Category(models.Model):
     title = models.CharField(default="", blank=False, max_length=50)
     slug = models.SlugField(default="", blank=True)
+    category_group = models.ForeignKey(
+        CategoryGroup, on_delete=models.SET_NULL, null=True
+    )
 
     class Meta:
         verbose_name = "category"
@@ -21,8 +56,15 @@ class Category(models.Model):
         self.slug = slugify(f"{self.title}")
         super().save(*args, **kwargs)
 
-    def get_category_by_slug(slug):
-        return Category.objects.filter(slug=slug)
+    def get_category_or_group(slug):
+        category_single = Category.objects.filter(slug=slug)
+        category_group = CategoryGroup.objects.filter(slug=slug)
+        category = sorted(
+            chain(category_single, category_group),
+            key=lambda category: category.slug,
+            reverse=True,
+        )
+        return category
 
 
 class Listing(models.Model):
@@ -196,5 +238,18 @@ class Listing(models.Model):
     def get_listings():
         return Listing.objects.all()
 
-    def get_listings_by_category(slug):
-        return Listing.objects.filter(categories__slug=slug)
+    def get_listings_by_category_or_group(slug):
+        is_category = Category.objects.filter(slug=slug).exists()
+        is_category_group = CategoryGroup.objects.filter(slug=slug).exists()
+
+        if is_category:
+            listings = Listing.objects.filter(categories__slug=slug).distinct(
+                "business_name"
+            )
+        if is_category_group:
+            listings = Listing.objects.filter(
+                categories__category_group__slug=slug
+            ).distinct("business_name")
+        print("=====================")
+        print(listings.query)
+        return listings
