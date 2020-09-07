@@ -8,18 +8,13 @@
         <p>Choose the type of listing you would like to create</p>
     </div>
     <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
-        <a href="{% url 'listings_create' 'retail' %}" class="rounded-md shadow-md bg-white p-4">
-            <div class="text-2xl mb-2">Retail</div>
-            <p>Stores, Shops</p>
+
+        {% for option in options %}
+        <a href="{% url 'listings_create' option.slug %}" class="rounded-md shadow-md bg-white p-4">
+            <div class="text-2xl mb-2">{{ option.title }}</div>
+            <p>{{ option.description }}</p>
         </a>
-        <a href="{% url 'listings_create' 'food-drink' %}" class="rounded-md shadow-md bg-white p-4">
-            <div class="text-2xl mb-2">Food & Drink</div>
-            <p>Restaurants, Catering, Cafes, Coffee Shops</p>
-        </a>
-        <a href="{% url 'listings_create' 'services' %}" class="rounded-md shadow-md bg-white p-4">
-            <div class="text-2xl mb-2">Services</div>
-            <p>Professional services</p>
-        </a>
+        {% endfor %}
     </div>
 </section>
 {% endblock main %}
