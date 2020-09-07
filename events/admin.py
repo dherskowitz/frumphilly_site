@@ -15,7 +15,7 @@ class EventAdmin(admin.ModelAdmin):
         "-created_at",
         "name",
     )
-    search_fields = ('name', 'created_by__id')
+    search_fields = ("name", "created_by__id")
     # list_filter = ("event_in_past",)
 
 
