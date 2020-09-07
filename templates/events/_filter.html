@@ -26,7 +26,7 @@
         </span>
     </div>
 
-    <div class="origin-top-right absolute left-0 mt-2 w-56 rounded-md shadow-lg" x-show="showEventLocationFilter" @click.away="showEventLocationFilter = false" x-transition:enter="transition ease-in duration-100" x-transition:enter-start="opacity-0 transform translate-y-4" x-transition:enter-end="opacity-100 transform translate-y-0" x-transition:leave="transition ease-in duration-100" x-transition:leave-start="opacity-100 transform translate-y-0" x-transition:leave-end="opacity-0 transform translate-y-4">
+    <div class="origin-top-right absolute left-0 mt-2 w-56 rounded-md shadow-lg" x-show="showEventLocationFilter" @click.away="showEventLocationFilter = false" x-transition:enter="transition ease-in duration-100" x-transition:enter-start="opacity-0 transform translate-y-4" x-transition:enter-end="opacity-100 transform translate-y-0" x-transition:leave="transition ease-in duration-100" x-transition:leave-start="opacity-100 transform translate-y-0" x-transition:leave-end="opacity-0 transform translate-y-4" x-cloak>
         <div class="rounded-md bg-white shadow-xs">
             <div class="py-1" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
                 {% with url_name=request.resolver_match.kwargs.city  %}
