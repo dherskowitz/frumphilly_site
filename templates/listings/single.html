@@ -5,7 +5,9 @@
 <div class="container">
     <h1>{{listing.business_name}}</h1>
 
+    {% if listing.cover_image %}
     <img src="{{listing.cover_image.url}}" alt="{{listing.name}}">
+    {% endif %}
 
     {% for c in listing.categories.all %}
     <span>{{c}}</span>
