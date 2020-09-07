@@ -46,13 +46,13 @@ class ListingForm(forms.ModelForm):
         exclude = ("created_by", "slug", "claimed", "premium", "approved")
 
     def __init__(self, *args, **kwargs):
-        listing_type = kwargs.pop("listing_type")
+        category_group = kwargs.pop("category_group")
         super(ListingForm, self).__init__(*args, **kwargs)
         retail_exclude = ("kashrut",)
-        if listing_type == "retail":
+        if category_group == "retail":
             for item in retail_exclude:
                 del self.fields[item]
-        elif listing_type == "food-drink":
+        elif category_group == "food-drink":
             self.fields["kashrut"].required = True
 
         # Set custom inputs
@@ -85,7 +85,7 @@ class ListingForm(forms.ModelForm):
 
         # add custom error messages
         self.fields["categories"].error_messages.update(
-            {"required": "Please select at least one category!",}
+            {"required": "Please select at least one category!"}
         )
 
     def clean_description(self):
@@ -110,4 +110,3 @@ class ListingForm(forms.ModelForm):
         description = self.cleaned_data["description"]
         clean_description = bleach.clean(description, tags=tags, attributes=["href"])
         return clean_description
-
