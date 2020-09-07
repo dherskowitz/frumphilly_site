@@ -1,8 +1,7 @@
 {% load webpack_static from webpack_loader %}
-
-<section class="relative my-16 mx-4 md:mx-0 bg-gray-600 rounded-md shadow-md font-bold flex flex-col md:flex-row items-center justify-center text-center md:text-left">
+<section class="relative my-16 mx-4 md:mx-0 bg-gray-600 rounded-md shadow-md font-bold flex items-center justify-center text-center md:text-left{% if value %} {{ value }}{% else %} flex-col md:flex-row{% endif %}">
     <div class="absolute md:relative w-full md:ml-6 md:w-1/2 text-white text-shadow md:text-shadow-0 opacity-100 p-2 z-10">
-        <h4 class="text-3xl lg:text-4.5xl mb-4">Want people to see your event?</h4>
+        <h4 class="text-3xl lg:text-4.5xl mb-6 mr-2">Want people to see your event?</h4>
         {% if user.is_authenticated %}
         <a class="btn btn-lg uppercase" href="/events/create">Add your event here</a>
         {% else %}
