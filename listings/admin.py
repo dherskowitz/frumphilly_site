@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.db import models
 from django.forms import CheckboxSelectMultiple
-from .models import Listing, Category
+from .models import Listing, Category, CategoryGroup
 
 
 # Register your models here.
@@ -25,9 +25,16 @@ class ListingAdmin(admin.ModelAdmin):
 
 
 class CategoryAdmin(admin.ModelAdmin):
-    list_display = ("title", "slug")
+    list_display = ("title", "slug", "category_group")
+    list_filter = ("category_group",)
+    readonly_fields = ("slug",)
+
+
+class CategoryGroupAdmin(admin.ModelAdmin):
+    list_display = ("title",)
     readonly_fields = ("slug",)
 
 
 admin.site.register(Listing, ListingAdmin)
 admin.site.register(Category, CategoryAdmin)
+admin.site.register(CategoryGroup, CategoryGroupAdmin)
