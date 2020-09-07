@@ -1,7 +1,8 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from .models import Listing, Category
+from django.http import Http404
+from .models import Listing, Category, CategoryGroup
 from .forms import ListingForm
 
 
@@ -18,15 +19,18 @@ def listing_single(request, slug, pk):
 
 
 def listings_category(request, slug):
-    category = Category.get_category_by_slug(slug)
-    listings = Listing.get_listings_by_category(slug)
+    category = Category.get_category_or_group(slug)
+    if not category:
+        raise Http404("Category not found")
+    listings = Listing.get_listings_by_category_or_group(slug)
     context = {"listings": listings, "category": category}
     return render(request, "listings/category.html", context)
 
 
 @login_required
-def listings_create(request, listing_type):
-    form = ListingForm(listing_type=listing_type)
+def listings_create(request, slug):
+    category_group = get_object_or_404(CategoryGroup, slug=slug)
+    form = ListingForm(category_group=category_group.slug)
     check_fields = [
         "claimed",
         "premium",
@@ -46,7 +50,7 @@ def listings_create(request, listing_type):
             listing.save()
             messages.success(request, "Listing created successfully!")
             return redirect(listing_single, slug=listing.slug, pk=listing.id)
-    context["listing_type"] = " & ".join(listing_type.strip().split("-")).title()
+    context["category_group"] = category_group.title
     return render(request, "listings/create.html", context)
 
 
@@ -94,4 +98,5 @@ def listings_delete(request, slug, pk):
 
 @login_required
 def listings_select(request):
-    return render(request, "listings/select.html")
+    context = {"options": CategoryGroup.get_all_listing_types()}
+    return render(request, "listings/select.html", context)
