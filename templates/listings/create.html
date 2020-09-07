@@ -11,7 +11,7 @@
 {% block main %}
 
 <section class="my-10">
-    <h2 class="text-5xl text-white text-shadow my-4">Create {{listing_type|capfirst}} Listing</h2>
+    <h2 class="text-5xl text-white text-shadow my-4">Create {{category_group|capfirst}} Listing</h2>
     {% include 'components/errors.html' %}
     <div>
         <form class="form" action="{% url 'listings_create' None %}" method="POST" enctype='multipart/form-data'>
