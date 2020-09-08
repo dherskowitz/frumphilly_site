@@ -19,20 +19,23 @@
             {% for listing in listings %}
             {% include 'listings/_list.html' %}
             {% empty %}
-            <p>No listing yet!</p>
+            <div class="bg-white rounded-md shadow-md px-4 pb-6 pt-4 mt-4 sm:pt-8 mb-6 md:mb-0 text-center">
+                <p class="text-2xl mb-8">There are no listings yet.</p>
+                <a class="btn btn-md block lg:inline text-center" href="{% url 'listings_select' %}">Create a Listing</a>
+            </div>
             {% endfor %}
         </div>
         <div class="rightbar pt-4 md:w-1/4">
-            <div class="rightbar__box" style="border: 1px solid grey;height: 15rem;width: 20rem;display: flex;justify-content: center;align-items: center;padding: 1rem;margin-bottom: 1rem;">
+            <div class="rightbar__box" style="border: 1px solid grey;height: 15rem;display: flex;justify-content: center;align-items: center;padding: 1rem;margin-bottom: 1rem;">
                 Example. Your Ad Here.
             </div>
-            <div class="rightbar__box" style="border: 1px solid grey;height: 15rem;width: 20rem;display: flex;justify-content: center;align-items: center;padding: 1rem;margin-bottom: 1rem;">
+            <div class="rightbar__box" style="border: 1px solid grey;height: 15rem;display: flex;justify-content: center;align-items: center;padding: 1rem;margin-bottom: 1rem;">
                 Example. Your Ad Here.
             </div>
-            <div class="rightbar__box" style="border: 1px solid grey;height: 15rem;width: 20rem;display: flex;justify-content: center;align-items: center;padding: 1rem;margin-bottom: 1rem;">
+            <div class="rightbar__box" style="border: 1px solid grey;height: 15rem;display: flex;justify-content: center;align-items: center;padding: 1rem;margin-bottom: 1rem;">
                 Example. Your Ad Here.
             </div>
-            <div class="rightbar__box" style="border: 1px solid grey;height: 15rem;width: 20rem;display: flex;justify-content: center;align-items: center;padding: 1rem;margin-bottom: 1rem;">
+            <div class="rightbar__box" style="border: 1px solid grey;height: 15rem;display: flex;justify-content: center;align-items: center;padding: 1rem;margin-bottom: 1rem;">
                 Example. Your Ad Here.
             </div>
         </div>

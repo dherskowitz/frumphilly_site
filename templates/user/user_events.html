@@ -5,31 +5,36 @@
 
 {% block main %}
 <div class="my-10">
-    <div class="flex flex-row justify-between align-center">
+    <div class="flex flex-row justify-between align-center mb-10">
         <div class="text-4xl text-white text-shadow">My Events</div>
         <a class="btn btn-md flex items-center" href="{% url 'events_create' %}">Create Event</a>
     </div>
-    <div class="flex flex-col items-center justify-center my-6">
-        <section class="md:rounded-md md:shadow-md my-4 w-full">
-            {% for event in events %}
-            <div class="grid gap-4 md:items-start bg-white grid-cols-1 sm:grid-cols-2 sm:gap-8 lg:gap-0 lg:grid-cols-4 m-0 border px-4 pb-6 pt-4 sm:pt-8 mb-6 md:mb-0 shadow-md rounded-md md:shadow-none md:rounded-none md:even:bg-teal-200">
-                <span class="relative text-center lg:text-left pt-2">
-                    <div class="flex justify-center lg:absolute -top-1 text-sm font-bold uppercase">Event Name</div>
-                    <a href="{% url 'events_single' event.slug event.id %}">{{event.name}}</a>
-                </span>
-                <span class="relative text-center lg:text-left pt-2">
-                    <div class="flex justify-center lg:absolute -top-1 text-sm font-bold uppercase">Posted</div>
-                    {{event.created_at|naturalday}}
-                </span>
-                <span class="text-center lg:text-left my-6 sm:my-0 pt-2">
-                    <a class="py-2 px-4 bg-purple-800 text-white rounded-md shadow-md" href="{% url 'events_edit' event.slug event.id %}">Edit Event</a>
-                </span>
-                <span class="text-center lg:text-left pt-2">
-                    <a class="py-2 px-4 bg-orange-500 text-white rounded-md shadow-md" href="{% url 'events_delete' event.slug event.id %}">Delete Event</a>
-                </span>
-            </div>
-            {% endfor %}
-        </section>
-    </div>
+    <section class="md:rounded-md md:shadow-md my-6 w-full">
+        {% for event in events %}
+        <div class="grid gap-4 md:items-start bg-white grid-cols-1 sm:grid-cols-2 sm:gap-8 lg:gap-0 lg:grid-cols-4 m-0 border px-4 pb-6 pt-4 sm:pt-8 mb-6 md:mb-0 shadow-md rounded-md md:shadow-none md:rounded-none md:even:bg-teal-200">
+            <span class="relative text-center lg:text-left pt-2">
+                <div class="flex justify-center lg:absolute -top-1 text-sm font-bold uppercase">Event Name</div>
+                <a href="{% url 'events_single' event.slug event.id %}">{{event.name}}</a>
+            </span>
+            <span class="relative text-center lg:text-left pt-2">
+                <div class="flex justify-center lg:absolute -top-1 text-sm font-bold uppercase">Posted</div>
+                {{event.created_at|naturalday}}
+            </span>
+            <span class="text-center lg:text-left my-6 sm:my-0 pt-2">
+                <a class="py-2 px-4 bg-purple-800 text-white rounded-md shadow-md" href="{% url 'events_edit' event.slug event.id %}">Edit Event</a>
+            </span>
+            <span class="text-center lg:text-left pt-2">
+                <a class="py-2 px-4 bg-orange-500 text-white rounded-md shadow-md" href="{% url 'events_delete' event.slug event.id %}">Delete Event</a>
+            </span>
+        </div>
+        {% empty %}
+        <div class="bg-white rounded-md shadow-md px-4 pb-6 pt-4 sm:pt-8 mb-6 md:mb-0 lg:flex justify-between">
+            <p class="text-2xl mb-8 lg:mb-0 text-center lg:text-left">You have not posted any events yet.</p>
+            <a class="btn btn-md block lg:inline text-center" href="{% url 'events_create' %}">Create an Event</a>
+        </div>
+        {% endfor %}
+    </section>
+    {% comment %} <div class="flex flex-col items-center justify-center my-6">
+    </div> {% endcomment %}
 </div>
 {% endblock main %}
