@@ -26,40 +26,43 @@ module.exports = {
         filename: "[name]-[hash].js",
     },
     module: {
-        rules: [{
-            test: /\.css$/,
-            use: [{
-                    loader: MiniCssExtractPlugin.loader,
-                    options: {
-                        sourceMap: true,
+        rules: [
+            {
+                test: /\.css$/,
+                use: [
+                    {
+                        loader: MiniCssExtractPlugin.loader,
+                        options: {
+                            sourceMap: true,
+                        },
                     },
-                },
-                {
-                    loader: "css-loader",
-                    options: {
-                        sourceMap: true,
+                    {
+                        loader: "css-loader",
+                        options: {
+                            sourceMap: true,
+                        },
                     },
-                },
-                {
-                    loader: "postcss-loader",
-                    options: {
-                        ident: "postcss",
-                        plugins: [
-                            require("tailwindcss"),
-                            require("autoprefixer"),
-                            cssnano({
-                                preset: "default",
-                            }),
-                            purgecss({
-                                content: ["./templates/**/*.html"],
-                                defaultExtractor: (content) =>
-                                    content.match(/[\w-/:]+(?<!:)/g) || [],
-                            }),
-                        ],
+                    {
+                        loader: "postcss-loader",
+                        options: {
+                            ident: "postcss",
+                            plugins: [
+                                require("tailwindcss"),
+                                require("autoprefixer"),
+                                cssnano({
+                                    preset: "default",
+                                }),
+                                purgecss({
+                                    content: ["./templates/**/*.html"],
+                                    defaultExtractor: (content) =>
+                                        content.match(/[\w-/:]+(?<!:)/g) || [],
+                                }),
+                            ],
+                        },
                     },
-                },
-            ],
-        }, ],
+                ],
+            },
+        ],
     },
     plugins: [
         new BundleTracker({
