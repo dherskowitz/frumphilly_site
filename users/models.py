@@ -24,8 +24,8 @@ class CustomUser(AbstractUser):
     def get_user_settings(user):
         return CustomUser.objects.filter(id=user.id).first()
 
-    def get_events_count():
-        return Event.objects.count()
+    def get_events_count(request):
+        return Event.objects.filter(created_by=request.user).count()
 
-    def get_listings_count():
-        return Listing.objects.count()
+    def get_listings_count(request):
+        return Listing.objects.filter(created_by=request.user).count()
