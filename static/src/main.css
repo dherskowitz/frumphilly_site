@@ -31,7 +31,7 @@ pre {
     list-style-type: disc;
     padding-left: theme("padding.4");
 }
-.editor-content ul {
+.editor-content ol {
     list-style-type: decimal;
     padding-left: theme("padding.4");
 }
