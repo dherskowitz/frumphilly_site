@@ -8,13 +8,19 @@
 <div class="form-field">
     <label class="form-field__label" for="{{field.name}}">{{ field.label }}</label>
     <input type="file" name="{{ field.html_name }}" id="{{ field.id_for_label }}" accept="image/png,image/jpg,image/jpeg">
-    {% if listing.cover_image.name is not Null %}
+    {% if isting.cover_image %}
     <div class="form-field__help-text">
         <a href="#" onclick="window.open('{{ listing.cover_image.url }}', '_blank'
             , 'location=yes,height=570,width=520,scrollbars=yes,status=yes' );">View
             Current Cover Image</a>
     </div>
     {% endif %}
+</div>
+{% elif field.name == 'description' %}
+<div class="form-field form-field--description">
+    <label class="form-field__label" for="{{field.id_for_label}}">{{ field.label }}</label>
+    {{ form.description }}
+    <trix-editor input="{{form.description.auto_id}}"></trix-editor>
 </div>
 {% else %}
 <div class="form-field">
