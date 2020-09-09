@@ -250,6 +250,4 @@ class Listing(models.Model):
             listings = Listing.objects.filter(
                 categories__category_group__slug=slug
             ).distinct("business_name")
-        print("=====================")
-        print(listings.query)
         return listings
