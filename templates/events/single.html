@@ -117,7 +117,7 @@
         {% comment %} Main Content {% endcomment %}
         <div class="">
             {% if event.description %}
-            <div class="bg-white p-3 rounded-sm shadow-sm mb-4">
+            <div class="editor-content bg-white p-3 rounded-sm shadow-sm mb-4">
                 {{event.description|safe}}
             </div>
             {% endif %}
@@ -142,3 +142,10 @@
     </div>
 </div>
 {% endblock main %}
+
+{% block template_js %}
+<script>
+    const links = document.querySelectorAll(".editor-content a");
+    [...links].map(link => link.setAttribute('target', '_blank'));
+</script>
+{% endblock template_js %}

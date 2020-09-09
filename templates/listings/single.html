@@ -14,6 +14,10 @@
     {% endfor %}
     <br>
 
+    <div class="editor-content">
+        {{listing.description|safe}}
+    </div>
+
     {{listing.sun_thu_hours}} <br>
     {{listing.location}} <br>
     Credit: {{listing.accept_cc}} <br>
@@ -23,3 +27,11 @@
     {% endfor %}
 </div>
 {% endblock main %}
+
+
+{% block template_js %}
+<script>
+    const links = document.querySelectorAll(".editor-content a");
+    [...links].map(link => link.setAttribute('target', '_blank'));
+</script>
+{% endblock template_js %}
