@@ -7,6 +7,35 @@ body {
     min-height: 100vh;
 }
 
+/* style basic html in form edior */
+trix-editor h1 {
+    font-size: 2rem;
+}
+trix-editor blockquote {
+    border-left: 4px solid gray;
+    padding-left: 0.5rem;
+}
+pre {
+    background: #e8ecf1;
+    border-radius: 2px;
+    padding: 5px 10px;
+    margin: 5px 0;
+}
+
+/* style basic html from form editor */
+.editor-content a {
+    @apply text-blue-400 underline;
+}
+
+.editor-content ul {
+    list-style-type: disc;
+    padding-left: theme("padding.4");
+}
+.editor-content ul {
+    list-style-type: decimal;
+    padding-left: theme("padding.4");
+}
+
 [x-cloak] {
     display: none;
 }
@@ -33,6 +62,37 @@ body {
 
 .angle-img {
     clip-path: polygon(25% 0, 100% 0, 75% 100%, 0% 100%);
+}
+
+/* default table styles */
+table {
+    display: table;
+    border-collapse: separate;
+    border-spacing: 2px;
+    border-color: #999999;
+    border: 1px solid;
+}
+tbody {
+    display: table-row-group;
+    vertical-align: middle;
+    border-color: inherit;
+}
+td {
+    display: table-cell;
+    vertical-align: inherit;
+    border: 1px solid #999999;
+}
+th {
+    display: table-cell;
+    vertical-align: inherit;
+    font-weight: bold;
+    text-align: center;
+}
+tr {
+    display: table-row;
+    vertical-align: inherit;
+    border-color: inherit;
+    border-bottom: 1px solid #999999;
 }
 
 /* buttons */
