@@ -57,9 +57,12 @@ def listings_create(request, slug):
 @login_required
 def listings_edit(request, slug, pk):
     listing = get_object_or_404(Listing, slug=slug, id=pk)
+    category_group = CategoryGroup.objects.filter(
+        title=listing.categories.first()
+    ).first()
     if request.user != listing.created_by:
         return render(request, "403.html")
-    form = ListingForm(instance=listing)
+    form = ListingForm(instance=listing, category_group=category_group)
     check_fields = [
         "claimed",
         "premium",
@@ -70,7 +73,9 @@ def listings_edit(request, slug, pk):
     ]
     context = {"form": form, "check_fields": check_fields, "listing": listing}
     if request.method == "POST":
-        form = ListingForm(request.POST, request.FILES, instance=listing)
+        form = ListingForm(
+            request.POST, request.FILES, instance=listing, category_group=category_group
+        )
         context["form"] = form
 
         if form.is_valid():
