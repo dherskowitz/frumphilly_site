@@ -82,6 +82,7 @@ class ListingForm(forms.ModelForm):
         self.fields["zipcode"].widget = forms.HiddenInput()
         self.fields["location_type"].label = ""
         self.fields["location_type"].widget = forms.HiddenInput()
+        self.fields["description"].widget = forms.HiddenInput()
 
         # add custom error messages
         self.fields["categories"].error_messages.update(
@@ -91,12 +92,17 @@ class ListingForm(forms.ModelForm):
     def clean_description(self):
         tags = [
             "h1",
+            "p",
             "div",
             "a",
             "abbr",
             "acronym",
             "b",
             "blockquote",
+            "table",
+            "tbody",
+            "tr",
+            "td",
             "code",
             "em",
             "i",
@@ -106,6 +112,7 @@ class ListingForm(forms.ModelForm):
             "ul",
             "br",
             "del",
+            "pre",
         ]
         description = self.cleaned_data["description"]
         clean_description = bleach.clean(description, tags=tags, attributes=["href"])

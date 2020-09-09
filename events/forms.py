@@ -136,12 +136,17 @@ class EventForm(forms.ModelForm):
     def clean_description(self):
         tags = [
             "h1",
+            "p",
             "div",
             "a",
             "abbr",
             "acronym",
             "b",
             "blockquote",
+            "table",
+            "tbody",
+            "tr",
+            "td",
             "code",
             "em",
             "i",
@@ -151,6 +156,7 @@ class EventForm(forms.ModelForm):
             "ul",
             "br",
             "del",
+            "pre",
         ]
         description = self.cleaned_data["description"]
         clean_description = bleach.clean(description, tags=tags, attributes=["href"])
