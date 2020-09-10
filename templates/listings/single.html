@@ -9,11 +9,6 @@
     <img src="{{listing.cover_image.url}}" alt="{{listing.name}}">
     {% endif %}
 
-    {% for c in listing.categories.all %}
-    <span>{{c}}</span>
-    {% endfor %}
-    <br>
-
     <div class="editor-content">
         {{listing.description|safe}}
     </div>
