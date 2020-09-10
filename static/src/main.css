@@ -23,17 +23,31 @@ pre {
 }
 
 /* style basic html from form editor */
+.editor-content h1 {
+    @apply text-4xl;
+}
+
 .editor-content a {
     @apply text-blue-400 underline;
 }
 
-.editor-content ul {
+.editor-content ul,
+trix-editor ul {
     list-style-type: disc;
     padding-left: theme("padding.4");
 }
-.editor-content ol {
+.editor-content ol,
+trix-editor ol {
     list-style-type: decimal;
     padding-left: theme("padding.4");
+}
+
+.editor-content blockquote {
+    font: 14px/22px normal helvetica, sans-serif;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding-left: 15px;
+    border-left: 3px solid #ccc;
 }
 
 [x-cloak] {
