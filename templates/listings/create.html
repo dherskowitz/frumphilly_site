@@ -1,11 +1,14 @@
 {% extends 'dashboard.html' %}
 {% load webpack_static from webpack_loader %}
 
-{% comment %} {% block pagebanner %}
-<section class="h-half-screen curved-bottom flex justify-center items-center" style="background-image: url({% webpack_static 'img/illustrations/form.svg' %});background-size: 30rem;background-repeat:no-repeat;background-position:center;">
-    <h1 class="text-6xl text-white font-bold text-shadow">Create Listing</h1>
-</section>
-{% endblock pagebanner %} {% endcomment %}
+{% block template_css %}
+<link href="{% webpack_static 'libs/trix.css' %}" rel="stylesheet">
+<style>
+    .trix-button-group--file-tools {
+        display: none !important;
+    }
+</style>
+{% endblock template_css %}
 
 
 {% block main %}
@@ -33,4 +36,5 @@
     document.getElementById("id_mobile").addEventListener("input", (e) => formatPhone(e));
     document.getElementById("id_fax").addEventListener("input", (e) => formatPhone(e));
 </script>
+<script src="{% webpack_static 'libs/trix.js' %}"></script>
 {% endblock template_js %}
