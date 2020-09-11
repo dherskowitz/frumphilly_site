@@ -251,3 +251,9 @@ class Listing(models.Model):
                 categories__category_group__slug=slug
             ).distinct("business_name")
         return listings
+
+    def filter_by_city(city):
+        return Listing.objects.filter(city__icontains=city).order_by("-business_name")
+
+    def get_cities():
+        return Listing.objects.order_by("city").values("city").distinct()
