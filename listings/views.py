@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.contrib.auth.decorators import login_required
 from django.http import Http404
 from .models import Listing, Category, CategoryGroup
@@ -16,6 +17,20 @@ def listing_single(request, slug, pk):
     listing = get_object_or_404(Listing, slug=slug, id=pk)
     context = {"listing": listing}
     return render(request, "listings/single.html", context)
+
+
+def listings_filter_city(request, city):
+    listings_list = Listing.filter_by_city(city)
+    page = request.GET.get("page", 1)
+    paginator = Paginator(listings_list, 10)
+    try:
+        listings = paginator.page(page)
+    except PageNotAnInteger:
+        listings = paginator.page(1)
+    except EmptyPage:
+        listings = paginator.page(paginator.num_pages)
+    context = {"listings": listings, "cities": Listing.get_cities()}
+    return render(request, "listings/index.html", context)
 
 
 def listings_category(request, slug):
