@@ -2,24 +2,40 @@
 
 
 {% block main %}
-<div class="container">
-    <h1>{{listing.business_name}}</h1>
+<div class="container md:flex justify-between my-6">
+    <div id="left" class="md:w-3/4 md:mr-6">
+        <h1 class="text-3xl md:text-5xl text-white text-shadow mb-2">{{listing.business_name}}</h1>
 
-    {% if listing.cover_image %}
-    <img src="{{listing.cover_image.url}}" alt="{{listing.name}}">
-    {% endif %}
+        <div class="mb-4">
+            {% for category in listing.categories.all %}
+            <a class="bg-gray-600 text-white rounded-md shadow-md px-4 py-2" href="{% url 'listings_category' category.slug %}">{{ category }}</a>
+            {% comment %} {% if not forloop.last %} / {% endif %} {% endcomment %}
+            {% endfor %}
+        </div>
 
-    <div class="editor-content">
-        {{listing.description|safe}}
+        {% if listing.cover_image %}
+        <div class="bg-white p-3 rounded-md shadow-md mb-4">
+            <img class="w-full mx-auto" src="{{listing.cover_image.url}}" alt="{{listing.name}}" width="600" height="400">
+        </div>
+        {% endif %}
+
+        {% if listing.description %}
+        <div class="editor-content bg-white p-3 rounded-md shadow-md mb-4">
+            {{listing.description|safe}}
+        </div>
+        {% endif %}
+
+        {% if listing.sun_thu_hours %}
+        {{listing.sun_thu_hours}} <br>
+        {% endif %}
+        {{listing.location}} <br>
+        Credit: {{listing.accept_cc}} <br>
     </div>
-
-    {{listing.sun_thu_hours}} <br>
-    {{listing.location}} <br>
-    Credit: {{listing.accept_cc}} <br>
-
-    {% for category in listing.categories.all %}
-    <a href="{% url 'listings_category' category.slug %}">{{ category }}</a> {% if not forloop.last %} / {% endif %}
-    {% endfor %}
+    <div id="right" class="pt-4 md:w-1/4">
+        <div class="rightbar__box" style="border: 1px solid grey;height: 15rem;display: flex;justify-content: center;align-items: center;padding: 1rem;margin-bottom: 1rem;">
+            Example. Your Ad Here.
+        </div>
+    </div>
 </div>
 {% endblock main %}
 
