@@ -27,19 +27,20 @@ pre {
     @apply text-4xl;
 }
 
-.editor-content a {
+.editor-content a,
+trix-editor a {
     @apply text-blue-400 underline;
 }
 
 .editor-content ul,
 trix-editor ul {
     list-style-type: disc;
-    padding-left: theme("padding.4");
+    padding-left: 5rem;
 }
 .editor-content ol,
 trix-editor ol {
     list-style-type: decimal;
-    padding-left: theme("padding.4");
+    padding-left: 5rem;
 }
 
 .editor-content blockquote {
