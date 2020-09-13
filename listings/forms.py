@@ -61,9 +61,9 @@ class ListingForm(forms.ModelForm):
         self.fields["mobile"].widget = PhoneInput()
         self.fields["fax"].widget = PhoneInput()
         self.fields["email"].widget = EmailInput()
-        self.fields["sun_thu_hours"].widget = TimeInput()
-        self.fields["friday_hours"].widget = TimeInput()
-        self.fields["saturday_hours"].widget = TimeInput()
+        # self.fields["sun_thu_hours"].widget = TimeInput()
+        # self.fields["friday_hours"].widget = TimeInput()
+        # self.fields["saturday_hours"].widget = TimeInput()
 
         # Change labels
         self.fields["sun_thu_hours"].label = "Hours Sun-Thurs"
