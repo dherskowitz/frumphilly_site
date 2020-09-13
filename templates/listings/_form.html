@@ -8,11 +8,14 @@
 <div class="form-field">
     <label class="form-field__label" for="{{field.name}}">{{ field.label }}</label>
     <input type="file" name="{{ field.html_name }}" id="{{ field.id_for_label }}" accept="image/png,image/jpg,image/jpeg">
-    {% if isting.cover_image %}
+    {% if listing.cover_image %}
+    <button type="button" @click="showCoverImageModal = true" class="ml-4 absolute top-0 right-0">
+        <p class="text-xs mt-3 mr-2" id="listing_cover_image_preview_title">Current Image</p>
+        <img id="listing_cover_image_preview" class="mt-2 mr-2 mx-auto object-cover" src="{{ listing.cover_image.url }}" alt="" width="80" height="40">
+    </button>
     <div class="form-field__help-text">
-        <a href="#" onclick="window.open('{{ listing.cover_image.url }}', '_blank'
-            , 'location=yes,height=570,width=520,scrollbars=yes,status=yes' );">View
-            Current Cover Image</a>
+        <button id="listing_cover_image_preview_link" type="button" @click="showCoverImageModal = true">View
+            Current Cover Image</button>
     </div>
     {% endif %}
 </div>
