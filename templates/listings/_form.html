@@ -72,7 +72,7 @@
 
 {% comment %} categories {% endcomment %}
 
-<div class="my-4 relative w-full mb-2 bg-transparent-red rounded-md px-2 pb-5 border-silver border-2">
+<div class="my-4 relative w-full mb-2 bg-transparent-red rounded-md px-2 border-silver border-2">
     <label class="top-0 block font-bold my-2" for="{{form.categories.id_for_label }}">{{ form.categories.label }} {% if form.categories.field.required %}<span class="">(required)</span>{% endif %}
         {% comment %} <p><small>Please select at least one category:</small></p> {% endcomment %}
         {% if form.categories.errors %}
