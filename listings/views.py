@@ -95,7 +95,7 @@ def listings_edit(request, slug, pk):
 
         if form.is_valid():
             listing = form.save(commit=False)
-            listing.created_by = request.user
+            # listing.created_by = request.user
             listing.save()
             form.save_m2m()
             messages.success(request, "Listing updated successfully!")
