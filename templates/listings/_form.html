@@ -9,7 +9,7 @@
     <label class="form-field__label" for="{{field.name}}">{{ field.label }}</label>
     <input type="file" name="{{ field.html_name }}" id="{{ field.id_for_label }}" accept="image/png,image/jpg,image/jpeg">
     {% if listing.cover_image %}
-    <button type="button" @click="showCoverImageModal = true" class="ml-4 absolute top-0 right-0">
+    <button type="button" @click="showCoverImageModal = true" class="ml-4 absolute top-0 right-0 overflow-hidden" style="max-height: 5.7rem;">
         <p class="text-xs mt-3 mr-2" id="listing_cover_image_preview_title">Current Image</p>
         <img id="listing_cover_image_preview" class="mt-2 mr-2 mx-auto object-cover" src="{{ listing.cover_image.url }}" alt="" width="80" height="40">
     </button>

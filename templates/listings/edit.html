@@ -25,6 +25,7 @@
         {% include 'components/submit_btn.html' with value='Save Listing' class="btn btn-block btn-lg btn--form-submit mt-6" %}
     </form>
 
+    {% if listing.cover_image %}
     <!-- Modal -->
     <div class="overflow-auto" style="background-color: rgba(0,0,0,0.5)" x-show="showCoverImageModal" :class="{ 'fixed inset-0 z-50 flex items-center justify-center h-screen': showCoverImageModal }">
         <div class="bg-white shadow-2xl m-4 sm:m-8 max-w-3xl" x-show="showCoverImageModal" @click.away="showCoverImageModal = false">
@@ -37,6 +38,7 @@
             </div>
         </div>
     </div>
+    {% endif %}
 
 </section>
 

@@ -5,10 +5,13 @@
     <label class="form-field__label" for="{{field.id_for_label}}">{{ field.label }}</label>
     <input type="file" name="{{ field.html_name }}" id="{{ field.id_for_label }}" accept="image/png,image/jpg,image/jpeg">
     {% if event.image.name is not Null %}
+    <button type="button" @click="showEventImageModal = true" class="ml-4 absolute top-0 right-0 overflow-hidden" style="max-height: 5.7rem;">
+        <p class="text-xs mt-3 mr-2" id="event_image_preview_title">Current Image</p>
+        <img id="event_image_preview" class="mt-2 mr-2 mx-auto object-cover" src="{{ event.image.url }}" alt="" width="80" height="40">
+    </button>
     <div class="form-field__help-text">
-        <a href="#" onclick="window.open('{{ event.image.url }}', '_blank'
-            , 'location=yes,height=570,width=520,scrollbars=yes,status=yes' );">View
-            Current Image</a>
+        <button id="event_image_preview_link" type="button" @click="showEventImageModal = true">View
+            Current Image</button>
     </div>
     {% endif %}
 </div>

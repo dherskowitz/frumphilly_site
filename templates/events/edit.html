@@ -13,15 +13,8 @@
 </style>
 {% endblock template_css %}
 
-{% comment %} {% block pagebanner %}
-<section class="page-banner curved-bottom" style="background-image: url({% webpack_static 'img/illustrations/edit.svg' %});background-size: 30rem;">
-    <h2 class="title text-center">Edit Event</h2>
-    <p class="subtitle text-center">Edit the details of your event.</p>
-</section>
-{% endblock pagebanner %} {% endcomment %}
-
 {% block main %}
-<section class="my-8">
+<section class="my-8" x-data="{ 'showEventImageModal': false }" @keydown.escape="showEventImageModal = false">
     <div class="text-white text-shadow my-4">
         <h2 class="text-3xl">Edit Event</h2>
         <p class="text-xl">Edit the details of your event.</p>
@@ -32,6 +25,20 @@
         {% include 'events/_form.html' %}
         {% include 'components/submit_btn.html' with value='Save Changes' class="btn btn--block btn--form-submit" %}
     </form>
+    {% if event.image %}
+    <!-- Modal -->
+    <div class="overflow-auto" style="background-color: rgba(0,0,0,0.5)" x-show="showEventImageModal" :class="{ 'fixed inset-0 z-50 flex items-center justify-center h-screen': showEventImageModal }">
+        <div class="bg-white shadow-2xl m-4 sm:m-8 max-w-3xl" x-show="showEventImageModal" @click.away="showEventImageModal = false">
+            <div class="relative">
+                <button type="button" class="absolute top-0 right-0 mt-4 mr-4" @click="showEventImageModal = false"><svg class="" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="#fff" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M0 0h24v24H0z" stroke="none" />
+                        <circle cx="12" cy="12" r="9" />
+                        <path d="M10 10l4 4m0-4l-4 4" /></svg></button>
+                <img id="event_image_modal_preview" class="w-full mr-2 mx-auto object-cover" src="{{ event.image.url }}" alt="">
+            </div>
+        </div>
+    </div>
+    {% endif %}
 </section>
 
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCVHtWZFQ4D4WQ2ie8Fe8FaW7_VHlfQPuk&libraries=places&region=US&types=(regions)"></script>
@@ -41,6 +48,21 @@
 <script>
     document.getElementById("id_name").focus();
     document.getElementById("id_phone_contact").addEventListener("input", (e) => formatPhone(e));
+</script>
+<script>
+    // on image select change preview src and text
+    let image_field = document.querySelector('#id_image');
+    image_field.addEventListener("change", (e) => {
+        const reader = new FileReader();
+        let cur_img = document.querySelector("#event_image_preview");
+        cur_img.src = URL.createObjectURL(event.target.files[0]);
+        document.querySelector("#event_image_modal_preview").src = URL.createObjectURL(event.target.files[0]);
+        cur_img.onload = function() {
+            URL.revokeObjectURL(cur_img.src) // free memory
+        }
+        document.querySelector("#event_image_preview_link").innerText = "View Selected Image";
+        document.querySelector("#event_image_preview_title").innerText = "Selected Image";
+    });
 </script>
 <script src="{% webpack_static 'libs/trix.js' %}"></script>
 {% endblock template_js %}
