@@ -23,7 +23,7 @@
     <form class="form" action="{% url 'events_edit' event.slug event.id %}" method="POST" enctype='multipart/form-data'>
         {% csrf_token %}
         {% include 'events/_form.html' %}
-        {% include 'components/submit_btn.html' with value='Save Changes' class="btn btn--block btn--form-submit" %}
+        {% include 'components/submit_btn.html' with value='Save Changes' class="btn btn-md btn-block mt-4 btn--form-submit" %}
     </form>
     {% if event.image %}
     <!-- Modal -->

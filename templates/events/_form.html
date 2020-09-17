@@ -16,6 +16,27 @@
     {% endif %}
 </div>
 
+{% elif field.name == 'categories' %}
+
+<div class="my-4 relative w-full mb-2 bg-transparent-red rounded-md px-2 border-silver border-2">
+    <label class="top-0 block font-bold my-2" for="{{form.categories.id_for_label }}">{{ form.categories.label }} {% if form.categories.field.required %}<span class="">(required)</span>{% endif %}
+        {% comment %} <p><small>Please select at least one category:</small></p> {% endcomment %}
+        {% if form.categories.errors %}
+        <p class="text-red-600"><small>Please select at least one category:</small></p>
+        {% else %}
+        <p><small>Please select at least one category:</small></p>
+        {% endif %}
+    </label>
+    <div class="check_field">
+        {{ form.categories }}
+
+        {% if form.categories.name in helptext_fields %}
+        <div class="form-field__help-text">{{ form.categories.help_text }}</div>
+        {% endif %}
+    </div>
+</div>
+
+
 {% elif field.name == 'attachment' %}
 <div class="form-field">
     <label class="form-field__label" for="{{field.id_for_label}}">{{ field.label }}</label>

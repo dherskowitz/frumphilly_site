@@ -7,7 +7,23 @@ from app.storage_backends import S3EventsMediaStorage, S3EventsFileStorage
 from datetime import date, datetime, timedelta
 
 
-# Create your models here.
+class EventCategory(models.Model):
+    title = models.CharField(default="", max_length=50)
+    slug = models.SlugField(default="", blank=True)
+
+    class Meta:
+        verbose_name = "event category"
+        verbose_name_plural = "event categories"
+
+    def __str__(self):
+        return self.title
+
+    def save(self, *args, **kwargs):
+        # if not self.slug:
+        self.slug = slugify(f"{self.title}")
+        super().save(*args, **kwargs)
+
+
 class Event(models.Model):
     created_by = models.ForeignKey(
         settings.AUTH_USER_MODEL,
@@ -132,6 +148,7 @@ class Event(models.Model):
     )
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    categories = models.ManyToManyField(EventCategory)
 
     class Meta:
         verbose_name = "event"
@@ -181,3 +198,6 @@ class Event(models.Model):
 
     def filter_by_city(city):
         return Event.objects.filter(city__icontains=city).order_by("-start_date")
+
+    def get_events_by_category(slug):
+        return Event.objects.filter(categories__slug=slug)

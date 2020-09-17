@@ -3,7 +3,7 @@ import bleach
 from decouple import config
 from django import forms
 from django.utils.translation import ugettext_lazy as _
-from .models import Event
+from .models import Event, EventCategory
 
 
 FILE_CONTENT_TYPES = ["pdf"]
@@ -40,6 +40,10 @@ class DateInput(forms.DateInput):
 
 
 class EventForm(forms.ModelForm):
+    categories = forms.ModelMultipleChoiceField(
+        queryset=EventCategory.objects.all(), widget=forms.CheckboxSelectMultiple
+    )
+
     class Meta:
         model = Event
         fields = "__all__"
@@ -70,6 +74,10 @@ class EventForm(forms.ModelForm):
         self.fields["location_type"].label = ""
         self.fields["location_type"].widget = forms.HiddenInput()
         self.fields["description"].widget = forms.HiddenInput()
+
+        self.fields["categories"].error_messages.update(
+            {"required": "Please select at least one category!"}
+        )
 
         # Set placeholder for each field
         for field in self.fields:

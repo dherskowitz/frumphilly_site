@@ -16,6 +16,11 @@
         <div class="mb-4">
             <h1 class="text-3xl md:text-5xl text-center text-white text-shadow">{{event.name}}</h1>
         </div>
+        <div class="mb-4">
+            {% for category in event.categories.all %}
+            <a class="bg-gray-600 text-white rounded-md shadow-md px-4 py-2" href="{% url 'events_category' category.slug %}">{{ category.title }}</a>
+            {% endfor %}
+        </div>
         {% comment %} Infobar {% endcomment %}
         <div class="grid grid-cols-3 lg:grid-cols-5 gap-6 flex-wrap text-center bg-white p-3 rounded-sm shadow-sm mb-4">
             <span class="flex flex-col justify-center items-center">

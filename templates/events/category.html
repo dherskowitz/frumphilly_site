@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+
+{% block main %}
+<section class="container">
+    <div class="text-5xl my-4">{{ category }}</div>
+
+    <div class="md:flex justify-between my-6">
+        <div class="md:w-3/4 md:mr-6">
+            {% if events %}
+            {% include 'events/_filter.html' %}
+            {% endif %}
+            {% for event in events %}
+            <div class="grid gap-3 grid-cols-1 my-4">
+                {% include 'events/_list.html' %}
+            </div>
+            {% empty %}
+            <div class="bg-white rounded-md shadow-md px-4 pb-6 pt-4 mt-4 sm:pt-8 mb-6 md:mb-0 text-center">
+                <p class="text-2xl mb-8">There are no events yet.</p>
+                <a class="btn btn-md block lg:inline text-center" href="{% url 'events_create' %}">Create an Event</a>
+            </div>
+            {% endfor %}
+
+            {% if events.has_other_pages %}
+            <div class="pagination">
+                {% if events.has_previous %}
+                <a class="pagination__link" href="?page=1">&laquo; First</a>
+                <a class="pagination__link" href="?page={{ events.previous_page_number }}">&lt; Prev</a>
+                {% endif %}
+
+                <span class="current">
+                    Page {{ events.number }} of {{ events.paginator.num_pages }}
+                </span>
+
+                {% if events.has_next %}
+                <a class="pagination__link" href="?page={{ events.next_page_number }}">Next &gt;</a>
+                <a class="pagination__link" href="?page={{ events.paginator.num_pages }}">Last &raquo;</a>
+                {% endif %}
+            </div>
+            {% endif %}
+        </div>
+
+        <div class="pt-4 md:w-1/4">
+            <div class="rightbar__box" style="border: 1px solid grey;height: 15rem;display: flex;justify-content: center;align-items: center;padding: 1rem;margin-bottom: 1rem;">
+                Example. Your Ad Here.
+            </div>
+            <div class="rightbar__box" style="border: 1px solid grey;height: 15rem;display: flex;justify-content: center;align-items: center;padding: 1rem;margin-bottom: 1rem;">
+                Example. Your Ad Here.
+            </div>
+            <div class="rightbar__box" style="border: 1px solid grey;height: 15rem;display: flex;justify-content: center;align-items: center;padding: 1rem;margin-bottom: 1rem;">
+                Example. Your Ad Here.
+            </div>
+            <div class="rightbar__box" style="border: 1px solid grey;height: 15rem;display: flex;justify-content: center;align-items: center;padding: 1rem;margin-bottom: 1rem;">
+                Example. Your Ad Here.
+            </div>
+        </div>
+    </div>
+
+    {% include 'components/events_cta.html' %}
+    <section class="cta">
+    </section>
+</section>
+{% endblock main %}

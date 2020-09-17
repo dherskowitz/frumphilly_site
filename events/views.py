@@ -1,8 +1,9 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from django.http import Http404
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from .models import Event
+from .models import Event, EventCategory
 from .forms import EventForm
 
 
@@ -38,6 +39,15 @@ def events_single(request, slug, pk):
     event = get_object_or_404(Event, slug=slug, id=pk)
     context = {"event": event}
     return render(request, "events/single.html", context)
+
+
+def events_category(request, slug):
+    category = get_object_or_404(EventCategory, slug=slug)
+    if not category:
+        raise Http404("Category not found")
+    events = Event.get_events_by_category(slug)
+    context = {"events": events, "category": category}
+    return render(request, "events/category.html", context)
 
 
 def events_filter_city(request, city):
@@ -93,8 +103,9 @@ def events_edit(request, slug, pk):
 
         if form.is_valid():
             event_edit = form.save(commit=False)
-            event_edit.created_by = request.user
+            # event_edit.created_by = request.user
             event_edit.save()
+            form.save_m2m()
             messages.success(request, "Event updated successfully!")
             return redirect(events_single, slug=event.slug, pk=event.id)
 
