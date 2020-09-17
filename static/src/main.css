@@ -221,6 +221,11 @@ form {
     @apply bg-white p-4 rounded-md;
 }
 
+.check_field {
+    max-height: 8rem;
+    overflow-y: auto;
+}
+
 .form-field {
     @apply my-4 relative;
 }
