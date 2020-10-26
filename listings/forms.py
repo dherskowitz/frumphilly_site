@@ -46,7 +46,7 @@ class ListingForm(forms.ModelForm):
         exclude = ("created_by", "slug", "claimed", "premium", "approved")
 
     def __init__(self, *args, **kwargs):
-        category_group = kwargs.pop("category_group")
+        category_group = kwargs.pop("category_group", [])
         super(ListingForm, self).__init__(*args, **kwargs)
         retail_exclude = ("kashrut",)
         if category_group == "retail":
