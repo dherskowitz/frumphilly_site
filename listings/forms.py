@@ -59,7 +59,6 @@ class ListingForm(forms.ModelForm):
         self.fields["whatsapp"].widget = PhoneInput()
         self.fields["phone"].widget = PhoneInput()
         self.fields["mobile"].widget = PhoneInput()
-        self.fields["fax"].widget = PhoneInput()
         self.fields["email"].widget = EmailInput()
         # self.fields["sun_thu_hours"].widget = TimeInput()
         # self.fields["friday_hours"].widget = TimeInput()

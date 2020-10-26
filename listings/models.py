@@ -118,13 +118,6 @@ class Listing(models.Model):
         blank=True,
         help_text="Enter your Phone number.",
     )
-    fax = models.CharField(
-        max_length=18,
-        default=None,
-        null=True,
-        blank=True,
-        help_text="Enter your Fax number.",
-    )
     mobile = models.CharField(
         max_length=18,
         default=None,
