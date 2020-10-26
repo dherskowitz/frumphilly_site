@@ -65,7 +65,7 @@ def listings_create(request, slug):
             listing.save()
             messages.success(request, "Listing created successfully!")
             return redirect(listing_single, slug=listing.slug, pk=listing.id)
-    context["category_group"] = category_group.title
+    context["category_group"] = category_group
     return render(request, "listings/create.html", context)
 
 
