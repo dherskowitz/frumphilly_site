@@ -34,7 +34,7 @@ class CategoryGroup(models.Model):
         super().save(*args, **kwargs)
 
     def get_all_listing_types():
-        return CategoryGroup.objects.all()
+        return CategoryGroup.objects.all().order_by('title')
 
 
 class Category(models.Model):
