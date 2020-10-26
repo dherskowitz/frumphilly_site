@@ -12,12 +12,11 @@
 
 
 {% block main %}
-
 <section class="my-10">
-    <h2 class="text-5xl text-white text-shadow my-4">Create {{category_group|capfirst}} Listing</h2>
+    <h2 class="text-5xl text-white text-shadow my-4">Create {{category_group.title|capfirst}} Listing</h2>
     {% include 'components/errors.html' %}
     <div>
-        <form class="form" action="{% url 'listings_create' None %}" method="POST" enctype='multipart/form-data'>
+        <form class="form" action="{% url 'listings_create' category_group.slug %}" method="POST" enctype='multipart/form-data'>
             {% csrf_token %}
             {% include 'listings/_form.html' %}
             {% include 'components/submit_btn.html' with value='Create Listing' class="btn btn-block btn-lg btn--form-submit mt-4" %}
