@@ -227,7 +227,7 @@ form {
 }
 
 .form-field {
-    @apply my-4 relative;
+    @apply my-4 mb-12 relative;
 }
 
 .form-field input {
