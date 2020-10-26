@@ -91,25 +91,25 @@ class Listing(models.Model):
         default="",
         null=True,
         blank=True,
-        help_text="Enter the URL of your website if you have one.",
+        help_text="Enter the URL of your website if you have one. (Must include http:// or https://)",
     )
     facebook = models.URLField(
         default="",
         null=True,
         blank=True,
-        help_text="Enter the URL of your Facebook page if you have one.",
+        help_text="Enter the URL of your Facebook page if you have one. (Must include http:// or https://)",
     )
     twitter = models.URLField(
         default="",
         null=True,
         blank=True,
-        help_text="Enter the URL of your Twitter page if you have one.",
+        help_text="Enter the URL of your Twitter page if you have one. (Must include http:// or https://)",
     )
     instagram = models.URLField(
         default="",
         null=True,
         blank=True,
-        help_text="Enter the URL of your Instagram page if you have one.",
+        help_text="Enter the URL of your Instagram page if you have one. (Must include http:// or https://)",
     )
     phone = models.CharField(
         max_length=18,
@@ -172,7 +172,7 @@ class Listing(models.Model):
         default=None,
         null=True,
         blank=True,
-        help_text="If you are a food business what Kashrut do you have.",
+        help_text="What Kashrut do you have.",
     )
     sun_thu_hours = models.CharField(
         max_length=120,
