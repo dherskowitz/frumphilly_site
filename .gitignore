@@ -4,6 +4,7 @@ venv/
 webpack-stats.json
 static/local/
 routes.txt
+.vscode
 
 # Created by https://www.gitignore.io/api/git,django,python,visualstudiocode
 # Edit at https://www.gitignore.io/?templates=git,django,python,visualstudiocode
