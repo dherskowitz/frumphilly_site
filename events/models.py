@@ -193,11 +193,13 @@ class Event(models.Model):
         return events
 
     def get_cities():
-        # events = Event.objects.get()
         return Event.objects.order_by("city").values("city").distinct()
 
-    def filter_by_city(city):
-        return Event.objects.filter(city__icontains=city).order_by("-start_date")
+    def get_categories():
+        return EventCategory.objects.order_by("title").values("title", "slug").distinct()
 
     def get_events_by_category(slug):
         return Event.objects.filter(categories__slug=slug)
+
+    def get_events_by_city(city):
+        return Event.objects.filter(city__iexact=city)
