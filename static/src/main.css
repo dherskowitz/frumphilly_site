@@ -216,6 +216,21 @@ tr {
     }
 }
 
+/* filters */
+.filterSelect ul li {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem 0;
+    font-size: 1rem;
+}
+.filterSelect ul li label {
+    display: flex;
+}
+.filterSelect ul li label [type=checkbox] {
+    margin-right: 0.5rem;
+}
+
+
 /* forms */
 form {
     @apply bg-white p-4 rounded-md;
