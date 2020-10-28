@@ -7,10 +7,10 @@ urlpatterns = [
     path("events/<slug:slug>-<int:pk>/", views.events_single, name="events_single"),
     path("events/<slug:slug>-<int:pk>/edit/", views.events_edit, name="events_edit"),
     path("category/<slug:slug>/", views.events_category, name="events_category"),
+    path("city/<str:city>", views.events_city, name="events_city"),
     path(
         "events/<slug:slug>-<int:pk>/delete/",
         views.events_delete,
         name="events_delete",
     ),
-    path("events/city/<str:city>", views.events_filter_city, name="events_filter_city"),
 ]
