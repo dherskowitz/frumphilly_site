@@ -39,6 +39,14 @@ class DateInput(forms.DateInput):
         super().__init__(**kwargs)
 
 
+class EventFilterForm(forms.Form):
+    def __init__(self, *args, **kwargs):
+        super(EventFilterForm, self).__init__(*args, **kwargs)
+        cities = Event.objects.values_list('city', flat=True).distinct().order_by('city')
+        city_choices = [(city, city) for city in cities]
+        self.fields['city'].choices = city_choices
+
+
 class EventForm(forms.ModelForm):
     categories = forms.ModelMultipleChoiceField(
         queryset=EventCategory.objects.all(), widget=forms.CheckboxSelectMultiple
@@ -63,8 +71,6 @@ class EventForm(forms.ModelForm):
         self.fields["attachment"].widget.attrs["accept"] = "application/pdf"
 
         # Hidden fields
-        # self.fields["suburb"].label = ""
-        # self.fields["suburb"].widget = forms.HiddenInput()
         self.fields["city"].label = ""
         self.fields["city"].widget = forms.HiddenInput()
         self.fields["state"].label = ""
