@@ -1,0 +1,1 @@
+[{"model": "listings.category", "pk": 1, "fields": {"title": "Restaurant", "slug": "restaurant", "category_group": 1}}]
