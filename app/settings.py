@@ -55,13 +55,13 @@ INSTALLED_APPS = [
     # Webpack
     "webpack_loader",
     # Local
-    "pages",
-    "events",
+    "events.apps.EventsConfig",
     "listings.apps.ListingsConfig",
     # Django Cleanup - stay at bottom
     "django_cleanup.apps.CleanupConfig",
     # 3rd Party
     "django_extensions",
+    "django_filters",
 ]
 
 MIDDLEWARE = [
