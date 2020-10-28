@@ -5,6 +5,7 @@ from django.http import Http404
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from .models import Event, EventCategory
 from .forms import EventForm
+from .filters import EventFilter
 
 
 helptext_fields = (
@@ -22,7 +23,9 @@ helptext_fields = (
 
 # Create your views here.
 def events_all(request):
-    events_list = Event.objects.order_by("-start_date")
+    events_list = Event.objects.all().order_by("-start_date")
+    events_filter = EventFilter(request.GET, request=request, queryset=events_list)
+    events_list = events_filter.qs
     page = request.GET.get("page", 1)
     paginator = Paginator(events_list, 10)
     try:
@@ -31,7 +34,13 @@ def events_all(request):
         events = paginator.page(1)
     except EmptyPage:
         events = paginator.page(paginator.num_pages)
-    context = {"events": events, "cities": Event.get_cities()}
+    context = {
+        # "events": events_list,
+        "filtered_cities": request.GET.getlist("city"),
+        "filtered_categories": request.GET.getlist("categories"),
+        "filter": events_filter,
+        "events": events,
+    }
     return render(request, "events/index.html", context)
 
 
@@ -50,18 +59,12 @@ def events_category(request, slug):
     return render(request, "events/category.html", context)
 
 
-def events_filter_city(request, city):
-    events_list = Event.filter_by_city(city)
-    page = request.GET.get("page", 1)
-    paginator = Paginator(events_list, 10)
-    try:
-        events = paginator.page(page)
-    except PageNotAnInteger:
-        events = paginator.page(1)
-    except EmptyPage:
-        events = paginator.page(paginator.num_pages)
-    context = {"events": events, "cities": Event.get_cities()}
-    return render(request, "events/index.html", context)
+def events_city(request, city):
+    events = Event.get_events_by_city(city)
+    if not events:
+        raise Http404("No Events matches the given query.")
+    context = {"events": events, "category": city}
+    return render(request, "events/category.html", context)
 
 
 @login_required
