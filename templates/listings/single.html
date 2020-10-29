@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 
+{% block meta_title %}{{listing.business_name}} | Listings | Frum Philly{% endblock meta_title %}
+{% block meta_description %}Frum Philly Business Listing for {{listing.business_name}}{% endblock meta_description %}
 
 {% block main %}
 <div class="container md:flex justify-between my-6">

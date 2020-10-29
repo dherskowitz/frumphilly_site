@@ -5,11 +5,27 @@ from django.contrib.auth.decorators import login_required
 from django.http import Http404
 from .models import Listing, Category, CategoryGroup
 from .forms import ListingForm
+from .filters import ListingsFilter
 
 
 def listings(request):
-    listings = Listing.get_listings()
-    context = {"listings": listings}
+    listings_list = Listing.objects.all()
+    listings_filter = ListingsFilter(request.GET, request=request, queryset=listings_list)
+    listings_list = listings_filter.qs
+    page = request.GET.get("page", 1)
+    paginator = Paginator(listings_list, 10)
+    try:
+        listings = paginator.page(page)
+    except PageNotAnInteger:
+        listings = paginator.page(1)
+    except EmptyPage:
+        listings = paginator.page(paginator.num_pages)
+
+    context = {
+        "filter": listings_filter,
+        "listings": listings,
+    }
+
     return render(request, "listings/index.html", context)
 
 
