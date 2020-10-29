@@ -1,37 +1,129 @@
 {% extends 'base.html' %}
+{% load my_tags %}
 
 {% block meta_title %}{{listing.business_name}} | Listings | Frum Philly{% endblock meta_title %}
 {% block meta_description %}Frum Philly Business Listing for {{listing.business_name}}{% endblock meta_description %}
 
 {% block main %}
 <div class="container md:flex justify-between my-6">
-    <div id="left" class="md:w-3/4 md:mr-6">
-        <h1 class="text-3xl md:text-5xl text-white text-shadow mb-2">{{listing.business_name}}</h1>
-
-        <div class="mb-4">
-            {% for category in listing.categories.all %}
-            <a class="bg-gray-600 text-white rounded-md shadow-md px-4 py-2" href="{% url 'listings_category' category.slug %}">{{ category }}</a>
-            {% comment %} {% if not forloop.last %} / {% endif %} {% endcomment %}
-            {% endfor %}
-        </div>
+    <div id="left" class="md:w-3/4 md:mr-6 pt-4">
+        <!-- <h1 class="text-3xl md:text-5xl text-white text-shadow mb-2">{{listing.business_name}}</h1> -->
 
         {% if listing.cover_image %}
-        <div class="bg-white p-3 rounded-md shadow-md mb-4">
+        <div class="relative flex items-center bg-white p-3 rounded-md shadow-md mb-4">
+            <span class="absolute text-white ml-10">
+                <h1 class="text-3xl md:text-5xl text-shadow mb-2">{{listing.business_name}}</h1>
+                <p class="text-xl">{{listing.summary}}</p>
+                <div class="mt-4">
+                    {% for category in listing.categories.all %}
+                    <a class="inline block bg-gray-600 text-white rounded-md shadow-md px-4 py-2" href="{% url 'listings_category' category.slug %}">{{ category }}</a>
+                    {% comment %} {% if not forloop.last %} / {% endif %} {% endcomment %}
+                    {% endfor %}
+                </div>
+
+            </span>
             <img class="w-full mx-auto" src="{{listing.cover_image.url}}" alt="{{listing.name}}" width="600" height="400">
         </div>
         {% endif %}
 
         {% if listing.description %}
         <div class="editor-content bg-white p-3 rounded-md shadow-md mb-4">
+            <div class="text-lg font-semibold mb-2">About</div>
             {{listing.description|safe}}
         </div>
         {% endif %}
+        <div class="grid sm:grid-cols-2 sm:gap-2">
+            <div class="bg-white p-3 rounded-md shadow-md mb-4">
+                <div class="text-lg font-semibold mb-2">Contact Information</div>
 
-        {% if listing.sun_thu_hours %}
-        {{listing.sun_thu_hours}} <br>
-        {% endif %}
-        {{listing.location}} <br>
-        Credit: {{listing.accept_cc}} <br>
+                {% if listing.website %}
+                <div class="leading-loose flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="mr-2" width="16" height="16" viewBox="0 0 24 24" stroke-width="1.5" stroke="#607D8B" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M0 0h24v24H0z" stroke="none"/><circle cx="12" cy="12" r="9"/><path d="M3.6 9h16.8M3.6 15h16.8M11.5 3a17 17 0 000 18M12.5 3a17 17 0 010 18"/></svg>
+                    <span class="text-sm mr-2 text-gray-600">website</span><a class="underline hover:text-pink-400" href="{{ listing.website }}" target="_blank">{{ listing.website }}</a>
+                </div>
+                {% endif %}
+
+                {% if listing.phone %}
+                    <div class="leading-loose flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="mr-2" width="16" height="16" viewBox="0 0 24 24" stroke-width="1.5" stroke="#607D8B" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M0 0h24v24H0z" stroke="none"/><path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2M15 7a2 2 0 012 2M15 3a6 6 0 016 6"/></svg>
+                        <span class="text-sm mr-2 text-gray-600">phone</span><a href="tel:+1{{ listing.phone|strip_dashes }}" class="md:hidden underline hover:text-pink-400">{{ listing.phone }}</a><span class="hidden md:block">{{ listing.phone }}</span>
+                    </div>
+                {% endif %}
+                {% if listing.mobile %}
+                    <div class="leading-loose flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="mr-2" width="16" height="16" viewBox="0 0 24 24" stroke-width="1.5" stroke="#607D8B" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M0 0h24v24H0z" stroke="none"/><rect x="4" y="4" width="10" height="16" rx="1"/><path d="M8 5h2M9 17v.01M20 6l-2 3 2 3-2 3 2 3"/></svg>
+                        <span class="text-sm mr-2 text-gray-600">mobile</span><a href="tel:+1{{ listing.phone|strip_dashes }}" class="md:hidden underline hover:text-pink-400">{{ listing.mobile }}</a><span class="hidden md:block">{{ listing.mobile }}</span>
+                    </div>
+                {% endif %}
+                {% if listing.whatsapp %}
+                    <div class="leading-loose flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="mr-2" width="16" height="16" viewBox="0 0 24 24" stroke-width="1.5" stroke="#607D8B" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M0 0h24v24H0z" stroke="none"/><path d="M3 21l1.65-3.8a9 9 0 113.4 2.9L3 21"/><path d="M9 10a.5.5 0 001 0V9a.5.5 0 00-1 0v1a5 5 0 005 5h1a.5.5 0 000-1h-1a.5.5 0 000 1"/></svg>
+                        <span class="text-sm mr-2 text-gray-600">whatsapp</span><a href="https://wa.me/1{{ listing.whatsapp|strip_dashes }}" class="md:hidden underline hover:text-pink-400">{{ listing.whatsapp }}</a><span class="hidden md:block">{{ listing.whatsapp }}</span>
+                    </div>
+                {% endif %}
+                {% if listing.email %}
+                    <div class="leading-loose flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="mr-2" width="16"width="16" height="16" viewBox="0 0 24 24" stroke-width="1.5" stroke="#607D8B" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                            <rect x="3" y="5" width="18" height="14" rx="2" />
+                            <polyline points="3 7 12 13 21 7" />
+                        </svg>
+                        <span class="text-sm mr-2 text-gray-600">email</span><a class="underline hover:text-pink-400"" href="mailto:{{ listing.email }}">{{ listing.email }}</a>
+                    </div>
+                {% endif %}
+            </div>
+
+            <div class="bg-white p-3 rounded-md shadow-md mb-4">
+                <div class="text-lg font-semibold mb-2">Connect with Us</div>
+                {% if listing.facebook %}
+                <a href="{{ listing.facebook }}" target="_blank" class="flex justify-center items-center block mb-2 p-4 text-white" style="background:#3b5999;">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-facebook" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M0 0h24v24H0z" stroke="none"/><path d="M7 10v4h3v7h4v-7h3l1-4h-4V8a1 1 0 011-1h3V3h-3a5 5 0 00-5 5v2H7"/></svg>
+                    <span class="ml-2">Facebook</span>
+                </a>
+                {% endif %}
+
+                {% if listing.twitter %}
+                    <a href="{{ listing.twitter }}" target="_blank" class="flex justify-center items-center block mb-2 p-4 text-white" style="background:#55acee;">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" stroke-width="1.5" stroke="#FFF" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M0 0h24v24H0z" stroke="none"/><path d="M22 4.01c-1 .49-1.98.689-3 .99-1.121-1.265-2.783-1.335-4.38-.737S11.977 6.323 12 8v1c-3.245.083-6.135-1.395-8-4 0 0-4.182 7.433 4 11-1.872 1.247-3.739 2.088-6 2 3.308 1.803 6.913 2.423 10.034 1.517 3.58-1.04 6.522-3.723 7.651-7.742a13.84 13.84 0 00.497-3.753C20.18 7.773 21.692 5.25 22 4.009z"/></svg>
+                        <span class="ml-2">Twitter</span>
+                    </a>
+                {% endif %}
+
+                {% if listing.instagram %}
+                    <a href="{{ listing.instagram }}" target="_blank" class="flex justify-center items-center block mb-2 p-4 text-white" style="background:#e4405f;">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-instagram" width="24" height="24" stroke-width="1.5" stroke="#FFF" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M0 0h24v24H0z" stroke="none"/><rect x="4" y="4" width="16" height="16" rx="4"/><circle cx="12" cy="12" r="3"/><path d="M16.5 7.5v.001"/></svg>
+                        <span class="ml-2">Instagram</span>
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="grid sm:grid-cols-2 sm:gap-2">
+            <div class="bg-white p-3 rounded-md shadow-md mb-4">
+                <div class="text-lg font-semibold mb-2">Business Hours</div>
+                {% if listing.sun_thu_hours %}<div class="leading-loose"><span class="font-semibold text-sm">Sun - Thurs:</span> {{listing.sun_thu_hours}}</div>{% endif %}
+                {% if listing.friday_hours %}<div class="leading-loose"><span class="font-semibold text-sm">Friday:</span> {{listing.friday_hours}}</div>{% endif %}
+                {% if listing.saturday_hours %}<div class="leading-loose"><span class="font-semibold text-sm">Saturday:</span> {{listing.saturday_hours}}</div>{% endif %}
+            </div>
+
+            <div class="bg-white p-3 rounded-md shadow-md mb-4">
+                <div class="text-lg font-semibold mb-2">Additional Information</div>
+                {% if listing.kashrut %}<div class="leading-loose flex items-center"><svg xmlns="http://www.w3.org/2000/svg" class="mr-2" width="24" height="24" stroke-width="1.5" stroke="#607D8B" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M0 0h24v24H0z" stroke="none"/><circle cx="15" cy="15" r="3"/><path d="M13 17.5V22l2-1.5 2 1.5v-4.5"/><path d="M10 19H5a2 2 0 01-2-2V7c0-1.1.9-2 2-2h14a2 2 0 012 2v10a2 2 0 01-1 1.73M6 9h12M6 12h3M6 15h2"/></svg>{{ listing.kashrut }}</div>{% endif %}
+                {% if listing.accept_cc %}<div class="leading-loose flex items-center"><svg xmlns="http://www.w3.org/2000/svg" class="mr-2" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="#607D8B" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M0 0h24v24H0z" stroke="none"/><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M3 10h18M7 15h.01M11 15h2"/></svg>Credit Cards Accepted</div>{% endif %}
+                {% if listing.delivers %}<div class="leading-loose flex items-center"><svg xmlns="http://www.w3.org/2000/svg" class="mr-2" width="24" height="24" stroke-width="1.5" stroke="#607D8B" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M0 0h24v24H0z" stroke="none"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/><path d="M5 17H3v-4M2 5h11v12m-4 0h6m4 0h2v-6h-8m0-5h5l3 5M3 9h4"/></svg>Delivery Available</div>{% endif %}
+                {% if listing.wheelchair_access %}<div class="leading-loose flex items-center"><svg xmlns="http://www.w3.org/2000/svg" class="mr-2" width="24" height="24" stroke-width="1.5" stroke="#607D8B" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M0 0h24v24H0z" stroke="none"/><circle cx="11" cy="5" r="2"/><path d="M11 7v8h4l4 5M11 11h5M7 11.5a5 5 0 106 7.5"/></svg>Wheelchair Accessible</div>{% endif %}
+            </div>
+        </div>
+
+        <div class="bg-white p-3 rounded-md shadow-md mb-4">
+            <iframe
+            class="w-full"
+            height="450"
+            frameborder="0" style="border:0"
+            src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCVHtWZFQ4D4WQ2ie8Fe8FaW7_VHlfQPuk&q={{listing.location}}">
+            </iframe>
+        </div>
+
     </div>
     <div id="right" class="pt-4 md:w-1/4">
         <div class="rightbar__box" style="border: 1px solid grey;height: 15rem;display: flex;justify-content: center;align-items: center;padding: 1rem;margin-bottom: 1rem;">
