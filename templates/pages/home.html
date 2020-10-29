@@ -20,7 +20,21 @@
 
 {% block main %}
 <div class="container mx-auto">
+    <section class="my-16 mx-4 md:mx-0">
+        <h2 class="title section-title">
+            <span class="section-title__text">featured listings</span>
+        </h2>
+
+        <div class="grid gap-3 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-16">
+            {% for listing in listings %}
+            {% include 'listings/_list.html' %}
+            {% empty %}
+            <p>no listings yet!</p>
+            {% endfor %}
+        </div>
+    </section>
     {% include 'components/listings_cta.html' %}
+
     <section class="my-16 mx-4 md:mx-0">
         <h2 class="title section-title">
             <span class="section-title__text">featured events</span>
