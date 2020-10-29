@@ -43,7 +43,7 @@ class EventFilterForm(forms.Form):
     def __init__(self, *args, **kwargs):
         super(EventFilterForm, self).__init__(*args, **kwargs)
         cities = Event.objects.values_list('city', flat=True).distinct().order_by('city')
-        city_choices = [(city, city) for city in cities]
+        city_choices = [(city, city) for city in cities if city is not None]
         self.fields['city'].choices = city_choices
 
 
