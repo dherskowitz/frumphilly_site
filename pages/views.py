@@ -6,7 +6,7 @@ def home(request):
     upcoming_events = Event.get_upcoming_events()
     events_in_future = True
     if len(upcoming_events) == 0:
-        upcoming_events = Event.objects.all().order_by("-start_date")[:10]
+        upcoming_events = Event.objects.all().order_by("-start_date")[:9]
         events_in_future = False
     context = {
         "upcoming_events": upcoming_events,
