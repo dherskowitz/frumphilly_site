@@ -14,7 +14,7 @@
             <div class=" relative">
                 <label class="form-field__label" for="{{field.name}}">{{ field.label }}</label>
                 <input type="file" name="{{ field.html_name }}" id="{{ field.id_for_label }}" accept="image/png,image/jpg,image/jpeg">
-                {% if user.avatar.name is not Null %}
+                {% if user.avatar.url is not Null %}
                 <span class="ml-4 absolute right-0 pointer-events-none">
                     <p class="text-xs mt-3 mr-2">Current Avatar</p>
                     <img class="h-12 w-12 mt-3 mx-auto rounded-full object-cover" src="{{ user.avatar.url }}" alt="" width="40" height="40">
