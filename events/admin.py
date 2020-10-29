@@ -11,8 +11,7 @@ class EventAdmin(admin.ModelAdmin):
     }
     list_display = (
         "name",
-        # "start_date",
-        # "created_at",
+        "event_categories",
         "created_by",
     )
     ordering = (
@@ -23,6 +22,9 @@ class EventAdmin(admin.ModelAdmin):
     readonly_fields = ("slug", "created_by")
     search_fields = ("name", "created_by__id")
     list_filter = ("categories",)
+
+    def event_categories(self, obj):
+        return ", ".join([p.title for p in obj.categories.all()])
 
 
 class EventCategoryAdmin(admin.ModelAdmin):
