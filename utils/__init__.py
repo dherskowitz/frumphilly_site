@@ -8,6 +8,8 @@ def compress(image):
     """"Compress submitted images"""
     size = 600, 600
     im = Image.open(image)
+    if im.format == "PNG":
+        im = im.convert('RGB')
     # create a BytesIO object
     im_io = BytesIO()
     # save image to BytesIO object
