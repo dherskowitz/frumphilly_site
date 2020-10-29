@@ -79,6 +79,7 @@ def listings_create(request, slug):
             listing = form.save(commit=False)
             listing.created_by = request.user
             listing.save()
+            form.save_m2m()
             messages.success(request, "Listing created successfully!")
             return redirect(listing_single, slug=listing.slug, pk=listing.id)
     context["category_group"] = category_group
