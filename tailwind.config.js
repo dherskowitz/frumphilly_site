@@ -45,7 +45,7 @@ module.exports = {
         default: "2px 2px 3px #000",
     },
     variants: {
-        textColor: ["group-hover"],
+        textColor: ["group-hover", "hover"],
         textShadow: ["responsive"],
         backgroundColor: ['responsive', 'hover', 'even'],
     },
