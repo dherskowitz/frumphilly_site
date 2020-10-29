@@ -12,8 +12,8 @@ class EventCategory(models.Model):
     slug = models.SlugField(default="", blank=True)
 
     class Meta:
-        verbose_name = "event category"
-        verbose_name_plural = "event categories"
+        verbose_name = "Event Category"
+        verbose_name_plural = "Event Categories"
 
     def __str__(self):
         return self.title

@@ -15,8 +15,8 @@ class CategoryGroup(models.Model):
     )
 
     class Meta:
-        verbose_name = "category group"
-        verbose_name_plural = "category groups"
+        verbose_name = "Category Group"
+        verbose_name_plural = "Category Groups"
 
     def __str__(self):
         return self.title
