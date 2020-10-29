@@ -241,6 +241,15 @@ form {
     overflow-y: auto;
 }
 
+.check_field ul li label {
+    display: flex;
+    align-items: center;
+}
+
+.check_field ul li label [type=checkbox] {
+    margin-right: 0.5rem;
+}
+
 .form-field {
     @apply my-4 mb-12 relative;
 }
