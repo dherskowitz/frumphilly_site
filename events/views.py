@@ -49,24 +49,6 @@ def events_single(request, slug, pk):
     context = {"event": event}
     return render(request, "events/single.html", context)
 
-
-def events_category(request, slug):
-    category = get_object_or_404(EventCategory, slug=slug)
-    if not category:
-        raise Http404("Category not found")
-    events = Event.get_events_by_category(slug)
-    context = {"events": events, "category": category}
-    return render(request, "events/category.html", context)
-
-
-def events_city(request, city):
-    events = Event.get_events_by_city(city)
-    if not events:
-        raise Http404("No Events matches the given query.")
-    context = {"events": events, "category": city}
-    return render(request, "events/category.html", context)
-
-
 @login_required
 def events_create(request):
     form = EventForm()
