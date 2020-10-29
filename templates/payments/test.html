@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+
+{% block main %}
+<section class="section">
+    <div class="container">
+      <button class="button is-primary" id="submitBtn">Purchase!</button>
+    </div>
+  </section>
+{% endblock main %}
+    
+
+{% block template_js %}
+    <script src="https://js.stripe.com/v3/"></script>
+    <script>
+        fetch("/config/")
+            .then(result => result.json())
+            .then((data) => {
+                // Initialize Stripe.js
+                const stripe = Stripe(data.public_key);
+            });
+    </script>
+{% endblock template_js %}
+    
