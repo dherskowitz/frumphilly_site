@@ -49,7 +49,7 @@ class EventFilterForm(forms.Form):
 
 class EventForm(forms.ModelForm):
     categories = forms.ModelMultipleChoiceField(
-        queryset=EventCategory.objects.all(), widget=forms.CheckboxSelectMultiple
+        queryset=EventCategory.objects.all().order_by("title"), widget=forms.CheckboxSelectMultiple
     )
 
     class Meta:
