@@ -2,8 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.contrib.auth.decorators import login_required
-from django.http import Http404
-from .models import Listing, Category, CategoryGroup
+from .models import Listing, CategoryGroup
 from .forms import ListingForm
 from .filters import ListingsFilter
 
@@ -22,6 +21,8 @@ def listings(request):
         listings = paginator.page(paginator.num_pages)
 
     context = {
+        "filtered_cities": request.GET.getlist("city"),
+        "filtered_categories": request.GET.getlist("categories"),
         "filter": listings_filter,
         "listings": listings,
     }
@@ -33,29 +34,6 @@ def listing_single(request, slug, pk):
     listing = get_object_or_404(Listing, slug=slug, id=pk)
     context = {"listing": listing}
     return render(request, "listings/single.html", context)
-
-
-def listings_filter_city(request, city):
-    listings_list = Listing.filter_by_city(city)
-    page = request.GET.get("page", 1)
-    paginator = Paginator(listings_list, 10)
-    try:
-        listings = paginator.page(page)
-    except PageNotAnInteger:
-        listings = paginator.page(1)
-    except EmptyPage:
-        listings = paginator.page(paginator.num_pages)
-    context = {"listings": listings, "cities": Listing.get_cities()}
-    return render(request, "listings/index.html", context)
-
-
-def listings_category(request, slug):
-    category = Category.get_category_or_group(slug)
-    if not category:
-        raise Http404("Category not found")
-    listings = Listing.get_listings_by_category_or_group(slug)
-    context = {"listings": listings, "category": category}
-    return render(request, "listings/category.html", context)
 
 
 @login_required

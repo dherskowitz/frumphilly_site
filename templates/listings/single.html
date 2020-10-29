@@ -7,8 +7,6 @@
 {% block main %}
 <div class="container md:flex justify-between my-6">
     <div id="left" class="md:w-3/4 md:mr-6 pt-4">
-        <!-- <h1 class="text-3xl md:text-5xl text-white text-shadow mb-2">{{listing.business_name}}</h1> -->
-
         {% if listing.cover_image %}
         <div class="relative flex items-center bg-white p-3 rounded-md shadow-md mb-4">
             <span class="absolute text-white ml-10">
@@ -16,7 +14,7 @@
                 <p class="text-xl">{{listing.summary}}</p>
                 <div class="mt-4">
                     {% for category in listing.categories.all %}
-                    <a class="inline block bg-gray-600 text-white rounded-md shadow-md px-4 py-2" href="{% url 'listings_category' category.slug %}">{{ category }}</a>
+                    <a class="inline block bg-gray-600 text-white rounded-md shadow-md px-4 py-2" href="/listings/?categories={{ category }}">{{ category }}</a>
                     {% comment %} {% if not forloop.last %} / {% endif %} {% endcomment %}
                     {% endfor %}
                 </div>
