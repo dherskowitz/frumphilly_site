@@ -80,8 +80,9 @@ def events_create(request):
             event = form.save(commit=False)
             event.created_by = request.user
             event.save()
+            form.save_m2m()
             messages.success(request, "Event created successfully!")
-            return redirect(events_single, slug=event.slug, pk=event.id)
+            return redirect("/user/events/")
 
     return render(request, "events/create.html", context)
 
