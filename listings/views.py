@@ -38,7 +38,8 @@ def listings(request, slug):
 
 def listing_single(request, slug, pk):
     listing = get_object_or_404(Listing, slug=slug, id=pk)
-    context = {"listing": listing}
+    categories = [{"title": cat.title, "group_slug": cat.category_group.slug} for cat in listing.categories.all()]
+    context = {"listing": listing, "categories": categories}
     return render(request, "listings/single.html", context)
 
 
@@ -124,7 +125,7 @@ def listings_select(request):
 
 
 def listing_categories(request):
-    return {'categories': CategoryGroup.objects.all().order_by("title")}
+    return {'nav_categories': CategoryGroup.objects.all().order_by("title")}
 
 
 # def listings_category(request, slug):
