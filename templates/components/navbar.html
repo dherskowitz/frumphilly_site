@@ -26,7 +26,7 @@
                     <div class="rounded-md bg-white shadow-xs">
                         <div class="py-1" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
                             {% with current_url=request.resolver_match.kwargs.slug  %}
-                            {% for cat in categories %}
+                            {% for cat in nav_categories %}
                             <a class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-400 hover:text-gray-900 focus:outline-none focus:bg-gray-400 focus:text-gray-900 {% if current_url == cat.slug %} pointer-events-none bg-gray-200 {% endif %}" href="{% url "listings" cat.slug %}" role="menuitem">{{cat.title}}</a>
                             {% endfor %}
                             {% endwith %}
