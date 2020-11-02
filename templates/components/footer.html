@@ -1,15 +1,24 @@
+{% load webpack_static from webpack_loader %}
 {% load blocktrans from i18n %}
 
+<div class="py-4" style="background:#bdc3c7;">
+    <section class="container lg:flex justify-center items-center text-center">
+        <img class="w-64 mx-auto" src="{% webpack_static 'img/logos/logo.svg' %}" alt="">
+        <div class="mx-auto flex sm:block flex-col sm:flex-row justify-center sm:justify-start">
+            <a class="inline-block text-center sm:text-left py-4 sm:m-4 text-gray-800 hover:text-gray-600" href="{% url 'about' %}">About</a>
+            <a class="inline-block text-center sm:text-left py-4 sm:m-4 text-gray-800 hover:text-gray-600" href="{% url 'contact' %}">Contact</a>
+            <a class="inline-block text-center sm:text-left py-4 sm:m-4 text-gray-800 hover:text-gray-600" href="{% url 'account_signup' %}">Create Account</a>
+            <a class="inline-block text-center sm:text-left py-4 sm:m-4 text-gray-800 hover:text-gray-600" href="{% url 'terms' %}">Terms of Service</a>
+            <a class="inline-block text-center sm:text-left py-4 sm:m-4 text-gray-800 hover:text-gray-600" href="{% url 'privacy' %}">Privacy Policy</a>
+        </div>
+    </section>
+</div>
 <footer id="footer" class="bg-purple-900 text-white">
-    <div class="container mx-auto">
-        <section class="flex justify-between p-4 text-sm">
+    <div class="container">
+        <section class="flex justify-center p-4 text-sm">
             <div class="">
                 {% now "Y" as current_year %}
                 {% blocktrans %}&copy; Copyright {{ current_year }} Frum Philly. All Rights Reserved.{% endblocktrans %}
-            </div>
-            <div class="">
-                <a class="px-4" href="{% url 'terms' %}">Terms of Service</a>
-                <a class="px-4" href="{% url 'privacy' %}">Privacy Policy</a>
             </div>
         </section>
     </div>
