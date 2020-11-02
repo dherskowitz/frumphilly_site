@@ -1,6 +1,9 @@
-from django.shortcuts import render
+import json
+from django.shortcuts import render, redirect
+from django.contrib import messages
 from events.models import Event
 from listings.models import Listing
+from .forms import ContactForm
 
 
 def home(request):
@@ -23,7 +26,20 @@ def about(request):
 
 
 def contact(request):
-    return render(request, "pages/contact.html")
+    form = ContactForm()
+
+    if request.method == "POST":
+        form = ContactForm(request.POST)
+
+        if form.is_valid():
+            contact = form.save(commit=False)
+            contact.save()
+            messages.success(request, "Your message was sent sucessfully!")
+            return redirect(home)
+    context = {
+        "form": form
+    }
+    return render(request, "pages/contact.html", context)
 
 
 def terms(request):

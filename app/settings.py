@@ -58,6 +58,7 @@ INSTALLED_APPS = [
     "payments.apps.PaymentsConfig",
     "events.apps.EventsConfig",
     "listings.apps.ListingsConfig",
+    "pages.apps.PagesConfig",
     # Django Cleanup - stay at bottom
     "django_cleanup.apps.CleanupConfig",
     # 3rd Party
