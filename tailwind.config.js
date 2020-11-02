@@ -24,6 +24,9 @@ module.exports = {
                 "-2": "-2rem",
                 "-4": "-3.5rem",
             },
+            margin: {
+                "18": "4.5rem",
+            },
             zIndex: {
                 "-1": "-1",
             },
