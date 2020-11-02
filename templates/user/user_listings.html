@@ -14,7 +14,7 @@
         <div class="grid gap-4 md:items-start bg-white grid-cols-1 sm:grid-cols-2 sm:gap-8 lg:gap-0 lg:grid-cols-4 m-0 border px-4 pb-6 pt-4 sm:pt-8 mb-6 md:mb-0 shadow-md rounded-md md:shadow-none md:rounded-none md:even:bg-teal-200">
             <span class="relative text-center lg:text-left pt-2">
                 <div class="flex justify-center lg:absolute -top-1 text-sm font-bold uppercase">Listing Name</div>
-                <a href="{% url 'listing_single' listing.slug listing.id %}">{{listing.business_name}}</a>
+                <a href="{% url 'listing_single' listing.slug listing.id %}" class="underline hover:text-pink-400">{{listing.business_name}}</a>
             </span>
             <span class="relative text-center lg:text-left pt-2">
                 <div class="flex justify-center lg:absolute -top-1 text-sm font-bold uppercase">Posted</div>

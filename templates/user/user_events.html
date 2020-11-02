@@ -14,7 +14,7 @@
         <div class="grid gap-4 md:items-start bg-white grid-cols-1 sm:grid-cols-2 sm:gap-8 lg:gap-0 lg:grid-cols-4 m-0 border px-4 pb-6 pt-4 sm:pt-8 mb-6 md:mb-0 shadow-md rounded-md md:shadow-none md:rounded-none md:even:bg-teal-200">
             <span class="relative text-center lg:text-left pt-2">
                 <div class="flex justify-center lg:absolute -top-1 text-sm font-bold uppercase">Event Name</div>
-                <a href="{% url 'events_single' event.slug event.id %}">{{event.name}}</a>
+                <a href="{% url 'events_single' event.slug event.id %}" class="underline hover:text-pink-400">{{event.name}}</a>
             </span>
             <span class="relative text-center lg:text-left pt-2">
                 <div class="flex justify-center lg:absolute -top-1 text-sm font-bold uppercase">Posted</div>
