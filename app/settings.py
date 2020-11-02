@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     # Webpack
     "webpack_loader",
     # Local
+    "payments.apps.PaymentsConfig",
     "events.apps.EventsConfig",
     "listings.apps.ListingsConfig",
     # Django Cleanup - stay at bottom
