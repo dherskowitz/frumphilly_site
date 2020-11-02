@@ -42,7 +42,7 @@
     </div>
     <button type="submit" class="btn btn-md">Search</button>
     {% if filtered_cities or filtered_categories%} 
-    <a class="btn btn-md text-red-600 text-sm font-semibold ml-4 bg-transparent shadow-none hover:bg-red-200 transition duration-200 ease-in-out" href="{% url "listings" %}">Clear Filters</a>
+    <a class="btn btn-md text-red-600 text-sm font-semibold ml-4 bg-transparent shadow-none hover:bg-red-200 transition duration-200 ease-in-out" href="{% url "listings" request.resolver_match.kwargs.slug %}">Clear Filters</a>
         <div class="mt-6">
             {% if filtered_cities %}  
                 <span class="mr-4">
