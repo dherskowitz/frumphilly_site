@@ -7,8 +7,13 @@ from .forms import ListingForm
 from .filters import ListingsFilter
 
 
-def listings(request):
-    listings_list = Listing.objects.all()
+def listings(request, slug):
+    listing_group = CategoryGroup.objects.filter(slug=slug).get()
+    listings_list = Listing.get_listings_by_group(slug)
+    if not request.GET._mutable:
+        request.GET._mutable = True
+    request.GET['cat_group'] = slug
+    request.GET._mutable = False
     listings_filter = ListingsFilter(request.GET, request=request, queryset=listings_list)
     listings_list = listings_filter.qs
     page = request.GET.get("page", 1)
@@ -21,6 +26,7 @@ def listings(request):
         listings = paginator.page(paginator.num_pages)
 
     context = {
+        "category_group": listing_group.title,
         "filtered_cities": request.GET.getlist("city"),
         "filtered_categories": request.GET.getlist("categories"),
         "filter": listings_filter,
@@ -115,3 +121,33 @@ def listings_delete(request, slug, pk):
 def listings_select(request):
     context = {"options": CategoryGroup.get_all_listing_types()}
     return render(request, "listings/select.html", context)
+
+
+def listing_categories(request):
+    return {'categories': CategoryGroup.objects.all().order_by("title")}
+
+
+# def listings_category(request, slug):
+#     listings_list = Listing.get_listings_by_group(slug)
+#     if not request.GET._mutable:
+#         request.GET._mutable = True
+#     request.GET['cat_group'] = slug
+#     request.GET._mutable = False
+#     listings_filter = ListingsFilter(request.GET, request=request, queryset=listings_list)
+#     listings_list = listings_filter.qs
+#     page = request.GET.get("page", 1)
+#     paginator = Paginator(listings_list, 10)
+#     try:
+#         listings = paginator.page(page)
+#     except PageNotAnInteger:
+#         listings = paginator.page(1)
+#     except EmptyPage:
+#         listings = paginator.page(paginator.num_pages)
+
+#     context = {
+#         "filtered_cities": request.GET.getlist("city"),
+#         "filtered_categories": request.GET.getlist("categories"),
+#         "filter": listings_filter,
+#         "listings": listings,
+#     }
+#     return render(request, "listings/index.html", context)
