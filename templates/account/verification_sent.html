@@ -6,13 +6,11 @@
 
 {% block main %}
 
-<div class="container container-height--100 flex flex--column flex--center">
+<div class="container my-6 mx-auto flex flex-col justify-center items-center max-w-4xl lg:h-cust-screen lg:my-0"">
     <section class="panel">
-        <section class="panel__banner flex flex--center flex--align-center" style="background-image: url({% webpack_static 'img/illustrations/mobile_inbox.svg' %});">
-            <h1 class="title panel__title">Verify Your E-mail Address</h1>
-        </section>
-        <section class="panel__content">
-            <p class="panel__text text-center">We have sent an e-mail to you for verification. Follow the link provided to finalize the signup process. Please contact us if you do not receive it within a few minutes.</p>
+        <section class="bg-white rounded-md shadow-md mb-10 p-4 w-full text-center">
+            <h1 class="text-2xl">Verify Your E-mail Address</h1>
+            <p class="text-xl">We have sent an e-mail to you for verification. Follow the link provided to finalize the signup process. Please <a class="text-indigo-600 underline" href="{% url 'contact' %}">contact us</a> if you do not receive it within a few minutes.</p>
         </section>
     </section>
 </div>

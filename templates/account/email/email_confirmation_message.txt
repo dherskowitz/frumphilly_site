@@ -1,14 +1,15 @@
+{% autoescape off %}
 {% load account %}
 {% user_display user as user_display %}
-{% load i18n %}
-{% autoescape off %}
-{% blocktrans with site_name=current_site.name site_domain=current_site.domain %}Hello from {{ site_name }}!
 
-You're receiving this e-mail because user {{ user_display }} has given yours as an e-mail address to connect their account.
+Thank you for signing up for frumphilly.com. 
+
+Please confirm that {{ user.email }} is your email address by clicking the button below or copying the link into your browser.
 
 To confirm this is correct, go to {{ activate_url }}
-{% endblocktrans %}
-{% blocktrans with site_name=current_site.name site_domain=current_site.domain %}Thank you from {{ site_name }}!
-{{ site_domain }}
-{% endblocktrans %}
+
+Thank you.
+
+The Frum Philly Team
+
 {% endautoescape %}
