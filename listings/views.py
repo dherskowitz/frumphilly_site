@@ -101,7 +101,7 @@ def listings_edit(request, slug, pk):
             listing.save()
             form.save_m2m()
             messages.success(request, "Listing updated successfully!")
-            return redirect(listing_single, slug=listing.slug, pk=listing.id)
+            return redirect("/user/listings/")
 
     return render(request, "listings/edit.html", context)
 
@@ -114,7 +114,7 @@ def listings_delete(request, slug, pk):
     context = {"listing": listing}
     if request.method == "POST":
         listing.delete()
-        return redirect(listings)
+        return redirect("/user/listings/")
     return render(request, "listings/delete.html", context)
 
 
