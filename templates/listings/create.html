@@ -13,7 +13,10 @@
 
 {% block main %}
 <section class="my-10">
-    <h2 class="text-5xl text-white text-shadow my-4">Create {{category_group.title|capfirst}} Listing</h2>
+    <div class="my-4">
+        <h2 class="text-4xl text-white text-shadow">Create Listing in {{category_group.title|capfirst}}</h2>
+        <p class="text-lg">Not all fields are required but the more information you provide the better you listing will look.</p>
+    </div>
     {% include 'components/errors.html' %}
     <div>
         <form class="form" action="{% url 'listings_create' category_group.slug %}" method="POST" enctype='multipart/form-data'>
