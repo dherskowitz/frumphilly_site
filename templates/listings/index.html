@@ -18,10 +18,10 @@
     <div class="md:flex justify-between my-6">
         <div class="md:w-3/4 md:mr-6">
             
-            {% include 'listings/_filter.html' %}
+            <div>{% include 'listings/_filter.html' %}</div>
                 
             {% for listing in listings %}
-            {% include 'listings/_list.html' %}
+                {% include 'listings/_list.html' %}
             {% empty %}
             <div class="bg-white rounded-md shadow-md px-4 pb-6 pt-4 mt-4 sm:pt-8 mb-6 md:mb-0 text-center">
                 <p class="text-2xl mb-8">There are no listings yet.</p>
