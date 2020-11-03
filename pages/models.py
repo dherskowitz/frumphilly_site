@@ -2,10 +2,11 @@ from django.db import models
 
 
 SUBJECT_CHOICES = [
-    ("General Inquiry", "General Inquiry"),
-    ("Support", "Support"),
-    ("Feature Request", "Feature Request"),
     ("Advertising", "Advertising"),
+    ("Feature Request", "Feature Request"),
+    ("General Inquiry", "General Inquiry"),
+    ("Suggestion", "Suggestion"),
+    ("Support", "Support"),
 ]
 
 
