@@ -64,7 +64,7 @@ class ListingForm(forms.ModelForm):
             self.fields["kashrut"].required = True
 
         self.fields["categories"] = forms.ModelMultipleChoiceField(
-            queryset=Category.objects.filter(category_group__slug=category_group),
+            queryset=Category.objects.filter(category_group__slug=category_group).order_by("title"),
             widget=forms.CheckboxSelectMultiple,
         )
 
