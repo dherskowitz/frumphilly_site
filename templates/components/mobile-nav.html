@@ -7,11 +7,28 @@
         <div class="bar2"></div>
         <div class="bar3"></div>
     </div>
-    <div x-show="showMobileMenu" @click.away="showMobileMenu = false" class="fixed left-0 top-avoid-header w-full z-50 bg-bgGrey p-4 shadow-md pointer-events-none" :class="{ 'block pointer-events-auto' : showMobileMenu}" x-transition:enter="transition ease-in duration-100" x-transition:enter-start="opacity-0 transform translate-y-4" x-transition:enter-end="opacity-100 transform translate-y-0" x-transition:leave="transition ease-in duration-100" x-transition:leave-start="opacity-100 transform translate-y-0" x-transition:leave-end="opacity-0 transform translate-y-4">
+    <div x-show="showMobileMenu" @click.away="showMobileMenu = false" class="fixed h-full overflow-y-auto left-0 top-avoid-header w-full z-50 bg-bgGrey p-4 shadow-md pointer-events-none" :class="{ 'block pointer-events-auto' : showMobileMenu}" x-transition:enter="transition ease-in duration-100" x-transition:enter-start="opacity-0 transform translate-y-4" x-transition:enter-end="opacity-100 transform translate-y-0" x-transition:leave="transition ease-in duration-100" x-transition:leave-start="opacity-100 transform translate-y-0" x-transition:leave-end="opacity-0 transform translate-y-4">
         {% with url_name=request.resolver_match.url_name  %}
         <a class=" mobilelink{% if url_name == 'home' %} active{% endif %}" href="{% url 'home' %}" href="{% url 'home' %}">Home</a>
 
         <a class="mobilelink{% if url_name == 'events' %} active{% endif %}" href="{% url 'events_all' %}" href="{% url 'events_all' %}">Events</a>
+
+        <div x-data="{ showListingsMenu: false }" x-cloak>
+            <button @click="showListingsMenu = !showListingsMenu" class="mobilelink flex w-full py-2 px-4" :class="{ 'bg-gray-800 text-white' : showListingsMenu}">
+                <span>Listings</span>
+                <svg class="-mr-1 ml-2 h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                </svg>
+            </button>
+            <div x-show="showListingsMenu" @click.away="showListingsMenu = false" class="bg-gray-200 mb-4 rounded-md"
+            x-transition:enter="transition ease-in duration-100" x-transition:enter-start="opacity-0 transform translate-y-4" x-transition:enter-end="opacity-100 transform translate-y-0" x-transition:leave="transition ease-in duration-100" x-transition:leave-start="opacity-100 transform translate-y-0" x-transition:leave-end="opacity-0 transform translate-y-4">
+                {% with current_url=request.resolver_match.kwargs.slug  %}
+                {% for cat in nav_categories %}
+                <a class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-400 hover:text-gray-900 focus:outline-none focus:bg-gray-400 focus:text-gray-900 {% if current_url == cat.slug %} pointer-events-none bg-gray-200 {% endif %}" href="{% url "listings" cat.slug %}" role="menuitem">{{cat.title}}</a>
+                {% endfor %}
+                {% endwith %}
+            </div>
+        </div>
 
         {% if user.is_authenticated %}
         <hr class="border-blue-900">
