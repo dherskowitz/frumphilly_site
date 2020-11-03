@@ -247,7 +247,7 @@ form {
     align-items: center;
 }
 
-.check_field ul li label [type=checkbox] {
+.check_field ul li label input[type=checkbox] {
     margin-right: 0.5rem;
 }
 
