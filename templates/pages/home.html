@@ -53,20 +53,25 @@
     {% include 'components/events_cta.html' with value='flex-col md:flex-row-reverse' %}
 
     <section class="my-16 mx-4 md:mx-0">
-        <h2 class="title section-title text-center" data-text="coming soon"><span class="section-title__text">coming soon</span></h2>
+        <h2 class="title section-title text-center"><span class="section-title__text">coming soon</span></h2>
         <div class="my-16 grid gap-3 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
             <div class="bg-white rounded-md shadow-md p-4">
-                <h3 class="text-3xl">Lorem, ipsum.</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae at ducimus porro!</p>
+                <h3 class="text-3xl">Jobs & Resumes</h3>
+                <p>Looking to hire? Looking to get hired? Our jobs and resumes board will help you find the right opportunites.</p>
             </div>
             <div class="bg-white rounded-md shadow-md p-4">
-                <h3 class="text-3xl">Lorem, ipsum.</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae at ducimus porro!</p>
+                <h3 class="text-3xl">Real Estate Listings</h3>
+                <p>Whether you are a buyer or seller, have a place for rent or are looking to rent, increase visibility with a post on Frum Philly.</p>
             </div>
             <div class="bg-white rounded-md shadow-md p-4">
-                <h3 class="text-3xl">Lorem, ipsum.</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae at ducimus porro!</p>
+                <h3 class="text-3xl">Community Board</h3>
+                <p>Frum Philly's community board will be a place to buy and sell, to ask for and give advice, to list and find a local gemach and much more.</p>
             </div>
+        </div>
+        <div class="bg-gray-600 py-4 text-center text-gray-100">
+            <h3 class="text-5xl text-shadow">Suggest Something!</h3>
+            <p class="text-xl mt-4">Don't see the features your'e looking for? Frum Philly wants to hear your suggestions.</p>
+            <a href="{% url 'contact' %}" class="btn btn-md mt-4">Make a Suggestion</a>
         </div>
     </section>
 </div>
