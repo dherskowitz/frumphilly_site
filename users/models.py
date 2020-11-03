@@ -19,9 +19,6 @@ class CustomUser(AbstractUser):
         db_column='avatar'
     )
 
-    def __str__(self):
-        return self.email
-
     @property
     def avatar(self):
         return self._avatar
@@ -29,6 +26,9 @@ class CustomUser(AbstractUser):
     @avatar.setter
     def avatar(self, value):
         self._avatar = value
+
+    def __str__(self):
+        return self.email
 
     def get_user_settings(user):
         return CustomUser.objects.filter(id=user.id).first()

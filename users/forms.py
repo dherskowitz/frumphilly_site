@@ -5,17 +5,17 @@ from .models import CustomUser
 class CustomUserCreationForm(UserCreationForm):
     class Meta:
         model = CustomUser
-        fields = ("username", "email", "avatar")
+        fields = ("username", "email", "_avatar")
 
 
 class CustomUserChangeForm(UserChangeForm):
     class Meta:
         model = CustomUser
-        fields = ("username", "email", "avatar")
+        fields = ("username", "email", "_avatar")
 
 
 class CustomUserSettingsForm(UserChangeForm):
     class Meta:
         model = CustomUser
         exclude = ("password",)
-        fields = ("first_name", "last_name", "avatar")
+        fields = ("first_name", "last_name", "_avatar")
