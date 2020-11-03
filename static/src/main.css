@@ -112,7 +112,7 @@ tr {
 
 /* buttons */
 .btn {
-    @apply bg-purple-900 text-white rounded-md shadow-md cursor-pointer;
+    @apply bg-purple-900 text-white rounded-md shadow-md cursor-pointer inline-block;
 }
 
 .btn-sm {
