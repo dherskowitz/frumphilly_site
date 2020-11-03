@@ -225,8 +225,9 @@ tr {
 }
 .filterSelect ul li label {
     display: flex;
+    align-items: baseline;
 }
-.filterSelect ul li label [type=checkbox] {
+.filterSelect ul li label input[type=checkbox] {
     margin-right: 0.5rem;
 }
 
