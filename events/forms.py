@@ -126,26 +126,26 @@ class EventForm(forms.ModelForm):
                 )
         return image
 
-    def clean_location(self):
-        """ Validate address using additional geolocation """
-        location = self.cleaned_data["location"]
-        base_url = "https://api.geocod.io/v1.6/geocode"
-        api_key = config("GEOCODING_KEY")
-        req = requests.get(f"{base_url}?q={location}&api_key={api_key}")
-        data = req.json()
-        if "error" in data:
-            raise forms.ValidationError(
-                _(
-                    "Please enter a valid US address in location. (Including city and state)"
-                )
-            )
-        if len(data["results"]) == 0:
-            raise forms.ValidationError(
-                _(
-                    "Please enter a valid US address in location. (Including city and state)"
-                )
-            )
-        return self.cleaned_data["location"]
+    # def clean_location(self):
+    #     """ Validate address using additional geolocation """
+    #     location = self.cleaned_data["location"]
+    #     base_url = "https://api.geocod.io/v1.6/geocode"
+    #     api_key = config("GEOCODING_KEY")
+    #     req = requests.get(f"{base_url}?q={location}&api_key={api_key}")
+    #     data = req.json()
+    #     if "error" in data:
+    #         raise forms.ValidationError(
+    #             _(
+    #                 "Please enter a valid US address in location. (Including city and state)"
+    #             )
+    #         )
+    #     if len(data["results"]) == 0:
+    #         raise forms.ValidationError(
+    #             _(
+    #                 "Please enter a valid US address in location. (Including city and state)"
+    #             )
+    #         )
+    #     return self.cleaned_data["location"]
 
     def clean_description(self):
         tags = [
