@@ -251,6 +251,8 @@ if config("ENV") != "local":
             "STATS_FILE": os.path.join(BASE_DIR, "webpack-stats-prod.json"),
         }
     )
+    SESSION_COOKIE_SECURE = True
+    CSRF_COOKIE_SECURE = True
 
 
 # Override Message Tags
