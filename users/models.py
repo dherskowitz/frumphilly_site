@@ -22,6 +22,14 @@ class CustomUser(AbstractUser):
     def __str__(self):
         return self.email
 
+    @property
+    def avatar(self):
+        return self._avatar
+
+    @avatar.setter
+    def avatar(self, value):
+        self._avatar = value
+
     def get_user_settings(user):
         return CustomUser.objects.filter(id=user.id).first()
 
