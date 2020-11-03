@@ -10,12 +10,13 @@ from listings.models import Listing
 # Create your models here.
 class CustomUser(AbstractUser):
     # add additional fields in here
-    avatar = models.ImageField(
+    _avatar = models.ImageField(
         storage=S3UserAccountStorage(),
         default=None,
         help_text="Upload an image for your avatar.",
         null=True,
         blank=True,
+        db_column='avatar'
     )
 
     def __str__(self):
