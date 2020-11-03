@@ -1,7 +1,0 @@
-.page-banner {
-    @include pageBanner(25vw);
-    @include fullBG(contain);
-    @include flexCenterAll;
-    @include flexColumn;
-    @include bottomBoxShadow($silver);
-}
