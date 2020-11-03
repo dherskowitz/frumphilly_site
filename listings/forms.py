@@ -39,15 +39,14 @@ class ListingFilterForm(forms.Form):
     def __init__(self, *args, **kwargs):
         super(ListingFilterForm, self).__init__(*args, **kwargs)
 
-        cities = Listing.objects.values_list('city', flat=True).distinct().order_by('city')
+        cities = (
+            Listing.objects.values_list("city", flat=True).distinct().order_by("city")
+        )
         city_choices = [(city, city) for city in cities if city is not None]
-        self.fields['city'].choices = city_choices
+        self.fields["city"].choices = city_choices
 
 
 class ListingForm(forms.ModelForm):
-    categories = forms.ModelMultipleChoiceField(
-        queryset=Category.objects.all(), widget=forms.CheckboxSelectMultiple
-    )
 
     class Meta:
         model = Listing
@@ -63,6 +62,11 @@ class ListingForm(forms.ModelForm):
                 del self.fields[item]
         elif category_group == "food-drink":
             self.fields["kashrut"].required = True
+
+        self.fields["categories"] = forms.ModelMultipleChoiceField(
+            queryset=Category.objects.filter(category_group__slug=category_group),
+            widget=forms.CheckboxSelectMultiple,
+        )
 
         # Set custom inputs
         self.fields["whatsapp"].widget = PhoneInput()
