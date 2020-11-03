@@ -12,6 +12,7 @@
 
         {% if user.emailaddress_set.all %}
 
+        {% include 'components/errors.html' %}
 
         <form action="{% url 'account_email' %}" class="email_list form" method="post">
             <p class="text-lg mb-2">The following email addresses are associated with your account:</p>
