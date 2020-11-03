@@ -165,11 +165,8 @@ class Event(models.Model):
             self.image = new_image
             # save
             super().save(*args, **kwargs)
-        # Generate UUID4 and take the last segment for unique slug
-        my_uuid = uuid4()
-        my_id = str(my_uuid).rsplit("-")[-1:]
         if not self.slug:
-            self.slug = slugify(f"{self.name} {my_id}")
+            self.slug = slugify({self.name})
         if self.video is not None:
             self.video = utils.get_video(self.video)
         super().save(*args, **kwargs)
