@@ -4,6 +4,21 @@
 {% block meta_title %}{{listing.business_name}} | Listings | Frum Philly{% endblock meta_title %}
 {% block meta_description %}Frum Philly Business Listing for {{listing.business_name}}{% endblock meta_description %}
 
+{% block opengraph %}
+    <meta property="og:title" content="{{listing.buiness_name}} | Frum Philly" />
+    <meta property="og:description" content="{{listing.description|truncatechars:160}}" />
+    <meta property="og:image" content="{{listing.image.url}}">
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="http://frumphilly.com{{listing.get_absolute_url}}" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="http://frumphilly.com/" />
+    <meta name="twitter:title" content="{{listing.buiness_name}} | Frum Philly" />
+    <meta name="twitter:description" content="{{listing.description|truncatechars:100}}" />
+    <meta name="twitter:image" content="{{listing.image.url}}" />
+{% endblock opengraph %}
+
 {% block main %}
 <div class="container md:flex justify-between my-6" x-data="{ 'showReportPostModal': false }" @keydown.escape="showReportPostModal = false">
     <div id="left" class="md:w-3/4 md:mr-6 pt-4">

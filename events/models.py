@@ -172,7 +172,7 @@ class Event(models.Model):
         super().save(*args, **kwargs)
 
     def get_absolute_url(self):
-        return f"/events/{self.slug}"
+        return f"/events/{self.slug}-{self.id}"
 
     @property
     def event_in_past(self):

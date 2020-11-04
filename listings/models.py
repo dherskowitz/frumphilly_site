@@ -226,7 +226,7 @@ class Listing(models.Model):
         super().save(*args, **kwargs)
 
     def get_absolute_url(self):
-        return f"/listings/{self.slug}"
+        return f"/listings/{self.slug}-{self.id}"
 
     def get_listings():
         return Listing.objects.all()
