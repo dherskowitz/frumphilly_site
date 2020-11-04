@@ -6,6 +6,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from .models import Event, EventCategory
 from .forms import EventForm
 from .filters import EventFilter
+from pages.forms import ReportPostForm
 
 
 helptext_fields = (
@@ -46,7 +47,8 @@ def events_all(request):
 
 def events_single(request, slug, pk):
     event = get_object_or_404(Event, slug=slug, id=pk)
-    context = {"event": event}
+    report_post_form = ReportPostForm()
+    context = {"event": event, "report_post_form": report_post_form}
     return render(request, "events/single.html", context)
 
 @login_required

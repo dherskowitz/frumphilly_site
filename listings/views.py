@@ -5,6 +5,7 @@ from django.contrib.auth.decorators import login_required
 from .models import Listing, CategoryGroup
 from .forms import ListingForm
 from .filters import ListingsFilter
+from pages.forms import ReportPostForm
 
 
 def listings(request, slug):
@@ -38,8 +39,9 @@ def listings(request, slug):
 
 def listing_single(request, slug, pk):
     listing = get_object_or_404(Listing, slug=slug, id=pk)
+    report_post_form = ReportPostForm()
     categories = [{"title": cat.title, "group_slug": cat.category_group.slug} for cat in listing.categories.all()]
-    context = {"listing": listing, "categories": categories}
+    context = {"listing": listing, "categories": categories, "report_post_form": report_post_form}
     return render(request, "listings/single.html", context)
 
 

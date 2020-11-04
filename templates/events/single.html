@@ -10,7 +10,7 @@
 {% block main %}
 
 
-<div class="container md:flex justify-between my-6">
+<div class="container md:flex justify-between my-6" x-data="{ 'showReportPostModal': false }" @keydown.escape="showReportPostModal = false">
     <div id="left" class="md:w-3/4 md:mr-6">
         {% comment %} Title {% endcomment %}
         <div class="mb-4">
@@ -139,12 +139,18 @@
             </div>
             {% endif %}
         </div>
+
+        <div>
+            <button class="text-sm p-2 bg-red-200 text-red-700 rounded-sm shadow-sm" type="button" @click="showReportPostModal = true">Report Post</button>
+        </div>
     </div>
     <div id="right" class="pt-4 md:w-1/4">
         <div class="rightbar__box" style="border: 1px solid grey;height: 15rem;display: flex;justify-content: center;align-items: center;padding: 1rem;margin-bottom: 1rem;">
             Example. Your Ad Here.
         </div>
     </div>
+
+    {% include 'components/report_post_modal.html' with form=report_post_form post_type="Event" post_id=event.id post_title=event.name %}
 </div>
 <div class="container">
     {% include 'components/events_cta.html' %}

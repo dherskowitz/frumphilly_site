@@ -1,0 +1,99 @@
+<div 
+    class="overflow-auto"
+    style="background-color: rgba(0,0,0,0.5)"
+    x-show="showReportPostModal"
+    :class="{ 'fixed inset-0 z-50 flex items-center justify-center h-screen': showReportPostModal }">
+    <div
+        class="bg-white shadow-2xl m-4 sm:m-8 max-w-3xl"
+        x-show="showReportPostModal"
+        @click.away="showReportPostModal = false"
+        x-cloak>
+        <div class="">
+            <button
+                type="button"
+                class="absolute top-0 right-0 mt-4 mr-4"
+                @click="showReportPostModal = false">
+                <svg width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#fff" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M0 0h24v24H0z" stroke="none"/><circle cx="12" cy="12" r="9"/><path d="M10 10l4 4m0-4l-4 4"/></svg>
+            </button>
+            <!-- Modal Content -->
+            <div id="modal_content">
+                <h2 class="text-lg ml-4 mt-4">Report This Post</h2>
+
+                <!-- Error Box -->
+                <div id="modal_error" class="hidden m-4 alert alert--danger bg-red-200 mb-6 shadow-md">
+                    <h3 class="flex items-center bg-red-600 p-2 text-xl text-white"><svg class="mr-2" width="24" height="24" stroke-width="2" stroke="#fff" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M0 0h24v24H0z" stroke="none"/><circle cx="12" cy="12" r="9"/><path d="M12 8v4M12 16h.01"/></svg>Error:</h3>
+                    <p id="modal_error_content" class="p-6"></p>
+                </div>
+                <div class="form_container">
+                    <form class="form" id="reportPostForm">
+                        {% csrf_token %}
+                        <div class="form-field--alt mb-2">
+                            <span class="flex flex-col">
+                                <label class="form-field__label" for="{{form.report_reason.id_for_label}}">{{ form.report_reason.label }} {% if form.report_reason.field.required %}<span class="form-field__label--required">(required)</span>{% endif %}</label>
+                                
+                                <span class="mt-4">{{form.report_reason}}</span>
+                            </span>                            
+                            <div class="form-field__help-text">{{ form.report_reason.help_text }}</div>
+                        </div>
+                        <div class="form-field mb-2">
+                            <label class="form-field__label" for="{{form.message.id_for_label}}">{{ form.message.label }} {% if form.message.field.required %}<span class="form-field__label--required">(required)</span>{% endif %}</label>
+                            {{ form.message }}
+                            <div class="form-field__help-text">{{ form.message.help_text }}</div>
+                        </div>
+                        <div class="form-field mb-2">
+                            <label class="form-field__label" for="{{form.email.id_for_label}}">{{ form.email.label }}</label>
+                            {{ form.email }}
+                            <div class="form-field__help-text">This field is optional. If you want to be updated about the status of the decision you can enter your email address.</div>
+                        </div>
+                        <input type="hidden" name="{{form.post_type.name}}" id="{{form.post_type.id_for_label}}" value="{{post_type}}">
+                        <input type="hidden" name="{{form.post_id.name}}" id="{{form.post_id.id_for_label}}" value="{{post_id}}">
+                        <input type="hidden" name="{{form.post_title.name}}" id="{{form.post_title.id_for_label}}" value="{{post_title}}">
+                        {% include 'components/submit_btn.html' with value='Report Post' class="btn btn-block btn-md btn--form-submit" %}
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    form = document.querySelector("#reportPostForm");
+    modal_content = document.querySelector("#modal_content");
+    modal_error = document.querySelector("#modal_error");
+    success_msg = `<p>This post has been flagged.</p> <p>A Frump Philly administrator will review the content and a decision will be made. If you submitted your email, you will be alerted about the final decision.</p> <p>Thank you,</p> <p>Frum Philly.</p>`;
+
+    async function submitForm(e) {
+        e.preventDefault();
+        body = JSON.stringify({
+            "post_type": form.elements['id_post_type'].value,
+            "post_id": form.elements['id_post_id'].value,
+            "post_title": form.elements['id_post_title'].value,
+            "report_reason": form.elements['id_report_reason'].value,
+            "message": form.elements['id_message'].value,
+            "email": form.elements['id_email'].value,
+        });
+
+        let options = {
+            method: "POST",
+            body: body,
+            headers: {
+                'X-CSRFToken': form.elements.csrfmiddlewaretoken.value,
+                'X-Frame-Options': "SAMEORIGIN"
+            }
+        }
+        const response = await fetch('/report/', options);
+        const json = await response.json();
+        if (json.status == "success") {
+            form.classList.add("hidden");
+            modal_content.innerHTML = `<div class="text-2xl p-6">${success_msg}</div>`
+        } else if (json.status == "errors") {
+            modal_error.classList.remove("hidden")
+            document.querySelector("#modal_error_content").innerText = json.errors;
+            form.style = "";
+            document.querySelector(".btn--form-submit").style = "";
+            document.querySelector(".btn--form-submit").innerHTML = "<span>Report Post</span>";
+        }
+        console.log(json);
+    }
+    form.addEventListener('submit', submitForm);
+</script>
