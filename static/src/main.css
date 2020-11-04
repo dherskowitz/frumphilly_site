@@ -43,7 +43,7 @@ trix-editor ol {
     padding-left: 5rem;
 }
 
-trix-editor blockquote, {
+trix-editor blockquote,
 .editor-content blockquote {
     font: 14px/22px normal helvetica, sans-serif;
     margin-top: 10px;
