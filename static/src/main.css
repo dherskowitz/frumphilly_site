@@ -159,19 +159,6 @@ tr {
     will-change: transform;
 }
 
-/* #navbar__nav.navbar__nav--open {
-    will-change: transform;
-    transform: translateX(0);
-}
-
-@media (max-width: 768px) {
-    #navbar__nav {
-        will-change: transform;
-        transform: translateX(100vw);
-        transition: transform 0.5s ease-in-out;
-    }
-} */
-
 /* navigation links */
 .navlink {
     @apply px-4 mx-1 h-full flex items-center justify-center relative;
@@ -228,10 +215,11 @@ tr {
     display: flex;
     align-items: baseline;
 }
+/*! purgecss start ignore */
 .filterSelect ul li label input[type=checkbox] {
     margin-right: 0.5rem;
 }
-
+/*! purgecss end ignore */
 
 /* forms */
 form {
@@ -248,9 +236,11 @@ form {
     align-items: center;
 }
 
+/*! purgecss start ignore */
 .check_field ul li label input[type=checkbox] {
     margin-right: 0.5rem;
 }
+/*! purgecss end ignore */
 
 .form-field {
     @apply my-4 mb-12 relative;
@@ -264,12 +254,14 @@ form {
     @apply w-full mb-2 bg-transparent-red rounded-md pt-12 px-2 pb-5 border-silver border-2;
 }
 
+/*! purgecss start ignore */
 .form-field input[type="checkbox"],
 .form-field input[type="checkbox"]:checked {
     height: 20px;
     width: 20px;
     @apply bg-transparent-red;
 }
+/*! purgecss end ignore */
 
 .form-field__label {
     top: 8px;
@@ -308,6 +300,7 @@ form {
     @apply mr-2;
 }
 
+/*! purgecss start ignore */
 input[type="file"] {
     @apply py-12 px-2;
 }
@@ -317,6 +310,7 @@ input[type="checkbox"]:checked {
     width: 1rem;
     height: 1rem;
 }
+/*! purgecss end ignore */
 
 .form-field__help-text {
     @apply text-sm pl-1;

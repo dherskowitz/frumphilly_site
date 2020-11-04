@@ -49,13 +49,13 @@ module.exports = {
                             plugins: [
                                 require("tailwindcss"),
                                 require("autoprefixer"),
-                                cssnano({
-                                    preset: "default",
-                                }),
                                 purgecss({
                                     content: ["./templates/**/*.html"],
                                     whitelist: ['trix-editor', 'blockquote', 'textarea'],
                                     defaultExtractor: (content) => content.match(/[\w-/:]+(?<!:)/g) || [],
+                                }),
+                                cssnano({
+                                    preset: "default",
                                 }),
                             ],
                         },
