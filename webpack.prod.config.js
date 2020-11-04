@@ -54,8 +54,8 @@ module.exports = {
                                 }),
                                 purgecss({
                                     content: ["./templates/**/*.html"],
-                                    defaultExtractor: (content) =>
-                                        content.match(/[\w-/:]+(?<!:)/g) || [],
+                                    whitelist: ['trix-editor', 'blockquote', 'textarea'],
+                                    defaultExtractor: (content) => content.match(/[\w-/:]+(?<!:)/g) || [],
                                 }),
                             ],
                         },
