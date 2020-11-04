@@ -43,6 +43,7 @@ trix-editor ol {
     padding-left: 5rem;
 }
 
+trix-editor blockquote, {
 .editor-content blockquote {
     font: 14px/22px normal helvetica, sans-serif;
     margin-top: 10px;
@@ -256,10 +257,9 @@ form {
 }
 
 .form-field input {
-    @apply h-8;
+    @apply w-full mb-2 bg-transparent-red rounded-md pt-12 px-2 pb-5 h-8 border-silver border-2;
 }
 
-.form-field input,
 .form-field textarea {
     @apply w-full mb-2 bg-transparent-red rounded-md pt-12 px-2 pb-5 border-silver border-2;
 }
