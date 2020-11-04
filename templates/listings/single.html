@@ -6,7 +6,7 @@
 
 {% block opengraph %}
     <meta property="og:title" content="{{listing.business_name}} | Frum Philly" />
-    <meta property="og:description" content="{{listing.description|truncatechars:160}}" />
+    <meta property="og:description" content="Check out {{listing.business_name}} on Frum Philly" />
     <meta property="og:image" content="{{listing.cover_image.url}}">
     <meta property="og:type" content="website" />
     <meta property="og:url" content="http://frumphilly.com{{listing.get_absolute_url}}" />
@@ -15,7 +15,7 @@
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:site" content="http://frumphilly.com/" />
     <meta name="twitter:title" content="{{listing.business_name}} | Frum Philly" />
-    <meta name="twitter:description" content="{{listing.description|truncatechars:100}}" />
+    <meta name="twitter:description" content="Check out {{listing.business_name}} on Frum Philly" />
     <meta name="twitter:image" content="{{listing.cover_image.url}}" />
 {% endblock opengraph %}
 
