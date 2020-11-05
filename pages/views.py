@@ -45,6 +45,22 @@ def contact(request):
     return render(request, "pages/contact.html", context)
 
 
+def advertising(request):
+    form = ContactForm()
+
+    if request.method == "POST":
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            contact = form.save(commit=False)
+            contact.save()
+            messages.success(request, "Your message was sent sucessfully!")
+            return redirect(home)
+    context = {
+        "form": form
+    }
+    return render(request, "pages/advertising.html", context)
+
+
 def terms(request):
     return render(request, "pages/terms.html")
 

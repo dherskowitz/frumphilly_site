@@ -28,7 +28,7 @@
             {% endfor %}
 
             {% if events.has_other_pages %}
-            <div class="flex items-center">
+            <div class="flex items-center my-10">
                 {% if events.has_previous %}
                 <a class="btn btn-md" href="?{% param_replace page=1 %}">&laquo; First</a>
                 <a class="btn btn-md ml-2" href="?{% param_replace page=events.previous_page_number %}">&lt; Prev</a>
@@ -50,20 +50,16 @@
                 {% endif %}
             </div>
             {% endif %}
+
+            <div class="mt-4"><a href="{% url 'advertising' %}"><img src="{% webpack_static 'img/images/fp-banner-ad-one.jpg' %}" alt=""></a></div>
         </div>
 
-        <div class="pt-4 md:w-1/4">
-            <div class="rightbar__box" style="border: 1px solid grey;height: 15rem;display: flex;justify-content: center;align-items: center;padding: 1rem;margin-bottom: 1rem;">
-                Example. Your Ad Here.
+        <div class="rightbar md:w-1/4">
+            <div class="mb-4">
+                <a href="{% url 'advertising' %}"><img src="{% webpack_static 'img/images/fp-ad-one.gif' %}" alt=""></a>
             </div>
-            <div class="rightbar__box" style="border: 1px solid grey;height: 15rem;display: flex;justify-content: center;align-items: center;padding: 1rem;margin-bottom: 1rem;">
-                Example. Your Ad Here.
-            </div>
-            <div class="rightbar__box" style="border: 1px solid grey;height: 15rem;display: flex;justify-content: center;align-items: center;padding: 1rem;margin-bottom: 1rem;">
-                Example. Your Ad Here.
-            </div>
-            <div class="rightbar__box" style="border: 1px solid grey;height: 15rem;display: flex;justify-content: center;align-items: center;padding: 1rem;margin-bottom: 1rem;">
-                Example. Your Ad Here.
+            <div class="mb-4">
+                <a href="{% url 'advertising' %}"><img src="{% webpack_static 'img/images/fp-ad-two.gif' %}" alt=""></a>
             </div>
         </div>
     </div>

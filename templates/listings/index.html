@@ -28,44 +28,41 @@
                 <a class="btn btn-md block lg:inline text-center" href="{% url 'listings_select' %}">Create a Listing</a>
             </div>
             {% endfor %}
-        </div>
 
-        {% if listings.has_other_pages %}
-        <div class="flex items-center">
-            {% if listings.has_previous %}
-            <a class="btn btn-md" href="?{% param_replace page=1 %}">&laquo; First</a>
-            <a class="btn btn-md ml-2" href="?{% param_replace page=listings.previous_page_number %}">&lt; Prev</a>
-            {% else %}
-            <a class="btn btn-md opacity-50 cursor-not-allowed pointer-events-none" href="?{% param_replace page=1 %}">&laquo; First</a>
-            <a class="btn btn-md ml-2 opacity-50 cursor-not-allowed pointer-events-none" >&lt; Prev</a>
+            {% if listings.has_other_pages %}
+            <div class="flex items-center my-10">
+                {% if listings.has_previous %}
+                <a class="btn btn-md" href="?{% param_replace page=1 %}">&laquo; First</a>
+                <a class="btn btn-md ml-2" href="?{% param_replace page=listings.previous_page_number %}">&lt; Prev</a>
+                {% else %}
+                <a class="btn btn-md opacity-50 cursor-not-allowed pointer-events-none" href="?{% param_replace page=1 %}">&laquo; First</a>
+                <a class="btn btn-md ml-2 opacity-50 cursor-not-allowed pointer-events-none" >&lt; Prev</a>
+                {% endif %}
+    
+                <span class="flex-grow text-center">
+                    {{ listings.number }} of {{ listings.paginator.num_pages }}
+                </span>
+    
+                {% if listings.has_next %}
+                <a class="btn btn-md mr-2" href="?{% param_replace page=listings.next_page_number %}">Next &gt;</a>
+                <a class="btn btn-md" href="?{% param_replace page=listings.paginator.num_pages %}">Last &raquo;</a>
+                {% else %}
+                <a class="btn btn-md mr-2 opacity-50 cursor-not-allowed pointer-events-none">Next &gt;</a>
+                <a class="btn btn-md opacity-50 cursor-not-allowed pointer-events-none" href="?{% param_replace page=listings.paginator.num_pages %}">Last &raquo;</a>
+                {% endif %}
+            </div>
             {% endif %}
 
-            <span class="flex-grow text-center">
-                {{ listings.number }} of {{ listings.paginator.num_pages }}
-            </span>
-
-            {% if listings.has_next %}
-            <a class="btn btn-md mr-2" href="?{% param_replace page=listings.next_page_number %}">Next &gt;</a>
-            <a class="btn btn-md" href="?{% param_replace page=listings.paginator.num_pages %}">Last &raquo;</a>
-            {% else %}
-            <a class="btn btn-md mr-2 opacity-50 cursor-not-allowed pointer-events-none">Next &gt;</a>
-            <a class="btn btn-md opacity-50 cursor-not-allowed pointer-events-none" href="?{% param_replace page=listings.paginator.num_pages %}">Last &raquo;</a>
-            {% endif %}
+            <div class="mt-4"><a href="{% url 'advertising' %}"><img src="{% webpack_static 'img/images/fp-banner-ad-one.jpg' %}" alt=""></a></div>
         </div>
-        {% endif %}
 
-        <div class="rightbar pt-4 md:w-1/4">
-            <div class="rightbar__box" style="border: 1px solid grey;height: 15rem;display: flex;justify-content: center;align-items: center;padding: 1rem;margin-bottom: 1rem;">
-                Example. Your Ad Here.
+
+        <div class="rightbar md:w-1/4">
+            <div class="mb-4">
+                <a href="{% url 'advertising' %}"><img src="{% webpack_static 'img/images/fp-ad-one.gif' %}" alt=""></a>
             </div>
-            <div class="rightbar__box" style="border: 1px solid grey;height: 15rem;display: flex;justify-content: center;align-items: center;padding: 1rem;margin-bottom: 1rem;">
-                Example. Your Ad Here.
-            </div>
-            <div class="rightbar__box" style="border: 1px solid grey;height: 15rem;display: flex;justify-content: center;align-items: center;padding: 1rem;margin-bottom: 1rem;">
-                Example. Your Ad Here.
-            </div>
-            <div class="rightbar__box" style="border: 1px solid grey;height: 15rem;display: flex;justify-content: center;align-items: center;padding: 1rem;margin-bottom: 1rem;">
-                Example. Your Ad Here.
+            <div class="mb-4">
+                <a href="{% url 'advertising' %}"><img src="{% webpack_static 'img/images/fp-ad-two.gif' %}" alt=""></a>
             </div>
         </div>
     </div>
