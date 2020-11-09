@@ -50,6 +50,9 @@ module.exports = {
     variants: {
         textColor: ["group-hover", "hover"],
         textShadow: ["responsive"],
+        scale: ["responsive", "hover", "group-hover"],
+        letterSpacing: ["group-hover"],
+        backgroundSize: ["responsive", "hover", "group-hover"],
         backgroundColor: ['responsive', 'hover', 'even'],
     },
     plugins: [
