@@ -28,7 +28,7 @@
 <div class="container md:flex justify-between my-6" x-data="{ 'showReportPostModal': false }" @keydown.escape="showReportPostModal = false">
     <div id="left" class="md:w-3/4 md:mr-6 pt-4">
         {% if listing.cover_image %}
-        <div class="relative sm:flex items-center bg-white sm:p-3 overflow-hidden rounded-md shadow-md mb-4">
+        <div class="relative flex items-center bg-white sm:p-3 overflow-hidden rounded-md shadow-md mb-4">
             <div class="absolute text-white text-center sm:text-left sm:ml-10 p-2 sm:p-0">
                 <h1 class="text-3xl md:text-5xl text-shadow mb-2">{{listing.business_name}}</h1>
                 <p class="text-base sm:text-xl">{{listing.summary}}</p>
@@ -194,7 +194,7 @@
         <div class="mt-4"><a href="{% url 'advertising' %}"><img src="{% webpack_static 'img/images/fp-banner-ad-one.jpg' %}" alt=""></a></div>
 
     </div>
-    <div class="rightbar md:w-1/4 mt-4 md:mt-0 flex flex-col sm:flex-row md:flex-col sm:flex-wrap justify-between md:justify-start">
+    <div class="rightbar md:w-1/4 mt-4 flex flex-col sm:flex-row md:flex-col sm:flex-wrap justify-between md:justify-start">
         <div class="mb-4">
             <a href="{% url 'advertising' %}"><img class="w-full sm:w-auto" src="{% webpack_static 'img/images/fp-ad-one.gif' %}" alt=""></a>
         </div>
