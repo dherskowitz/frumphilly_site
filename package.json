@@ -9,7 +9,7 @@
         "clean:prod": "del-cli static/dist/**/*.css && del-cli static/dist/**/*.js && del-cli static/dist/**/*.map",
         "build:dev": "./node_modules/.bin/webpack --config webpack.config.js --watch --mode=development",
         "build:prod": "./node_modules/.bin/webpack --config webpack.prod.config.js --mode=production --optimize-minimize",
-        "watch": "npm run clean:dev && npm run build:dev",
+        "watch": "npm run build:dev",
         "prod": "npm run clean:prod && npm run build:prod"
     },
     "repository": {
@@ -23,13 +23,13 @@
     },
     "homepage": "https://github.com/daniel-frumphilly/site#readme",
     "devDependencies": {
-        "@babel/core": "^7.11.6",
-        "@babel/preset-env": "^7.11.5",
+        "@babel/core": "^7.12.3",
+        "@babel/preset-env": "^7.12.1",
         "@fullhuman/postcss-purgecss": "^2.3.0",
         "autoprefixer": "^9.8.6",
         "babel": "^6.23.0",
         "babel-loader": "^8.1.0",
-        "browser-sync": "^2.26.12",
+        "browser-sync": "^2.26.13",
         "browser-sync-webpack-plugin": "^2.2.2",
         "copy-webpack-plugin": "^5.1.2",
         "css-loader": "^3.6.0",
@@ -44,8 +44,8 @@
         "purgecss-webpack-plugin": "^2.3.0",
         "sass-loader": "^7.1.0",
         "source-map-loader": "^0.2.4",
-        "terser-webpack-plugin": "^4.1.0",
-        "webpack": "^4.44.1",
+        "terser-webpack-plugin": "^4.2.3",
+        "webpack": "^4.44.2",
         "webpack-bundle-tracker": "^0.4.2-beta",
         "webpack-cli": "^3.3.12"
     },
@@ -57,8 +57,8 @@
         "arrowParens": "always"
     },
     "dependencies": {
-        "alpinejs": "^2.6.0",
-        "tailwindcss": "^1.7.3"
+        "alpinejs": "^2.7.3",
+        "tailwindcss": "^1.9.6"
     },
     "engines": {
         "node": "^12.16.1",
