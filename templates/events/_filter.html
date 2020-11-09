@@ -1,5 +1,5 @@
 <form method="get">
-    <div class="relative inline-block text-left" x-data="{ showEventLocationFilter: false }">
+    <div class="relative block sm:inline-block text-left mt-2 sm:mt-0" x-data="{ showEventLocationFilter: false }">
         <div @click="showEventLocationFilter = !showEventLocationFilter">
             <span class="rounded-md shadow-sm">
                 <button type="button" class="inline-flex justify-center w-full rounded-md border border-gray-300 px-4 py-2 bg-white text-sm leading-5 font-medium text-gray-700 hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-50 active:text-gray-800 transition ease-in-out duration-150" id="options-menu" aria-haspopup="true" aria-expanded="true">
@@ -11,7 +11,7 @@
             </span>
         </div>
     
-        <div class="origin-top-right absolute left-0 mt-2 w-56 rounded-md shadow-lg" x-show="showEventLocationFilter" @click.away="showEventLocationFilter = false" x-transition:enter="transition ease-in duration-100" x-transition:enter-start="opacity-0 transform translate-y-4" x-transition:enter-end="opacity-100 transform translate-y-0" x-transition:leave="transition ease-in duration-100" x-transition:leave-start="opacity-100 transform translate-y-0" x-transition:leave-end="opacity-0 transform translate-y-4" x-cloak>
+        <div class="origin-top-right absolute left-0 mt-2 w-full sm:w-56 rounded-md shadow-lg z-10" x-show="showEventLocationFilter" @click.away="showEventLocationFilter = false" x-transition:enter="transition ease-in duration-100" x-transition:enter-start="opacity-0 transform translate-y-4" x-transition:enter-end="opacity-100 transform translate-y-0" x-transition:leave="transition ease-in duration-100" x-transition:leave-start="opacity-100 transform translate-y-0" x-transition:leave-end="opacity-0 transform translate-y-4" x-cloak>
             <div class="rounded-md bg-white shadow-xs">
                 <div class="py-1" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
                     <div class="filterSelect block px-4 py-2 text-sm leading-5 text-gray-700">{{ filter.form.city }}</div>
@@ -20,7 +20,7 @@
         </div>
     </div>      
 
-    <div class="relative inline-block text-left" x-data="{ showEventCategoryFilter: false }">
+    <div class="relative block sm:inline-block text-left mt-2 sm:mt-0" x-data="{ showEventCategoryFilter: false }">
         <div @click="showEventCategoryFilter = !showEventCategoryFilter">
             <span class="rounded-md shadow-sm">
                 <button type="button" class="inline-flex justify-center w-full rounded-md border border-gray-300 px-4 py-2 bg-white text-sm leading-5 font-medium text-gray-700 hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-50 active:text-gray-800 transition ease-in-out duration-150" id="options-menu" aria-haspopup="true" aria-expanded="true">
@@ -32,7 +32,7 @@
             </span>
         </div>
     
-        <div class="origin-top-right absolute left-0 mt-2 w-56 rounded-md shadow-lg" x-show="showEventCategoryFilter" @click.away="showEventCategoryFilter = false" x-transition:enter="transition ease-in duration-100" x-transition:enter-start="opacity-0 transform translate-y-4" x-transition:enter-end="opacity-100 transform translate-y-0" x-transition:leave="transition ease-in duration-100" x-transition:leave-start="opacity-100 transform translate-y-0" x-transition:leave-end="opacity-0 transform translate-y-4" x-cloak>
+        <div class="origin-top-right absolute left-0 mt-2 w-full sm:w-56 rounded-md shadow-lg z-10" x-show="showEventCategoryFilter" @click.away="showEventCategoryFilter = false" x-transition:enter="transition ease-in duration-100" x-transition:enter-start="opacity-0 transform translate-y-4" x-transition:enter-end="opacity-100 transform translate-y-0" x-transition:leave="transition ease-in duration-100" x-transition:leave-start="opacity-100 transform translate-y-0" x-transition:leave-end="opacity-0 transform translate-y-4" x-cloak>
             <div class="rounded-md bg-white shadow-xs">
                 <div class="py-1" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
                     <div class="filterSelect block px-4 py-2 text-sm leading-5 text-gray-700">{{ filter.form.categories }}  </div>
@@ -40,9 +40,11 @@
             </div>
         </div>
     </div>
-    <button type="submit" class="btn btn-md">Search</button>
+
+    <button type="submit" class="btn btn-md block w-full sm:inline-block sm:w-auto mt-2 sm:mt-0">Search</button>
+
     {% if filtered_cities or filtered_categories%} 
-    <a class="btn btn-md text-red-600 text-sm font-semibold ml-4 bg-transparent shadow-none hover:bg-red-200 transition duration-200 ease-in-out" href="{% url "events_all" %}">Clear Filters</a>
+    <a class="btn btn-md text-red-600 text-sm block sm:inline-block text-center font-semibold mt-2 sm:ml-4 bg-transparent shadow-none bg-gray-200 hover:bg-red-200 transition duration-200 ease-in-out" href="{% url "events_all" %}">Clear Filters</a>
         <div class="mt-6">
             {% if filtered_cities %}  
                 <span class="mr-4">
