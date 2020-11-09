@@ -54,16 +54,16 @@ module.exports = {
                             sourceMap: true,
                             plugins: [
                                 require("tailwindcss"),
-                                require("autoprefixer"),
+                                // require("autoprefixer"),
                             ],
                         },
                     },
-                    {
-                        loader: "sass-loader",
-                        options: {
-                            sourceMap: true,
-                        },
-                    },
+                    // {
+                    //     loader: "sass-loader",
+                    //     options: {
+                    //         sourceMap: true,
+                    //     },
+                    // },
                 ],
             },
             {
@@ -71,30 +71,30 @@ module.exports = {
                 use: ["source-map-loader"],
                 enforce: "pre",
             },
-            {
-                test: /\.(gif|png|jpe?g|svg)$/i,
-                use: [
-                    "file-loader",
-                    {
-                        loader: "image-webpack-loader",
-                        options: {
-                            mozjpeg: {
-                                progressive: true,
-                                quality: 65,
-                            },
-                            optipng: {
-                                enabled: false,
-                            },
-                            pngquant: {
-                                quality: "65-90",
-                                speed: 4,
-                            },
-                            bypassOnDebug: true, // webpack@1.x
-                            disable: true, // webpack@2.x and newer
-                        },
-                    },
-                ],
-            },
+            // {
+            //     test: /\.(gif|png|jpe?g|svg)$/i,
+            //     use: [
+            //         "file-loader",
+            //         {
+            //             loader: "image-webpack-loader",
+            //             options: {
+            //                 mozjpeg: {
+            //                     progressive: true,
+            //                     quality: 65,
+            //                 },
+            //                 optipng: {
+            //                     enabled: false,
+            //                 },
+            //                 pngquant: {
+            //                     quality: "65-90",
+            //                     speed: 4,
+            //                 },
+            //                 bypassOnDebug: true, // webpack@1.x
+            //                 disable: true, // webpack@2.x and newer
+            //             },
+            //         },
+            //     ],
+            // },
         ],
     },
     plugins: [
