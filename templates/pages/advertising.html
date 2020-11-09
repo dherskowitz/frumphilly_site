@@ -11,8 +11,8 @@
     <section class="bg-white rounded-md shadow-md w-full max-w-4xl">
         <form class="form" action="{% url 'contact' %}" method="POST">
             <h1 class="text-2xl">Advertise with Us</h1>
-            <p class="text-lg">Interested in having an ad on Frum Philly?</p>
-            <p class="text-lg">Send us a message and someone from our team will get back to you to help craft you perfect ad.</p>
+            <p class="text-lg mt-2">Interested in advertising on Frum Philly?</p>
+            <p class="text-lg mt-2">Send us a message and someone from our team will get back to you to help craft you perfect ad.</p>
             {% csrf_token %}
             <div class="grid md:grid-cols-3 gap-2">
                 <div class="form-field mb-2">
