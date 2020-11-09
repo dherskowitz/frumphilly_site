@@ -1,6 +1,5 @@
 {% extends 'dashboard.html' %}
 
-
 {% block main %}
 <section class="container my-10">
     <div class="my-4">
@@ -10,11 +9,25 @@
     <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
 
         {% for option in options %}
-        <a href="{% url 'listings_create' option.slug %}" class="rounded-md shadow-md bg-white p-4">
-            <div class="text-2xl mb-2">{{ option.title }}</div>
-            <p>{{ option.description }}</p>
-        </a>
+        
+        {% if option.image %}
+            <a href="{% url 'listings_create' option.slug %}" class="group relative rounded-md shadow-md bg-white p-4 h-64 bg-no-repeat bg-cover flex items-center justify-center overflow-hidden">
+                <span class="z-10">
+                    <div class="text-4xl mb-2 text-gray-200 text-shadow">{{ option.title }}</div>
+                    <p>{{ option.description }}</p>
+                </span>
+                <img class="absolute w-full h-full transform group-hover:scale-125 transition duration-300 ease-in-out" src="{{option.image.url}}" alt="">
+            </a>
+        {% else %}
+            <a href="{% url 'listings_create' option.slug %}" class="rounded-md shadow-md bg-white p-4">
+                <div class="text-2xl mb-2">{{ option.title }}</div>
+                <p>{{ option.description }}</p>
+            </a>
+        {% endif %}
+
         {% endfor %}
     </div>
 </section>
 {% endblock main %}
+
+
