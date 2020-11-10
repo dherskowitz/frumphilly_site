@@ -216,7 +216,7 @@ tr {
     align-items: baseline;
 }
 /*! purgecss start ignore */
-.filterSelect ul li label input[type=checkbox] {
+.filterSelect ul li label input[type="checkbox"] {
     margin-right: 0.5rem;
 }
 /*! purgecss end ignore */
@@ -237,7 +237,7 @@ form {
 }
 
 /*! purgecss start ignore */
-.check_field ul li label input[type=checkbox] {
+.check_field ul li label input[type="checkbox"] {
     margin-right: 0.5rem;
 }
 /*! purgecss end ignore */

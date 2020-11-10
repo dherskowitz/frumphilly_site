@@ -25,7 +25,7 @@ module.exports = {
                 "-4": "-3.5rem",
             },
             margin: {
-                "18": "4.5rem",
+                18: "4.5rem",
             },
             zIndex: {
                 "-1": "-1",
@@ -53,12 +53,10 @@ module.exports = {
         scale: ["responsive", "hover", "group-hover"],
         letterSpacing: ["group-hover"],
         backgroundSize: ["responsive", "hover", "group-hover"],
-        backgroundColor: ['responsive', 'hover', 'even'],
+        backgroundColor: ["responsive", "hover", "even"],
     },
     plugins: [
-        plugin(function({
-            addUtilities
-        }) {
+        plugin(function ({ addUtilities }) {
             const addShadows = {
                 ".text-shadow": {
                     "text-shadow": "2px 2px 3px #000",

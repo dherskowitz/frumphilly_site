@@ -54,7 +54,8 @@
         "semi": true,
         "trailingComma-comma": "es5",
         "bracketSpacing": true,
-        "arrowParens": "always"
+        "arrowParens": "always",
+        "singleQuote": false
     },
     "dependencies": {
         "alpinejs": "^2.7.3",
