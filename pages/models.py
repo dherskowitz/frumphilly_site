@@ -2,6 +2,7 @@ from django.db import models
 
 
 SUBJECT_CHOICES = [
+    ("", "Choose Subject"),
     ("Advertising", "Advertising"),
     ("Feature Request", "Feature Request"),
     ("General Inquiry", "General Inquiry"),
@@ -11,6 +12,7 @@ SUBJECT_CHOICES = [
 
 
 REPORT_REASON_CHOICES = [
+    ("", "Choose Subject"),
     ("Content", "Inappropriate Content"),
     ("Images", "Inappropriate Images"),
     ("Quality", "Rude, Vulgar, or Offensive"),
@@ -24,7 +26,7 @@ class Contact(models.Model):
     email = models.EmailField(max_length=255, default=None, blank=False)
     phone = models.CharField(max_length=18, default=None, null=True, blank=True)
     subject = models.CharField(
-        max_length=50, choices=SUBJECT_CHOICES, default="General Inquiry"
+        max_length=50, choices=SUBJECT_CHOICES, blank=False,
     )
     message = models.TextField(default=None, blank=False)
     created_at = models.DateTimeField(auto_now_add=True)
