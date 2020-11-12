@@ -9,6 +9,7 @@ class ContactAdmin(admin.ModelAdmin):
         "subject",
     )
     list_filter = ("subject",)
+    readonly_fields = ("created_at",)
 
 
 class ReportPostAdmin(admin.ModelAdmin):
@@ -17,6 +18,7 @@ class ReportPostAdmin(admin.ModelAdmin):
         "post_type",
     )
     list_filter = ("report_reason", "post_type")
+    readonly_fields = ("created_at",)
 
 
 admin.site.register(Contact, ContactAdmin)
