@@ -9,10 +9,10 @@
     <form class="form" action="{% url 'user_settings' %}" method="POST" enctype='multipart/form-data'>
         {% csrf_token %}
         {% for field in form %}
-        {% if field.name == 'avatar' %}
+        {% if field.name == '_avatar' %}
         <div class="form-field">
             <div class=" relative">
-                <label class="form-field__label" for="{{field.name}}">{{ field.label }}</label>
+                <label class="form-field__label" for="{{field.name}}">{{ field.label|title }}</label>
                 <input type="file" name="{{ field.html_name }}" id="{{ field.id_for_label }}" accept="image/png,image/jpg,image/jpeg">
                 {% if user.avatar.url is not Null %}
                 <span class="ml-4 absolute right-0 pointer-events-none">
