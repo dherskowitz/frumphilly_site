@@ -7,7 +7,7 @@ from django.http import JsonResponse
 from events.models import Event
 from listings.models import Listing
 from .models import ReportPost
-from .forms import ContactForm
+from .forms import ContactForm, AdvertisingContactForm
 
 
 def home(request):
@@ -46,10 +46,10 @@ def contact(request):
 
 
 def advertising(request):
-    form = ContactForm()
+    form = AdvertisingContactForm()
 
     if request.method == "POST":
-        form = ContactForm(request.POST)
+        form = AdvertisingContactForm(request.POST)
         if form.is_valid():
             contact = form.save(commit=False)
             contact.save()

@@ -31,21 +31,12 @@
                     <div class="form-field__help-text">{{ form.phone.help_text }}</div>
                 </div>
             </div>
-            <div class="form-field--alt mb-2">
-
-                <span class="flex flex-col">
-                    <label class="form-field__label" for="{{form.subject.id_for_label}}">{{ form.subject.label }} {% if form.subject.field.required %}<span class="form-field__label--required">(required)</span>{% endif %}</label>
-                    
-                    <span class="mt-4">{{form.subject}}</span>
-                </span>
-                    
-                <div class="form-field__help-text">{{ form.subject.help_text }}</div>
-            </div>
             <div class="form-field mb-2">
                 <label class="form-field__label" for="{{form.message.id_for_label}}">{{ form.message.label }} {% if form.message.field.required %}<span class="form-field__label--required">(required)</span>{% endif %}</label>
                 {{ form.message }}
                 <div class="form-field__help-text">{{ form.message.help_text }}</div>
             </div>
+            {{form.subject}}
             {% include 'components/submit_btn.html' with value='Send Message' class="btn btn-block btn-md btn--form-submit" %}
         </form>
     </section>
