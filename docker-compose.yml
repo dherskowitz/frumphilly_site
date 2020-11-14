@@ -18,7 +18,7 @@ services:
   web:
     build: .
     container_name: frum_philly_web
-    command: python manage.py runserver 0.0.0.0:8000
+    command: python manage.py runserver 0.0.0.0:8000 --insecure
     volumes:
       - .:/code
     ports:
