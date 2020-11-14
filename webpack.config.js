@@ -115,11 +115,11 @@ module.exports = {
         //     from: './static/src/libs/**/*',
         //     to: './libs/[name].[ext]'
         // }, ]),
-        new BrowserSyncPlugin({
-            host: "localhost",
-            port: 3000,
-            open: false,
-            proxy: "http://localhost:8001/",
-        }),
+        // new BrowserSyncPlugin({
+        //     host: "localhost",
+        //     port: 3000,
+        //     open: false,
+        //     proxy: "http://localhost:8001/",
+        // }),
     ],
 };
