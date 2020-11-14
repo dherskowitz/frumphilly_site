@@ -140,16 +140,6 @@ USE_TZ = True
 STATIC_URL = "/static/"
 STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"),)
 
-
-# Azure Storage
-# DEFAULT_FILE_STORAGE = "app.storage_backends.AzureMediaStorage"
-# # AZURE_CUSTOM_DOMAIN = f'{config("AZURE_ACCOUNT_NAME")}.blob.core.windows.net'
-# AZURE_CUSTOM_DOMAIN = 'frumphilly.azureedge.net'
-# MEDIA_URL = f'https://{AZURE_CUSTOM_DOMAIN}/{config("AZURE_MEDIA_CONTAINER")}/'
-# if config("ENV") != "local":
-#     STATICFILES_STORAGE = "app.storage_backends.AzureStaticStorage"
-#     STATIC_URL = f'https://{AZURE_CUSTOM_DOMAIN}/{config("AZURE_ASSETS_CONTAINER")}/'
-
 # S3 Storage
 AWS_DEFAULT_ACL = None
 AWS_CLOUDFRONT_DOMAIN = config("CLOUDFRONT_URL")
