@@ -68,6 +68,11 @@ class Category(models.Model):
 
 
 class Listing(models.Model):
+    STATUS_CHOICES = [
+        ("Draft", "Draft"),
+        ("Published", "Published"),
+    ]
+
     created_by = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         on_delete=models.SET_NULL,
@@ -79,6 +84,10 @@ class Listing(models.Model):
         max_length=200,
         blank=False,
         help_text="What is the name of this business?",
+    )
+    status = models.CharField(
+        max_length=50, choices=STATUS_CHOICES, blank=False, default="Draft",
+        help_text="Listings will not show until Published",
     )
     cover_image = models.ImageField(
         storage=S3ListingsMediaStorage(),
@@ -229,11 +238,12 @@ class Listing(models.Model):
         return f"/listings/{self.slug}-{self.id}"
 
     def get_listings():
-        return Listing.objects.all()
+        return Listing.objects.filter(status="Published")
 
     def get_listings_by_group(slug):
         return Listing.objects.filter(
-            categories__category_group__slug=slug
+            categories__category_group__slug=slug,
+            status="Published"
         ).distinct("business_name")
 
     # def get_listings_by_category_or_group(slug):

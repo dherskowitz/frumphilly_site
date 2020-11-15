@@ -85,6 +85,8 @@ class ListingForm(forms.ModelForm):
         self.fields["delivers"].label = "Offers Delivery"
         self.fields["wheelchair_access"].label = "Wheelchair Accessible"
 
+        self.fields["status"].widget.attrs['class'] = "block w-full pl-2 py-4"
+
         # Hide Fields
         self.fields["city"].label = ""
         self.fields["city"].widget = forms.HiddenInput()

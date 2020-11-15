@@ -26,6 +26,14 @@
     <trix-editor input="{{form.description.auto_id}}"></trix-editor>
 </div>
 <div class="form-field__help-text">{{ field.help_text }}</div>
+{% elif field.name == 'status' %}
+<div class="form-field--alt">
+
+    <label class="form-field__label" for="{{field.id_for_label}}">{{ field.label }} {% if field.field.required %}<span class="form-field__label--required">(required)</span>{% endif %}</label>
+    {{ field }}
+    
+</div>
+<div class="form-field__help-text mt-2 mb-12">{{ field.help_text }}</div>
 {% else %}
 <div class="form-field">
 

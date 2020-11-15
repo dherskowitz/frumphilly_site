@@ -4,8 +4,23 @@ from django.forms import CheckboxSelectMultiple
 from .models import Listing, Category, CategoryGroup
 
 
+def make_published(modeladmin, request, queryset):
+    queryset.update(status='Published')
+
+
+make_published.short_description = "Mark selected listings as published"
+
+
+def make_draft(modeladmin, request, queryset):
+    queryset.update(status='Draft')
+
+
+make_draft.short_description = "Mark selected listings as draft"
+
+
 # Register your models here.
 class ListingAdmin(admin.ModelAdmin):
+    actions = [make_published, make_draft]
     formfield_overrides = {
         models.ManyToManyField: {"widget": CheckboxSelectMultiple},
     }
@@ -13,6 +28,7 @@ class ListingAdmin(admin.ModelAdmin):
     list_display = (
         "business_name",
         "created_at",
+        "status",
         "created_by",
     )
     # ordering = (
@@ -21,7 +37,7 @@ class ListingAdmin(admin.ModelAdmin):
     #     "name",
     # )
     # search_fields = ('name', 'created_by__id')
-    # list_filter = ("event_in_past",)
+    list_filter = ("status",)
 
 
 class CategoryAdmin(admin.ModelAdmin):
