@@ -24,7 +24,7 @@ helptext_fields = (
 
 # Create your views here.
 def events_all(request):
-    events_list = Event.objects.all().order_by("-start_date", "-start_time")
+    events_list = Event.objects.filter(status="Published").order_by("-start_date", "-start_time")
     events_filter = EventFilter(request.GET, request=request, queryset=events_list)
     events_list = events_filter.qs
     page = request.GET.get("page", 1)
@@ -50,6 +50,7 @@ def events_single(request, slug, pk):
     report_post_form = ReportPostForm()
     context = {"event": event, "report_post_form": report_post_form}
     return render(request, "events/single.html", context)
+
 
 @login_required
 def events_create(request):

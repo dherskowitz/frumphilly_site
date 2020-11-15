@@ -25,6 +25,11 @@ class EventCategory(models.Model):
 
 
 class Event(models.Model):
+    STATUS_CHOICES = [
+        ("Draft", "Draft"),
+        ("Published", "Published"),
+    ]
+
     created_by = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         on_delete=models.SET_NULL,
@@ -33,6 +38,10 @@ class Event(models.Model):
     )
     name = models.CharField(
         default="", max_length=150, help_text="What is the name of this event?"
+    )
+    status = models.CharField(
+        max_length=50, choices=STATUS_CHOICES, blank=False, default="Draft",
+        help_text="Events will not show until Published",
     )
     slug = models.SlugField(default="",)
     host = models.CharField(
@@ -184,7 +193,7 @@ class Event(models.Model):
         future_date = today + future_timedelta
         events = (
             Event.objects.filter(start_date__lte=future_date)
-            .filter(start_date__gte=today)
+            .filter(start_date__gte=today, status="Published")
             .order_by("start_date")
         )
         return events
@@ -196,7 +205,7 @@ class Event(models.Model):
         return EventCategory.objects.order_by("title").values("title", "slug").distinct()
 
     def get_events_by_category(slug):
-        return Event.objects.filter(categories__slug=slug)
+        return Event.objects.filter(categories__slug=slug, status="Published")
 
     def get_events_by_city(city):
         return Event.objects.filter(city__iexact=city)

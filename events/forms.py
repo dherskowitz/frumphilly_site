@@ -70,6 +70,8 @@ class EventForm(forms.ModelForm):
         self.fields["image"].widget.attrs["accept"] = "image/png,image/jpg,image/jpeg"
         self.fields["attachment"].widget.attrs["accept"] = "application/pdf"
 
+        self.fields["status"].widget.attrs['class'] = "block w-full pl-2 py-4"
+
         # Hidden fields
         self.fields["city"].label = ""
         self.fields["city"].widget = forms.HiddenInput()
