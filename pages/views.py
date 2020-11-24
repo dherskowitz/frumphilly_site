@@ -4,6 +4,7 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.views.decorators.http import require_POST
 from django.http import JsonResponse
+from honeypot.decorators import check_honeypot
 from events.models import Event
 from listings.models import Listing
 from .models import ReportPost
@@ -29,6 +30,7 @@ def about(request):
     return render(request, "pages/about.html")
 
 
+@check_honeypot(field_name='last_name')
 def contact(request):
     form = ContactForm()
 
@@ -45,6 +47,7 @@ def contact(request):
     return render(request, "pages/contact.html", context)
 
 
+@check_honeypot(field_name='last_name')
 def advertising(request):
     form = AdvertisingContactForm()
 

@@ -2,6 +2,7 @@
 {% load webpack_static from webpack_loader %}
 {% load socialaccount %}
 {% load humanize %}
+{% load honeypot %}
 
 {% block meta_title %}About | Frum Philly{% endblock meta_title %}
 {% block meta_description %}All there is to know about Frum Philly.{% endblock meta_description %}
@@ -45,6 +46,7 @@
                 {{ form.message }}
                 <div class="form-field__help-text">{{ form.message.help_text }}</div>
             </div>
+            {% render_honeypot_field "last_name" %}
             {% include 'components/submit_btn.html' with value='Send Message' class="btn btn-block btn-md btn--form-submit" %}
         </form>
     </section>

@@ -55,6 +55,8 @@ INSTALLED_APPS = [
     "users",
     # Webpack
     "webpack_loader",
+    # Honeypot
+    "honeypot",
     # Local
     "payments.apps.PaymentsConfig",
     "events.apps.EventsConfig",
