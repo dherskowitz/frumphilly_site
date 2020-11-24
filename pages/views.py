@@ -11,11 +11,11 @@ from .forms import ContactForm, AdvertisingContactForm
 
 
 def home(request):
-    listings = Listing.objects.all()[:9]
+    listings = Listing.objects.filter(status="Published")[:9]
     upcoming_events = Event.get_upcoming_events()
     events_in_future = True
-    if len(upcoming_events) == 0:
-        upcoming_events = Event.objects.all().order_by("-start_date")[:9]
+    if not upcoming_events:
+        upcoming_events = Event.objects.filter(status="Published").order_by("-start_date")[:9]
         events_in_future = False
     context = {
         "listings": listings,
