@@ -48,6 +48,7 @@ module.exports = {
         default: "2px 2px 3px #000",
     },
     variants: {
+        stroke: ['hover'],
         textColor: ["group-hover", "hover"],
         textShadow: ["responsive"],
         scale: ["responsive", "hover", "group-hover"],
