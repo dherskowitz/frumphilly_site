@@ -32,6 +32,15 @@
         <div class="mb-4">
             <h1 class="text-3xl md:text-5xl text-center text-white text-shadow">{{event.name}}</h1>
         </div>
+
+        {% if event.event_in_past %}
+            <div class="flex justify-center -mt-4 mb-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="text-red-700 group-hover:stroke-current group-hover:text-gray-200" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M0 0h24v24H0z" stroke="none"/><path d="M12 9v2m0 4v.01M5 19h14a2 2 0 001.84-2.75L13.74 4a2 2 0 00-3.5 0l-7.1 12.25A2 2 0 004.89 19"/></svg>
+                <span class="mx-1 text-sm font-semibold text-red-700 group-hover:stroke-current group-hover:text-gray-200">Event Has Passed</span>
+                <svg xmlns="http://www.w3.org/2000/svg" class="text-red-700 group-hover:stroke-current group-hover:text-gray-200" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M0 0h24v24H0z" stroke="none"/><path d="M12 9v2m0 4v.01M5 19h14a2 2 0 001.84-2.75L13.74 4a2 2 0 00-3.5 0l-7.1 12.25A2 2 0 004.89 19"/></svg>
+            </div>
+        {% endif %}
+
         <div class="mb-4">
             {% for category in event.categories.all %}
             <a class="bg-gray-600 text-white rounded-md shadow-md px-4 py-2" href="/events/?categories={{ category.title }}">{{ category.title }}</a>

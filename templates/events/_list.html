@@ -1,6 +1,15 @@
 {% load webpack_static from webpack_loader %}
-<a class="group rounded-md shadow-sm bg-white hover:bg-purple-900 hover:text-white transition-all duration-100 ease-in p-4 flex flex-col justify-between" href="{{ event.get_absolute_url }}">
+<a class="relative group rounded-md shadow-sm bg-white hover:bg-purple-900 hover:text-white transition-all duration-100 ease-in p-4 flex flex-col justify-between" href="{{ event.get_absolute_url }}">
     <h3 class="text-purple-900 group-hover:text-white transition-all duration-100 ease-in text-2xl font-bold">{{event.name}}</h3>
+
+    {% if event.event_in_past %}
+        <div class="absolute right-0 top-0 mt-3 mr-3 flex">
+            <svg xmlns="http://www.w3.org/2000/svg" class="text-red-700 group-hover:stroke-current group-hover:text-gray-200" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M0 0h24v24H0z" stroke="none"/><path d="M12 9v2m0 4v.01M5 19h14a2 2 0 001.84-2.75L13.74 4a2 2 0 00-3.5 0l-7.1 12.25A2 2 0 004.89 19"/></svg>
+            <span class="mx-1 text-sm font-semibold text-red-700 group-hover:stroke-current group-hover:text-gray-200">Event Has Passed</span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="text-red-700 group-hover:stroke-current group-hover:text-gray-200" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M0 0h24v24H0z" stroke="none"/><path d="M12 9v2m0 4v.01M5 19h14a2 2 0 001.84-2.75L13.74 4a2 2 0 00-3.5 0l-7.1 12.25A2 2 0 004.89 19"/></svg>
+        </div>
+    {% endif %}
+        
 
     <div class="flex justify-around mt-4">
         <span class="flex flex-col items-center group-hover:text-white transition-all duration-100 ease-in">
