@@ -45,8 +45,6 @@
 
 </section>
 
-
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCVHtWZFQ4D4WQ2ie8Fe8FaW7_VHlfQPuk&libraries=places&region=US&types=(regions)"></script>
 {% endblock main %}
 
 {% block template_js %}
@@ -56,7 +54,30 @@
     document.getElementById("id_whatsapp").addEventListener("input", (e) => formatPhone(e));
     document.getElementById("id_mobile").addEventListener("input", (e) => formatPhone(e));
 </script>
+<script src='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js'></script>
+<link href='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css' rel='stylesheet' />
+<script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.5.1/mapbox-gl-geocoder.min.js"></script>
+
 <script>
+	mapboxgl.accessToken = "{{mapbox}}";
+    var geocoder = new MapboxGeocoder({
+        accessToken: mapboxgl.accessToken,
+        types: 'address,postcode',
+        countries: 'us',
+    }); 
+    geocoder.addTo('#geocoder');
+    const geocoder_input = document.querySelector("#geocoder").querySelector("input");
+    geocoder_input.value = "{{listing.location}}"
+    geocoder_input.setAttribute("id", "id_location");
+    geocoder_input.setAttribute("name", "location");
+    geocoder.on("result", (e) => {
+        let city = document.getElementById("id_city");
+        let state = document.getElementById("id_state");
+        let zipcode = document.getElementById("id_zipcode");
+        city.value = e.result.context.filter(item => item.id.split(".")[0] == "place")[0].text;
+        state.value = e.result.context.filter(item => item.id.split(".")[0] == "region")[0].text;
+        zipcode.value = e.result.context.filter(item => item.id.split(".")[0] == "postcode")[0].text;
+    });
     // on image select change preview src and text
     let cover_image_field = document.querySelector('#id_cover_image');
     cover_image_field.addEventListener("change", (e) => {

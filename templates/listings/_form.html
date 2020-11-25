@@ -19,6 +19,11 @@
     </div>
     {% endif %}
 </div>
+{% elif field.name == 'location' %}
+<div class="form-field">
+    <label class="form-field__label" for="{{field.id_for_label}}">{{ field.label }}</label>
+    <div id="geocoder" class="geocoder flex"></div>
+</div>
 {% elif field.name == 'description' %}
 <div class="form-field form-field--description">
     <label class="form-field__label" for="{{field.id_for_label}}">{{ field.label }}</label>
