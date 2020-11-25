@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.http import Http404
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from decouple import config
 from .models import Event, EventCategory
 from .forms import EventForm
 from .filters import EventFilter
@@ -55,7 +56,7 @@ def events_single(request, slug, pk):
 @login_required
 def events_create(request):
     form = EventForm()
-    context = {"form": form, "helptext_fields": helptext_fields}
+    context = {"form": form, "helptext_fields": helptext_fields, "mapbox": config("MAPBOX_KEY")}
 
     if request.method == "POST":
         form = EventForm(request.POST, request.FILES)
@@ -84,6 +85,7 @@ def events_edit(request, slug, pk):
         "event": event,
         "datetime_fields": datetime_fields,
         "helptext_fields": helptext_fields,
+        "mapbox": config("MAPBOX_KEY")
     }
 
     if request.method == "POST":

@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.contrib.auth.decorators import login_required
+from decouple import config
 from .models import Listing, CategoryGroup
 from .forms import ListingForm
 from .filters import ListingsFilter
@@ -57,7 +58,7 @@ def listings_create(request, slug):
         "delivers",
         "wheelchair_access",
     ]
-    context = {"form": form, "check_fields": check_fields}
+    context = {"form": form, "check_fields": check_fields, "mapbox": config("MAPBOX_KEY")}
     if request.method == "POST":
         form = ListingForm(request.POST, request.FILES)
         context["form"] = form
@@ -90,7 +91,7 @@ def listings_edit(request, slug, pk):
         "delivers",
         "wheelchair_access",
     ]
-    context = {"form": form, "check_fields": check_fields, "listing": listing}
+    context = {"form": form, "check_fields": check_fields, "listing": listing, "mapbox": config("MAPBOX_KEY")}
     if request.method == "POST":
         form = ListingForm(
             request.POST, request.FILES, instance=listing, category_group=category_group
