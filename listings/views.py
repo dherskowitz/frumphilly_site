@@ -60,7 +60,7 @@ def listings_create(request, slug):
     ]
     context = {"form": form, "check_fields": check_fields, "mapbox": config("MAPBOX_KEY")}
     if request.method == "POST":
-        form = ListingForm(request.POST, request.FILES)
+        form = ListingForm(request.POST, request.FILES, category_group=category_group.slug)
         context["form"] = form
 
         if form.is_valid():

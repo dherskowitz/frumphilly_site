@@ -65,7 +65,7 @@ class ListingForm(forms.ModelForm):
 
         self.fields["categories"] = forms.ModelMultipleChoiceField(
             queryset=Category.objects.filter(category_group__slug=category_group).order_by("title"),
-            widget=forms.CheckboxSelectMultiple,
+            widget=forms.CheckboxSelectMultiple()
         )
 
         # Set custom inputs
