@@ -10,6 +10,12 @@
 </style>
 {% endblock template_css %}
 
+{% block template_scripts %}
+<script src='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js'></script>
+<link href='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css' rel='stylesheet' />
+<script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.5.1/mapbox-gl-geocoder.min.js"></script>
+{% endblock template_scripts %}
+
 
 {% block main %}
 <section class="my-10">
@@ -26,15 +32,9 @@
         </form>
     </div>
 </section>
-
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCVHtWZFQ4D4WQ2ie8Fe8FaW7_VHlfQPuk&libraries=places&region=US&types=(regions)"></script>
 {% endblock main %}
 
 {% block template_js %}
-<script src='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js'></script>
-<link href='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css' rel='stylesheet' />
-<script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.5.1/mapbox-gl-geocoder.min.js"></script>
-
 <script>
 	mapboxgl.accessToken = "{{mapbox}}";
     var geocoder = new MapboxGeocoder({
