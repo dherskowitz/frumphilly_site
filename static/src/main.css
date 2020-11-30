@@ -320,7 +320,7 @@ input[type="checkbox"]:checked {
     color: #67809f !important;
 }
 
-
+/*! purgecss start ignore */
 /* mapbox styles */
 /* Basics */
 .mapboxgl-ctrl-geocoder,
@@ -515,5 +515,5 @@ input[type="checkbox"]:checked {
   }
 
 }
-
+/*! purgecss end ignore */
 @tailwind utilities;
