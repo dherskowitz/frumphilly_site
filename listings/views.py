@@ -69,7 +69,7 @@ def listings_create(request, slug):
             listing.save()
             form.save_m2m()
             messages.success(request, "Listing created successfully!")
-            return redirect(listing_single, slug=listing.slug, pk=listing.id)
+            return redirect("/user/listings/")
     context["category_group"] = category_group
     return render(request, "listings/create.html", context)
 
