@@ -49,7 +49,7 @@ def listing_single(request, slug, pk):
 @login_required
 def listings_create(request, slug):
     category_group = get_object_or_404(CategoryGroup, slug=slug)
-    form = ListingForm(category_group=category_group.slug)
+    form = ListingForm(category_group=category_group.title)
     check_fields = [
         "claimed",
         "premium",
@@ -60,7 +60,7 @@ def listings_create(request, slug):
     ]
     context = {"form": form, "check_fields": check_fields, "mapbox": config("MAPBOX_KEY")}
     if request.method == "POST":
-        form = ListingForm(request.POST, request.FILES, category_group=category_group.slug)
+        form = ListingForm(request.POST, request.FILES, category_group=category_group.title)
         context["form"] = form
 
         if form.is_valid():
@@ -78,7 +78,7 @@ def listings_create(request, slug):
 def listings_edit(request, slug, pk):
     listing = get_object_or_404(Listing, slug=slug, id=pk)
     category_group = CategoryGroup.objects.filter(
-        title=listing.categories.first()
+        title=listing.categories.first().category_group
     ).first()
     if request.user != listing.created_by:
         return render(request, "403.html")
