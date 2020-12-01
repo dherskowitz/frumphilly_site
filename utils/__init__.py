@@ -6,7 +6,7 @@ from django.core.files import File
 
 def compress(image):
     """"Compress submitted images"""
-    size = 600, 600
+    size = 1200
     im = Image.open(image)
     if im.format == "PNG":
         im = im.convert('RGB')
