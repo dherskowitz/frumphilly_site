@@ -57,10 +57,9 @@ class ListingForm(forms.ModelForm):
         category_group = kwargs.pop("category_group", [])
         super(ListingForm, self).__init__(*args, **kwargs)
         retail_exclude = ("kashrut",)
-        if category_group == "retail":
-            for item in retail_exclude:
-                del self.fields[item]
-        elif category_group == "food-drink":
+        if category_group != "Food & Drink":
+            del self.fields["kashrut"]
+        elif category_group == "Food & Drink":
             self.fields["kashrut"].required = True
 
         self.fields["categories"] = forms.ModelMultipleChoiceField(
