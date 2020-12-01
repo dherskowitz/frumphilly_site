@@ -32,7 +32,7 @@
         <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M0 0h24v24H0z" stroke="none"/><circle cx="12" cy="12" r="9"/><path d="M12 8v4M12 16h.01"/></svg>
         <p class="text-xs ml-2">Only visible to you as the listing creator.</p>
     </div>
-    <p class="text-lg mt-4 text-gray-200">This post is in draft mode and is <span class="italic font-bold">not</span> publicly visible. If you are ready to make this post public you can <a href="{% url 'listings_edit' listing.slug listing.id %}" class="italic text-blue-500 underline">click here</a>.</p>
+    <p class="text-lg mt-4 text-gray-200">This listing is in draft mode and is <span class="italic font-bold">not</span> publicly visible. If you are ready to make this listing public you can <a href="{% url 'listings_edit' listing.slug listing.id %}" class="italic text-blue-500 underline">edit it here</a>.</p>
 </div>
 {% endif %}
     
