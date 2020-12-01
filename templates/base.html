@@ -19,19 +19,15 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{% block meta_title %}{% endblock meta_title %}</title>
     <link rel="shortcut icon" href="{% webpack_static 'img/favicon/favicon.ico' %}" type="image/x-icon" />
-    <meta name="description" content="{% block meta_description %}{% endblock meta_description %}">
     {% render_bundle 'main' 'css' %}
     {% block template_css %}{% endblock template_css %}
-
-    
     {% block opengraph %}
-        <meta property="og:title" content="Frum Philly" />
-        <meta property="og:description" content="Frum Philly is a local community site for the Philadelphia and South Jersey jewish Communities." />
-        <meta property="og:image" content="https://assets.frumphilly.com/static/img/logos/FrumPhilly_2.png">
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="http://frumphilly.com/" />
+    <meta property="og:title" content="Frum Philly" />
+    <meta property="og:description" content="Frum Philly is a local community site for the Philadelphia and South Jersey jewish Communities." />
+    <meta property="og:image" content="https://assets.frumphilly.com/static/img/logos/FrumPhilly_2.png">
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="http://frumphilly.com/" />
     {% endblock opengraph %}
-        
 </head>
 
 <body class="pt-16 relative flex flex-col bg-bgGrey">
