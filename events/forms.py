@@ -16,7 +16,7 @@ IMAGE_CONTENT_TYPES = ["image"]
 # 100MB 104857600
 # 250MB - 214958080
 # 500MB - 429916160
-MAX_UPLOAD_SIZE = 5242880
+MAX_UPLOAD_SIZE = 104857600
 
 
 class TimeInput(forms.TimeInput):
@@ -122,6 +122,11 @@ class EventForm(forms.ModelForm):
         image = self.cleaned_data["image"]
         if hasattr(image, "content_type"):
             content_type = image.content_type.split("/")[0]
+            if content_type in FILE_CONTENT_TYPES:
+                if image.size > MAX_UPLOAD_SIZE:
+                    raise forms.ValidationError(
+                        _("Attachment file must be less than 100MB.")
+                    )
             if content_type not in IMAGE_CONTENT_TYPES:
                 raise forms.ValidationError(
                     _("Image must be (jpg, jpeg, png, gif) format.")
