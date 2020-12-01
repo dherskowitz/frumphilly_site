@@ -128,6 +128,21 @@ class EventForm(forms.ModelForm):
                 )
         return image
 
+    def clean(self):
+        link = self.cleaned_data["link"]
+        location = self.cleaned_data["location"]
+        virtual = self.cleaned_data["is_virtual_event"]
+        if not virtual and not location:
+            raise forms.ValidationError(
+                _("A location is required for non-virtual events.")
+            )
+        if virtual and not link:
+            raise forms.ValidationError(
+                _("A link is required for virtual events.")
+            )
+        return self.cleaned_data
+
+
     # def clean_location(self):
     #     """ Validate address using additional geolocation """
     #     location = self.cleaned_data["location"]
