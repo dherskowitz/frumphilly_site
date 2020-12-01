@@ -242,7 +242,7 @@ form {
 }
 /*! purgecss end ignore */
 
-.form-field {
+.form-field, .form-field--alt {
     @apply my-4 mb-12 relative;
 }
 
