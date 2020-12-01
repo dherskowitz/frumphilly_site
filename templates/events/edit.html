@@ -4,19 +4,19 @@
 {% block meta_title %}Edit {{ event.name }} Details | Frum Philly{% endblock meta_title %}
 {% block meta_description %}Edit the details of your event on Frum Philly.{% endblock meta_description %}
 
-{% block template_scripts %}
+{% block template_css %}
 <link href="{% webpack_static 'libs/trix.css' %}" rel="stylesheet">
 <style>
     .trix-button-group--file-tools {
         display: none !important;
     }
 </style>
-{% endblock template_scripts %}
+{% endblock template_css %}
 
-{% block template_links %}
+{% block template_scripts %}
 <script src='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js'></script>
 <link href='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css' rel='stylesheet' />
-{% endblock template_links %}
+{% endblock template_scripts %}
 
 {% block main %}
 <section class="my-8" x-data="{ 'showEventImageModal': false }" @keydown.escape="showEventImageModal = false">
@@ -53,12 +53,11 @@
 {% endblock main %}
 
 {% block template_js %}
+<script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.5.1/mapbox-gl-geocoder.min.js"></script>
 <script>
     document.getElementById("id_name").focus();
     document.getElementById("id_phone_contact").addEventListener("input", (e) => formatPhone(e));
-</script>
-<script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.5.1/mapbox-gl-geocoder.min.js"></script>
-<script>
+
 	mapboxgl.accessToken = "{{mapbox}}";
     var geocoder = new MapboxGeocoder({
         accessToken: mapboxgl.accessToken,
@@ -67,7 +66,6 @@
     }); 
     geocoder.addTo('#geocoder');
     const geocoder_input = document.querySelector("#geocoder").querySelector("input");
-    geocoder_input.value = "{{event.location}}"
     geocoder_input.setAttribute("id", "id_location");
     geocoder_input.setAttribute("name", "location");
     geocoder.on("result", (e) => {
