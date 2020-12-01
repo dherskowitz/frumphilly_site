@@ -58,6 +58,15 @@
     document.getElementById("id_name").focus();
     document.getElementById("id_phone_contact").addEventListener("input", (e) => formatPhone(e));
 
+    // toggle location field visibility based on if virtual event
+    let virtual_event_check = document.querySelector("#id_is_virtual_event");
+    if (virtual_event_check.checked) {
+        document.querySelector("#location-wrapper").classList.add("hidden");
+    }
+    virtual_event_check.addEventListener("change", (e) => {
+        document.querySelector("#location-wrapper").classList.toggle("hidden");
+    });
+
 	mapboxgl.accessToken = "{{mapbox}}";
     var geocoder = new MapboxGeocoder({
         accessToken: mapboxgl.accessToken,
