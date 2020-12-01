@@ -1,30 +1,162 @@
-{% for field in form %}
-
-{% if field.name == 'image' %}
+<!-- Name -->
 <div class="form-field">
-    <label class="form-field__label" for="{{field.id_for_label}}">{{ field.label }}</label>
-    <input type="file" name="{{ field.html_name }}" id="{{ field.id_for_label }}" accept="image/png,image/jpg,image/jpeg">
+    <label class="form-field__label" for="{{form.name.id_for_label}}">
+        {{ form.name.label }} 
+        <span class="form-field__label--required">(required)</span>
+    </label>
+    {{ form.name }}
+</div>
+
+<!-- Status -->
+<div class="form-field--alt">
+    <label class="form-field__label" for="{{field.id_for_label}}">{{ form.status.label }}</label>
+    {{  form.status }}
+    <div class="form-field__help-text mt-2">{{  form.status.help_text }}</div>
+</div>
+
+<!-- Host -->
+<div class="form-field">
+    <label class="form-field__label" for="{{form.host.id_for_label}}">
+        {{ form.host.label }} 
+    </label>
+    {{ form.host }}
+</div>
+
+<!-- Image -->
+<div class="form-field">
+    <label class="form-field__label" for="{{form.image.id_for_label}}">
+        {{ form.image.label }}
+    </label>
+    <input type="file" name="{{ form.image.html_name }}" id="{{ form.image.id_for_label }}" accept="image/png,image/jpg,image/jpeg">
+    
     {% if event.image %}
     <button type="button" @click="showEventImageModal = true" class="ml-4 absolute top-0 right-0 overflow-hidden" style="max-height: 5.7rem;">
         <p class="text-xs mt-3 mr-2" id="event_image_preview_title">Current Image</p>
         <img id="event_image_preview" class="mt-2 mr-2 mx-auto object-cover" src="{{ event.image.url }}" alt="" width="80" height="40">
     </button>
     <div class="form-field__help-text">
-        <button id="event_image_preview_link" type="button" @click="showEventImageModal = true">View
-            Current Image</button>
+        <button id="event_image_preview_link" type="button" @click="showEventImageModal = true">View Current Image</button>
     </div>
     {% endif %}
 </div>
 
-{% elif field.name == 'location' %}
+<!-- Attachment -->
 <div class="form-field">
-    <label class="form-field__label" for="{{field.id_for_label}}">{{ field.label }}</label>
+    <label class="form-field__label" for="{{form.attachment.id_for_label}}">
+        {{ form.attachment.label }}
+    </label>
+    <input type="file" name="{{ form.attachment.html_name }}" id="{{ form.attachment.id_for_label }}" accept="application/pdf">
+    {% if event.attachment %}
+    <div class="form-field__help-text">
+        <a href="#" onclick="window.open('{{ event.attachment.url }}', '_blank', 'location=yes,height=570,width=520,scrollbars=yes,status=yes' );">View Current Attachment</a>
+    </div>
+    {% endif %}
+</div>
+
+<!-- Is Virtual Event -->
+<div class="form-field--alt items-center">
+    <label class="form-field__label p-0 m-0" for="{{form.is_virtual_event.id_for_label}}">
+        {{ form.is_virtual_event.label }}
+    </label>
+    {{ form.is_virtual_event }}
+    <div class="form-field__help-text mt-2 block">{{  form.is_virtual_event.help_text }}</div>
+</div>
+
+<!-- Link -->
+<div class="form-field">
+    <label class="form-field__label" for="{{form.link.id_for_label}}">
+        {{ form.link.label }}
+    </label>
+    {{ form.link }}
+</div>
+
+<!-- Location -->
+<div class="form-field">
+    <label class="form-field__label" for="{{form.location.id_for_label}}">
+        {{ form.location.label }}
+    </label>
     <div id="geocoder" class="geocoder flex"></div>
 </div>
-{% elif field.name == 'categories' %}
 
+<!-- Description -->
+<div class="form-field form-field--description">
+    <label class="form-field__label" for="{{form.description.id_for_label}}">
+        {{ form.description.label }}
+    </label>
+    {{form.description}}
+    <trix-editor input="{{form.description.auto_id}}"></trix-editor>
+</div>
+
+<!-- Email Contact -->
+<div class="form-field">
+    <label class="form-field__label" for="{{form.email_contact.id_for_label}}">
+        {{ form.email_contact.label }}
+    </label>
+    {{ form.email_contact }}
+</div>
+
+<!-- Phone Contact -->
+<div class="form-field">
+    <label class="form-field__label" for="{{form.phone_contact.id_for_label}}">
+        {{ form.phone_contact.label }}
+    </label>
+    {{ form.phone_contact }}
+</div>
+
+<!-- Video -->
+<div class="form-field">
+    <label class="form-field__label" for="{{form.video.id_for_label}}">
+        {{ form.video.label }}
+    </label>
+    {{ form.video }}
+</div>
+
+<!-- Start Time -->
+<div class="form-field">
+    <label class="form-field__label" for="{{form.start_time.id_for_label}}">
+        {{ form.start_time.label }}
+    </label>
+    {{ form.start_time }}
+</div>
+
+<!-- Start Date -->
+<div class="form-field">
+    <label class="form-field__label" for="{{form.start_date.id_for_label}}">
+        {{ form.start_date.label }}
+        <span class="">(required)</span>
+    </label>
+    {{ form.start_date }}
+</div>
+
+<!-- End Date -->
+<div class="form-field">
+    <label class="form-field__label" for="{{form.end_date.id_for_label}}">
+        {{ form.end_date.label }}
+    </label>
+    {{ form.end_date }}
+</div>
+
+<!-- RSVP -->
+<div class="form-field--alt">
+    <label class="form-field__label" for="{{form.rsvp.id_for_label}}">
+        {{ form.rsvp.label }}
+    </label>
+    {{ form.rsvp }}
+    <div class="form-field__help-text mt-2 block">{{  form.rsvp.help_text }}</div>
+</div>
+
+<!-- Cost -->
+<div class="form-field">
+    <label class="form-field__label" for="{{form.cost.id_for_label}}">
+        {{ form.cost.label }}
+    </label>
+    {{ form.cost }}
+</div>
+
+<!-- Categories -->
 <div class="my-4 relative w-full mb-2 bg-transparent-red rounded-md px-2 border-silver border-2">
-    <label class="top-0 block font-bold my-2" for="{{form.categories.id_for_label }}">{{ form.categories.label }} {% if form.categories.field.required %}<span class="">(required)</span>{% endif %}
+    <label class="top-0 block font-bold my-2" for="{{form.categories.id_for_label }}">
+        <span class="">(required)</span>
         {% comment %} <p><small>Please select at least one category:</small></p> {% endcomment %}
         {% if form.categories.errors %}
         <p class="text-red-600"><small>Please select at least one category:</small></p>
@@ -42,45 +174,7 @@
 </div>
 
 
-{% elif field.name == 'attachment' %}
-<div class="form-field">
-    <label class="form-field__label" for="{{field.id_for_label}}">{{ field.label }}</label>
-    <input type="file" name="{{ field.html_name }}" id="{{ field.id_for_label }}" accept="application/pdf">
-    {% if event.attachment %}
-    <div class="form-field__help-text">
-        <a href="#" onclick="window.open('{{ event.attachment.url }}', '_blank'
-                , 'location=yes,height=570,width=520,scrollbars=yes,status=yes' );">View
-            Current Attachment</a>
-    </div>
-    {% endif %}
-</div>
-
-{% elif field.name == 'description' %}
-
-<div class="form-field form-field--description">
-    <label class="form-field__label" for="{{field.id_for_label}}">{{ field.label }}</label>
-    {{form.description}}
-    <trix-editor input="{{form.description.auto_id}}"></trix-editor>
-</div>
-
-{% elif field.name == 'status' %}
-<div class="form-field--alt">
-
-    <label class="form-field__label" for="{{field.id_for_label}}">{{ field.label }} {% if field.field.required %}<span class="form-field__label--required">(required)</span>{% endif %}</label>
-    {{ field }}
-    
-</div>
-<div class="form-field__help-text mt-2 mb-12">{{ field.help_text }}</div>
-{% else %}
-
-<div class="form-field {% if field.name == 'rsvp' %}form-field--alt{% endif %}">
-    <label class="form-field__label" for="{{field.id_for_label}}">{{ field.label }} {% if field.field.required %}<span class="form-field__label--required">(required)</span>{% endif %}</label>
-    {{ field }}
-
-    {% if field.name in helptext_fields %}
-    <div class="form-field__help-text">{{ field.help_text }}</div>
-    {% endif %}
-</div>
-{% endif %}
-
-{% endfor %}
+<!-- Hidden Fields -->
+{{ form.city }}
+{{ form.state }}
+{{ form.zip }}
