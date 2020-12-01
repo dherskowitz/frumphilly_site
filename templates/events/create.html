@@ -60,6 +60,7 @@
     }); 
     geocoder.addTo('#geocoder');
     const geocoder_input = document.querySelector("#geocoder").querySelector("input");
+    geocoder_input.value = "{{request.POST.location}}"
     geocoder_input.setAttribute("id", "id_location");
     geocoder_input.setAttribute("name", "location");
     geocoder.on("result", (e) => {
