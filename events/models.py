@@ -65,6 +65,11 @@ class Event(models.Model):
         null=True,
         blank=True,
     )
+    is_virtual_event = models.BooleanField(
+        default=False,
+        help_text="Check this box if this is an online only event.",
+        verbose_name="Virtual Event",
+    )
     link = models.URLField(
         default=None,
         max_length=200,
@@ -75,6 +80,8 @@ class Event(models.Model):
     location = models.CharField(
         max_length=500,
         default=None,
+        null=True,
+        blank=True,
         help_text="Address where this event take place...",
     )
     city = models.CharField(
