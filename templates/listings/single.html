@@ -39,28 +39,23 @@
 
 <div class="container md:flex justify-between my-6" x-data="{ 'showReportPostModal': false }" @keydown.escape="showReportPostModal = false">
     <div id="left" class="md:w-3/4 md:mr-6 pt-4">
-        {% if listing.cover_image %}
-        <div class="relative flex items-center bg-white sm:p-3 overflow-hidden rounded-md shadow-md mb-4">
-            <div class="absolute text-white text-center sm:text-left sm:ml-10 p-2 sm:p-0">
-                <h1 class="text-3xl md:text-5xl text-shadow mb-2">{{listing.business_name}}</h1>
-                <p class="text-base sm:text-xl">{{listing.summary}}</p>
-                <div class="mt-4">
-                    {% for category in categories %}
-                    <a class="inline-block bg-gray-600 text-white rounded-md shadow-md px-2 py-1 text-sm" href="/listings/{{category.group_slug}}/?categories={{category.title}}">{{category.title}}</a>
-                    {% comment %} {% if not forloop.last %} / {% endif %} {% endcomment %}
-                    {% endfor %}
-                </div>
+        <div class="text-white">
+            <h1 class="text-3xl md:text-5xl text-shadow mb-2">{{listing.business_name}}</h1>
+            <div class="mb-2">
+                {% for category in categories %}
+                <a class="inline-block bg-gray-600 text-white rounded-md shadow-md px-2 py-1 mb-2 mr-2 text-sm" href="/listings/{{category.group_slug}}/?categories={{category.title}}">{{category.title}}</a>
+                {% comment %} {% if not forloop.last %} / {% endif %} {% endcomment %}
+                {% endfor %}
             </div>
-            <img class="w-full mx-auto object-cover" src="{{listing.cover_image.url}}" alt="{{listing.name}}" width="600" height="400" style="max-height: 600px;">
+        </div>
+        {% if listing.cover_image %}
+        <div class="overflow-hidden rounded-md shadow-md mb-4">
+            <img class="w-full mx-auto object-cover rounded-md" src="{{listing.cover_image.url}}" alt="{{listing.name}}" width="600" height="400" style="max-height: 600px;">
         </div>
         {% else %}
         <div class="flex items-center bg-white p-3 rounded-md shadow-md mb-4">
             <span class="text-white">
                 <h1 class="text-3xl md:text-5xl text-shadow mb-2">{{listing.business_name}}</h1>
-                
-                {% if listing.summary %}
-                    <p class="text-xl">{{listing.summary}}</p>
-                {% endif %}
                     
                 <div class="my-4">
                     {% for category in categories %}
@@ -107,7 +102,7 @@
             {{listing.description|safe}}
         </div>
         {% endif %}
-        <div class="grid sm:grid-cols-2 sm:gap-2">
+        <div class="grid sm:grid-cols-2 sm:gap-4">
             <div class="bg-white p-3 rounded-md shadow-md mb-4">
                 <div class="text-lg font-semibold mb-2">Contact Information</div>
 
@@ -173,7 +168,7 @@
             </div>
         </div>
 
-        <div class="grid sm:grid-cols-2 sm:gap-2">
+        <div class="grid sm:grid-cols-2 sm:gap-4">
             <div class="bg-white p-3 rounded-md shadow-md mb-4">
                 <div class="text-lg font-semibold mb-2">Business Hours</div>
                 {% if listing.sun_thu_hours %}<div class="leading-loose"><span class="font-semibold text-sm">Sun - Thurs:</span> {{listing.sun_thu_hours}}</div>{% endif %}
@@ -190,7 +185,7 @@
             </div>
         </div>
 
-        <div class="bg-white p-3 rounded-md shadow-md mb-4">
+        <div class="rounded-md shadow-md mb-4 overflow-hidden">
             <iframe
             class="w-full"
             height="450"
