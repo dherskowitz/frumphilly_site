@@ -15,4 +15,8 @@ def param_replace(context, **kwargs):
 
 @register.filter
 def strip_dashes(value):
-    return value.replace('-', '')
+    try:
+        return value.replace('-', '')
+    except None as e:
+        print(e)
+        return value
