@@ -11,7 +11,7 @@
             </span>
         </div>
     
-        <div class="origin-top-right absolute left-0 mt-2 w-full sm:w-56 rounded-md shadow-lg z-10 h-64 overflow-auto" x-show="showEventLocationFilter" @click.away="showEventLocationFilter = false" x-transition:enter="transition ease-in duration-100" x-transition:enter-start="opacity-0 transform translate-y-4" x-transition:enter-end="opacity-100 transform translate-y-0" x-transition:leave="transition ease-in duration-100" x-transition:leave-start="opacity-100 transform translate-y-0" x-transition:leave-end="opacity-0 transform translate-y-4" x-cloak>
+        <div class="origin-top-right absolute left-0 mt-2 w-full sm:w-56 rounded-md shadow-lg z-10 overflow-auto" style="max-height: 20rem;" x-show="showEventLocationFilter" @click.away="showEventLocationFilter = false" x-transition:enter="transition ease-in duration-100" x-transition:enter-start="opacity-0 transform translate-y-4" x-transition:enter-end="opacity-100 transform translate-y-0" x-transition:leave="transition ease-in duration-100" x-transition:leave-start="opacity-100 transform translate-y-0" x-transition:leave-end="opacity-0 transform translate-y-4" x-cloak>
             <div class="rounded-md bg-white shadow-xs">
                 <div class="py-1" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
                     <div class="filterSelect block px-4 py-2 text-sm leading-5 text-gray-700">{{ filter.form.city }}</div>
@@ -32,7 +32,7 @@
             </span>
         </div>
     
-        <div class="origin-top-right absolute left-0 mt-2 w-full sm:w-56 rounded-md shadow-lg z-10 h-64 overflow-auto" x-show="showEventCategoryFilter" @click.away="showEventCategoryFilter = false" x-transition:enter="transition ease-in duration-100" x-transition:enter-start="opacity-0 transform translate-y-4" x-transition:enter-end="opacity-100 transform translate-y-0" x-transition:leave="transition ease-in duration-100" x-transition:leave-start="opacity-100 transform translate-y-0" x-transition:leave-end="opacity-0 transform translate-y-4" x-cloak>
+        <div class="origin-top-right absolute left-0 mt-2 w-full sm:w-56 rounded-md shadow-lg z-10 overflow-auto" style="max-height: 20rem;" x-show="showEventCategoryFilter" @click.away="showEventCategoryFilter = false" x-transition:enter="transition ease-in duration-100" x-transition:enter-start="opacity-0 transform translate-y-4" x-transition:enter-end="opacity-100 transform translate-y-0" x-transition:leave="transition ease-in duration-100" x-transition:leave-start="opacity-100 transform translate-y-0" x-transition:leave-end="opacity-0 transform translate-y-4" x-cloak>
             <div class="rounded-md bg-white shadow-xs">
                 <div class="py-1" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
                     <div class="filterSelect block px-4 py-2 text-sm leading-5 text-gray-700">{{ filter.form.categories }}  </div>
