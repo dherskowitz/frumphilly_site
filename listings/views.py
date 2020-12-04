@@ -40,6 +40,8 @@ def listings(request, slug):
 
 def listing_single(request, slug, pk):
     listing = get_object_or_404(Listing, slug=slug, id=pk)
+    if listing.status == 'Draft' and request.user != listing.created_by:
+        return render(request, "private.html")
     report_post_form = ReportPostForm()
     categories = [{"title": cat.title, "group_slug": cat.category_group.slug} for cat in listing.categories.all()]
     context = {"listing": listing, "categories": categories, "report_post_form": report_post_form}

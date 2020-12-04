@@ -48,6 +48,8 @@ def events_all(request):
 
 def events_single(request, slug, pk):
     event = get_object_or_404(Event, slug=slug, id=pk)
+    if event.status == 'Draft' and request.user != event.created_by:
+        return render(request, "private.html")
     report_post_form = ReportPostForm()
     context = {"event": event, "report_post_form": report_post_form}
     return render(request, "events/single.html", context)

@@ -25,6 +25,15 @@
 
 {% block main %}
 
+{% if user.id == event.created_by.id and event.status == 'Draft' %}
+<div class="container mt-6 p-4 bg-pink-800 rounded-md shadow-md">
+    <div class="flex text-gray-200">
+        <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current" width="20" height="20" viewBox="0 0 24 24" stroke-width="2.25" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M0 0h24v24H0z" stroke="none"/><circle cx="12" cy="12" r="9"/><path d="M12 8v4M12 16h.01"/></svg>
+        <p class="text-xs ml-2">Only visible to you as the event creator.</p>
+    </div>
+    <p class="text-lg mt-4 text-gray-200">This event is in draft mode and is <span class="italic font-bold">not</span> publicly visible. If you are ready to make this event public you can <a href="{% url 'events_edit' event.slug event.id %}" class="italic text-pink-100 underline">edit it here</a>.</p>
+</div>
+{% endif %}
 
 <div class="container md:flex justify-between my-6" x-data="{ 'showReportPostModal': false }" @keydown.escape="showReportPostModal = false">
     <div id="left" class="md:w-3/4 md:mr-6">
@@ -190,7 +199,7 @@
 
             {% if event.image %}
             <div class="bg-white p-3 rounded-sm shadow-sm mb-4 flex justify-center ">
-                <img class="w-full mx-auto object-cover" src="{{event.image.url}}" alt="{{event.name}}" width="600" height="400"  style="max-height: 600px;" >
+                <img class="w-full mx-auto object-cover" src="{{event.image.url}}" alt="{{event.name}}" width="600" height="400">
             </div>
             {% endif %}
         </div>

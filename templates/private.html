@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% load webpack_static from webpack_loader %}
+
+{% block main %}
+<div class="container relative bg-white rounded-md shadow-md my-10 p-6 flex justify-center items-center">
+    <p class="absolute mb-10 text-center text-4xl text-gray-200 text-shadow uppercase z-10">This page is not currently public. <br>Please again later.</p>
+    <img class="block mx-auto opacity-75" src="{% webpack_static 'img/illustrations/private.svg' %}" alt="" style="max-width: 700px;">
+</div>
+{% endblock main %}
+    
