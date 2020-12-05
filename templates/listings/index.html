@@ -19,7 +19,7 @@
         <div class="md:w-3/4 md:mr-6">
             
             
-            {% if listings %}
+            {% if listings or filtered_cities or filtered_categories %}
                 {% include 'listings/_filter.html' %}
             {% endif %}
                 
