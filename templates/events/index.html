@@ -15,7 +15,11 @@
 <section class="container">
     <div class="md:flex justify-between my-6">
         <div class="md:w-3/4 md:mr-6">
-            {% include 'events/_filter.html' %}
+            
+            {% if events %}
+                {% include 'events/_filter.html' %}
+            {% endif %}
+                
             {% for event in events %}
             <div class="grid gap-3 grid-cols-1 my-4">
                 {% include 'events/_list.html' %}
