@@ -35,7 +35,7 @@ def user_settings(request):
 
 @login_required
 def user_events(request):
-    events = Event.objects.filter(created_by=request.user)
+    events = Event.objects.filter(created_by=request.user).order_by("-created_at", "name")
     context = {
         "events": events,
     }
@@ -44,7 +44,7 @@ def user_events(request):
 
 @login_required
 def user_listings(request):
-    listings = Listing.objects.filter(created_by=request.user)
+    listings = Listing.objects.filter(created_by=request.user).order_by("-created_at", "business_name")
     context = {
         "listings": listings,
     }
