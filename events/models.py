@@ -26,8 +26,8 @@ class EventCategory(models.Model):
 
 class Event(models.Model):
     STATUS_CHOICES = [
-        ("Draft", "Draft"),
-        ("Published", "Published"),
+        ("draft", "Save for Later"),
+        ("published", "Published"),
     ]
 
     created_by = models.ForeignKey(
@@ -40,7 +40,7 @@ class Event(models.Model):
         default="", max_length=150, help_text="What is the name of this event?"
     )
     status = models.CharField(
-        max_length=50, choices=STATUS_CHOICES, blank=False, default="Draft",
+        max_length=50, choices=STATUS_CHOICES, blank=False, default="draft",
         help_text="Events will not show until Published",
     )
     slug = models.SlugField(default="",)

@@ -69,8 +69,8 @@ class Category(models.Model):
 
 class Listing(models.Model):
     STATUS_CHOICES = [
-        ("Draft", "Draft"),
-        ("Published", "Published"),
+        ("draft", "Save for Later"),
+        ("published", "Published"),
     ]
 
     created_by = models.ForeignKey(
@@ -86,7 +86,7 @@ class Listing(models.Model):
         help_text="What is the name of this business?",
     )
     status = models.CharField(
-        max_length=50, choices=STATUS_CHOICES, blank=False, default="Draft",
+        max_length=50, choices=STATUS_CHOICES, blank=False, default="draft",
         help_text="Listings will not show until Published",
     )
     cover_image = models.ImageField(

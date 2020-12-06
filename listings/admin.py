@@ -12,7 +12,7 @@ make_published.short_description = "Mark selected listings as published"
 
 
 def make_draft(modeladmin, request, queryset):
-    queryset.update(status='Draft')
+    queryset.update(status='draft')
 
 
 make_draft.short_description = "Mark selected listings as draft"

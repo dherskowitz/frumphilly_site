@@ -5,14 +5,14 @@ from .models import Event, EventCategory
 
 
 def make_published(modeladmin, request, queryset):
-    queryset.update(status='Published')
+    queryset.update(status='published')
 
 
 make_published.short_description = "Mark selected events as published"
 
 
 def make_draft(modeladmin, request, queryset):
-    queryset.update(status='Draft')
+    queryset.update(status='draft')
 
 
 make_draft.short_description = "Mark selected events as draft"

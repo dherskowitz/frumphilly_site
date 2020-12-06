@@ -25,7 +25,7 @@
 
 {% block main %}
 
-{% if user.id == event.created_by.id and event.status == 'Draft' %}
+{% if user.id == event.created_by.id and event.status == 'draft' %}
 <div class="container mt-6 p-4 bg-pink-800 rounded-md shadow-md">
     <div class="flex text-gray-200">
         <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current" width="20" height="20" viewBox="0 0 24 24" stroke-width="2.25" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M0 0h24v24H0z" stroke="none"/><circle cx="12" cy="12" r="9"/><path d="M12 8v4M12 16h.01"/></svg>
