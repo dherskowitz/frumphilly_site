@@ -1,5 +1,5 @@
 {% extends 'dashboard.html' %}
-
+{% load humanize %}
 {% block meta_title %}Manage Your Listings | Frum Philly{% endblock meta_title %}
 {% block meta_description %}Manage the listings you have published on Frum Philly.{% endblock meta_description %}
 
@@ -18,7 +18,7 @@
             </span>
             <span class="relative text-center lg:text-left pt-2">
                 <div class="flex justify-center lg:absolute -top-1 text-sm font-bold uppercase">Posted</div>
-                {{listing.created_at}}
+                {{listing.created_at|naturalday}}
             </span>
             <span class="relative text-center lg:text-left pt-2">
                 <div class="flex justify-center lg:absolute -top-1 text-sm font-bold uppercase">Status</div>
