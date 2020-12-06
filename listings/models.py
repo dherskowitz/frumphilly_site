@@ -238,12 +238,12 @@ class Listing(models.Model):
         return f"/listings/{self.slug}-{self.id}"
 
     def get_listings():
-        return Listing.objects.filter(status="Published")
+        return Listing.objects.filter(status="published")
 
     def get_listings_by_group(slug):
         return Listing.objects.filter(
             categories__category_group__slug=slug,
-            status="Published"
+            status="published"
         ).distinct("business_name")
 
     # def get_listings_by_category_or_group(slug):

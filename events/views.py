@@ -25,7 +25,7 @@ helptext_fields = (
 
 # Create your views here.
 def events_all(request):
-    events_list = Event.objects.filter(status="Published").order_by("-start_date", "-start_time")
+    events_list = Event.objects.filter(status="published").order_by("-start_date", "-start_time")
     events_filter = EventFilter(request.GET, request=request, queryset=events_list)
     events_list = events_filter.qs
     page = request.GET.get("page", 1)

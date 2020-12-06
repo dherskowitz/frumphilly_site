@@ -5,7 +5,7 @@ from .models import Listing, Category, CategoryGroup
 
 
 def make_published(modeladmin, request, queryset):
-    queryset.update(status='Published')
+    queryset.update(status='published')
 
 
 make_published.short_description = "Mark selected listings as published"

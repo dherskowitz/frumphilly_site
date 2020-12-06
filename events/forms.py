@@ -42,7 +42,7 @@ class DateInput(forms.DateInput):
 class EventFilterForm(forms.Form):
     def __init__(self, *args, **kwargs):
         super(EventFilterForm, self).__init__(*args, **kwargs)
-        cities = Event.objects.filter(status='Published').values_list('city', flat=True).distinct().order_by('city')
+        cities = Event.objects.filter(status='published').values_list('city', flat=True).distinct().order_by('city')
         city_choices = [(city, city) for city in cities if city is not None]
         self.fields['city'].choices = city_choices
 

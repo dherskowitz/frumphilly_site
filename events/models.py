@@ -200,7 +200,7 @@ class Event(models.Model):
         future_date = today + future_timedelta
         events = (
             Event.objects.filter(start_date__lte=future_date)
-            .filter(start_date__gte=today, status="Published")
+            .filter(start_date__gte=today, status="published")
             .order_by("start_date")
         )
         return events
@@ -212,7 +212,7 @@ class Event(models.Model):
         return EventCategory.objects.order_by("title").values("title", "slug").distinct()
 
     def get_events_by_category(slug):
-        return Event.objects.filter(categories__slug=slug, status="Published")
+        return Event.objects.filter(categories__slug=slug, status="published")
 
     def get_events_by_city(city):
         return Event.objects.filter(city__iexact=city)
