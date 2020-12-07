@@ -3,7 +3,7 @@ from django.contrib import messages
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.contrib.auth.decorators import login_required
 from decouple import config
-from .models import Listing, CategoryGroup
+from .models import Listing, CategoryGroup, Category
 from .forms import ListingForm
 from .filters import ListingsFilter
 from pages.forms import ReportPostForm
@@ -11,15 +11,27 @@ from pages.forms import ReportPostForm
 
 def listings(request, slug):
     listing_group = CategoryGroup.objects.filter(slug=slug).get()
-    listings_list = Listing.get_listings_by_group(slug)
+
+    listings = Listing.get_listings_by_group(slug)
+    cities = listings.values_list('city', flat=True).distinct().order_by('city')
+    categories = Category.objects.filter(category_group=listing_group).order_by('title')
+
+    # Set category group in request for use in forms
     if not request.GET._mutable:
         request.GET._mutable = True
     request.GET['cat_group'] = slug
     request.GET._mutable = False
-    listings_filter = ListingsFilter(request.GET, request=request, queryset=listings_list)
-    listings_list = listings_filter.qs
+
+    filtered_cities = request.GET.getlist('location')
+    if filtered_cities:
+        listings = listings.filter(city__in=filtered_cities)
+
+    filtered_categories = request.GET.getlist('category')
+    if filtered_categories:
+        listings = listings.filter(categories__title__in=filtered_categories)
+
     page = request.GET.get("page", 1)
-    paginator = Paginator(listings_list, 10)
+    paginator = Paginator(listings, 10)
     try:
         listings = paginator.page(page)
     except PageNotAnInteger:
@@ -28,11 +40,12 @@ def listings(request, slug):
         listings = paginator.page(paginator.num_pages)
 
     context = {
-        "category_group": listing_group.title,
-        "filtered_cities": request.GET.getlist("city"),
-        "filtered_categories": request.GET.getlist("categories"),
-        "filter": listings_filter,
         "listings": listings,
+        "cities": cities,
+        "categories": categories,
+        "category_group": listing_group.title,
+        "filtered_cities": filtered_cities,
+        "filtered_categories": filtered_categories,
     }
 
     return render(request, "listings/index.html", context)
