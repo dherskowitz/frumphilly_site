@@ -16,7 +16,7 @@
                     <div class="text-4xl mb-2 text-gray-200 text-shadow">{{ option.title }}</div>
                     <p>{{ option.description }}</p>
                 </span>
-                <img class="absolute w-full h-full transform group-hover:scale-125 transition duration-300 ease-in-out" src="{{option.image.url}}" alt="">
+                <img class="absolute w-full h-full transform group-hover:scale-125 transition duration-300 ease-in-out" src="{{option.image.url}}" alt="Category Image">
             </a>
         {% else %}
             <a href="{% url 'listings_create' option.slug %}" class="rounded-md shadow-md bg-white p-4">

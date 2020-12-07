@@ -199,7 +199,7 @@
 
             {% if event.image %}
             <div class="bg-white p-3 rounded-sm shadow-sm mb-4 flex justify-center ">
-                <img class="w-full mx-auto object-cover" src="{{event.image.url}}" alt="{{event.name}}" width="600" height="400">
+                <img class="w-full mx-auto object-cover" src="{{event.image.url}}" alt="{{event.name}} | Frum Philly" width="600" height="400">
             </div>
             {% endif %}
         </div>
@@ -208,15 +208,15 @@
             <button class="text-sm p-2 bg-red-200 text-red-700 rounded-sm shadow-sm" type="button" @click="showReportPostModal = true">Report Event</button>
         </div>
 
-        <div class="mt-4"><a href="{% url 'advertising' %}"><img src="{% webpack_static 'img/images/fp-banner-ad-one.jpg' %}" alt=""></a></div>
+        <div class="mt-4"><a href="{% url 'advertising' %}"><img src="{% webpack_static 'img/images/fp-banner-ad-one.jpg' %}" alt="Advertise on Frum Philly"></a></div>
     </div>
 
     <div class="rightbar md:w-1/4 mt-4 flex flex-col sm:flex-row md:flex-col sm:flex-wrap justify-between md:justify-start">
         <div class="mb-4">
-            <a href="{% url 'advertising' %}"><img class="w-full sm:w-auto" src="{% webpack_static 'img/images/fp-ad-one.gif' %}" alt=""></a>
+            <a href="{% url 'advertising' %}"><img class="w-full sm:w-auto" src="{% webpack_static 'img/images/fp-ad-one.gif' %}" alt="Advertise on Frum Philly"></a>
         </div>
         <div class="mb-4">
-            <a href="{% url 'advertising' %}"><img class="w-full sm:w-auto" src="{% webpack_static 'img/images/fp-ad-two.gif' %}" alt=""></a>
+            <a href="{% url 'advertising' %}"><img class="w-full sm:w-auto" src="{% webpack_static 'img/images/fp-ad-two.gif' %}" alt="Advertise on Frum Philly"></a>
         </div>
     </div>
 

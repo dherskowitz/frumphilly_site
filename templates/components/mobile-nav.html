@@ -34,11 +34,11 @@
         <hr class="border-blue-900">
         <div class="mx-4 my-4 flex items-center">
             {% if user.avatar %}
-            <img class="h-10 w-10 rounded-full object-cover" src="{{ user.avatar.url }}" alt="" width="10" height="10">
+            <img class="h-10 w-10 rounded-full object-cover" src="{{ user.avatar.url }}" alt="User Avatar" width="10" height="10">
             {% elif user.socialaccount_set.all.0.get_avatar_url %}
-            <img class="h-10 w-10 rounded-full object-cover" src="{{ user.socialaccount_set.all.0.get_avatar_url }}" alt="" width="10" height="10">
+            <img class="h-10 w-10 rounded-full object-cover" src="{{ user.socialaccount_set.all.0.get_avatar_url }}" alt="User Avatar" width="10" height="10">
             {% else %}
-            <img class="h-10 w-10 rounded-full object-cover" src="{% webpack_static 'img/images/blank_avatar.jpg' %}" alt="" width="10" height="10">
+            <img class="h-10 w-10 rounded-full object-cover" src="{% webpack_static 'img/images/blank_avatar.jpg' %}" alt="User Avatar" width="10" height="10">
             {% endif %}
             <span class="ml-4">
                 <p>{{ user.first_name }} {{ user.last_name }}</p>
