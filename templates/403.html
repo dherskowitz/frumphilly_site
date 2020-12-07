@@ -2,9 +2,9 @@
 {% load webpack_static from webpack_loader %}
 
 {% block main %}
-<div class="container bg-white rounded-md shadow-md my-10 p-6">
-    <p class="mb-10 text-center text-4xl text-gray-700">You do not have permission to view the page.</p>
-    <img class="block mx-auto" src="{% webpack_static 'img/illustrations/page_forbidden.svg' %}" alt="403 Error" style="max-width: 700px;">
+<div class="container bg-white sm:rounded-md shadow-md my-10 p-6">
+    <p class="mb-10 text-center text-2xl sm:text-4xl text-gray-700">You do not have permission to view the page.</p>
+    <img class="block mx-auto" src="{% webpack_static 'img/illustrations/page_forbidden.svg' %}" alt="403 Error" style="width: 700px; max-width:100%;">
 </div>
 {% endblock main %}
     
