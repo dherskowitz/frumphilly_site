@@ -16,7 +16,7 @@ trix-toolbar * {
 }
 trix-toolbar .trix-button-row {
   display: flex;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   justify-content: space-between;
 }
 trix-toolbar .trix-button-group {
