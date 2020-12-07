@@ -44,7 +44,7 @@
             <h1 class="text-3xl md:text-5xl text-shadow mb-2">{{listing.business_name}}</h1>
             <div class="mb-4">
                 {% for category in categories %}
-                <a class="inline-block mb-2 bg-gray-600 hover:bg-gray-700 hover:shadow-lg duration-150 text-white text-sm rounded-md shadow-md px-2 py-1" href="/listings/{{category.group_slug}}/?categories={{category.title}}">{{category.title}}</a>
+                <a class="inline-block mb-2 bg-gray-600 hover:bg-gray-700 hover:shadow-lg duration-150 text-white text-sm rounded-md shadow-md px-2 py-1" href="/listings/{{category.group_slug}}/?category={{category.title}}">{{category.title}}</a>
                 {% comment %} {% if not forloop.last %} / {% endif %} {% endcomment %}
                 {% endfor %}
             </div>
