@@ -84,6 +84,8 @@
             </a>
             {% endif %}
 
+            
+            {% if event.location %}                
             <a class="flex flex-col justify-center items-center" href="https://www.google.com/maps?q={{event.location}}" target="_blank" rel="noreferrer">
                 <svg class="icon icon-tabler icon-tabler-map-pin" width="24" height="24" stroke-width="1.5" stroke="#607D8B" fill="none" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M0 0h24v24H0z" stroke="none" />
@@ -91,6 +93,7 @@
                     <path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /></svg>
                 <span class="icon__text">See Map</span>
             </a>
+            {% endif %}
             <span class="flex flex-col justify-center items-center">
                 {% if event.rsvp %}
                 <svg class="" width="24" height="24" stroke-width="1.5" stroke="#607D8B" fill="none" stroke-linecap="round" stroke-linejoin="round">
