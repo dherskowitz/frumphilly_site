@@ -53,11 +53,11 @@
 
     <div class="my-10">
         <h2 class="text-4xl mx-2 text-white text-shadow">Listings</h2>
-        <div class="flex">
-            <a href="{% url 'user_listings' %}" class="group bg-white hover:bg-gray-700 rounded-md shadow-md w-1/2 mx-2 p-4 transition-all duration-200 ease-in">
+        <div class="flex flex-col sm:flex-row">
+            <a href="{% url 'user_listings' %}" class="group bg-white hover:bg-gray-700 rounded-md shadow-md sm:w-1/2 mx-2 p-4 transition-all duration-200 ease-in">
                 <p class="text-2xl group-hover:text-gray-200 text-center">Manage My Listings</p>
             </a>
-            <a href="{% url 'listings_select' %}" class="group bg-white hover:bg-gray-700 rounded-md shadow-md w-1/2 mx-2 p-4 transition-all duration-200 ease-in">
+            <a href="{% url 'listings_select' %}" class="group bg-white hover:bg-gray-700 rounded-md shadow-md sm:w-1/2 mx-2 mt-4 sm:mt-0 p-4 transition-all duration-200 ease-in">
                 <p class="text-2xl group-hover:text-gray-200 text-center">Create New Listings</p>
             </a>
         </div>
@@ -66,11 +66,11 @@
 
     <div class="my-10">
         <h2 class="text-4xl mx-2 text-white text-shadow">Events</h2>
-        <div class="flex">
-            <a href="{% url 'user_events' %}" class="group bg-white hover:bg-gray-700 rounded-md shadow-md w-1/2 mx-2 p-4 transition-all duration-200 ease-in">
+        <div class="flex flex-col sm:flex-row">
+            <a href="{% url 'user_events' %}" class="group bg-white hover:bg-gray-700 rounded-md shadow-md sm:w-1/2 mx-2 p-4 transition-all duration-200 ease-in">
                 <p class="text-2xl group-hover:text-gray-200 text-center">Manage My Events</p>
             </a>
-            <a href="{% url 'events_create' %}" class="group bg-white hover:bg-gray-700 rounded-md shadow-md w-1/2 mx-2 p-4 transition-all duration-200 ease-in">
+            <a href="{% url 'events_create' %}" class="group bg-white hover:bg-gray-700 rounded-md shadow-md sm:w-1/2 mx-2 mt-4 sm:mt-0 p-4 transition-all duration-200 ease-in">
                 <p class="text-2xl group-hover:text-gray-200 text-center">Create New Event</p>
             </a>
         </div>
