@@ -26,8 +26,17 @@ helptext_fields = (
 # Create your views here.
 def events_all(request):
     events_list = Event.objects.filter(status="published").order_by("-start_date", "-start_time")
-    events_filter = EventFilter(request.GET, request=request, queryset=events_list)
-    events_list = events_filter.qs
+    cities = events_list.values_list('city', flat=True).distinct().order_by('city')
+    categories = EventCategory.objects.all().order_by('title')
+
+    filtered_cities = request.GET.getlist('location')
+    if filtered_cities:
+        events_list = events_list.filter(city__in=filtered_cities)
+
+    filtered_categories = request.GET.getlist('category')
+    if filtered_categories:
+        events_list = events_list.filter(categories__title__in=filtered_categories)
+
     page = request.GET.get("page", 1)
     paginator = Paginator(events_list, 10)
     try:
@@ -37,11 +46,11 @@ def events_all(request):
     except EmptyPage:
         events = paginator.page(paginator.num_pages)
     context = {
-        # "events": events_list,
-        "filtered_cities": request.GET.getlist("city"),
-        "filtered_categories": request.GET.getlist("categories"),
-        "filter": events_filter,
         "events": events,
+        "cities": cities,
+        "categories": categories,
+        "filtered_cities": filtered_cities,
+        "filtered_categories": filtered_categories,
     }
     return render(request, "events/index.html", context)
 
