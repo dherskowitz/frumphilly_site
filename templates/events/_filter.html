@@ -17,9 +17,9 @@
                 <div class="py-1" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">                  
                     {% for city in cities %}
                     <div class="hover:bg-gray-200 p-2">
-                        <label class="inline-flex items-center">
+                        <label class="inline-flex items-center w-full cursor-pointer">
                             <input type="checkbox" name="location" value="{{ city }}" class="form-checkbox" {% if city in filtered_cities %}checked{% endif %}>
-                            <span class="ml-2">{{ city }}</span>
+                            <span class="ml-2 w-full">{{ city }}</span>
                         </label>
                     </div>
                     {% endfor %}
@@ -45,9 +45,9 @@
                 <div class="py-1" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
                     {% for cat in categories %}
                     <div class="hover:bg-gray-200 p-2">
-                        <label class="inline-flex items-center">
+                        <label class="inline-flex items-center w-full cursor-pointer">
                             <input type="checkbox" name="category" value="{{ cat }}" class="form-checkbox" {% if cat.title in filtered_categories %}checked{% endif %}>
-                            <span class="ml-2">{{ cat }}</span>
+                            <span class="ml-2 w-full">{{ cat }}</span>
                         </label>
                     </div>
                     {% endfor %}
