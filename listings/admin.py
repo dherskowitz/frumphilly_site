@@ -37,7 +37,7 @@ class ListingAdmin(admin.ModelAdmin):
     #     "name",
     # )
     # search_fields = ('name', 'created_by__id')
-    list_filter = ("status",)
+    list_filter = ("status", "categories__category_group")
 
 
 class CategoryAdmin(admin.ModelAdmin):
