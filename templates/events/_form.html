@@ -30,7 +30,7 @@
     <input type="file" name="{{ form.image.html_name }}" id="{{ form.image.id_for_label }}" accept="image/png,image/jpg,image/jpeg">
     
     {% if event.image %}
-    <button type="button" @click="showEventImageModal = true" class="ml-4 absolute top-0 right-0 overflow-hidden" style="max-height: 5.7rem;">
+    <button type="button" @click="showEventImageModal = true" class="ml-4 absolute top-0 right-0 overflow-hidden hidden sm:block" style="max-height: 5.7rem;">
         <p class="text-xs mt-3 mr-2" id="event_image_preview_title">Current Image</p>
         <img id="event_image_preview" class="mt-2 mr-2 mx-auto object-cover" src="{{ event.image.url }}" alt="Current image for this event" width="80" height="40">
     </button>
