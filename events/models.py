@@ -84,6 +84,9 @@ class Event(models.Model):
         blank=True,
         help_text="Address where this event take place...",
     )
+    neighborhood = models.CharField(
+        max_length=500, default=None, null=True, blank=True, help_text="",
+    )
     city = models.CharField(
         max_length=500, default=None, null=True, blank=True, help_text="",
     )

@@ -48,12 +48,22 @@
     geocoder_input.setAttribute("id", "id_location");
     geocoder_input.setAttribute("name", "location");
     geocoder.on("result", (e) => {
+        let neighborhood_field = document.getElementById("id_neighborhood");
         let city = document.getElementById("id_city");
         let state = document.getElementById("id_state");
         let zipcode = document.getElementById("id_zipcode");
-        city.value = e.result.context.filter(item => item.id.split(".")[0] == "place")[0].text;
-        state.value = e.result.context.filter(item => item.id.split(".")[0] == "region")[0].text;
-        zipcode.value = e.result.context.filter(item => item.id.split(".")[0] == "postcode")[0].text;
+        let location_type = document.getElementById("id_location_type");
+
+        neighborhood = e.result.context.filter(item => item.id.includes("neighborhood"));
+        neighborhood_field.value = neighborhood.length == 0 ? "" : neighborhood[0].text;
+
+        locality = e.result.context.filter(item => item.id.includes("locality"));
+        place = e.result.context.filter(item => item.id.includes("place"));
+        city.value = locality.length == 0 ? place[0].text : locality[0].text;
+
+        state.value = e.result.context.filter(item => item.id.includes("region"))[0].text;
+        zipcode.value = e.result.context.filter(item => item.id.includes("postcode"))[0].text;
+        location_type.value = e.result.place_type[0];
     });
     document.getElementById("id_business_name").focus();
     document.getElementById("id_phone").addEventListener("input", (e) => formatPhone(e));

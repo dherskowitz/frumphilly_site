@@ -151,6 +151,9 @@ class Listing(models.Model):
     location = models.CharField(
         max_length=500, blank=False, help_text="Enter the Address of your business",
     )
+    neighborhood = models.CharField(
+        max_length=500, default=None, null=True, blank=True, help_text="",
+    )
     city = models.CharField(
         max_length=500, default=None, null=True, blank=True, help_text="",
     )

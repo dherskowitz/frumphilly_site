@@ -88,6 +88,8 @@ class ListingForm(forms.ModelForm):
         # Hide Fields
         self.fields["city"].label = ""
         self.fields["city"].widget = forms.HiddenInput()
+        self.fields["neighborhood"].label = ""
+        self.fields["neighborhood"].widget = forms.HiddenInput()
         self.fields["state"].label = ""
         self.fields["state"].widget = forms.HiddenInput()
         self.fields["zipcode"].label = ""
