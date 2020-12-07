@@ -26,7 +26,7 @@
 {% block main %}
 
 {% if user.id == event.created_by.id and event.status == 'draft' %}
-<div class="container mt-6 p-4 bg-pink-800 rounded-md shadow-md">
+<div class="container mt-6 p-4 bg-pink-800 sm:rounded-md shadow-md">
     <div class="flex text-gray-200">
         <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current" width="20" height="20" viewBox="0 0 24 24" stroke-width="2.25" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M0 0h24v24H0z" stroke="none"/><circle cx="12" cy="12" r="9"/><path d="M12 8v4M12 16h.01"/></svg>
         <p class="text-xs ml-2">Only visible to you as the event creator.</p>
@@ -38,8 +38,8 @@
 <div class="container md:flex justify-between my-6" x-data="{ 'showReportPostModal': false }" @keydown.escape="showReportPostModal = false">
     <div id="left" class="md:w-3/4 md:mr-6">
         <!-- Title -->
-        <div class="mb-4">
-            <h1 class="text-3xl md:text-5xl text-center text-white text-shadow">{{event.name}}</h1>
+        <div class="mb-2">
+            <h1 class="text-3xl md:text-5xl text-white text-shadow">{{event.name}}</h1>
         </div>
 
         {% if event.event_in_past %}
@@ -52,7 +52,7 @@
 
         <div class="mb-4">
             {% for category in event.categories.all %}
-            <a class="bg-gray-600 text-white rounded-md shadow-md px-4 py-2" href="/events/?categories={{ category.title }}">{{ category.title }}</a>
+            <a class="bg-gray-600 hover:bg-gray-700 hover:shadow-lg duration-150 text-white text-sm rounded-md shadow-md px-2 py-1" href="/events/?categories={{ category.title }}">{{ category.title }}</a>
             {% endfor %}
         </div>
         <!-- Infobar -->
