@@ -40,8 +40,8 @@ class Event(models.Model):
         default="", max_length=150, help_text="What is the name of this event?"
     )
     status = models.CharField(
-        max_length=50, choices=STATUS_CHOICES, blank=False, default="draft",
-        help_text="Events will not show until Published",
+        max_length=50, choices=STATUS_CHOICES, blank=False, default="published",
+        help_text="Only Published events are publicly visible.",
     )
     slug = models.SlugField(default="",)
     host = models.CharField(

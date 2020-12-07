@@ -86,8 +86,8 @@ class Listing(models.Model):
         help_text="What is the name of this business?",
     )
     status = models.CharField(
-        max_length=50, choices=STATUS_CHOICES, blank=False, default="draft",
-        help_text="Listings will not show until Published",
+        max_length=50, choices=STATUS_CHOICES, blank=False, default="published",
+        help_text="Only Published listings are publicly visible.",
     )
     cover_image = models.ImageField(
         storage=S3ListingsMediaStorage(),
