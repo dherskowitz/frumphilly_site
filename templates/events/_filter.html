@@ -65,7 +65,7 @@
                 <span class="mr-4">
                     Cities:           
                     {% for city in filtered_cities %}
-                        <span class="inline-block bg-gray-600 text-white rounded-md shadow-md px-2 py-1">{{ city }}</span>
+                        <span class="inline-block bg-gray-600 text-white text-sm rounded-md shadow-md px-2 py-1">{{ city }}</span>
                     {% endfor %}            
                 </span>
             {% endif %}
@@ -73,7 +73,7 @@
                 <span class="{% if filtered_categories|length > 4 %}flex items-center mt-4{% endif %}">
                 Categories:           
                     {% for cat in filtered_categories %}
-                    <span class="inline-block bg-gray-600 text-white rounded-md shadow-md px-2 py-1 m-1">{{ cat }}</span>
+                    <span class="inline-block bg-gray-600 text-white text-sm rounded-md shadow-md px-2 py-1 m-1">{{ cat }}</span>
                     {% endfor %}  
                 </span>          
             {% endif %}
