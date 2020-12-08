@@ -9,12 +9,6 @@
         @click.away="showReportPostModal = false"
         x-cloak>
         <div class="">
-            <button
-                type="button"
-                class="absolute top-0 right-0 mt-4 mr-4"
-                @click="showReportPostModal = false">
-                <svg width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#fff" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M0 0h24v24H0z" stroke="none"/><circle cx="12" cy="12" r="9"/><path d="M10 10l4 4m0-4l-4 4"/></svg>
-            </button>
             <!-- Modal Content -->
             <div id="modal_content">
                 <h2 class="text-lg ml-4 mt-4">Report This Post</h2>
@@ -48,7 +42,17 @@
                         <input type="hidden" name="{{form.post_type.name}}" id="{{form.post_type.id_for_label}}" value="{{post_type}}">
                         <input type="hidden" name="{{form.post_id.name}}" id="{{form.post_id.id_for_label}}" value="{{post_id}}">
                         <input type="hidden" name="{{form.post_title.name}}" id="{{form.post_title.id_for_label}}" value="{{post_title}}">
-                        {% include 'components/submit_btn.html' with value='Report Post' class="btn btn-block btn-md btn--form-submit" %}
+
+                        <div class="flex flex-col sm:flex-row mt-4">
+                            {% include 'components/submit_btn.html' with value='Report Post' class="btn btn-block btn-md btn--form-submit" %}
+                            
+                            <button
+                                type="button"
+                                class="btn btn-md mt-6 sm:mt-0 sm:ml-6 sm:w-6/12 bg-red-200 rounded-md shadow-md text-gray-800"
+                                @click="showReportPostModal = false">
+                                <span>Cancel</span>
+                            </button>
+                        </div>
                     </form>
                 </div>
             </div>
