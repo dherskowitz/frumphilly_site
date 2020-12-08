@@ -36,14 +36,9 @@
     {% if event.image %}
     <!-- Modal -->
     <div class="overflow-auto" style="background-color: rgba(0,0,0,0.5)" x-show="showEventImageModal" :class="{ 'fixed inset-0 z-50 flex items-center justify-center h-screen': showEventImageModal }">
-        <div class="bg-white shadow-2xl m-4 sm:m-8 max-w-3xl" x-show="showEventImageModal" @click.away="showEventImageModal = false">
-            <div class="relative">
-                <button type="button" class="absolute top-0 right-0 mt-4 mr-4" @click="showEventImageModal = false"><svg class="" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="#fff" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M0 0h24v24H0z" stroke="none" />
-                        <circle cx="12" cy="12" r="9" />
-                        <path d="M10 10l4 4m0-4l-4 4" /></svg></button>
-                <img id="event_image_modal_preview" class="w-full mr-2 mx-auto object-cover" src="{{ event.image.url }}" alt="Preview image for this event">
-            </div>
+        <div class="m-4 sm:m-8 max-w-3xl" x-show="showEventImageModal" @click.away="showEventImageModal = false">
+            <img id="event_image_modal_preview" class="w-full mr-2 mx-auto object-cover" src="{{ event.image.url }}" alt="Preview image for this event">
+            <button type="button" class="text-lg text-center btn btn-md mt-4 block mx-auto" @click="showEventImageModal = false" style="">Close Preview</button>
         </div>
     </div>
     {% endif %}
