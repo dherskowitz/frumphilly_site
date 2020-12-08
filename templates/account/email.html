@@ -6,9 +6,9 @@
 {% block main %}
 
 
-<div class="container my-10">
+<div class="container my-10 p-0">
     <section class="">
-        <h1 class="text-4xl text-white text-shadow mb-4">Email Addresses</h1>
+        <h1 class="text-2xl sm:text-4xl text-white text-shadow mb-4">Email Addresses</h1>
 
         {% if user.emailaddress_set.all %}
 
@@ -36,9 +36,9 @@
                 </div>
                 {% endfor %}
 
-                <div class="flex flex-row justify-between mt-10">
+                <div class="flex flex-col sm:flex-row justify-between mt-10">
                     <button class="btn btn-md" type="submit" name="action_primary">Make Primary</button>
-                    <button class="btn btn-md bg-gray-400 text-black" type="submit" name="action_send">Re-send Verification</button>
+                    <button class="btn btn-md my-3 sm:my-0 bg-gray-400 text-black" type="submit" name="action_send">Re-send Verification</button>
                     <button class="btn btn-md bg-red-600" type="submit" name="action_remove">Remove</button>
                 </div>
 
@@ -56,7 +56,7 @@
         <form method="post" action="{% url 'account_email' %}" class="add_email form">
             <h2 class="">Add Email Address</h2>
             {% csrf_token %}
-            <div class="form-field">
+            <div class="form-field m-0">
                 <label class="form-field__label" for="{{form.email.name}}">{{ form.email.label }}</label>
                 {{ form.email }}
             </div>
