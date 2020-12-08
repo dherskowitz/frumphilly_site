@@ -1,6 +1,6 @@
 {% load socialaccount %}
 
-<div class="flex justify-between mt-4 py-6 lg:py-0">
-    <a class="btn bg-google py-4 w-1/2 m-1 text-center" href="{% provider_login_url "google" %}"> Google Sign In</a>
-    <a class="btn bg-facebook py-4 w-1/2 m-1 text-center" href="{% provider_login_url "facebook" method="oauth2"%}">Facebook Sign In</a>
+<div class="flex flex-col sm:flex-row justify-between">
+    <a class="btn bg-google py-4 sm:w-1/2 m-1 text-center" href="{% provider_login_url "google" %}"> Google Sign In</a>
+    <a class="btn bg-facebook py-4 sm:w-1/2 m-1 text-center" href="{% provider_login_url "facebook" method="oauth2"%}">Facebook Sign In</a>
 </div>

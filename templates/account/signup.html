@@ -5,39 +5,42 @@
 {% block meta_description %}Create an account on Frum Philly{% endblock meta_description %}
 
 {% block main %}
-<section class="container my-6 lg:my-0 mx-auto flex flex-col justify-center items-center lg:h-cust-screen">
+<section class="container p-0 my-6 lg:my-0 mx-auto flex flex-col justify-center items-center lg:h-cust-screen">
     <div class="bg-white rounded-md shadow-md flex lg:w-full w-11/12 flex-col lg:flex-row p-3 md:p-6">
         <section class="lg:w-1/2 h-64 lg:h-auto mb-6 lg:mb-0 hidden md:flex items-center justify-center object-cover" style="background-image: url({% webpack_static 'img/illustrations/signup.svg' %});background-size:contain;background-repeat:no-repeat;background-position:center;">
             <h2 class="text-6xl font-bold text-white text-shadow text-center">Create Account</h2>
         </section>
         <section class="lg:w-1/2">
-            <section class="m-6">
-                <h2 class="relative text-center border-t-2 border-black flex items-center justify-center">
-                    <span class="-top-1 absolute text-lg font-semibold bg-white">Sign up with Google or Facebook</span>
-                </h2>
+            <section class="lg:my-6 lg:mx-3">
                 {% include 'components/social-signin.html' %}
             </section>
 
-            <section class="m-6 mb-0">
-                <h2 class="relative text-center border-t-2 border-black flex items-center justify-center mb-6">
+            <section class="lg:ml-6">
+                <h2 class="relative text-base sm:text-lg font-semibold text-gray-600 text-center border-t-2 border-gray-800 flex items-center justify-center max-w-md mx-auto my-12">
                     <span class="-top-1 absolute text-lg font-semibold bg-white">Sign up with Email</span>
                 </h2>
                 {% include 'components/errors.html' %}
 
-                <form method="post" id="signup-form" class="form">
+                <form method="post" id="signup-form" class="form p-0">
                     {% csrf_token %}
-                    {% for field in form %}
-                    <div class="form-field">
-                        <label class="form-field__label" for="{{field.id_for_label}}">{{ field.label }}</label>
-                        {{ field }}
-
-                        {% if field.name in helptext_fields %}
-                        <div class="form-field__help-text">{{ field.help_text }}</div>
-                        {% endif %}
+                    <div class="form-field m-0">
+                        <label class="form-field__label" for="{{field.id_for_label}}">{{ form.email.label }}</label>
+                        {{ form.email }}
                     </div>
-                    {% endfor %}
+
+                    <div class="form-field m-0 my-4">
+                        <label class="form-field__label" for="{{field.id_for_label}}">{{ form.password1.label }}</label>
+                        {{ form.password1 }}
+                    </div>
+
+                    <div class="form-field m-0 my-4">
+                        <label class="form-field__label" for="{{field.id_for_label}}">{{ form.password2.label }}</label>
+                        {{ form.password2 }}
+                    </div>
+
                     {% include 'components/submit_btn.html' with value='Sign Up' class="btn btn-lg btn--form-submit btn-block" %}
-                    <p class="text-center mt-6 font-bold underline"><a href="{% url 'account_login' %}">I already have an account!</a></p>
+
+                    <p class="text-center text-sm text-gray-700 mt-6 font-bold underline"><a href="{% url 'account_login' %}">I already have an account!</a></p>
                 </form>
             </section>
         </section>

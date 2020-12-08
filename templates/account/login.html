@@ -6,55 +6,48 @@
 {% block meta_description %}Sign In to Frum Philly{% endblock meta_description %}
 
 {% block main %}
-<section class="container my-6 lg:my-0 mx-auto flex flex-col justify-center items-center lg:h-cust-screen">
-    <div class="bg-white rounded-md shadow-md flex lg:w-full w-11/12 flex-col lg:flex-row p-3 md:p-6">
+<section class="container p-0 my-6 mx-auto flex flex-col justify-center items-center lg:h-cust-screen">
+    <div class="bg-white rounded-md shadow-md flex w-full flex-col lg:flex-row">
 
-        <section class="lg:w-1/2 h-64 lg:h-auto mb-6 lg:mb-0 hidden md:flex items-center justify-center object-cover" style="background-image: url({% webpack_static 'img/illustrations/authentication.svg' %});background-size:contain;background-repeat:no-repeat;background-position:center;">
+        <section class="lg:w-1/2 h-64 lg:h-auto my-6 lg:mb-0 hidden md:flex items-center justify-center object-cover" style="background-image: url({% webpack_static 'img/illustrations/authentication.svg' %});background-size:contain;background-repeat:no-repeat;background-position:center;">
             <h2 class="text-6xl font-bold text-white text-shadow">Sign In</h2>
         </section>
 
-        <section class="lg:w-1/2">
-            <div class="m-6 mb-10">
-                <h2 class="relative text-center border-t-2 border-black flex items-center justify-center z-0">
-                    <span class="-top-1 absolute text-lg font-semibold bg-white">Sign in with Google or Facebook</span>
-                </h2>
+        <section class="lg:w-1/2 my-4 lg:ml-6">
+            <div class="lg:my-6 lg:mx-3">
                 {% include 'components/social-signin.html' %}
             </div>
 
-            <div class="m-6 mb-0">
-                <h2 class="relative text-center border-t-2 border-black flex items-center justify-center my-6">
-                    <span class="-top-1 absolute text-lg font-semibold bg-white">Sign in with Email</span>
+            <div class="my-6 mx-3 mb-0">
+                <h2 class="relative text-base sm:text-lg font-semibold text-gray-600 text-center my-10 border border-gray-800 max-w-md mx-auto">
+                    <span class="absolute bg-white" style="top:-0.9rem;left: 50%;transform: translateX(-50%);">or</span>
                 </h2>
                 {% include 'components/errors.html' %}
 
-                <form class="form" method="post" id="login-form">
+                <form class="p-0 form" method="post" id="login-form">
                     {% csrf_token %}
-
-                    {% for field in form %}
-                    {% if field.name != "remember" %}
-                    <div class="form-field">
-                        <label class="form-field__label" for="{{field.id_for_label}}">{{ field.label }}</label>
-                        {{ field }}
-                        {% if field.name == "password" %}
-                        <div class="flex flex-row justify-between">
-                            <span class="flex">
-                                <label class="mr-2" for="{{form.remember.id_for_label }}">{{form.remember.label}}</label>
-                                {{form.remember}}
-                            </span>
-                            <a href="{% url 'account_reset_password' %}" class="text-right text-sm text-red-400 underline">Forgot Password</a>
-                        </div>
-                        {% endif %}
-
-                        {% if field.name in helptext_fields %}
-                        <div class="form-field__help-text">{{ field.help_text }}</div>
-                        {% endif %}
+                    <div class="form-field m-0">
+                        <label class="form-field__label" for="{{field.id_for_label}}">{{ form.login.label }}</label>
+                        {{ form.login }}
                     </div>
-                    {% endif %}
-                    {% endfor %}
 
-                    {% include 'components/submit_btn.html' with value='Sign In' class="btn btn-lg btn--form-submit btn-block" %}
+                    <div class="form-field m-0 my-4">
+                        <label class="form-field__label" for="{{field.id_for_label}}">{{ form.password.label }}</label>
+                        {{ form.password }}
+                    </div>
 
-                    <p class="text-center mt-6 font-bold underline"><a href="{% url 'account_signup' %}">I don't have an account yet!</a></p>
+                    <div class="flex justify-between">
+                        <div class=">
+                            <label class="form-field__label" for="{{field.id_for_label}}">{{ form.remember.label }}</label>
+                            {{ form.remember }}
+                        </div>
+    
+                        <a href="{% url 'account_reset_password' %}" class="text-right text-sm text-red-400 underline">Forgot Password</a>
+                    </div>
+
+                    {% include 'components/submit_btn.html' with value='Sign In' class="btn btn-lg btn--form-submit btn-block mt-6" %}
+
+                    <p class="text-center text-sm text-gray-700 mt-6 font-bold underline"><a href="{% url 'account_signup' %}">I don't have an account yet!</a></p>
                 </form>
             </div>
         </section>
