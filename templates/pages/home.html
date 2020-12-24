@@ -30,6 +30,9 @@
             {% include 'listings/_list.html' %}
             {% endfor %}
         </div>
+        <div class="flex justify-center mt-12">
+            <a href="{% url 'listings_all' %}" class="btn btn-md hover:bg-purple-800 transition-all duration-150 ease-in text-xl font-semibold px-8">See More Listings</a>
+        </div>
     </section>
     {% include 'components/listings_cta.html' %}
 
@@ -47,6 +50,9 @@
             {% for event in upcoming_events %}
             {% include 'events/_list.html' %}
             {% endfor %}
+        </div>
+        <div class="flex justify-center mt-12">
+            <a href="{% url 'events_all' %}" class="btn btn-md hover:bg-purple-800 transition-all duration-150 ease-in text-xl font-semibold px-8">See More Events</a>
         </div>
     </section>
 

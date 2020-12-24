@@ -3,32 +3,29 @@ from django.contrib import messages
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.contrib.auth.decorators import login_required
 from decouple import config
+from pages.forms import ReportPostForm
 from .models import Listing, CategoryGroup, Category
 from .forms import ListingForm
-from .filters import ListingsFilter
-from pages.forms import ReportPostForm
 
 
-def listings(request, slug):
-    listing_group = CategoryGroup.objects.filter(slug=slug).get()
-
-    listings = Listing.get_listings_by_group(slug)
+def listings_all(request, category=None):
+    listings = Listing.objects.all()
     cities = listings.values_list('city', flat=True).distinct().order_by('city')
-    categories = Category.objects.filter(category_group=listing_group).order_by('title')
-
-    # Set category group in request for use in forms
-    if not request.GET._mutable:
-        request.GET._mutable = True
-    request.GET['cat_group'] = slug
-    request.GET._mutable = False
-
+    # categories = Category.objects.all(category_group=listing_group).order_by('title')
+    categories = CategoryGroup.objects.all().order_by('title')
+    subcategories = None
     filtered_cities = request.GET.getlist('location')
     if filtered_cities:
         listings = listings.filter(city__in=filtered_cities)
 
     filtered_categories = request.GET.getlist('category')
     if filtered_categories:
-        listings = listings.filter(categories__title__in=filtered_categories)
+        subcategories = [x.title for x in Category.objects.filter(category_group__title=filtered_categories[0]).order_by('title')]
+        listings = listings.filter(categories__title__in=subcategories)
+
+    filtered_subcategories = request.GET.getlist('subcategory')
+    if filtered_subcategories:
+        listings = listings.filter(categories__title__in=filtered_subcategories)
 
     page = request.GET.get("page", 1)
     paginator = Paginator(listings, 10)
@@ -43,12 +40,56 @@ def listings(request, slug):
         "listings": listings,
         "cities": cities,
         "categories": categories,
-        "category_group": listing_group.title,
+        "subcategories": subcategories,
+        "category_group": "Listings",
         "filtered_cities": filtered_cities,
         "filtered_categories": filtered_categories,
+        "filtered_subcategories": filtered_subcategories,
     }
 
     return render(request, "listings/index.html", context)
+
+
+# def listings(request, slug):
+#     listing_group = CategoryGroup.objects.filter(slug=slug).get()
+
+#     listings = Listing.get_listings_by_group(slug)
+#     cities = listings.values_list('city', flat=True).distinct().order_by('city')
+#     categories = Category.objects.filter(category_group=listing_group).order_by('title')
+
+#     # Set category group in request for use in forms
+#     if not request.GET._mutable:
+#         request.GET._mutable = True
+#     request.GET['cat_group'] = slug
+#     request.GET._mutable = False
+
+#     filtered_cities = request.GET.getlist('location')
+#     if filtered_cities:
+#         listings = listings.filter(city__in=filtered_cities)
+
+#     filtered_categories = request.GET.getlist('category')
+#     if filtered_categories:
+#         listings = listings.filter(categories__title__in=filtered_categories)
+
+#     page = request.GET.get("page", 1)
+#     paginator = Paginator(listings, 10)
+#     try:
+#         listings = paginator.page(page)
+#     except PageNotAnInteger:
+#         listings = paginator.page(1)
+#     except EmptyPage:
+#         listings = paginator.page(paginator.num_pages)
+
+#     context = {
+#         "listings": listings,
+#         "cities": cities,
+#         "categories": categories,
+#         "category_group": listing_group.title,
+#         "filtered_cities": filtered_cities,
+#         "filtered_categories": filtered_categories,
+#     }
+
+#     return render(request, "listings/index.html", context)
 
 
 def listing_single(request, slug, pk):
