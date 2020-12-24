@@ -21,7 +21,7 @@ def listings_all(request, category=None):
     filtered_categories = request.GET.getlist('category')
     if filtered_categories:
         subcategories = [x.title for x in Category.objects.filter(category_group__title=filtered_categories[0]).order_by('title')]
-        listings = listings.filter(categories__title__in=subcategories)
+        listings = listings.distinct().filter(categories__title__in=subcategories)
 
     filtered_subcategories = request.GET.getlist('subcategory')
     if filtered_subcategories:
