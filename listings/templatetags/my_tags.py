@@ -16,3 +16,8 @@ def param_replace(context, **kwargs):
 @register.filter
 def strip_dashes(value):
     return value if value is None else value.replace('-', '')
+
+
+@register.filter
+def categorize(value):
+    return value if value is None else value.replace('-', '+%26+')
