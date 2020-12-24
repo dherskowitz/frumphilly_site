@@ -20,4 +20,4 @@ def strip_dashes(value):
 
 @register.filter
 def categorize(value):
-    return value if value is None else value.replace('-', '+%26+')
+    return value if value is None else value.replace(' & ', '+%26+')

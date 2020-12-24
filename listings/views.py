@@ -97,7 +97,7 @@ def listing_single(request, slug, pk):
     if listing.status == 'draft' and request.user != listing.created_by:
         return render(request, "private.html")
     report_post_form = ReportPostForm()
-    categories = [{"title": cat.title, "group_slug": cat.category_group.slug} for cat in listing.categories.all()]
+    categories = [{"title": cat.title, "category_group": cat.category_group.title} for cat in listing.categories.all()]
     context = {"listing": listing, "categories": categories, "report_post_form": report_post_form}
     return render(request, "listings/single.html", context)
 
