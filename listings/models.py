@@ -9,7 +9,7 @@ from app.storage_backends import S3ListingsMediaStorage, S3SiteImagesStorage
 class CategoryGroup(models.Model):
     title = models.CharField(default="", blank=False, max_length=50)
     description = models.TextField(default="", blank=True)
-    slug = models.SlugField(default="", blank=True)
+    slug = models.SlugField(default="", blank=True, max_length=255)
     image = models.ImageField(
         storage=S3SiteImagesStorage(), default=None, null=True, blank=True,
     )
@@ -39,7 +39,7 @@ class CategoryGroup(models.Model):
 
 class Category(models.Model):
     title = models.CharField(default="", blank=False, max_length=50)
-    slug = models.SlugField(default="", blank=True)
+    slug = models.SlugField(default="", blank=True, max_length=255)
     category_group = models.ForeignKey(
         CategoryGroup, on_delete=models.SET_NULL, null=True
     )
@@ -213,7 +213,7 @@ class Listing(models.Model):
     accept_cc = models.BooleanField(default=False)
     delivers = models.BooleanField(default=False)
     wheelchair_access = models.BooleanField(default=False)
-    slug = models.SlugField(default="", blank=True)
+    slug = models.SlugField(default="", blank=True, max_length=255)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     categories = models.ManyToManyField(Category)

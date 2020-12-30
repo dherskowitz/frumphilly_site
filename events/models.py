@@ -43,7 +43,7 @@ class Event(models.Model):
         max_length=50, choices=STATUS_CHOICES, blank=False, default="published",
         help_text="Only Published events are publicly visible.",
     )
-    slug = models.SlugField(default="",)
+    slug = models.SlugField(default="", max_length=255)
     host = models.CharField(
         default="",
         max_length=250,
