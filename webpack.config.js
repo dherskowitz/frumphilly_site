@@ -50,51 +50,22 @@ module.exports = {
                     {
                         loader: "postcss-loader",
                         options: {
-                            ident: "postcss",
                             sourceMap: true,
-                            plugins: [
-                                require("tailwindcss"),
-                                // require("autoprefixer"),
-                            ],
+                            postcssOptions: {
+                                plugins: [
+                                    require("tailwindcss"),
+                                    require("autoprefixer"),
+                                ]
+                            }
                         },
-                    },
-                    // {
-                    //     loader: "sass-loader",
-                    //     options: {
-                    //         sourceMap: true,
-                    //     },
-                    // },
+                    }
                 ],
             },
             {
                 test: /\.js$/,
                 use: ["source-map-loader"],
                 enforce: "pre",
-            },
-            // {
-            //     test: /\.(gif|png|jpe?g|svg)$/i,
-            //     use: [
-            //         "file-loader",
-            //         {
-            //             loader: "image-webpack-loader",
-            //             options: {
-            //                 mozjpeg: {
-            //                     progressive: true,
-            //                     quality: 65,
-            //                 },
-            //                 optipng: {
-            //                     enabled: false,
-            //                 },
-            //                 pngquant: {
-            //                     quality: "65-90",
-            //                     speed: 4,
-            //                 },
-            //                 bypassOnDebug: true, // webpack@1.x
-            //                 disable: true, // webpack@2.x and newer
-            //             },
-            //         },
-            //     ],
-            // },
+            }
         ],
     },
     plugins: [
@@ -105,21 +76,6 @@ module.exports = {
             filename: "[name].[hash].css",
             chunkFilename: "[id].[hash].css",
             ignoreOrder: false,
-        }),
-        // new PurgecssPlugin({
-        //     content: ["./templates/**/*.html"],
-        //     defaultExtractor: (content) =>
-        //         content.match(/[\w-/:]+(?<!:)/g) || [],
-        // }),
-        // new CopyPlugin([{
-        //     from: './static/src/libs/**/*',
-        //     to: './libs/[name].[ext]'
-        // }, ]),
-        // new BrowserSyncPlugin({
-        //     host: "localhost",
-        //     port: 3000,
-        //     open: false,
-        //     proxy: "http://localhost:8001/",
-        // }),
+        })
     ],
 };
