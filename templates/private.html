@@ -2,8 +2,8 @@
 {% load webpack_static from webpack_loader %}
 
 {% block main %}
-<div class="container bg-white sm:rounded-md shadow-md my-10 p-6">
-    <p class="mb-10 text-center text-2xl text-gray-800 uppercase z-10">This page is not currently public. <br>Please again later.</p>
+<div class="container p-6 my-10 bg-white shadow-md sm:rounded-md">
+    <p class="z-10 mb-10 text-2xl text-center text-gray-800 uppercase">This page is not currently public. <br>Please try again later.</p>
     <img class="block mx-auto opacity-75" src="{% webpack_static 'img/illustrations/private.svg' %}" alt="This page is not currently public." style="width: 700px; max-width:100%;">
 </div>
 {% endblock main %}
