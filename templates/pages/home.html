@@ -7,77 +7,77 @@
 {% block meta_description %}{% endblock meta_description %}
 
 {% block pagebanner %}
-<section class="curved-bottom h-half-screen" style="background:url({% webpack_static 'img/images/philly-skyline.jpg' %}) no-repeat center center /cover">
-    <div class="container mx-auto h-full flex flex-col justify-center items-center md:items-start top-0 px-2">
-        <h1 class="text-6xl text-white font-bold text-shadow">Frum Philly</h1>
-        <h2 class="text-2xl text-white font-bold text-shadow">Go beyond your "daled amos"</h2>
+<section class="h-half-screen" style="background:url({% webpack_static 'img/images/philly-skyline.jpg' %}) no-repeat center center /cover">
+    <div class="container top-0 flex flex-col items-center justify-center h-full px-2 mx-auto md:items-start">
+        <h1 class="text-6xl font-bold text-white text-shadow">Frum Philly</h1>
+        <h2 class="text-2xl font-bold text-white text-shadow">Go beyond your "daled amos"</h2>
 
         {% if not user.is_authenticated %}
-        <a class="btn btn-lg uppercase mt-4" href="/accounts/signup">Create your account</a> {% endif %}
+        <a class="mt-4 uppercase btn btn-lg" href="/accounts/signup">Create your account</a> {% endif %}
     </div>
 </section>
 {% endblock pagebanner %}
 
 {% block main %}
 <div class="container mx-auto">
-    <section class="my-16 mx-4 md:mx-0">
+    <section class="mx-4 my-24 md:mx-0">
         <h2 class="title section-title">
             <span class="section-title__text">featured listings</span>
         </h2>
 
-        <div class="grid gap-3 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-16">
+        <div class="grid grid-cols-1 gap-3 mt-16 md:grid-cols-2 lg:grid-cols-3">
             {% for listing in listings %}
             {% include 'listings/_list.html' %}
             {% endfor %}
         </div>
         <div class="flex justify-center mt-12">
-            <a href="{% url 'listings_all' %}" class="btn btn-md hover:bg-purple-800 transition-all duration-150 ease-in text-xl font-semibold px-8">See More Listings</a>
+            <a href="{% url 'listings_all' %}" class="px-8 text-xl font-semibold transition-all duration-150 ease-in btn btn-md hover:bg-purple-800">See More Listings</a>
         </div>
     </section>
     {% include 'components/listings_cta.html' %}
 
-    <section class="my-16 mx-4 md:mx-0">
+    <section class="mx-4 my-24 md:mx-0">
         <h2 class="title section-title">
             <span class="section-title__text">featured events</span>
         </h2>
         {% comment %} {% if events_in_future %}
-        <h2 class="title section-title text-center" data-text="events">upcoming events</h2>
+        <h2 class="text-center title section-title" data-text="events">upcoming events</h2>
         {% else %}
-        <h2 class="title section-title text-center" data-text="events">our events</h2>
+        <h2 class="text-center title section-title" data-text="events">our events</h2>
         {% endif %} {% endcomment %}
 
-        <div class="grid gap-3 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-16">
+        <div class="grid grid-cols-1 gap-3 mt-16 md:grid-cols-2 lg:grid-cols-3">
             {% for event in upcoming_events %}
             {% include 'events/_list.html' %}
             {% endfor %}
         </div>
         <div class="flex justify-center mt-12">
-            <a href="{% url 'events_all' %}" class="btn btn-md hover:bg-purple-800 transition-all duration-150 ease-in text-xl font-semibold px-8">See More Events</a>
+            <a href="{% url 'events_all' %}" class="px-8 text-xl font-semibold transition-all duration-150 ease-in btn btn-md hover:bg-purple-800">See More Events</a>
         </div>
     </section>
 
     {% include 'components/events_cta.html' with value='flex-col md:flex-row-reverse' %}
 
-    <section class="my-16 mx-4 md:mx-0">
-        <h2 class="title section-title text-center"><span class="section-title__text">coming soon</span></h2>
-        <div class="my-16 grid gap-3 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-            <div class="bg-white rounded-md shadow-md p-4">
+    <section class="mx-4 my-24 md:mx-0">
+        <h2 class="text-center title section-title"><span class="section-title__text">coming soon</span></h2>
+        <div class="grid grid-cols-1 gap-3 my-16 md:grid-cols-2 lg:grid-cols-3">
+            <div class="p-4 bg-white rounded-md shadow-md">
                 <h3 class="text-3xl">Jobs & Resumes</h3>
                 <p>Looking to hire? Looking to get hired? Our jobs and resumes board will help you find the right opportunites.</p>
             </div>
-            <div class="bg-white rounded-md shadow-md p-4">
+            <div class="p-4 bg-white rounded-md shadow-md">
                 <h3 class="text-3xl">Real Estate Listings</h3>
                 <p>Whether you are a buyer or seller, have a place for rent or are looking to rent, increase visibility with a post on Frum Philly.</p>
             </div>
-            <div class="bg-white rounded-md shadow-md p-4">
+            <div class="p-4 bg-white rounded-md shadow-md">
                 <h3 class="text-3xl">Community Board</h3>
                 <p>Frum Philly's community board will be a place to buy and sell, to ask for and give advice, to list and find a local gemach and much more.</p>
             </div>
         </div>
-        <div class="bg-gray-600 p-4 text-center text-gray-100">
+        <div class="p-4 text-center text-gray-100 bg-gray-600">
             <h3 class="text-5xl text-shadow">Suggest Something!</h3>
-            <p class="text-xl mt-4">Don't see the features you're looking for? Frum Philly wants to hear your suggestions.</p>
-            <a href="{% url 'contact' %}" class="btn btn-md mt-4">Make a Suggestion</a>
+            <p class="mt-4 text-xl">Don't see the features you're looking for? Frum Philly wants to hear your suggestions.</p>
+            <a href="{% url 'contact' %}" class="mt-4 btn btn-md">Make a Suggestion</a>
         </div>
     </section>
 </div>
