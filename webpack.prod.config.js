@@ -45,19 +45,20 @@ module.exports = {
                     {
                         loader: "postcss-loader",
                         options: {
-                            ident: "postcss",
-                            plugins: [
-                                require("tailwindcss"),
-                                require("autoprefixer"),
-                                purgecss({
-                                    content: ["./templates/**/*.html"],
-                                    whitelist: ['trix-editor', 'blockquote', 'textarea'],
-                                    defaultExtractor: (content) => content.match(/[\w-/:]+(?<!:)/g) || [],
-                                }),
-                                cssnano({
-                                    preset: "default",
-                                }),
-                            ],
+                            postcssOptions: {
+                                plugins: [
+                                    require("tailwindcss"),
+                                    require("autoprefixer"),
+                                    purgecss({
+                                        content: ["./templates/**/*.html"],
+                                        whitelist: ['trix-editor', 'blockquote', 'textarea'],
+                                        defaultExtractor: (content) => content.match(/[\w-/:]+(?<!:)/g) || [],
+                                    }),
+                                    cssnano({
+                                        preset: "default",
+                                    }),
+                                ],
+                            }
                         },
                     },
                 ],
