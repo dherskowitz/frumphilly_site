@@ -11,24 +11,24 @@
     </div>
     <section class="w-full my-6 md:rounded-md md:shadow-md">
         {% for event in events %}
-        <div class="grid grid-cols-1 gap-4 px-4 pt-4 pb-6 m-0 mb-6 bg-white border rounded-md shadow-md md:items-start sm:grid-cols-3 sm:gap-8 lg:gap-0 lg:grid-cols-5 sm:pt-8 md:mb-0 md:shadow-none md:rounded-none md:even:bg-teal-200">
+        <div class="grid grid-cols-1 gap-4 px-4 pt-4 pb-6 m-0 mb-6 bg-white border rounded-md shadow-md md:items-start sm:grid-cols-3 sm:gap-8 lg:gap-0 lg:grid-cols-5 sm:pt-8 md:mb-0 md:shadow-none md:rounded-none md:even:bg-gray-200">
             <span class="relative pt-2 text-center lg:text-left">
-                <div class="flex justify-center text-sm font-bold uppercase lg:absolute -top-14">Event Name</div>
+                <div class="flex justify-center text-sm font-bold uppercase lg:absolute -top-3">Event Name</div>
                 <a href="{% url 'events_single' event.slug event.id %}" class="underline hover:text-pink-400">{{event.name}}</a>
             </span>
             <span class="relative pt-2 text-center lg:text-left">
-                <div class="flex justify-center text-sm font-bold uppercase lg:absolute -top-14">Posted</div>
+                <div class="flex justify-center text-sm font-bold uppercase lg:absolute -top-3">Posted</div>
                 {{event.created_at|naturalday}}
             </span>
             <span class="relative pt-2 text-center lg:text-left">
-                <div class="flex justify-center text-sm font-bold uppercase lg:absolute -top-14">Status</div>
+                <div class="flex justify-center text-sm font-bold uppercase lg:absolute -top-3">Status</div>
                 {{event.status}}
             </span>
             <span class="pt-2 my-6 text-center lg:text-left sm:my-0">
-                <a class="px-4 py-2 text-white bg-purple-800 rounded-md shadow-md" href="{% url 'events_edit' event.slug event.id %}">Edit Event</a>
+                <a class="px-4 py-2 text-white bg-purple-700 rounded-md shadow-md hover:bg-purple-900 hover:shadow-lg" href="{% url 'events_edit' event.slug event.id %}">Edit Event</a>
             </span>
             <span class="pt-2 text-center lg:text-left">
-                <a class="px-4 py-2 text-white bg-orange-500 rounded-md shadow-md" href="{% url 'events_delete' event.slug event.id %}">Delete Event</a>
+                <a class="px-4 py-2 text-white bg-red-500 rounded-md shadow-md hover:bg-red-700 hover:shadow-lg" href="{% url 'events_delete' event.slug event.id %}">Delete Event</a>
             </span>
         </div>
         {% empty %}

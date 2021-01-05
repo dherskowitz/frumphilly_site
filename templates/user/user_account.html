@@ -14,37 +14,37 @@
 {% block main %}
 
 
-<div class=" my-10">
+<div class="my-10 ">
 
     <div class="flex bg-white rounded-md shadow-md">
-        <div class="w-1/2 text-center py-8">
+        <div class="w-1/2 py-8 text-center">
             <div class="border-r">
-                <div class="text-grey-darker mb-2">
+                <div class="mb-2 text-grey-darker">
                     <span class="text-5xl">{{ events_count }}</span>
                 </div>
-                <div class="text-sm uppercase text-grey tracking-wide">
+                <div class="text-sm tracking-wide uppercase text-grey">
                     Your Events
                 </div>
             </div>
         </div>
-        <div class="w-1/2 text-center py-8">
+        <div class="w-1/2 py-8 text-center">
             <div> {% comment %} class="border-r" {% endcomment %}
-                <div class="text-grey-darker mb-2">
+                <div class="mb-2 text-grey-darker">
                     <span class="text-5xl">{{ listings_count }}</span>
                 </div>
-                <div class="text-sm uppercase text-grey tracking-wide">
+                <div class="text-sm tracking-wide uppercase text-grey">
                     Your Listings
                 </div>
             </div>
         </div>
-        {% comment %} <div class="w-1/3 text-center py-8">
+        {% comment %} <div class="w-1/3 py-8 text-center">
             <div>
-                <div class="text-grey-darker mb-2">
-                    <span class="text-3xl align-top"><span class="text-green align-top">+</span></span>
+                <div class="mb-2 text-grey-darker">
+                    <span class="text-3xl align-top"><span class="align-top text-green">+</span></span>
                     <span class="text-5xl">154.47</span>
                     <span class="text-3xl align-top">%</span>
                 </div>
-                <div class="text-sm uppercase text-grey tracking-wide">
+                <div class="text-sm tracking-wide uppercase text-grey">
                     Since last month (%)
                 </div>
             </div>
@@ -52,42 +52,42 @@
     </div>
 
     <div class="my-10">
-        <h2 class="text-4xl mx-2 text-white text-shadow">Listings</h2>
+        <h2 class="mx-2 my-4 text-4xl text-white text-shadow">Listings</h2>
         <div class="flex flex-col sm:flex-row">
-            <a href="{% url 'user_listings' %}" class="group bg-white hover:bg-gray-700 rounded-md shadow-md sm:w-1/2 mx-2 p-4 transition-all duration-200 ease-in">
-                <p class="text-2xl group-hover:text-gray-200 text-center">Manage My Listings</p>
+            <a href="{% url 'user_listings' %}" class="p-4 mx-2 transition-all duration-200 ease-in bg-white rounded-md shadow-md group hover:bg-gray-700 sm:w-1/2">
+                <p class="text-2xl text-center group-hover:text-gray-200">Manage My Listings</p>
             </a>
-            <a href="{% url 'listings_select' %}" class="group bg-white hover:bg-gray-700 rounded-md shadow-md sm:w-1/2 mx-2 mt-4 sm:mt-0 p-4 transition-all duration-200 ease-in">
-                <p class="text-2xl group-hover:text-gray-200 text-center">Create New Listings</p>
+            <a href="{% url 'listings_select' %}" class="p-4 mx-2 mt-4 transition-all duration-200 ease-in bg-white rounded-md shadow-md group hover:bg-gray-700 sm:w-1/2 sm:mt-0">
+                <p class="text-2xl text-center group-hover:text-gray-200">Create New Listings</p>
             </a>
         </div>
     </div>
 
 
     <div class="my-10">
-        <h2 class="text-4xl mx-2 text-white text-shadow">Events</h2>
+        <h2 class="mx-2 my-4 text-4xl text-white text-shadow">Events</h2>
         <div class="flex flex-col sm:flex-row">
-            <a href="{% url 'user_events' %}" class="group bg-white hover:bg-gray-700 rounded-md shadow-md sm:w-1/2 mx-2 p-4 transition-all duration-200 ease-in">
-                <p class="text-2xl group-hover:text-gray-200 text-center">Manage My Events</p>
+            <a href="{% url 'user_events' %}" class="p-4 mx-2 transition-all duration-200 ease-in bg-white rounded-md shadow-md group hover:bg-gray-700 sm:w-1/2">
+                <p class="text-2xl text-center group-hover:text-gray-200">Manage My Events</p>
             </a>
-            <a href="{% url 'events_create' %}" class="group bg-white hover:bg-gray-700 rounded-md shadow-md sm:w-1/2 mx-2 mt-4 sm:mt-0 p-4 transition-all duration-200 ease-in">
-                <p class="text-2xl group-hover:text-gray-200 text-center">Create New Event</p>
+            <a href="{% url 'events_create' %}" class="p-4 mx-2 mt-4 transition-all duration-200 ease-in bg-white rounded-md shadow-md group hover:bg-gray-700 sm:w-1/2 sm:mt-0">
+                <p class="text-2xl text-center group-hover:text-gray-200">Create New Event</p>
             </a>
         </div>
     </div>
 
     <div class="my-10">
-        <h2 class="text-4xl mx-2 text-white text-shadow">Account</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
-            <a href="{% url 'user_settings' %}" class="group bg-white hover:bg-gray-700 rounded-md shadow-md p-4 transition-all duration-200 ease-in text-center">
+        <h2 class="mx-2 my-4 text-4xl text-white text-shadow">Account</h2>
+        <div class="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
+            <a href="{% url 'user_settings' %}" class="p-4 text-center transition-all duration-200 ease-in bg-white rounded-md shadow-md group hover:bg-gray-700">
                 <p class="text-2xl group-hover:text-gray-200">Update Personal Info</p>
                 <p class="group-hover:text-gray-200">Set or update your first and last names and set an account picture.</p>
             </a>
-            <a href="{% url 'account_change_password' %}" class="group bg-white hover:bg-gray-700 rounded-md shadow-md p-4 transition-all duration-200 ease-in text-center">
+            <a href="{% url 'account_change_password' %}" class="p-4 text-center transition-all duration-200 ease-in bg-white rounded-md shadow-md group hover:bg-gray-700">
                 <p class="text-2xl group-hover:text-gray-200">Update Password</p>
                 <p class="group-hover:text-gray-200">Manage your password and change it here.</p>
             </a>
-            <a href="{% url 'account_email' %}" class="group bg-white hover:bg-gray-700 rounded-md shadow-md p-4 transition-all duration-200 ease-in text-center">
+            <a href="{% url 'account_email' %}" class="p-4 text-center transition-all duration-200 ease-in bg-white rounded-md shadow-md group hover:bg-gray-700">
                 <p class="text-2xl group-hover:text-gray-200">Update Email</p>
                 <p class="group-hover:text-gray-200">Add, remove, or change the email addresses associated with your account.</p>
             </a>
