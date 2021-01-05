@@ -7,7 +7,7 @@
         <div class="bar2"></div>
         <div class="bar3"></div>
     </div>
-    <div x-show="showMobileMenu" @click.away="showMobileMenu = false" class="fixed h-full overflow-y-auto left-0 top-avoid-header w-full z-50 bg-bgGrey p-4 shadow-md pointer-events-none" :class="{ 'block pointer-events-auto' : showMobileMenu}" x-transition:enter="transition ease-in duration-100" x-transition:enter-start="opacity-0 transform translate-y-4" x-transition:enter-end="opacity-100 transform translate-y-0" x-transition:leave="transition ease-in duration-100" x-transition:leave-start="opacity-100 transform translate-y-0" x-transition:leave-end="opacity-0 transform translate-y-4">
+    <div x-show="showMobileMenu" @click.away="showMobileMenu = false" class="fixed left-0 z-50 w-full h-full p-4 overflow-y-auto shadow-md pointer-events-none top-16 bg-bgGrey" :class="{ 'block pointer-events-auto' : showMobileMenu}" x-transition:enter="transition ease-in duration-100" x-transition:enter-start="opacity-0 transform translate-y-4" x-transition:enter-end="opacity-100 transform translate-y-0" x-transition:leave="transition ease-in duration-100" x-transition:leave-start="opacity-100 transform translate-y-0" x-transition:leave-end="opacity-0 transform translate-y-4">
         {% with url_name=request.resolver_match.url_name  %}
         <a class=" mobilelink{% if url_name == 'home' %} active{% endif %}" href="{% url 'home' %}" href="{% url 'home' %}">Home</a>
 
@@ -17,13 +17,13 @@
 
         {% if user.is_authenticated %}
         <hr class="border-blue-900">
-        <div class="mx-4 my-4 flex items-center">
+        <div class="flex items-center mx-4 my-4">
             {% if user.avatar %}
-            <img class="h-10 w-10 rounded-full object-cover" src="{{ user.avatar.url }}" alt="User Avatar" width="10" height="10">
+            <img class="object-cover w-10 h-10 rounded-full" src="{{ user.avatar.url }}" alt="User Avatar" width="10" height="10">
             {% elif user.socialaccount_set.all.0.get_avatar_url %}
-            <img class="h-10 w-10 rounded-full object-cover" src="{{ user.socialaccount_set.all.0.get_avatar_url }}" alt="User Avatar" width="10" height="10">
+            <img class="object-cover w-10 h-10 rounded-full" src="{{ user.socialaccount_set.all.0.get_avatar_url }}" alt="User Avatar" width="10" height="10">
             {% else %}
-            <img class="h-10 w-10 rounded-full object-cover" src="{% webpack_static 'img/images/blank_avatar.jpg' %}" alt="User Avatar" width="10" height="10">
+            <img class="object-cover w-10 h-10 rounded-full" src="{% webpack_static 'img/images/blank_avatar.jpg' %}" alt="User Avatar" width="10" height="10">
             {% endif %}
             <span class="ml-4">
                 <p>{{ user.first_name }} {{ user.last_name }}</p>

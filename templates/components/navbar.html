@@ -28,7 +28,7 @@
                             <path d="M0 0h24v24H0z" stroke="none" />
                             <path d="M6 9l6 6 6-6" /></svg></span>
                 </button>
-                <div class="absolute right-0 flex flex-col w-40 p-2 bg-white rounded-md shadow-md top-avoid-header" x-show="showAccountMenu" @click.away="showAccountMenu = false" x-transition:enter="transition ease-out duration-100" x-transition:enter-start="opacity-0 transform scale-90" x-transition:enter-end="opacity-100 transform scale-100" x-transition:leave="transition ease-in duration-100" x-transition:leave-start="opacity-100 transform scale-100" x-transition:leave-end="opacity-0 transform scale-90">
+                <div class="absolute right-0 flex flex-col w-40 p-2 bg-white rounded-md shadow-md top-16" x-show="showAccountMenu" @click.away="showAccountMenu = false" x-transition:enter="transition ease-out duration-100" x-transition:enter-start="opacity-0 transform scale-90" x-transition:enter-end="opacity-100 transform scale-100" x-transition:leave="transition ease-in duration-100" x-transition:leave-start="opacity-100 transform scale-100" x-transition:leave-end="opacity-0 transform scale-90">
                     <a class="p-2 hover:bg-gray-200" href="{% url 'user_account' %}">My Account</a>
                     <a class="p-2 hover:bg-gray-200" href="{% url 'listings_select' %}">Create Listing</a>
                     <a class="p-2 hover:bg-gray-200" href="{% url 'events_create' %}">Create Event</a>

@@ -195,12 +195,12 @@ tr {
 }
 
 .section-title__text {
-    @apply absolute text-4xl font-bold text-white capitalize -top-2 text-shadow bg-bgGrey;
+    @apply absolute text-4xl font-bold text-white capitalize -top-5 text-shadow bg-bgGrey;
 }
 
 @media (min-width: 1024px) {
     .section-title__text {
-        @apply text-6xl -top-4;
+        @apply text-6xl -top-8;
     }
 }
 

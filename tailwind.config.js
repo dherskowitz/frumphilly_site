@@ -17,12 +17,9 @@ module.exports = {
                 50: "50vh",
                 60: "60vh",
                 100: "100vh",
-            },
-            inset: {
-                "avoid-header": "4rem",
-                "-1": "-1rem",
-                "-2": "-2rem",
-                "-4": "-3.5rem",
+                // "cust-screen": "calc(100vh - 15.25rem)",
+                "half-screen": "60vh",
+                "vh-full": "100vh",
             },
             margin: {
                 18: "4.5rem",
@@ -32,11 +29,6 @@ module.exports = {
             },
             fontSize: {
                 "4.5xl": "2.5rem",
-            },
-            height: {
-                "cust-screen": "calc(100vh - 8rem)",
-                "half-screen": "60vh",
-                "vh-full": "100vh",
             },
         },
         container: {

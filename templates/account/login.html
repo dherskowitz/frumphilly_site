@@ -6,10 +6,10 @@
 {% block meta_description %}Sign In to Frum Philly{% endblock meta_description %}
 
 {% block main %}
-<section class="container p-0 my-6 lg:my-0 mx-auto flex flex-col justify-center items-center lg:h-cust-screen">
-    <div class="bg-white rounded-md shadow-md flex lg:w-full w-11/12 flex-col lg:flex-row p-3 md:p-6">
+<section class="container flex flex-col items-center justify-center p-0 mx-auto my-10">
+    <div class="flex flex-col w-11/12 p-3 bg-white rounded-md shadow-md lg:w-full lg:flex-row md:p-6">
 
-        <section class="lg:w-1/2 h-64 lg:h-auto mb-6 lg:mb-0 hidden md:flex items-center justify-center object-cover" style="background-image: url({% webpack_static 'img/illustrations/authentication.svg' %});background-size:contain;background-repeat:no-repeat;background-position:center;">
+        <section class="items-center justify-center hidden object-cover h-64 mb-6 lg:w-1/2 lg:h-auto lg:mb-0 md:flex" style="background-image: url({% webpack_static 'img/illustrations/authentication.svg' %});background-size:contain;background-repeat:no-repeat;background-position:center;">
             <h2 class="text-6xl font-bold text-white text-shadow">Sign In</h2>
         </section>
 
@@ -19,19 +19,19 @@
             </div>
 
             <div class="lg:ml-6">
-                <h2 class="relative text-base sm:text-lg font-semibold text-gray-600 text-center my-10 border border-gray-800 max-w-md mx-auto">
+                <h2 class="relative max-w-md mx-auto my-10 text-base font-semibold text-center text-gray-600 border border-gray-800 sm:text-lg">
                     <span class="absolute bg-white" style="top:-0.9rem;left: 50%;transform: translateX(-50%);">or</span>
                 </h2>
                 {% include 'components/errors.html' %}
 
                 <form class="p-0 form" method="post" id="login-form">
                     {% csrf_token %}
-                    <div class="form-field m-0">
+                    <div class="m-0 form-field">
                         <label class="form-field__label" for="{{field.id_for_label}}">{{ form.login.label }}</label>
                         {{ form.login }}
                     </div>
 
-                    <div class="form-field m-0 my-4">
+                    <div class="m-0 my-4 form-field">
                         <label class="form-field__label" for="{{field.id_for_label}}">{{ form.password.label }}</label>
                         {{ form.password }}
                     </div>
@@ -42,12 +42,12 @@
                             {{ form.remember }}
                         </div>
     
-                        <a href="{% url 'account_reset_password' %}" class="text-right text-sm text-red-400 underline">Forgot Password</a>
+                        <a href="{% url 'account_reset_password' %}" class="text-sm text-right text-red-400 underline">Forgot Password</a>
                     </div>
 
-                    {% include 'components/submit_btn.html' with value='Sign In' class="btn btn-lg btn--form-submit btn-block mt-6" %}
+                    {% include 'components/submit_btn.html' with value='Sign In' class="mt-6 btn btn-lg btn--form-submit btn-block" %}
 
-                    <p class="text-center text-sm text-gray-700 mt-6 font-bold underline"><a href="{% url 'account_signup' %}">I don't have an account yet!</a></p>
+                    <p class="mt-6 text-sm font-bold text-center text-gray-700 underline"><a href="{% url 'account_signup' %}">I don't have an account yet!</a></p>
                 </form>
             </div>
         </section>

@@ -5,36 +5,36 @@
 
 {% block main %}
 <div class="my-10">
-    <div class="flex flex-row justify-between align-center mb-10">
-        <div class="text-3xl sm:text-4xl text-white text-shadow">My Events</div>
-        <a class="btn btn-md flex items-center" href="{% url 'events_create' %}">Create Event</a>
+    <div class="flex flex-row justify-between mb-10 align-center">
+        <div class="text-3xl text-white sm:text-4xl text-shadow">My Events</div>
+        <a class="flex items-center btn btn-md" href="{% url 'events_create' %}">Create Event</a>
     </div>
-    <section class="md:rounded-md md:shadow-md my-6 w-full">
+    <section class="w-full my-6 md:rounded-md md:shadow-md">
         {% for event in events %}
-        <div class="grid gap-4 md:items-start bg-white grid-cols-1 sm:grid-cols-3 sm:gap-8 lg:gap-0 lg:grid-cols-5 m-0 border px-4 pb-6 pt-4 sm:pt-8 mb-6 md:mb-0 shadow-md rounded-md md:shadow-none md:rounded-none md:even:bg-teal-200">
-            <span class="relative text-center lg:text-left pt-2">
-                <div class="flex justify-center lg:absolute -top-1 text-sm font-bold uppercase">Event Name</div>
+        <div class="grid grid-cols-1 gap-4 px-4 pt-4 pb-6 m-0 mb-6 bg-white border rounded-md shadow-md md:items-start sm:grid-cols-3 sm:gap-8 lg:gap-0 lg:grid-cols-5 sm:pt-8 md:mb-0 md:shadow-none md:rounded-none md:even:bg-teal-200">
+            <span class="relative pt-2 text-center lg:text-left">
+                <div class="flex justify-center text-sm font-bold uppercase lg:absolute -top-14">Event Name</div>
                 <a href="{% url 'events_single' event.slug event.id %}" class="underline hover:text-pink-400">{{event.name}}</a>
             </span>
-            <span class="relative text-center lg:text-left pt-2">
-                <div class="flex justify-center lg:absolute -top-1 text-sm font-bold uppercase">Posted</div>
+            <span class="relative pt-2 text-center lg:text-left">
+                <div class="flex justify-center text-sm font-bold uppercase lg:absolute -top-14">Posted</div>
                 {{event.created_at|naturalday}}
             </span>
-            <span class="relative text-center lg:text-left pt-2">
-                <div class="flex justify-center lg:absolute -top-1 text-sm font-bold uppercase">Status</div>
+            <span class="relative pt-2 text-center lg:text-left">
+                <div class="flex justify-center text-sm font-bold uppercase lg:absolute -top-14">Status</div>
                 {{event.status}}
             </span>
-            <span class="text-center lg:text-left my-6 sm:my-0 pt-2">
-                <a class="py-2 px-4 bg-purple-800 text-white rounded-md shadow-md" href="{% url 'events_edit' event.slug event.id %}">Edit Event</a>
+            <span class="pt-2 my-6 text-center lg:text-left sm:my-0">
+                <a class="px-4 py-2 text-white bg-purple-800 rounded-md shadow-md" href="{% url 'events_edit' event.slug event.id %}">Edit Event</a>
             </span>
-            <span class="text-center lg:text-left pt-2">
-                <a class="py-2 px-4 bg-orange-500 text-white rounded-md shadow-md" href="{% url 'events_delete' event.slug event.id %}">Delete Event</a>
+            <span class="pt-2 text-center lg:text-left">
+                <a class="px-4 py-2 text-white bg-orange-500 rounded-md shadow-md" href="{% url 'events_delete' event.slug event.id %}">Delete Event</a>
             </span>
         </div>
         {% empty %}
-        <div class="bg-white rounded-md shadow-md px-4 pb-6 pt-4 sm:pt-8 mb-6 md:mb-0 lg:flex justify-between">
-            <p class="text-2xl mb-8 lg:mb-0 text-center lg:text-left">You have not posted any events yet.</p>
-            <a class="btn btn-md block lg:inline text-center" href="{% url 'events_create' %}">Create an Event</a>
+        <div class="justify-between px-4 pt-4 pb-6 mb-6 bg-white rounded-md shadow-md sm:pt-8 md:mb-0 lg:flex">
+            <p class="mb-8 text-2xl text-center lg:mb-0 lg:text-left">You have not posted any events yet.</p>
+            <a class="block text-center btn btn-md lg:inline" href="{% url 'events_create' %}">Create an Event</a>
         </div>
         {% endfor %}
     </section>

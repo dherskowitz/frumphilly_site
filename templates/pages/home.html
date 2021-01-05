@@ -7,13 +7,13 @@
 {% block meta_description %}{% endblock meta_description %}
 
 {% block pagebanner %}
-<section class="h-half-screen" style="background:url({% webpack_static 'img/images/philly-skyline.jpg' %}) no-repeat center center /cover">
-    <div class="container top-0 flex flex-col items-center justify-center h-full px-2 mx-auto md:items-start">
-        <h1 class="text-6xl font-bold text-white text-shadow">Frum Philly</h1>
-        <h2 class="text-2xl font-bold text-white text-shadow">Go beyond your "daled amos"</h2>
+<section class="px-2 bg-indigo-600 bg-center bg-no-repeat bg-cover h-half-screen bg-opacity-60" style="background-image:url({% webpack_static 'img/images/philly-skyline.jpg' %});">
+    <div class="container top-0 flex flex-col items-start justify-center h-full px-2 mx-auto">
+        <h1 class="font-bold text-white text-8xl md:text-9xl text-shadow">Frum Philly</h1>
+        <h2 class="my-4 text-5xl font-bold text-white md:text-6xl text-shadow">Go beyond your "daled amos"</h2>
 
         {% if not user.is_authenticated %}
-        <a class="mt-4 uppercase btn btn-lg" href="/accounts/signup">Create your account</a> {% endif %}
+        <a class="mt-4 text-lg font-semibold tracking-wide uppercase sm:text-xl btn btn-lg" href="/accounts/signup">Create your account</a> {% endif %}
     </div>
 </section>
 {% endblock pagebanner %}
@@ -74,7 +74,7 @@
                 <p>Frum Philly's community board will be a place to buy and sell, to ask for and give advice, to list and find a local gemach and much more.</p>
             </div>
         </div>
-        <div class="p-4 text-center text-gray-100 bg-gray-600">
+        <div class="px-4 text-center text-gray-100 bg-gray-600 rounded-md shadow-md py-14">
             <h3 class="text-5xl text-shadow">Suggest Something!</h3>
             <p class="mt-4 text-xl">Don't see the features you're looking for? Frum Philly wants to hear your suggestions.</p>
             <a href="{% url 'contact' %}" class="mt-4 btn btn-md">Make a Suggestion</a>
