@@ -8,6 +8,7 @@ from .models import Event, EventCategory
 from .forms import EventForm
 from .filters import EventFilter
 from pages.forms import ReportPostForm
+from ads.models import Ad
 
 
 helptext_fields = (
@@ -25,6 +26,7 @@ helptext_fields = (
 
 # Create your views here.
 def events_all(request):
+    ads = Ad.get_active_ads()
     events_list = Event.objects.filter(status="published").order_by("-start_date", "-start_time")
     cities = events_list.values_list('city', flat=True).distinct().order_by('city')
     categories = EventCategory.objects.all().order_by('title')
@@ -51,16 +53,18 @@ def events_all(request):
         "categories": categories,
         "filtered_cities": filtered_cities,
         "filtered_categories": filtered_categories,
+        "ads": ads
     }
     return render(request, "events/index.html", context)
 
 
 def events_single(request, slug, pk):
+    ads = Ad.get_active_ads()
     event = get_object_or_404(Event, slug=slug, id=pk)
     if event.status == 'draft' and request.user != event.created_by:
         return render(request, "private.html")
     report_post_form = ReportPostForm()
-    context = {"event": event, "report_post_form": report_post_form}
+    context = {"event": event, "report_post_form": report_post_form, "ads": ads}
     return render(request, "events/single.html", context)
 
 

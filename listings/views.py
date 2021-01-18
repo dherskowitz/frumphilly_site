@@ -6,9 +6,11 @@ from decouple import config
 from pages.forms import ReportPostForm
 from .models import Listing, CategoryGroup, Category
 from .forms import ListingForm
+from ads.models import Ad
 
 
 def listings_all(request, category=None):
+    ads = Ad.get_active_ads()
     listings = Listing.objects.all()
     cities = listings.values_list('city', flat=True).distinct().order_by('city')
     # categories = Category.objects.all(category_group=listing_group).order_by('title')
@@ -45,6 +47,7 @@ def listings_all(request, category=None):
         "filtered_cities": filtered_cities,
         "filtered_categories": filtered_categories,
         "filtered_subcategories": filtered_subcategories,
+        "ads": ads,
     }
 
     return render(request, "listings/index.html", context)
@@ -93,12 +96,13 @@ def listings_all(request, category=None):
 
 
 def listing_single(request, slug, pk):
+    ads = Ad.get_active_ads()
     listing = get_object_or_404(Listing, slug=slug, id=pk)
     if listing.status == 'draft' and request.user != listing.created_by:
         return render(request, "private.html")
     report_post_form = ReportPostForm()
     categories = [{"title": cat.title, "category_group": cat.category_group.title} for cat in listing.categories.all()]
-    context = {"listing": listing, "categories": categories, "report_post_form": report_post_form}
+    context = {"listing": listing, "categories": categories, "report_post_form": report_post_form, "ads": ads}
     return render(request, "listings/single.html", context)
 
 
