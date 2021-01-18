@@ -1,7 +1,7 @@
 {% load webpack_static from webpack_loader %}
 
 {% if ads.banner_ad %}
-<div class="mt-4"><a href="{% url 'advertising' %}"><img src="{{ads.banner_ad.image.url}}" alt="Advertise on Frum Philly"></a></div>
+<div class="mt-4"><a href="{% url 'redirect_ad' id=ads.banner_ad.redirect_uuid %}" target="_blank"><img src="{{ads.banner_ad.image.url}}" alt="Advertise on Frum Philly"></a></div>
 {% else %}
 <div class="mt-4"><a href="{% url 'advertising' %}"><img src="{% webpack_static 'img/images/fp-banner-ad-one.jpg' %}" alt="Advertise on Frum Philly"></a></div>
 {% endif %}
