@@ -1,6 +1,6 @@
 import random
+import uuid
 from django.db.models.fields.related import ForeignKey
-
 from django.shortcuts import redirect
 from app.storage_backends import S3AdsMediaStorage
 from django.db import models
@@ -63,6 +63,11 @@ class Ad(models.Model):
         choices=TERM_CHOICES,
         help_text="Amount of times the ad will be active for.",
     )
+    redirect_to = models.URLField(
+        default=None,
+        help_text="Enter the URL where the ad should be linked to. (Must include http:// or https://)",
+    )
+    redirect_uuid = models.CharField(max_length=100, default=None, null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -74,19 +79,25 @@ class Ad(models.Model):
         return self.title
 
     def save(self, *args, **kwargs):
+        self.redirect_uuid = str(uuid.uuid4()).split('-')[-1]
         super().save(*args, **kwargs)
 
     def get_sidebar_ads():
         # https://stackoverflow.com/a/32389679
         all_ads = Ad.objects.filter(status='active', type='sidebar').values_list('id', flat=True)
         random_ads = random.sample(list(all_ads), min(len(all_ads), 2))
-        return Ad.objects.filter(id__in=random_ads)
+        if random_ads:
+            ads_qset = Ad.objects.filter(id__in=random_ads)
+            ads_list = list(ads_qset)
+            random.shuffle(ads_list)
+            return ads_list
 
     def get_banner_ad():
         # https://stackoverflow.com/a/2118712
         count = Ad.objects.filter(status='active', type='banner').aggregate(count=Count('id'))['count']
-        random_index = random.randint(0, count - 1)
-        return Ad.objects.filter(status='active', type='banner').all()[random_index]
+        if count:
+            random_index = random.randint(0, count - 1)
+            return Ad.objects.filter(status='active', type='banner').all()[random_index]
 
     def get_active_ads():
         return {
