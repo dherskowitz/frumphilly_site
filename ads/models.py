@@ -1,5 +1,6 @@
 import random
 import uuid
+from datetime import datetime, timedelta
 from django.db.models.fields.related import ForeignKey
 from django.shortcuts import redirect
 from app.storage_backends import S3AdsMediaStorage
@@ -9,11 +10,12 @@ from django.db.models.aggregates import Count
 
 
 class Ad(models.Model):
-    ONE_WEEK = 1
-    TWO_WEEKS = 2
-    ONE_MONTH = 4
-    TWO_MONTHS = 8
-    THREE_MONTHS = 12
+    # length stored as days
+    ONE_WEEK = 7
+    TWO_WEEKS = 14
+    ONE_MONTH = 30
+    TWO_MONTHS = 60
+    THREE_MONTHS = 90
     STATUS_CHOICES = [
         ("inactive", "Inactive"),
         ("active", "Active"),
@@ -82,6 +84,14 @@ class Ad(models.Model):
         self.redirect_uuid = str(uuid.uuid4()).split('-')[-1]
         super().save(*args, **kwargs)
 
+    def mark_expired():
+        ads = Ad.objects.filter(status='active')
+        for ad in ads:
+            expires_at = ad.created_at + timedelta(days=ad.contract_length)
+            if datetime.now() > expires_at.replace(tzinfo=None):
+                ad.status = 'expired'
+                ad.save()
+
     def get_sidebar_ads():
         # https://stackoverflow.com/a/32389679
         all_ads = Ad.objects.filter(status='active', type='sidebar').values_list('id', flat=True)
@@ -100,6 +110,7 @@ class Ad(models.Model):
             return Ad.objects.filter(status='active', type='banner').all()[random_index]
 
     def get_active_ads():
+        Ad.mark_expired()
         return {
             'sidebar_ads': Ad.get_sidebar_ads(),
             'banner_ad': Ad.get_banner_ad(),
