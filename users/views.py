@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from events.models import Event
 from listings.models import Listing
+from ads.models import Ad
 from .models import CustomUser
 from .forms import CustomUserSettingsForm
 
@@ -49,3 +50,12 @@ def user_listings(request):
         "listings": listings,
     }
     return render(request, "user/user_listings.html", context)
+
+
+@login_required
+def user_ads(request):
+    ads = Ad.objects.filter(user=request.user).order_by("status")
+    context = {
+        "ads": ads,
+    }
+    return render(request, "user/user_ads.html", context)

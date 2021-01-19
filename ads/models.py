@@ -115,3 +115,15 @@ class Ad(models.Model):
             'sidebar_ads': Ad.get_sidebar_ads(),
             'banner_ad': Ad.get_banner_ad(),
         }
+
+    def time_remaining(self):
+        if self.status == 'active':
+            expires_at = self.created_at + timedelta(days=self.contract_length)
+            remaining = expires_at.replace(tzinfo=None) - datetime.now()
+            return remaining.days
+        elif self.status == 'expired':
+            expired_at = self.created_at - timedelta(days=self.contract_length)
+            remaining = datetime.now() - expired_at.replace(tzinfo=None)
+            return expired_at
+        else:
+            return ''

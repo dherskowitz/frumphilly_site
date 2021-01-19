@@ -1,0 +1,60 @@
+{% extends 'dashboard.html' %}
+{% load humanize %}
+{% block meta_title %}Manage Your Ads | Frum Philly{% endblock meta_title %}
+{% block meta_description %}Manage the ads you have published on Frum Philly.{% endblock meta_description %}
+
+{% block main %}
+
+
+<div class="my-10">
+    <div class="flex flex-row justify-between mb-10 align-center">
+        <div class="text-3xl text-white sm:text-4xl text-shadow">My Ads</div>
+        <a class="flex items-center btn btn-md" href="{% url 'advertising' %}">Create Ad</a>
+    </div>
+
+    <div class="grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        {% for ad in ads %}
+        <div class="flex flex-col justify-between p-2 bg-gray-100 rounded-md shadow-md">
+            <div>
+                <h3 class="text-lg font-semibold text-gray-700">{{ad.title}}</h3>  
+                <div>
+                    {% if ad.status == 'active' %}
+                    <div class="flex items-center justify-between">
+                        <span class="px-2 py-1 text-sm text-gray-200 bg-gray-800 rounded-md">{{ad.status|title}} </span>  
+                        <span class="text-sm">{{ ad.time_remaining }} day{{ ad.time_remaining|pluralize }} remaining</span>            
+                    </div>
+                    {% endif %}
+    
+                    {% if ad.status == 'inactive' %}
+                    <div class="flex items-center justify-between">
+                        <span class="px-2 py-1 text-sm text-gray-200 bg-red-300 rounded-md">{{ad.status|title}} </span>   
+                        <span class="text-sm">Payment required.</span>       
+                    </div>
+                    <a class="block mt-2 font-semibold text-center btn btn-md" href="#">Activate Ad</a>
+                    {% endif %}
+    
+                    {% if ad.status == 'review' %}
+                    <span class="px-2 py-1 text-sm text-gray-200 bg-red-500 rounded-md">Under Review</span>  
+                    <div class="mt-2 text-sm">
+                        <p>There is an issue with your ad and it is under review by the Frum Philly management.</p>        
+                        <p><a class="text-blue-600 underline" href="{% url 'contact' %}">Contact us</a> for more information.</p>
+                    </div>
+                    {% endif %}
+        
+                    {% if ad.status == 'expired' %}
+                    <div class="flex items-center justify-between">
+                        <span class="px-2 py-1 text-sm text-gray-200 bg-red-400 rounded-md">{{ad.status|title}} </span>     
+                        <span class="text-sm">Expired {{ad.time_remaining|naturaltime}}</span> 
+                    </div>
+                    <a class="block mt-2 font-semibold text-center btn btn-md" href="#">Buy Again</a>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="mt-2">
+                <img src="{{ad.image.url}}" alt="">    
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock main %}
