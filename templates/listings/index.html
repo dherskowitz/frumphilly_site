@@ -6,8 +6,12 @@
 {% block meta_description %}Frum Philly Business Listings{% endblock meta_description %}
 
 {% block pagebanner %}
-<section class="flex items-center justify-center h-half-screen curved-bottom" style="background-image: url({% webpack_static 'img/illustrations/schedule.svg' %});background-size: 30rem;background-repeat:no-repeat;background-position:center;">
-    <h1 class="text-6xl font-bold text-center text-white text-shadow">{{category_group}}</h1>
+<section class="relative flex items-center justify-center h-half-screen curved-bottom" style="background-image: url({% webpack_static 'img/images/listings-bg.jpg' %});background-size: cover;background-repeat:no-repeat;background-position:center;">
+    <div class="absolute top-0 left-0 w-full h-full bg-purple-600 bg-opacity-25"></div>\
+    <div class="z-20 text-center text-white text-shadow">
+        <h1 class="font-bold text-9xl ">{{category_group}}</h1>
+        <p class="max-w-4xl mt-4 text-4xl">Find businesses in your neighborhood!</p>
+    </div>
 </section>
 {% endblock pagebanner %}
 
