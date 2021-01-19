@@ -320,6 +320,11 @@ input[type="checkbox"]:checked {
     color: #67809f !important;
 }
 
+.radioSelect input:checked + label {
+    border-color:#38C172;
+    background-color:#E3FCEC;
+}
+
 /*! purgecss start ignore */
 /* mapbox styles */
 /* Basics */
