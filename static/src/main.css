@@ -113,7 +113,7 @@ tr {
 
 /* buttons */
 .btn {
-    @apply inline-block text-white bg-purple-900 rounded-md shadow-md cursor-pointer;
+    @apply inline-block text-white transition duration-100 ease-in-out bg-purple-900 rounded-md shadow-md cursor-pointer hover:bg-purple-800;
 }
 
 .btn-sm {
