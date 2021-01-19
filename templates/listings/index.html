@@ -9,9 +9,9 @@
 <section class="relative flex items-center justify-center h-half-screen curved-bottom" style="background-image: url({% webpack_static 'img/images/listings-bg.jpg' %});background-size: cover;background-repeat:no-repeat;background-position:center;">
     <div class="absolute top-0 left-0 w-full h-full bg-purple-600 bg-opacity-25"></div>\
     <div class="z-20 text-center text-white text-shadow">
-        <h1 class="font-bold text-9xl ">{{category_group}}</h1>
-        <p class="max-w-4xl mt-4 text-4xl">Find businesses in your neighborhood!</p>
-        <a class="mt-4 text-2xl font-semibold btn btn-lg" href="{% url 'listings_select' %}">Create Your Listing</a>
+        <h1 class="text-6xl font-bold md:text-9xl">{{category_group}}</h1>
+        <p class="max-w-4xl mt-4 text-2xl md:text-4xl">Find businesses in your neighborhood!</p>
+        <a class="mt-4 text-lg font-semibold md:text-2xl btn btn-lg" href="{% url 'listings_select' %}">Create Your Listing</a>
     </div>
 </section>
 {% endblock pagebanner %}
