@@ -11,35 +11,41 @@
         </div>
 
         <div>
-            <div class="p-2 mx-2 mt-4 mb-2 font-light text-gray-200 border-b-2 border-teal-600">Events</div>
+            <a class="w-full block p-4 my-1 hover:bg-gray-900{% if url_name == 'user_ads' %} bg-gray-900 border-r-4 border-white{% endif %}" href="{% url 'user_ads' %}">
+                <span class="font-medium">My Ads</span>
+            </a>
+        </div>
+
+        <div>
+            <!-- <div class="p-2 mx-2 mt-4 mb-2 font-light text-gray-200 border-b-2 border-teal-600">Events</div> -->
             <a class="w-full block p-4 my-1 hover:bg-gray-900{% if url_name == 'user_events' %} bg-gray-900 border-r-4 border-white{% endif %}" href="{% url 'user_events' %}">
                 <span class="font-medium">My Events</span>
             </a>
-            <a class="w-full block p-4 my-1 hover:bg-gray-900{% if url_name == 'events_create' %} bg-gray-900 border-r-4 border-white{% endif %}" href="{% url 'events_create' %}">
+            <!-- <a class="w-full block p-4 my-1 hover:bg-gray-900{% if url_name == 'events_create' %} bg-gray-900 border-r-4 border-white{% endif %}" href="{% url 'events_create' %}">
                 <span class="font-medium">Create Event</span>
-            </a>
+            </a> -->
         </div>
 
         <div class="flex flex-col">
-            <div class="p-2 mx-2 mt-4 mb-2 font-light text-gray-200 border-b-2 border-teal-600">Listings</div>
+            <!-- <div class="p-2 mx-2 mt-4 mb-2 font-light text-gray-200 border-b-2 border-teal-600">Listings</div> -->
             <a class="w-full block p-4 my-1 hover:bg-gray-900{% if url_name == 'user_listings' %} bg-gray-900 border-r-4 border-white{% endif %}" href="{% url 'user_listings' %}">
                 <span class="font-medium">My Listings</span>
             </a>
-            <a class="w-full block p-4 my-1 hover:bg-gray-900{% if url_name == 'listings_select' %} bg-gray-900 border-r-4 border-white{% endif %}" href="{% url 'listings_select' %}">
+            <!-- <a class="w-full block p-4 my-1 hover:bg-gray-900{% if url_name == 'listings_select' %} bg-gray-900 border-r-4 border-white{% endif %}" href="{% url 'listings_select' %}">
                 <span class="font-medium">Create Listing</span>
-            </a>
+            </a> -->
         </div>
 
         <div class="flex flex-col">
-            <div class="p-2 mx-2 mt-4 mb-2 font-light text-gray-200 border-b-2 border-teal-600">Account</div>
+            <!-- <div class="p-2 mx-2 mt-4 mb-2 font-light text-gray-200 border-b-2 border-teal-600">Account</div> -->
             <a class="w-full block p-4 my-1 hover:bg-gray-900{% if url_name == 'user_settings' %} bg-gray-900 border-r-4 border-white{% endif %}" href="{% url 'user_settings' %}">
-                <span class="font-medium">Update Personal Info</span>
+                <span class="font-medium">Change Profile</span>
             </a>
             <a class="w-full block p-4 my-1 hover:bg-gray-900{% if url_name == 'account_change_password' %} bg-gray-900 border-r-4 border-white{% endif %}" href="{% url 'account_change_password' %}">
-                <span class="font-medium">Update Password</span>
+                <span class="font-medium">Change Password</span>
             </a>
             <a class="w-full block p-4 my-1 hover:bg-gray-900{% if url_name == 'account_email' %} bg-gray-900 border-r-4 border-white{% endif %}" href="{% url 'account_email' %}">
-                <span class="font-medium">Update Email</span>
+                <span class="font-medium">Change Email</span>
             </a>
         </div>
 
