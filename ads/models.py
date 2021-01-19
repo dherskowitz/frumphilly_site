@@ -45,18 +45,18 @@ class Ad(models.Model):
         default="",
         max_length=200,
         blank=False,
-        help_text="What is the name of this ad? Use the company/listing name plus a descriptor.",
+        help_text="What is the name of this ad for your reference? This will not appear on the site.",
     )
     status = models.CharField(
         max_length=50, choices=STATUS_CHOICES, blank=False, default="inactive"
     )
     type = models.CharField(
-        max_length=50, choices=TYPE_CHOICES, blank=False, default="inactive"
+        max_length=50, choices=TYPE_CHOICES, blank=False, default="inactive", verbose_name="Type of Ad"
     )
     image = models.ImageField(
         storage=S3AdsMediaStorage(),
         default=None,
-        help_text="Upload an image for your ad.",
+        help_text="Upload an image for your ad in either jpg/png/gif format. Dimensions should be 300x250.",
         null=True,
         blank=True,
     )
@@ -67,6 +67,7 @@ class Ad(models.Model):
     )
     redirect_to = models.URLField(
         default=None,
+        verbose_name="Send Ad To",
         help_text="Enter the URL where the ad should be linked to. (Must include http:// or https://)",
     )
     redirect_uuid = models.CharField(max_length=100, default=None, null=True, blank=True)
