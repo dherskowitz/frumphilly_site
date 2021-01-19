@@ -14,6 +14,7 @@ def user_account(request):
     context = {
         "events_count": CustomUser.get_events_count(request),
         "listings_count": CustomUser.get_listings_count(request),
+        "ads_count": CustomUser.get_ads_count(request),
     }
     return render(request, "user/user_account.html", context)
 

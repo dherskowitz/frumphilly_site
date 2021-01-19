@@ -5,6 +5,7 @@ from django.contrib.auth.models import AbstractUser
 from django.db import models
 from events.models import Event
 from listings.models import Listing
+from ads.models import Ad
 
 
 # Create your models here.
@@ -38,3 +39,6 @@ class CustomUser(AbstractUser):
 
     def get_listings_count(request):
         return Listing.objects.filter(created_by=request.user).count()
+
+    def get_ads_count(request):
+        return Ad.objects.filter(user=request.user).count()
