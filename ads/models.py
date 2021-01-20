@@ -8,6 +8,14 @@ from django.db import models
 from django.conf import settings
 from django.db.models.aggregates import Count
 
+ad_prices = {
+    '7': 10,
+    '14': 18,
+    '30': 30,
+    '60': 50,
+    '90': 90
+}
+
 
 class Ad(models.Model):
     # length stored as days
@@ -73,6 +81,12 @@ class Ad(models.Model):
     redirect_uuid = models.CharField(max_length=100, default=None, null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    read_terms = models.BooleanField(
+        default=False,
+        blank=False,
+        null=False,
+        verbose_name="Terms"
+    )
 
     class Meta:
         verbose_name = "ad"
