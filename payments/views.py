@@ -59,7 +59,7 @@ def stripe_config(request):
 def create_ad_checkout_session(request):
     uuid = request.GET['ad']
     ad = Ad.objects.filter(redirect_uuid=uuid).first()
-    price = ad_prices[f"{ad.contract_length}"]
+    price = ad_prices[f"{ad.contract_length}"]["price"]
 
     if request.method == "GET":
         domain_url = config("DOMAIN_URL")
