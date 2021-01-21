@@ -9,9 +9,11 @@ from events.models import Event
 from listings.models import Listing
 from .models import ReportPost
 from .forms import ContactForm, AdvertisingContactForm
+from ads.models import Ad
 
 
 def home(request):
+    ads = Ad.get_active_ads()
     listings = Listing.objects.filter(status="published").order_by("-created_at")[:15]
     upcoming_events = Event.get_upcoming_events()
     events_in_future = True
@@ -19,6 +21,7 @@ def home(request):
         upcoming_events = Event.objects.filter(status="published").order_by("-start_date")[:15]
         events_in_future = False
     context = {
+        "ads": ads,
         "listings": listings,
         "upcoming_events": upcoming_events,
         "events_in_future": events_in_future,
