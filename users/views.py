@@ -60,3 +60,13 @@ def user_ads(request):
         "ads": ads,
     }
     return render(request, "user/user_ads.html", context)
+
+
+@login_required
+def admin_review_ads(request):
+    ads = Ad.objects.filter(status='review').order_by("-created_at")
+
+    context = {
+        "ads": ads,
+    }
+    return render(request, "admin/ad_review.html", context)
