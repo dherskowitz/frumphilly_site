@@ -1,12 +1,11 @@
 import random
 import uuid
 from datetime import datetime, timedelta
-from django.db.models.fields.related import ForeignKey
-from django.shortcuts import redirect
+# from django.shortcuts import redirect
 from app.storage_backends import S3AdsMediaStorage
 from django.db import models
 from django.conf import settings
-from django.db.models.aggregates import Count
+# from django.db.models.aggregates import Count
 
 ad_prices = {
     "7": {"price": 10, "term": "One Week"},
@@ -110,25 +109,34 @@ class Ad(models.Model):
     def get_sidebar_ads():
         # https://stackoverflow.com/a/32389679
         all_ads = Ad.objects.filter(status='active', type='sidebar').values_list('id', flat=True)
-        random_ads = random.sample(list(all_ads), min(len(all_ads), 2))
+        random_ads = random.sample(list(all_ads), min(len(all_ads), 6))
         if random_ads:
             ads_qset = Ad.objects.filter(id__in=random_ads)
             ads_list = list(ads_qset)
             random.shuffle(ads_list)
             return ads_list
 
-    def get_banner_ad():
-        # https://stackoverflow.com/a/2118712
-        count = Ad.objects.filter(status='active', type='banner').aggregate(count=Count('id'))['count']
-        if count:
-            random_index = random.randint(0, count - 1)
-            return Ad.objects.filter(status='active', type='banner').all()[random_index]
+    def get_banner_ads():
+        # # https://stackoverflow.com/a/2118712
+        # count = Ad.objects.filter(status='active', type='banner').aggregate(count=Count('id'))['count']
+        # if count:
+        #     random_index = random.randint(0, count - 1)
+        #     return Ad.objects.filter(status='active', type='banner').all()[random_index]
+
+        # https://stackoverflow.com/a/32389679
+        all_ads = Ad.objects.filter(status='active', type='banner').values_list('id', flat=True)
+        random_ads = random.sample(list(all_ads), min(len(all_ads), 3))
+        if random_ads:
+            ads_qset = Ad.objects.filter(id__in=random_ads)
+            ads_list = list(ads_qset)
+            random.shuffle(ads_list)
+            return ads_list
 
     def get_active_ads():
         Ad.mark_expired()
         return {
             'sidebar_ads': Ad.get_sidebar_ads(),
-            'banner_ad': Ad.get_banner_ad(),
+            'banner_ads': Ad.get_banner_ads(),
         }
 
     def time_remaining(self):
