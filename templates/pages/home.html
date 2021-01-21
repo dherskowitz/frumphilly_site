@@ -60,7 +60,7 @@
 
     {% include 'components/events_cta.html' with value='flex-col md:flex-row-reverse' %}
 
-    <section class="mx-4 my-24 md:mx-0">
+    <section class="mx-4 mt-24 md:mx-0">
         <h2 class="text-center title section-title"><span class="section-title__text">coming soon</span></h2>
         <div class="grid grid-cols-1 gap-3 my-16 md:grid-cols-2 lg:grid-cols-3">
             <div class="p-4 bg-white rounded-md shadow-md">
@@ -82,5 +82,7 @@
             <a href="{% url 'contact' %}" class="mt-4 btn btn-md">Make a Suggestion</a>
         </div>
     </section>
+
+    <div class="mt-12">{% include 'components/banner_ads.html' %}</div>
 </div>
 {% endblock main %}
