@@ -9,11 +9,11 @@ from django.conf import settings
 from django.db.models.aggregates import Count
 
 ad_prices = {
-    '7': 10,
-    '14': 18,
-    '30': 30,
-    '60': 50,
-    '90': 90
+    "7": {"price": 10, "term": "One Week"},
+    "14": {"price": 18, "term": "Two Weeks"},
+    "30": {"price": 30, "term": "One Month"},
+    "60": {"price": 50, "term": "Two Months"},
+    "90": {"price": 90, "term": "Three Months"},
 }
 
 
@@ -64,7 +64,7 @@ class Ad(models.Model):
     image = models.ImageField(
         storage=S3AdsMediaStorage(),
         default=None,
-        help_text="Upload an image for your ad in either jpg/png/gif format. Dimensions should be 300x250.",
+        help_text="Upload an image for your ad in either jpg/png/gif format.",
         null=True,
         blank=True,
     )
