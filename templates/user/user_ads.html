@@ -9,48 +9,56 @@
 <div class="my-10">
     <div class="flex flex-row justify-between mb-10 align-center">
         <div class="text-3xl text-white sm:text-4xl text-shadow">My Ads</div>
-        <a class="flex items-center btn btn-md" href="{% url 'advertising' %}">Create Ad</a>
+        <a class="flex items-center btn btn-md" href="{% url 'create_ad' %}">Create Ad</a>
     </div>
-
-    <div class="grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+<!--  lg:grid-cols-3 xl:grid-cols-4 -->
+    <div class="grid grid-cols-1 gap-2 sm:grid-cols-2"> 
         {% for ad in ads %}
-        <div class="flex flex-col justify-between p-2 bg-gray-100 rounded-md shadow-md">
-            <div>
+        <div class="flex justify-between p-2 mb-4 bg-gray-100 rounded-md shadow-md">
+            <div class="w-2/3">
                 <h3 class="text-lg font-semibold text-gray-700">{{ad.title}}</h3>  
                 <div>
                     {% if ad.status == 'active' %}
-                    <div class="flex items-center justify-between">
-                        <span class="px-2 py-1 text-sm text-gray-200 bg-gray-800 rounded-md">{{ad.status|title}} </span>  
-                        <span class="text-sm">{{ ad.time_remaining }} day{{ ad.time_remaining|pluralize }} remaining</span>            
+                    <div class="">
+                        <span class="px-2 py-1 text-sm text-center text-gray-200 bg-green-500 rounded-md">{{ad.status|title}}</span>  
+                        <span class="px-2 text-sm">{{ ad.time_remaining }} day{{ ad.time_remaining|pluralize }} remaining</span>            
+                    </div>
+                    <div class="mt-2 text-sm">
+                        <p>Your ad is active and has {{ ad.time_remaining }} day{{ ad.time_remaining|pluralize }} remaining.</p>
                     </div>
                     {% endif %}
     
                     {% if ad.status == 'inactive' %}
-                    <div class="flex items-center justify-between">
-                        <span class="px-2 py-1 text-sm text-gray-200 bg-red-300 rounded-md">{{ad.status|title}} </span>   
-                        <span class="text-sm">Payment required.</span>       
+                    <div class="">
+                        <span class="px-2 py-1 text-sm text-gray-200 bg-red-600 rounded-md">{{ad.status|title}}</span>   
+                        <span class="px-2 text-sm">Payment required.</span>       
                     </div>
-                    <a class="block mt-2 font-semibold text-center btn btn-md" href="#">Activate Ad</a>
+                    <div class="mt-2 text-sm">
+                        <p>Your ad has been created but no payment was made. Activate your ad by making a payment.</p>
+                    </div>
+                    <a class="block mt-2 font-semibold text-center btn btn-md" href="/ads/review?ad={{ad.redirect_uuid}}">Activate Ad</a>
                     {% endif %}
     
                     {% if ad.status == 'review' %}
-                    <span class="px-2 py-1 text-sm text-gray-200 bg-red-500 rounded-md">Under Review</span>  
+                    <span class="px-2 py-1 text-sm text-gray-200 bg-yellow-600 rounded-md">Under Review</span>  
                     <div class="mt-2 text-sm">
-                        <p>There is an issue with your ad and it is under review by the Frum Philly management.</p>        
-                        <p><a class="text-blue-600 underline" href="{% url 'contact' %}">Contact us</a> for more information.</p>
+                        <p>Your ad has been created and paid for and is under review by the Frum Philly management. The start of the ads term will only start once management has made it active. If you have any questions or concerns you can <a class="text-blue-600 underline" href="{% url 'contact' %}">contact us</a>.</p>
                     </div>
                     {% endif %}
         
                     {% if ad.status == 'expired' %}
-                    <div class="flex items-center justify-between">
-                        <span class="px-2 py-1 text-sm text-gray-200 bg-red-400 rounded-md">{{ad.status|title}} </span>     
-                        <span class="text-sm">Expired {{ad.time_remaining|naturaltime}}</span> 
+                    <div class="">
+                        <span class="px-2 py-1 text-sm text-gray-200 bg-red-400 rounded-md">{{ad.status|title}}</span>     
+                        <span class="px-2 text-sm">Expired {{ad.time_remaining|naturaltime}}</span> 
                     </div>
-                    <a class="block mt-2 font-semibold text-center btn btn-md" href="#">Buy Again</a>
+                    <div class="mt-2 text-sm">
+                        <p>Your ad has expired and can re-enabled by purchasing it again. If you have any questions or concerns you can <a class="text-blue-600 underline" href="{% url 'contact' %}">contact us</a>.</p>
+                    </div>
+                    <a class="block mt-2 font-semibold text-center btn btn-md" href="{% url 'edit_ad' ad.redirect_uuid %}">Buy Again</a>
                     {% endif %}
                 </div>
             </div>
-            <div class="mt-2">
+            <div class="flex items-center justify-end w-1/3 ml-4">
                 <img src="{{ad.image.url}}" alt="">    
             </div>
         </div>
