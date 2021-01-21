@@ -4,7 +4,7 @@
     {% if ads.sidebar_ads %}
         {% for ad in ads.sidebar_ads %}
             <div class="mb-4 2xl:h-80">
-                <a href="{% url 'redirect_ad' id=ad.redirect_uuid %}" target="_blank"><img class="w-full" src="{{ad.image.url}}" alt="Advertise on Frum Philly"></a>
+                <a href="{% url 'redirect_ad' id=ad.redirect_uuid %}" target="_blank"><img class="w-full" width="300" height="250" src="{{ad.image.url}}" alt="Advertise on Frum Philly"></a>
             </div>
         {% endfor %}
     {% else %}
