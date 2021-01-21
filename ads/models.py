@@ -86,6 +86,7 @@ class Ad(models.Model):
         null=False,
         verbose_name="Terms"
     )
+    image_type = models.CharField(max_length=6, default=None)
 
     class Meta:
         verbose_name = "ad"
@@ -96,6 +97,7 @@ class Ad(models.Model):
 
     def save(self, *args, **kwargs):
         self.redirect_uuid = str(uuid.uuid4()).split('-')[-1]
+        self.image_type = str(self.image).split(".")[-1]
         super().save(*args, **kwargs)
 
     def mark_expired():
