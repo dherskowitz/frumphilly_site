@@ -49,6 +49,13 @@
             </a>
         </div>
 
+        {% if user.is_authenticated and request.user.is_superuser %}
+            <div class="p-2 mx-2 mt-4 mb-2 font-light text-gray-200 border-b-2 border-teal-600">Admin</div>
+            <a class="w-full block p-4 my-1 hover:bg-gray-900{% if url_name == 'admin_review_ads' %} bg-gray-900 border-r-4 border-white{% endif %}" href="{% url 'admin_review_ads' %}">
+                <span class="font-medium">Ads to Review</span>
+            </a>
+        {% endif %}
+
         {% comment %} <div class="absolute bottom-0">
             <a class="flex items-center px-8 py-2 text-gray-600 hover:text-gray-500" href="/">
                 <span class="flex items-center mx-4 font-medium"><svg class="mr-2" width="18" height="18" viewBox="0 0 24 24" stroke-width="1.5" stroke="#607D8B" fill="none" stroke-linecap="round" stroke-linejoin="round">
