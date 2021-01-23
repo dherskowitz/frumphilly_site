@@ -3,49 +3,26 @@
 
 
 {% block main %}
-<div
-    class="my-10" 
-    x-data="component()"
-    @keydown.escape="isOpen = false"
->
-
+<div class="my-10">
     <div class="flex flex-row justify-between mb-10 align-center">
         <div class="text-3xl text-white sm:text-4xl text-shadow">Ads to Review</div>
     </div>
 
-    <div>
+    <div class="bg-white">
         {% for ad in ads %}
-            {{ad.title}}
-            {{ad.type}}
-            {{ad.image_type}}
-            {{ad.contract_length}} days
-            <a href="">Approve Ad</a>
-            <span class="btn" @click="toggle('{{ad.image.url}}')">View Ad</span>
-            <br>
+        <div class="flex justify-between overflow-hidden duration-300 transform border-b group last:border-b-0 hover:bg-gray-100">
+            <div class="p-2 ">
+                <span class="mr-8 font-semibold">{{ad.title}}</span>
+                <!-- <span>
+                    <span class="text-sm font-semibold text-gray-500">Ad Type:</span><span>&nbsp;{{ad.type|title}}</span>
+                </span> -->
+            </div>
+            <a class="flex items-center px-2 text-sm duration-300 transform translate-x-40 group-hover:translate-x-0" href="" x-cloak>
+                <span class="mr-2">See Ad Details</span>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-right" width="24" height="24" stroke="#597e8d" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M0 0h24v24H0z" stroke="none"/><path d="M5 12h14M13 18l6-6M13 6l6 6"/></svg>
+            </a>
+        </div>
         {% endfor %}
     </div>
-
-    <!-- Modal -->
-    <div class="overflow-auto" style="background-color: rgba(0,0,0,0.5)" x-show="isOpen" :class="{ 'fixed inset-0 z-50 flex items-center justify-center h-screen': isOpen }" x-cloak>
-        <div class="max-w-3xl m-4 sm:m-8" x-show="isOpen" @click.away="isOpen = false">
-            <div class="relative">
-                <img id="ad_review_modal_preview" class="object-cover w-full mx-auto mr-2">
-                <button type="button" class="block mx-auto mt-4 text-lg text-center btn btn-md" @click="isOpen = false" style="">Close Preview</button>
-            </div>
-        </div>
-    </div>
 </div>
-
-<script>
-    function component() {
-        return {
-            isOpen: false,
-            modalImageUrl: '',
-            toggle(img) {
-                document.querySelector('#ad_review_modal_preview').setAttribute("src", img);
-                this.isOpen = !this.isOpen;
-            }
-        }
-    }
-</script>
 {% endblock main %}
