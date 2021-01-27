@@ -9,6 +9,7 @@ class Payment(models.Model):
     payment_status = models.CharField(max_length=50)
     purchase_type = models.CharField(max_length=50)
     purchase_choice = models.CharField(max_length=50)
+    ad_uuid = models.CharField(max_length=100, default=None, null=True, blank=True)
     user = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         related_name="payments",
