@@ -8,19 +8,26 @@
         <div class="text-3xl text-white sm:text-4xl text-shadow">Ads to Review</div>
     </div>
 
-    <div class="bg-white">
+    <div class="">
         {% for ad in ads %}
-        <div class="flex justify-between overflow-hidden duration-300 transform border-b group last:border-b-0 hover:bg-gray-100">
+        <div class="flex justify-between overflow-hidden duration-300 transform bg-white border-b group last:border-b-0 hover:bg-gray-100">
             <div class="p-2 ">
                 <span class="mr-8 font-semibold">{{ad.title}}</span>
                 <!-- <span>
                     <span class="text-sm font-semibold text-gray-500">Ad Type:</span><span>&nbsp;{{ad.type|title}}</span>
                 </span> -->
             </div>
-            <a class="flex items-center px-2 text-sm duration-300 transform translate-x-40 group-hover:translate-x-0" href="" x-cloak>
+            <a class="flex items-center px-2 text-sm duration-300 transform translate-x-40 group-hover:translate-x-0" href="{% url 'admin_review_ad' uuid=ad.redirect_uuid %}" x-cloak>
                 <span class="mr-2">See Ad Details</span>
                 <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-right" width="24" height="24" stroke="#597e8d" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M0 0h24v24H0z" stroke="none"/><path d="M5 12h14M13 18l6-6M13 6l6 6"/></svg>
             </a>
+        </div>
+        {% empty %}
+        <div class="relative flex flex-col items-center justify-center col-span-2 p-4">
+            <div class="absolute flex flex-col items-center justify-center">
+                <h2 class="text-4xl text-gray-200 uppercase text-shadow">There are no ads to review yet</h2>
+            </div>
+            <img class="" width="400" src="{% webpack_static 'img/illustrations/empty.svg' %}" alt="">
         </div>
         {% endfor %}
     </div>
