@@ -76,7 +76,7 @@ def admin_review_ads(request):
 @login_required
 def admin_review_ad(request, uuid):
     ad = Ad.objects.get(redirect_uuid=uuid)
-    payment = Payment.objects.get(ad=ad)
+    payment = Payment.objects.get(ad_uuid=ad.redirect_uuid)
 
     context = {
         "ad": ad,
