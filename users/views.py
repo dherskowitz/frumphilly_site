@@ -4,6 +4,7 @@ from django.contrib import messages
 from events.models import Event
 from listings.models import Listing
 from ads.models import Ad
+from payments.models import Payment
 from .models import CustomUser
 from .forms import CustomUserSettingsForm
 
@@ -69,4 +70,16 @@ def admin_review_ads(request):
     context = {
         "ads": ads,
     }
-    return render(request, "admin/ad_review.html", context)
+    return render(request, "admin/ad_review_all.html", context)
+
+
+@login_required
+def admin_review_ad(request, uuid):
+    ad = Ad.objects.get(redirect_uuid=uuid)
+    payment = Payment.objects.get(ad=ad)
+
+    context = {
+        "ad": ad,
+        "payment": payment
+    }
+    return render(request, "admin/ad_review_single.html", context)
