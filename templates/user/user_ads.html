@@ -8,14 +8,14 @@
 
 
 <div class="my-10">
-    <div class="flex flex-row justify-between mb-10 align-center">
+    <div class="flex flex-row justify-between mb-4 align-center">
         <div class="text-3xl text-white sm:text-4xl text-shadow">My Ads</div>
         <a class="flex items-center btn btn-md" href="{% url 'create_ad' %}">Create Ad</a>
     </div>
 <!--  lg:grid-cols-3 xl:grid-cols-4 -->
     <div class="grid grid-cols-1 gap-2 sm:grid-cols-2"> 
         {% for ad in ads %}
-        <div class="flex justify-between p-2 mb-4 bg-gray-100 rounded-md shadow-md">
+        <div class="flex justify-between p-2 bg-gray-100 rounded-md shadow-md">
             <div class="w-2/3">
                 <h3 class="text-lg font-semibold text-gray-700">{{ad.title}}</h3>  
                 <div>
@@ -44,6 +44,13 @@
                     <span class="px-2 py-1 text-sm text-gray-200 bg-yellow-600 rounded-md">Under Review</span>  
                     <div class="mt-2 text-sm">
                         <p>Your ad has been created and paid for and is under review by the Frum Philly management. The start of the ads term will only start once management has made it active. If you have any questions or concerns you can <a class="text-blue-600 underline" href="{% url 'contact' %}">contact us</a>.</p>
+                    </div>
+                    {% endif %}
+
+                    {% if ad.status == 'paused' %}
+                    <span class="px-2 py-1 text-sm text-gray-600 bg-yellow-400 rounded-md">Paused</span>  
+                    <div class="mt-2 text-sm">
+                        <p>Your ad has been paused. There are {{ ad.time_remaining }} day{{ ad.time_remaining|pluralize }} remaining. If you have any questions or concerns you can <a class="text-blue-600 underline" href="{% url 'contact' %}">contact us</a>.</p>
                     </div>
                     {% endif %}
         
