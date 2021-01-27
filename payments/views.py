@@ -133,6 +133,7 @@ def stripe_webhook(request):
             p.payment_status = payment_status
             p.purchase_type = purchase_type
             p.purchase_choice = ad.type
+            p.ad_uuid = uuid
             p.user = ad.user
             p.save()
 
