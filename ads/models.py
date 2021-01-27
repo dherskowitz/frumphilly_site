@@ -96,7 +96,8 @@ class Ad(models.Model):
         return self.title
 
     def save(self, *args, **kwargs):
-        self.redirect_uuid = str(uuid.uuid4()).split('-')[-1]
+        if not self.redirect_to:
+            self.redirect_uuid = str(uuid.uuid4()).split('-')[-1]
         self.image_type = str(self.image).split(".")[-1]
         super().save(*args, **kwargs)
 
@@ -142,7 +143,7 @@ class Ad(models.Model):
         }
 
     def time_remaining(self):
-        if self.status == 'active':
+        if self.status == 'active' or self.status == 'paused':
             expires_at = self.created_at + timedelta(days=self.contract_length)
             remaining = expires_at.replace(tzinfo=None) - datetime.now()
             return remaining.days
