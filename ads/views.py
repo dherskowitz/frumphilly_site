@@ -14,7 +14,8 @@ def redirect_ad(request, id):
 @login_required
 def create_ad(request):
     form = AdForm()
-    context = {"form": form}
+    pricing = [(lambda d: d.update(id=key) or d)(val) for (key, val) in ad_prices.items()]
+    context = {"form": form, "pricing": pricing}
     if request.method == "POST":
         form = AdForm(request.POST, request.FILES)
         context["form"] = form
@@ -31,13 +32,15 @@ def create_ad(request):
 @login_required
 def edit_ad(request, uuid):
     ad = get_object_or_404(Ad, redirect_uuid=uuid)
+    pricing = [(lambda d: d.update(id=key) or d)(val) for (key, val) in ad_prices.items()]
     if request.user != ad.user:
         return render(request, "403.html")
 
     form = AdForm(instance=ad)
     context = {
         "form": form,
-        "ad": ad
+        "ad": ad,
+        "pricing": pricing
     }
 
     if request.method == "POST":
