@@ -25,7 +25,7 @@
     {% block template_scripts %}{% endblock template_scripts %}
 </head>
 
-<body class="pt-16 relative flex flex-col bg-bgGrey">
+<body class="relative flex flex-col pt-16 bg-bgGrey">
     <noscript>
         <div class="noscript">Some features of this site require JavaScript to work.</div>
     </noscript>
@@ -35,16 +35,16 @@
     <main class="flex-1">
         {% include 'components/messages.html' %}
 
-        <div class="container flex">
+        <div class="flex">
             {% include 'user/_sidebar.html' %}
-            <div class="w-full md:max-w-lg lg:max-w-2xl xl:max-w-full xl:w-full md:ml-8 xl:ml-20">
+            <div class="container w-full px-12 md:max-w-lg lg:max-w-2xl xl:max-w-full xl:w-full">
                 {% block main %}
                 {% endblock main %}
             </div>
         </div>
     </main>
 
-    {% include 'components/footer.html' %}
+    {% comment %} {% include 'components/footer.html' %} {% endcomment %}
     {% render_bundle 'main' 'js' %}
     {% block template_js %}{% endblock template_js %}
 </body>
