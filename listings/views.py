@@ -177,6 +177,7 @@ def listings_delete(request, slug, pk):
     context = {"listing": listing}
     if request.method == "POST":
         listing.delete()
+        messages.success(request, f'Listing {listing.business_name} was deleted successfully!')
         return redirect("/user/listings/")
     return render(request, "listings/delete.html", context)
 

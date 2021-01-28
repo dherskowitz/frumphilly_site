@@ -126,5 +126,6 @@ def events_delete(request, slug, pk):
     context = {"event": event}
     if request.method == "POST":
         event.delete()
-        return redirect(events_all)
+        messages.success(request, f'Event {event.name} was deleted successfully!')
+        return redirect("/user/events/")
     return render(request, "events/delete.html", context)
