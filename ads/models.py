@@ -77,7 +77,7 @@ class Ad(models.Model):
         verbose_name="Send Ad To",
         help_text="Enter the URL where the ad should be linked to. (Must include http:// or https://)",
     )
-    redirect_uuid = models.CharField(max_length=100, default=None, null=True, blank=True)
+    redirect_uuid = models.CharField(max_length=100, default=None, null=True, blank=True, db_index=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     read_terms = models.BooleanField(
