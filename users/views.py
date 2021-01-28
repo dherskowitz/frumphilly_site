@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from events.models import Event
 from listings.models import Listing
-from ads.models import Ad
+from ads.models import Ad, ad_prices
 from payments.models import Payment
 from .models import CustomUser
 from .forms import CustomUserSettingsForm
@@ -76,10 +76,12 @@ def admin_review_ads(request):
 @login_required
 def admin_review_ad(request, uuid):
     ad = Ad.objects.get(redirect_uuid=uuid)
-    payment = Payment.objects.get(ad_uuid=ad.redirect_uuid)
+    payments = Payment.objects.filter(ad_uuid=ad.redirect_uuid)
+    price_info = ad_prices[f"{ad.contract_length}"]
 
     context = {
         "ad": ad,
-        "payment": payment
+        "payments": payments,
+        "price_info": price_info
     }
     return render(request, "admin/ad_review_single.html", context)
