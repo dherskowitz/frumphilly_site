@@ -2,7 +2,7 @@
 {% load socialaccount %}
 
 <header id="navbar" class="fixed top-0 z-50 w-full h-16 px-2 bg-white md:px-0">
-    <div class="flex items-center justify-between h-full md:container md:mx-auto">
+    <div class="flex items-center justify-between h-full md:mx-auto {{classes}}">
         <a id="navbar__brand" href="{% url 'home' %}">
             <img class="w-40" src="{% webpack_static 'img/logos/logo.svg' %}" alt="Frum Philly Logo">
         </a>
