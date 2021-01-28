@@ -1,4 +1,5 @@
 from django.shortcuts import redirect, render, get_object_or_404
+from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.http.response import JsonResponse
 from .models import Ad, ad_prices
@@ -71,3 +72,17 @@ def review_ad(request):
         "price_info": price_info
     }
     return render(request, 'ads/review.html', context)
+
+
+@login_required
+def activate_ad(request, uuid):
+    ad = Ad.objects.get(redirect_uuid=uuid)
+
+    if ad.status != 'review':
+        messages.error(request, f'Ad "{ad.title}" cannot be actived. No payment has been made!')
+        return redirect("/manage/review-ads/")
+    ad.status = 'active'
+    ad.save()
+
+    messages.success(request, f'Ad "{ad.title}" was set to active!')
+    return redirect("/manage/review-ads/")
