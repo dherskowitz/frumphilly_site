@@ -45,7 +45,7 @@ def create_ad_checkout_session(request):
                 else None,
                 success_url=domain_url
                 + "/payments/success?session_id={CHECKOUT_SESSION_ID}",
-                cancel_url=f"{domain_url}/payments/cancelled/",
+                cancel_url=f"{domain_url}/ads/review/?ad={ad.redirect_uuid}",
                 payment_method_types=["card"],
                 mode="payment",
                 metadata={
