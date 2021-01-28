@@ -1,3 +1,4 @@
+import datetime
 from django.shortcuts import redirect, render, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
@@ -81,6 +82,7 @@ def activate_ad(request, uuid):
     if ad.status != 'review':
         messages.error(request, f'Ad "{ad.title}" cannot be actived. No payment has been made!')
         return redirect("/manage/review-ads/")
+    ad.activated_at = datetime.datetime.utcnow()
     ad.status = 'active'
     ad.save()
 
