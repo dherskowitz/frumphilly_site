@@ -3,73 +3,73 @@
 
 
 {% block main %}
-<div class="my-10 bg-white rounded-md shadow-md">
-    <div class="flex items-center justify-between p-8 border-b-2">
+<div class="my-5 bg-white rounded-md shadow-md">
+    <div class="flex flex-col justify-between px-2 py-4 border-b-2 md:px-8 md:py-8 md:items-center md:flex-row">
         <div class="text-2xl font-semibold text-gray-600">{{ad.title}}</div>
-        <a class="w-40 text-lg font-semibold text-center btn btn-md" id="approveAdSubmit" href="{% url 'activate_ad' uuid=ad.redirect_uuid %}">Approve Ad</a>
+        <a class="w-40 mt-4 text-lg font-semibold text-center btn btn-md md:mt-0" id="approveAdSubmit" href="{% url 'activate_ad' uuid=ad.redirect_uuid %}">Approve Ad</a>
     </div>
 
-    <div class="flex px-8 py-4 bg-gray-100">
-        <div class="w-1/3 text-sm font-semibold text-gray-600">Ad Status</div>
-        <div class="w-2/3">{{ad.status}}</div>
+    <div class="flex flex-col px-2 py-2 bg-gray-100 md:py-4 md:px-8 md:flex-row">
+        <div class="text-sm font-semibold text-gray-600 md:w-1/3">Ad Status</div>
+        <div class="pt-2 md:w-2/3 md:pt-0">{{ad.status}}</div>
     </div>
 
-    <div class="flex px-8 py-4">
-        <div class="w-1/3 text-sm font-semibold text-gray-600">Ad Type</div>
-        <div class="w-2/3">{{ad.type}}</div>
+    <div class="flex flex-col px-2 py-2 md:py-4 md:px-8 md:flex-row">
+        <div class="text-sm font-semibold text-gray-600 md:w-1/3">Ad Type</div>
+        <div class="pt-2 md:w-2/3 md:pt-0">{{ad.type}}</div>
     </div>
 
-    <div class="flex px-8 py-4 bg-gray-100">
-        <div class="w-1/3 text-sm font-semibold text-gray-600">Contract Length</div>
-        <div class="w-2/3">{{price_info.term}}</div>
+    <div class="flex flex-col px-2 py-2 bg-gray-100 md:py-4 md:px-8 md:flex-row">
+        <div class="text-sm font-semibold text-gray-600 md:w-1/3">Contract Length</div>
+        <div class="pt-2 md:w-2/3 md:pt-0">{{price_info.term}}</div>
     </div>
 
-    <div class="flex px-8 py-4">
-        <div class="w-1/3 text-sm font-semibold text-gray-600">Redirect To</div>
-        <div class="w-2/3">{{ad.redirect_to}}</div>
+    <div class="flex flex-col px-2 py-2 md:py-4 md:px-8 md:flex-row">
+        <div class="text-sm font-semibold text-gray-600 md:w-1/3">Redirect To</div>
+        <div class="pt-2 md:w-2/3 md:pt-0">{{ad.redirect_to}}</div>
     </div>
 
-    <div class="flex px-8 py-4 bg-gray-100">
-        <div class="w-1/3 text-sm font-semibold text-gray-600">Image Type</div>
-        <div class="w-2/3">{{ad.image_type}}</div>
+    <div class="flex flex-col px-2 py-2 bg-gray-100 md:py-4 md:px-8 md:flex-row">
+        <div class="text-sm font-semibold text-gray-600 md:w-1/3">Image Type</div>
+        <div class="pt-2 md:w-2/3 md:pt-0">{{ad.image_type}}</div>
     </div>
 
-    <div class="flex px-8 py-4">
-        <div class="w-1/3 text-sm font-semibold text-gray-600">Created At</div>
-        <div class="w-2/3">{{ad.created_at}}</div>
+    <div class="flex flex-col px-2 py-2 md:py-4 md:px-8 md:flex-row">
+        <div class="text-sm font-semibold text-gray-600 md:w-1/3">Created At</div>
+        <div class="pt-2 md:w-2/3 md:pt-0">{{ad.created_at}}</div>
     </div>
 
-    <div class="flex px-8 py-4 bg-gray-100">
-        <div class="w-1/3 text-sm font-semibold text-gray-600">User Email</div>
-        <div class="w-2/3">{{ad.user.email}}</div>
+    <div class="flex flex-col px-2 py-2 bg-gray-100 md:py-4 md:px-8 md:flex-row">
+        <div class="text-sm font-semibold text-gray-600 md:w-1/3">User Email</div>
+        <div class="pt-2 md:w-2/3 md:pt-0">{{ad.user.email}}</div>
     </div>
 
-    <div class="flex px-8 py-4">
-        <div class="w-1/3 text-sm font-semibold text-gray-600">Ad Image</div>
-        <div class="w-2/3"><img style="max-height: 250px;" src="{{ad.image.url}}" alt=""></div>
+    <div class="flex flex-col px-2 py-2 md:py-4 md:px-8 md:flex-row">
+        <div class="text-sm font-semibold text-gray-600 md:w-1/3">Ad Image</div>
+        <div class="pt-2 md:w-2/3 md:pt-0"><img style="max-height: 250px;" src="{{ad.image.url}}" alt=""></div>
     </div>
 
-    <div class="flex px-8 py-4 bg-gray-100">
-        <div class="w-1/3 text-sm font-semibold text-gray-600">Payments</div>
-        <div class="flex flex-col w-2/3">
+    <div class="flex flex-col px-2 py-2 bg-gray-100 md:py-4 md:px-8 md:flex-row">
+        <div class="text-sm font-semibold text-gray-600 md:w-1/3">Payments</div>
+        <div class="flex flex-col pt-4 md:w-2/3 md:pt-2">
             {% for payment in payments %}
                 <div class="mb-2 overflow-hidden text-white bg-gray-600 rounded-md shadow-sm">
                     <div class="px-4 py-2 text-base font-semibold">{{ payment.created_at }}</div>
-                    <div class="flex flex-row bg-gray-900 border-b-2 border-gray-600">
-                        <div class="w-1/2 px-4 py-2 text-sm font-semibold">Payment Status</div>
-                        <div class="w-1/2 px-4 py-2">{{payment.payment_status}}</div>
+                    <div class="flex flex-col bg-gray-900 border-b-2 border-gray-600 md:flex-row">
+                        <div class="px-4 py-2 text-sm font-semibold md:w-1/2">Payment Status</div>
+                        <div class="px-4 py-2 md:w-1/2">{{payment.payment_status}}</div>
                     </div>
-                    <div class="flex flex-row bg-gray-900 border-b-2 border-gray-600">
-                        <div class="w-1/2 px-4 py-2 text-sm font-semibold">Amount Paid</div>
-                        <div class="w-1/2 px-4 py-2">${{payment.amount_paid|stringformat:"i"|slice:":2"}}.00</div>
+                    <div class="flex flex-col bg-gray-900 border-b-2 border-gray-600 md:flex-row">
+                        <div class="px-4 py-2 text-sm font-semibold md:w-1/2">Amount Paid</div>
+                        <div class="px-4 py-2 md:w-1/2">${{payment.amount_paid|stringformat:"i"|slice:":2"}}.00</div>
                     </div>
-                    <div class="flex flex-row bg-gray-900 border-b-2 border-gray-600">
-                        <div class="w-1/2 px-4 py-2 text-sm font-semibold">Ad Type</div>
-                        <div class="w-1/2 px-4 py-2">{{payment.purchase_choice}}</div>
+                    <div class="flex flex-col bg-gray-900 border-b-2 border-gray-600 md:flex-row">
+                        <div class="px-4 py-2 text-sm font-semibold md:w-1/2">Ad Type</div>
+                        <div class="px-4 py-2 md:w-1/2">{{payment.purchase_choice}}</div>
                     </div>
-                    <div class="flex flex-row bg-gray-900 border-b-2 border-gray-600">
-                        <div class="w-1/2 px-4 py-2 text-sm font-semibold">Payment Email</div>
-                        <div class="w-1/2 px-4 py-2">{{payment.email}}</div>
+                    <div class="flex flex-col bg-gray-900 border-b-2 border-gray-600 md:flex-row">
+                        <div class="px-4 py-2 text-sm font-semibold md:w-1/2">Payment Email</div>
+                        <div class="px-4 py-2 md:w-1/2">{{payment.email}}</div>
                     </div>
                 </div>
             {% endfor %}
