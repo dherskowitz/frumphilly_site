@@ -1,11 +1,51 @@
 {% extends 'base.html' %}
+{% load webpack_static from webpack_loader %}
 
 
 {% block main %}
-<section class="section">
-    <div class="container">
-      <h1>Success!!</h1>
-      <p>Your payment succeeded.</p>
+<section class="container my-10 section">
+    <div class="md:flex">
+      <div class="hidden w-1/2 lg:block">
+        <img src="{% webpack_static 'img/illustrations/payment_success.svg' %}" alt="">
+      </div>
+      <div class="w-full p-4 ml-2 bg-white rounded-md shadow-md lg:w-1/2">
+        <h1 class="text-3xl font-semibold text-green-600 md:text-5xl">Payment Succeeded!</h1>
+        <p class="mt-2 text-lg text-gray-700">Your payment was successfully made and marked as "Under Review". Frum Philly management has been alerted and will review your ad as soon as possible. The contract timer on your ad only begins once management has activated your ad. If you have any questions please <a class="text-blue-600 underline" href="{% url 'contact' %}">contact us</a>.</p>
+
+        <div class="mt-4 overflow-hidden rounded-md shadow-md">
+          <div class="px-8 py-4 text-lg font-semibold text-gray-600 border-b-2 border-gray-300">Payment Details</div>
+          <div class="flex flex-col px-8 py-4 bg-gray-200 sm:flex-row">
+            <div class="text-sm font-semibold text-gray-600 sm:w-1/3">Payment Amount</div>
+            <div class="sm:w-2/3">${{payment_session.amount_total|stringformat:"i"|slice:":2"}}.00</div>
+          </div>
+          <div class="flex flex-col px-8 py-4 sm:flex-row">
+            <div class="text-sm font-semibold text-gray-600 sm:w-1/3">Payment Email</div>
+            <div class=sm:w-2/3">{{payment_session.customer_details.email}}</div>
+          </div>
+          <div class="flex flex-col px-8 py-4 bg-gray-200 sm:flex-row">
+            <div class="text-sm font-semibold text-gray-600 sm:w-1/3">Purchase Type</div>
+            <div class=sm:w-2/3">{{payment_session.metadata.purchase_type}}</div>
+          </div>
+          <div class="flex flex-col px-8 py-4 sm:flex-row">
+            <div class="text-sm font-semibold text-gray-600 sm:w-1/3">Payment Status</div>
+            <div class=sm:w-2/3">{{payment_session.payment_status}}</div>
+          </div>
+          {% if ad %}
+          <div class="flex flex-col px-8 py-4 bg-gray-200 sm:flex-row">
+            <div class="text-sm font-semibold text-gray-600 sm:w-1/3">Ad Length</div>
+            <div class=sm:w-2/3">{{price_info.term}}</div>
+          </div>
+          <div class="flex flex-col px-8 py-4 sm:flex-row">
+            <div class="text-sm font-semibold text-gray-600 sm:w-1/3">Ad Image</div>
+            <div class=sm:w-2/3"><img src="{{ad.image.url}}" alt=""></div>
+          </div>
+          {% endif %}
+        </div>
+
+        <div class="flex justify-end">
+          <a class="mt-4 btn btn-md" href="{% url 'user_ads' %}">Manage My Ads</a>
+        </div>
+      </div>
     </div>
   </section>
 {% endblock main %}

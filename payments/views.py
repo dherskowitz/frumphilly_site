@@ -1,7 +1,8 @@
 import stripe
 import json
-from django.shortcuts import render
 from decouple import config
+from django.shortcuts import render, redirect
+from django.contrib import messages
 from django.http.response import JsonResponse, HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from ads.models import Ad, ad_prices
@@ -14,7 +15,19 @@ def payments_test(request):
 
 
 def payments_success(request):
-    return render(request, "payments/success.html")
+    stripe.api_key = config("STRIPE_SECRET_KEY")
+    payment_session = stripe.checkout.Session.retrieve(request.GET['session_id'])
+    context = {"payment_session": payment_session}
+    try:
+        if payment_session["metadata"]["purchase_type"] == "ad":
+            ad = Ad.objects.get(redirect_uuid=payment_session["metadata"]["uuid"])
+            context["ad"] = ad
+            context["price_info"] = ad_prices[f"{ad.contract_length}"]
+    except Ad.DoesNotExist:
+        messages.error(request, "No Ad could be found for this session.")
+        return redirect("/user/account/")
+
+    return render(request, "payments/success.html", context)
 
 
 def payments_cancelled(request):
