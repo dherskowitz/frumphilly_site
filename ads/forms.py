@@ -34,6 +34,6 @@ class AdForm(forms.ModelForm):
                     raise forms.ValidationError("Image must be less than 100MB.")
             else:
                 raise forms.ValidationError("Image only accepts jpg/jpeg/gif/png files.")
-        else:
+        elif image is None:
             raise forms.ValidationError("An Image is required.")
         return image
