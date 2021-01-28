@@ -8,6 +8,8 @@ from payments.views import stripe_config
 
 def redirect_ad(request, id):
     ad = Ad.objects.get(redirect_uuid=id)
+    ad.clicks += 1
+    ad.save()
     return redirect(ad.redirect_to)
 
 
