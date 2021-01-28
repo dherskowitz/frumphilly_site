@@ -1,0 +1,33 @@
+{% for price in pricing %}
+
+{% if price.id == ad.contract_length|stringformat:"s" %}
+<div class="border-2 radioSelect">
+    <input type="radio" class="hidden" id="{{price.term|slugify}}" name="contract_length" value="{{price.id}}" checked>
+    <label for="{{price.term|slugify}}" class="block w-full h-full px-2 py-2 text-center rounded-sm cursor-pointer md:py-6">
+        <div class="text-lg md:text-xl lg:text-2xl">{{ price.term }}</div>
+        <div class="text-xl font-semibold md:text-2xl lg:text-3xl">${{price.price}}.00</div>
+    </label>
+</div>
+
+{% elif not ad.contract_length and price.id == '30' %}
+<!-- Set default -->
+<div class="border-2 radioSelect">
+    <input type="radio" class="hidden" id="{{price.term|slugify}}" name="contract_length" value="{{price.id}}" checked>
+    <label for="{{price.term|slugify}}" class="block w-full h-full px-2 py-2 text-center rounded-sm cursor-pointer md:py-6">
+        <div class="text-lg md:text-xl lg:text-2xl">{{ price.term }}</div>
+        <div class="text-xl font-semibold md:text-2xl lg:text-3xl">${{price.price}}.00</div>
+    </label>
+</div>
+
+{% else %}
+
+<div class="border-2 radioSelect">
+    <input type="radio" class="hidden" id="{{price.term|slugify}}" name="contract_length" value="{{price.id}}">
+    <label for="{{price.term|slugify}}" class="block w-full h-full px-2 py-2 text-center rounded-sm cursor-pointer md:py-6">
+        <div class="text-lg md:text-xl lg:text-2xl">{{ price.term }}</div>
+        <div class="text-xl font-semibold md:text-2xl lg:text-3xl">${{price.price}}.00</div>
+    </label>
+</div>
+{% endif %}
+
+{% endfor %}

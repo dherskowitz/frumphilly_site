@@ -1,0 +1,9 @@
+<select name="contract_length" class="block w-full px-2 py-4 border-2 rounded-md bg-transparent-red border-silver">
+    {% for price in pricing %}
+        <option 
+            value="{{price.id}}" 
+            {% if price.id == ad.contract_length|stringformat:"s" %}selected{% endif %}
+            {% if not ad.contract_length and price.id == '30' %}selected{% endif %}
+        >{{ price.term }} - ${{price.price}}.00</option>
+    {% endfor %}
+  </select>
