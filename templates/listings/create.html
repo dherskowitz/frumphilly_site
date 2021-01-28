@@ -17,9 +17,9 @@
 
 
 {% block main %}
-<section class="my-10">
+<section class="my-5">
     <div class="my-4">
-        <h2 class="text-3xl md:text-4xl text-center md:text-left text-white text-shadow mb-2">Create {{category_group.title|capfirst}} Listing</h2>
+        <h2 class="mb-2 text-3xl text-center text-white md:text-4xl md:text-left text-shadow">Create {{category_group.title|capfirst}} Listing</h2>
         <p class="text-base">Not all fields are required but the more information you provide the better you listing will look.</p>
     </div>
     {% include 'components/errors.html' %}
@@ -27,7 +27,7 @@
         <form class="form" action="{% url 'listings_create' category_group.slug %}" method="POST" enctype='multipart/form-data'>
             {% csrf_token %}
             {% include 'listings/_form.html' %}
-            {% include 'components/submit_btn.html' with value='Create Listing' class="btn btn-block btn-lg btn--form-submit mt-4" %}
+            {% include 'components/submit_btn.html' with value='Create Listing' class="mt-4 btn btn-block btn-lg btn--form-submit" %}
         </form>
     </div>
 </section>

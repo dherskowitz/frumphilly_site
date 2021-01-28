@@ -1,26 +1,26 @@
 {% extends 'dashboard.html' %}
 
 {% block main %}
-<section class="container my-10">
+<section class="container my-5">
     <div class="my-4">
-        <h1 class="text-3xl md:text-5xl text-white text-shadow">Select Listing Type</h1>
+        <h1 class="text-3xl text-white md:text-5xl text-shadow">Select Listing Type</h1>
         <p>Choose the type of listing you would like to create</p>
     </div>
-    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+    <div class="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
 
         {% for option in options %}
         
         {% if option.image %}
-            <a href="{% url 'listings_create' option.slug %}" class="group relative rounded-md shadow-md bg-white p-4 h-64 bg-no-repeat bg-cover flex items-center justify-center overflow-hidden">
+            <a href="{% url 'listings_create' option.slug %}" class="relative flex items-center justify-center h-64 p-4 overflow-hidden bg-white bg-no-repeat bg-cover rounded-md shadow-md group">
                 <span class="z-10">
-                    <div class="text-4xl mb-2 text-gray-200 text-shadow">{{ option.title }}</div>
+                    <div class="mb-2 text-4xl text-gray-200 text-shadow">{{ option.title }}</div>
                     <p>{{ option.description }}</p>
                 </span>
-                <img class="absolute w-full h-full transform group-hover:scale-125 transition duration-300 ease-in-out" src="{{option.image.url}}" alt="Category Image">
+                <img class="absolute w-full h-full transition duration-300 ease-in-out transform group-hover:scale-125" src="{{option.image.url}}" alt="Category Image">
             </a>
         {% else %}
-            <a href="{% url 'listings_create' option.slug %}" class="rounded-md shadow-md bg-white p-4">
-                <div class="text-2xl mb-2">{{ option.title }}</div>
+            <a href="{% url 'listings_create' option.slug %}" class="p-4 bg-white rounded-md shadow-md">
+                <div class="mb-2 text-2xl">{{ option.title }}</div>
                 <p>{{ option.description }}</p>
             </a>
         {% endif %}
