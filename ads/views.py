@@ -65,7 +65,7 @@ def review_ad(request):
     uuid = request.GET['ad']
     ad = Ad.objects.filter(redirect_uuid=uuid).first()
     price_info = ad_prices[f"{ad.contract_length}"]
-    if request.user != ad.user:
+    if request.user != ad.user or ad.status not in ["inactive", "expired"]:
         return render(request, "403.html")
     context = {
         "ad": ad,
