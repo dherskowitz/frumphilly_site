@@ -86,6 +86,7 @@ class Ad(models.Model):
         null=False,
         verbose_name="Terms"
     )
+    clicks = models.IntegerField(default=0)
     image_type = models.CharField(max_length=6, default=None)
 
     class Meta:
