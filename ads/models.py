@@ -96,7 +96,7 @@ class Ad(models.Model):
         return self.title
 
     def save(self, *args, **kwargs):
-        if not self.redirect_to:
+        if not self.redirect_uuid:
             self.redirect_uuid = str(uuid.uuid4()).split('-')[-1]
         self.image_type = str(self.image).split(".")[-1]
         super().save(*args, **kwargs)
