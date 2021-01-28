@@ -80,6 +80,7 @@ class Ad(models.Model):
     redirect_uuid = models.CharField(max_length=100, default=None, null=True, blank=True, db_index=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    activated_at = models.DateTimeField(default=None, blank=True, null=True)
     read_terms = models.BooleanField(
         default=False,
         blank=False,
@@ -105,8 +106,8 @@ class Ad(models.Model):
     def mark_expired():
         ads = Ad.objects.filter(status='active')
         for ad in ads:
-            expires_at = ad.created_at + timedelta(days=ad.contract_length)
-            if datetime.now() > expires_at.replace(tzinfo=None):
+            expires_at = ad.activated_at + timedelta(days=ad.contract_length)
+            if datetime.utcnow() > expires_at.replace(tzinfo=None):
                 ad.status = 'expired'
                 ad.save()
 
