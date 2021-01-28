@@ -9,7 +9,7 @@ class Payment(models.Model):
     payment_status = models.CharField(max_length=50)
     purchase_type = models.CharField(max_length=50)
     purchase_choice = models.CharField(max_length=50)
-    ad_uuid = models.CharField(max_length=100, default=None, null=True, blank=True)
+    ad_uuid = models.CharField(max_length=100, default=None, null=True, blank=True, db_index=True)
     user = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         related_name="payments",
@@ -17,6 +17,7 @@ class Payment(models.Model):
         blank=True,
         null=True,
     )
+    created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
         verbose_name = "payment"
