@@ -83,7 +83,8 @@ def create_ad_checkout_session(request):
 def stripe_webhook(request):
     stripe.api_key = config("STRIPE_SECRET_KEY")
     endpoint_secret = config("STRIPE_ENDPOINT_SECRET")
-    payload = request.body
+    # payload = request.body
+    payload = request.body.decode('utf-8')
     sig_header = request.META["HTTP_STRIPE_SIGNATURE"]
     event = None
 
@@ -94,7 +95,7 @@ def stripe_webhook(request):
     except stripe.error.SignatureVerificationError as e:
         return HttpResponse(status=400)
 
-    if event["type"] == "checkout.session.completed":
+    if event["type"] == "charge.succeeded":
         # convert payload to dict 
         response = json.loads(payload)
 
