@@ -83,8 +83,7 @@ def create_ad_checkout_session(request):
 def stripe_webhook(request):
     stripe.api_key = config("STRIPE_SECRET_KEY")
     endpoint_secret = config("STRIPE_ENDPOINT_SECRET")
-    # payload = request.body
-    payload = request.body.decode('utf-8')
+    payload = request.body
     sig_header = request.META["HTTP_STRIPE_SIGNATURE"]
     event = None
 
