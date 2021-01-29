@@ -1,6 +1,6 @@
 {% for price in pricing %}
 
-{% if price.id == ad.contract_length|stringformat:"s" %}
+{% if ad.contract_length and price.id == ad.contract_length|stringformat:"s" %}
 <div class="border-2 radioSelect">
     <input type="radio" class="hidden" id="{{price.term|slugify}}" name="contract_length" value="{{price.id}}" checked>
     <label for="{{price.term|slugify}}" class="block w-full h-full px-2 py-2 text-center rounded-sm cursor-pointer md:py-6">

@@ -16,3 +16,17 @@
 </section>
 
 {% endblock main %}
+
+{% block template_js %}
+<script> 
+    function isMobile() {
+        let termRadio = document.querySelector('#termRadio')
+        let termSelect = document.querySelector('#termSelect')
+        if (window.innerWidth <= 640) {
+            termRadio.parentNode.removeChild(termRadio);
+        } else {
+            termSelect.parentNode.removeChild(termSelect);
+        }
+    }
+</script>
+{% endblock template_js %}
