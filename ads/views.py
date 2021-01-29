@@ -2,10 +2,10 @@ import datetime
 from django.shortcuts import redirect, render, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from django.http.response import JsonResponse
 from .models import Ad, ad_prices
 from .forms import AdForm
 from payments.views import stripe_config
+from payments.models import Payment
 
 
 def redirect_ad(request, id):
@@ -88,3 +88,27 @@ def activate_ad(request, uuid):
 
     messages.success(request, f'Ad "{ad.title}" was set to active!')
     return redirect("/manage/review-ads/")
+
+
+@login_required
+def admin_review_ads(request):
+    ads = Ad.objects.filter(status='review').order_by("-created_at")
+
+    context = {
+        "ads": ads,
+    }
+    return render(request, "admin/ad_review_all.html", context)
+
+
+@login_required
+def admin_review_ad(request, uuid):
+    ad = Ad.objects.get(redirect_uuid=uuid)
+    payments = Payment.objects.filter(ad_uuid=ad.redirect_uuid)
+    price_info = ad_prices[f"{ad.contract_length}"]
+
+    context = {
+        "ad": ad,
+        "payments": payments,
+        "price_info": price_info
+    }
+    return render(request, "admin/ad_review_single.html", context)
