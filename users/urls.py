@@ -7,6 +7,4 @@ urlpatterns = [
     path("user/events/", views.user_events, name="user_events",),
     path("user/listings/", views.user_listings, name="user_listings",),
     path("user/ads/", views.user_ads, name="user_ads",),
-    path("manage/review-ads/", views.admin_review_ads, name="admin_review_ads",),
-    path("manage/review-ad/<slug:uuid>", views.admin_review_ad, name="admin_review_ad",),
 ]
