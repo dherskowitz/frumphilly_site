@@ -4,9 +4,11 @@
 
 {% block main %}
 <div class="my-5">
+    {% if ads %}
     <div class="flex flex-row justify-between mb-4 align-center">
         <div class="text-3xl text-white sm:text-4xl text-shadow">Ads to Review</div>
     </div>
+    {% endif %}
 
     <div class="">
         {% for ad in ads %}
@@ -30,9 +32,9 @@
             </a>
         </div>
         {% empty %}
-        <div class="relative flex flex-col items-center justify-center col-span-2 p-4">
+        <div class="relative flex flex-col items-center justify-center col-span-2 p-4 mt-16">
             <div class="absolute flex flex-col items-center justify-center">
-                <h2 class="text-4xl text-gray-200 uppercase text-shadow">There are no ads to review yet</h2>
+                <h2 class="text-4xl text-gray-200 uppercase text-shadow">There are no ads to review!</h2>
             </div>
             <img class="" width="400" src="{% webpack_static 'img/illustrations/empty.svg' %}" alt="">
         </div>
