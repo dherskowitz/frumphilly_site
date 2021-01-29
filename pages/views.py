@@ -16,15 +16,10 @@ def home(request):
     ads = Ad.get_active_ads()
     listings = Listing.objects.filter(status="published").order_by("-created_at")[:15]
     upcoming_events = Event.get_upcoming_events()
-    events_in_future = True
-    if not upcoming_events:
-        upcoming_events = Event.objects.filter(status="published").order_by("-start_date")[:15]
-        events_in_future = False
     context = {
         "ads": ads,
         "listings": listings,
         "upcoming_events": upcoming_events,
-        "events_in_future": events_in_future,
     }
     return render(request, "pages/home.html", context)
 
