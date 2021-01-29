@@ -4,9 +4,15 @@ from decouple import config
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.http.response import JsonResponse, HttpResponse
+from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from ads.models import Ad, ad_prices
 from .models import Payment
+
+
+stripe.api_key = config("STRIPE_SECRET_KEY")
+endpoint_secret = config("STRIPE_ENDPOINT_SECRET")
+domain_url = config("DOMAIN_URL")
 
 
 # config("SECRET_KEY")
@@ -15,7 +21,6 @@ def payments_test(request):
 
 
 def payments_success(request):
-    stripe.api_key = config("STRIPE_SECRET_KEY")
     payment_session = stripe.checkout.Session.retrieve(request.GET['session_id'])
     context = {"payment_session": payment_session}
     try:
@@ -48,8 +53,6 @@ def create_ad_checkout_session(request):
     price = ad_prices[f"{ad.contract_length}"]["price"]
 
     if request.method == "GET":
-        domain_url = config("DOMAIN_URL")
-        stripe.api_key = config("STRIPE_SECRET_KEY")
         try:
             checkout_session = stripe.checkout.Session.create(
                 # customer_email=request.user.email,
@@ -81,8 +84,6 @@ def create_ad_checkout_session(request):
 
 @csrf_exempt
 def stripe_webhook(request):
-    stripe.api_key = config("STRIPE_SECRET_KEY")
-    endpoint_secret = config("STRIPE_ENDPOINT_SECRET")
     payload = request.body
     sig_header = request.META["HTTP_STRIPE_SIGNATURE"]
     event = None
@@ -94,7 +95,7 @@ def stripe_webhook(request):
     except stripe.error.SignatureVerificationError as e:
         return HttpResponse(status=400)
 
-    if event["type"] == "charge.succeeded":
+    if event.type == "checkout.session.completed":
         # convert payload to dict 
         response = json.loads(payload)
 
