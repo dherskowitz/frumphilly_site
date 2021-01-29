@@ -55,6 +55,9 @@
             <a class="w-full block p-4 my-1 hover:bg-gray-900{% if url_name == 'admin_review_ads' %} bg-gray-900 border-r-4 border-white{% endif %}" href="{% url 'admin_review_ads' %}">
                 <span class="font-medium">Ads to Review</span>
             </a>
+            <a class="w-full block p-4 my-1 hover:bg-gray-900{% if url_name == 'admin_all_ads' %} bg-gray-900 border-r-4 border-white{% endif %}" href="{% url 'admin_all_ads' %}">
+                <span class="font-medium">All Ads</span>
+            </a>
         {% endif %}
 
         {% comment %} <div class="absolute bottom-0">
