@@ -22,6 +22,11 @@ REPORT_REASON_CHOICES = [
 
 
 class Contact(models.Model):
+    STATUS_CHOICES = [
+        ("unread", "Unread"),
+        ("read", "Read"),
+        ("spam", "Spam"),
+    ]
     name = models.CharField(default=None, blank=False, max_length=255)
     email = models.EmailField(max_length=255, default=None, blank=False)
     phone = models.CharField(max_length=18, default=None, null=True, blank=True)
@@ -31,6 +36,9 @@ class Contact(models.Model):
     message = models.TextField(default=None, blank=False)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    status = models.CharField(
+        max_length=10, choices=STATUS_CHOICES, blank=False, null=False, default="unread"
+    )
 
     class Meta:
         verbose_name = "Contact Submission"
