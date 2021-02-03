@@ -3,7 +3,7 @@
         <option 
             value="{{price.id}}" 
             {% if price.id == ad.contract_length|stringformat:"s" %}selected{% endif %}
-            {% if not ad.contract_length and price.id == '30' %}selected{% endif %}
+            {% if not ad.contract_length and price.id == '60' %}selected{% endif %}
         >{{ price.term }} - ${{price.price}}.00</option>
     {% endfor %}
   </select>

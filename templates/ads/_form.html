@@ -44,7 +44,7 @@
 <div>
     <div class="block mt-4">
         <span class="font-bold">Type of Ad</span>
-        <div class="hidden grid-cols-1 gap-1 mt-2 sm:grid-cols-2 sm:grid">
+        <div class="grid grid-cols-2 mt-2 sm:gap-1">
             <div class="border-2 radioSelect ">
                 <input
                     type="radio"
@@ -55,8 +55,8 @@
                     {% if not ad.type or ad.type == "sidebar" %}checked{% endif %}
                 >
                 <label for="sidebar" class="block w-full h-full px-2 py-6 text-center rounded-sm cursor-pointer">
-                    <div class="ml-2 text-2xl">Sidebar</div>
-                    <div class="ml-2 text-xl font-semibold md:text-2xl lg:text-3xl">Maximum 300 x 250</div>
+                    <div class="text-2xl">Sidebar</div>
+                    <div class="text-base font-semibold sm:text-x md:text-2xl lg:text-3xl">Maximum <span class="block sm:inline">300 x 250</span></div>
                 </label>
             </div>
             <div class="border-2 radioSelect ">
@@ -70,22 +70,10 @@
                 >
                 <label for="banner" class="block w-full h-full px-2 py-6 text-center rounded-sm cursor-pointer">
                     <div class="ml-2 text-2xl">Banner</div>
-                    <div class="ml-2 text-xl font-semibold md:text-2xl lg:text-3xl">Maximum 1110 x 250</div>
+                    <div class="text-base font-semibold sm:text-xl md:text-2xl lg:text-3xl">Maximum <span class="block sm:inline">1110 x 250</span></div>
                 </label>
             </div>
-        </div>
-
-        <select name="type" class="w-full px-2 py-4 border-2 rounded-md sm:hidden bg-transparent-red border-silver">
-            <option 
-                value="sidebar" 
-                {% if not ad.type or ad.type == "sidebar" %}checked{% endif %}
-            >Sidebar - 300 x 250</option>
-            <option 
-                value="banner" 
-                {% if ad.type == "banner" %}checked{% endif %}
-            >Banner - 1110 x 250</option>
-          </select>
-        
+        </div>        
     </div>
 </div>
 
@@ -94,8 +82,9 @@
     <div class="block mt-4">
         <span class="font-bold">Length of Term</span>
         <div class="">
-                <span id="termRadio" class="hidden grid-cols-1 gap-1 mt-2 sm:grid sm:grid-cols-5">{% include "ads/_term_radio.html" %}</span>
-                <span id="termSelect" class="sm:hidden">{% include "ads/_term_select.html" %}</span>
+                <span id="termRadio" class="grid mt-2 sm:grid-cols-3 sm:gap-1">
+                    {% include "ads/_term_radio.html" %}
+                </span>
         </div>
     </div>
 </div>
