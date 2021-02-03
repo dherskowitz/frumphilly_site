@@ -8,8 +8,8 @@ from django.conf import settings
 # from django.db.models.aggregates import Count
 
 ad_prices = {
-    "7": {"price": 10, "term": "One Week"},
-    "14": {"price": 18, "term": "Two Weeks"},
+    # "7": {"price": 10, "term": "One Week"},
+    # "14": {"price": 18, "term": "Two Weeks"},
     "30": {"price": 30, "term": "One Month"},
     "60": {"price": 50, "term": "Two Months"},
     "90": {"price": 90, "term": "Three Months"},
@@ -18,8 +18,8 @@ ad_prices = {
 
 class Ad(models.Model):
     # length stored as days
-    ONE_WEEK = 7
-    TWO_WEEKS = 14
+    # ONE_WEEK = 7
+    # TWO_WEEKS = 14
     ONE_MONTH = 30
     TWO_MONTHS = 60
     THREE_MONTHS = 90
@@ -35,8 +35,8 @@ class Ad(models.Model):
         ("banner", "Banner"),
     ]
     TERM_CHOICES = [
-        (ONE_WEEK, "One Week"),
-        (TWO_WEEKS, "Two Weeks"),
+        # (ONE_WEEK, "One Week"),
+        # (TWO_WEEKS, "Two Weeks"),
         (ONE_MONTH, "One Month"),
         (TWO_MONTHS, "Two Months"),
         (THREE_MONTHS, "Three Months"),
@@ -68,7 +68,7 @@ class Ad(models.Model):
         blank=True,
     )
     contract_length = models.IntegerField(
-        default=ONE_WEEK,
+        default=TWO_MONTHS,
         choices=TERM_CHOICES,
         help_text="Amount of times the ad will be active for.",
     )
