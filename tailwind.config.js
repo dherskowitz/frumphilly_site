@@ -10,6 +10,8 @@ module.exports = {
                 "transparent-red": "rgba(211, 67, 62, 0.1)",
                 google: "#ea4335",
                 facebook: "#3b5998",
+                fpPurple: "#684072",
+                fpRed: "#d8423d"
             },
             height: {
                 25: "25vh",
