@@ -70,6 +70,10 @@ def privacy(request):
     return render(request, "pages/privacy.html")
 
 
+def ad_terms(request):
+    return render(request, "pages/ad-terms.html")
+
+
 @require_POST
 def report_post(request):
     data = json.loads(request.body)
