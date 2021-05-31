@@ -54,5 +54,5 @@ sqlparse==0.3.0
 stripe==2.55.0
 toml==0.10.0
 typed-ast==1.4.1
-urllib3==1.25.7
+urllib3==1.25.8
 webencodings==0.5.1
