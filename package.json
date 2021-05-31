@@ -29,7 +29,7 @@
         "autoprefixer": "^10.1.0",
         "babel": "^6.23.0",
         "babel-loader": "^8.2.2",
-        "browser-sync": "^2.26.13",
+        "browser-sync": "^2.26.14",
         "browser-sync-webpack-plugin": "^2.3.0",
         "copy-webpack-plugin": "^5.1.2",
         "css-loader": "^3.6.0",
@@ -59,7 +59,7 @@
     },
     "dependencies": {
         "alpinejs": "^2.8.0",
-        "postcss": "^8.2.2",
+        "postcss": "^8.3.0",
         "tailwindcss": "^2.0.2"
     },
     "engines": {
