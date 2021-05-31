@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.views.generic.base import TemplateView
 
 
 urlpatterns = [
@@ -28,4 +29,5 @@ urlpatterns = [
     path("listings/", include("listings.urls"), name="listings"),
     path("", include("ads.urls"), name="ads"),
     path("payments/", include("payments.urls"), name="payments"),
+    path("ads.txt", TemplateView.as_view(template_name="ads.txt", content_type="text/plain")),
 ]
