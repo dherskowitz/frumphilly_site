@@ -34,8 +34,14 @@
             <a href="{% url 'listings_all' %}" class="px-8 text-xl font-semibold transition-all duration-150 ease-in btn btn-md hover:bg-purple-800">See More Listings</a>
         </div>
     </section>
-    
-    {% include 'components/banner_ads.html' %}
+
+    <ins class="adsbygoogle"
+        style="display:block"
+        data-ad-client="ca-pub-3267594234437784"
+        data-ad-slot="2748391920"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
+
     {% include 'components/listings_cta.html' %}
 
     <section class="mx-4 my-24 md:mx-0">
@@ -46,7 +52,7 @@
         {% if upcoming_events %}
             <div class="grid grid-cols-1 gap-3 mt-16 md:grid-cols-2 lg:grid-cols-3">
                 {% for event in upcoming_events %}
-                {% include 'events/_list.html' %}            
+                {% include 'events/_list.html' %}
                 {% endfor %}
             </div>
             <div class="flex justify-center mt-12">
@@ -88,6 +94,11 @@
         </div>
     </section>
 
-    <div class="mt-12">{% include 'components/banner_ads.html' %}</div>
+    <ins class="adsbygoogle"
+        style="display:block"
+        data-ad-client="ca-pub-3267594234437784"
+        data-ad-slot="6288961932"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
 </div>
 {% endblock main %}

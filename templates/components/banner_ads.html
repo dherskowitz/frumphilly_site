@@ -1,6 +1,14 @@
-{% load webpack_static from webpack_loader %}
+<!-- {% load webpack_static from webpack_loader %} -->
 
-{% if ads.banner_ads %}
+
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-3267594234437784"
+     data-ad-slot="2748391920"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+
+<!-- {% if ads.banner_ads %}
 
     {% with ad=ads.banner_ads|random %}     
     <div class="mt-4 "><a href="{% url 'redirect_ad' id=ad.redirect_uuid %}" target="_blank"><img src="{{ad.image.url}}" alt="Advertise on Frum Philly" class="block mx-auto"></a></div>
@@ -8,4 +16,4 @@
 
 {% else %}
 <div class="mt-4"><a href="{% url 'advertising' %}"><img width="1110" height="250" src="{% webpack_static 'img/images/fp-banner-ad-one.jpg' %}" alt="Advertise on Frum Philly" class="block mx-auto"></a></div>
-{% endif %}
+{% endif %} -->
