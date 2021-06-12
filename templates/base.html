@@ -56,6 +56,16 @@
     <script>
         (adsbygoogle = window.adsbygoogle || []).push({});
     </script>
+
+    <script>
+        if (window.location.host === "localhost:8001") {
+            const ads = document.querySelectorAll(".adsbygoogle");
+            [...ads].forEach(ad => {
+                ad.style.border = "1px solid black"
+                ad.style.height = "300px"
+            });
+        }
+    </script>
 </body>
 
 </html>
