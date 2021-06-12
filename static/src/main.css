@@ -326,6 +326,15 @@ input[type="checkbox"]:checked {
 }
 
 /*! purgecss start ignore */
+ins.adsbygoogle {
+    text-align: center;
+}
+ins.adsbygoogle:not(:first-child) {
+    margin-top: 1rem;
+}
+/*! purgecss end ignore */
+
+/*! purgecss start ignore */
 /* mapbox styles */
 /* Basics */
 .mapboxgl-ctrl-geocoder,
