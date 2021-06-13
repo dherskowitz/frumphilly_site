@@ -20,17 +20,21 @@ make_draft.short_description = "Mark selected listings as draft"
 
 # Register your models here.
 class ListingAdmin(admin.ModelAdmin):
+    def likes_count(self, obj):
+        return obj.likes.count()
+
     actions = [make_published, make_draft]
     formfield_overrides = {
         models.ManyToManyField: {"widget": CheckboxSelectMultiple},
     }
-    readonly_fields = ("slug", "created_by")
+    readonly_fields = ("slug", "created_by", "likes_count")
     list_display = (
         "business_name",
         "created_at",
         "status",
         "created_by",
     )
+    exclude = ('likes',)
     # ordering = (
     #     "-start_date",
     #     "-created_at",
