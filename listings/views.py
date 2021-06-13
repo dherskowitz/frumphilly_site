@@ -1,7 +1,10 @@
+import json
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.contrib.auth.decorators import login_required
+from django.views.decorators.csrf import csrf_exempt
+from django.http import JsonResponse
 from decouple import config
 from pages.forms import ReportPostForm
 from .models import Listing, CategoryGroup, Category
@@ -22,7 +25,8 @@ def listings_all(request, category=None):
 
     filtered_categories = request.GET.getlist('category')
     if filtered_categories:
-        subcategories = [x.title for x in Category.objects.filter(category_group__title=filtered_categories[0]).order_by('title')]
+        subcategories = [x.title for x in
+                         Category.objects.filter(category_group__title=filtered_categories[0]).order_by('title')]
         listings = listings.distinct().filter(categories__title__in=subcategories)
 
     filtered_subcategories = request.GET.getlist('subcategory')
@@ -98,11 +102,13 @@ def listings_all(request, category=None):
 def listing_single(request, slug, pk):
     ads = Ad.get_active_ads()
     listing = get_object_or_404(Listing, slug=slug, id=pk)
+    user_liked = listing.likes.filter(id=request.user.id).exists()
     if listing.status == 'draft' and request.user != listing.created_by:
         return render(request, "private.html")
     report_post_form = ReportPostForm()
     categories = [{"title": cat.title, "category_group": cat.category_group.title} for cat in listing.categories.all()]
-    context = {"listing": listing, "categories": categories, "report_post_form": report_post_form, "ads": ads}
+    context = {"listing": listing, "categories": categories, "report_post_form": report_post_form, "ads": ads,
+               "user_liked": json.dumps(user_liked)}
     return render(request, "listings/single.html", context)
 
 
@@ -216,3 +222,14 @@ def listing_categories(request):
 #         "listings": listings,
 #     }
 #     return render(request, "listings/index.html", context)
+
+@csrf_exempt
+def listing_like(request):
+    json_data = json.loads(request.body)
+    listing = get_object_or_404(Listing, id=json_data["id"])
+    if listing.likes.filter(id=request.user.id).exists():
+        listing.likes.remove(request.user)
+        return JsonResponse({"likes": listing.likes_count(), "user_liked": "false"}, status=200)
+    else:
+        listing.likes.add(request.user)
+        return JsonResponse({"likes": listing.likes_count(), "user_liked": "true"}, status=200)
