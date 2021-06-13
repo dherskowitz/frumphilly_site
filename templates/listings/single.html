@@ -74,9 +74,27 @@
                     <span class="mr-1" x-text="likes" x-show="likes > 0"></span>
                 </button>
                 {% else %}
-                <div class="flex flex-row">
-                    <span class="flex disabled:opacity-50 disabled:pointer-events-none px-6 py-2 text-xs font-medium text-center text-white transition bg-blue-700">{{listing.likes_count}} Like{{listing.likes_count|pluralize:"s"}}</span>
-                </div>
+                    {% if listing.likes_count > 0 %}
+                    <div class="flex flex-row">
+                        <span class="flex disabled:opacity-50 disabled:pointer-events-none px-6 py-2 text-xs font-medium text-center text-white transition bg-blue-700 tooltip">
+                            {{listing.likes_count}} Like{{listing.likes_count|pluralize:"s"}}
+                            <span class="tooltip__inner">
+                                 <p>Sign in to like this listing!</p>
+                                 <span class="triangle"></span>
+                            </span>
+                        </span>
+                    </div>
+                    {% else %}
+                    <div class="flex flex-row">
+                        <span class="flex disabled:opacity-50 disabled:pointer-events-none px-6 py-2 text-xs font-medium text-center text-white transition bg-blue-700 tooltip">
+                            Like
+                            <span class="tooltip__inner">
+                                 <p>Sign in to like this listing!</p>
+                                 <span class="triangle"></span>
+                            </span>
+                        </span>
+                    </div>
+                    {% endif %}
                 {% endif %}
             </div>
 
