@@ -41,6 +41,8 @@ module.exports = {
     variants: {
         textShadow: ["responsive"],
         extend: {
+            opacity: ['disabled'],
+            pointerEvents: ['disabled'],
             stroke: ['hover'],
             textColor: ["group-hover", "hover"],
             translate: ["hover", "group-hover"],
