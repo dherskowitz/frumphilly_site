@@ -63,21 +63,11 @@
     {% if filtered_cities or filtered_categories%} 
     <a class="block mt-2 text-sm font-semibold text-center text-red-600 transition duration-200 ease-in-out bg-transparent bg-gray-200 shadow-none btn btn-md sm:inline-block sm:ml-4 hover:bg-red-200" href="{% url "events_all" %}">Clear Filters</a>
         <div class="mt-6">
-            {% if filtered_cities %}  
-                <span class="mr-4">
-                    Cities:           
-                    {% for city in filtered_cities %}
-                        <span class="inline-block px-2 py-1 text-sm text-white bg-gray-600 rounded-md shadow-md">{{ city }}</span>
-                    {% endfor %}            
-                </span>
+            {% if filtered_cities %}
+                <div class="text-sm">Looking in <span class="text-blue-500">{{filtered_cities|join:", "}}</span></div>
             {% endif %}
             {% if filtered_categories %}
-                <span class="{% if filtered_categories|length > 4 %}flex items-center mt-4{% endif %}">
-                Categories:           
-                    {% for cat in filtered_categories %}
-                    <span class="inline-block px-2 py-1 m-1 text-sm text-white bg-gray-600 rounded-md shadow-md">{{ cat }}</span>
-                    {% endfor %}  
-                </span>          
+                <div class="text-sm">Looking for <span class="text-blue-500">{{filtered_categories|join:", "}}</span></div>
             {% endif %}
         </div>
     {% endif %}
