@@ -217,6 +217,7 @@ class Listing(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     categories = models.ManyToManyField(Category)
+    likes = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='listing_like')
 
     class Meta:
         verbose_name = "listing"
@@ -268,3 +269,6 @@ class Listing(models.Model):
 
     def get_cities():
         return Listing.objects.order_by("city").values("city").distinct()
+
+    def likes_count(self):
+        return self.likes.count()
