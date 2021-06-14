@@ -29,8 +29,7 @@
 {% if user.id == listing.created_by.id and listing.status == 'draft' %}
 <div class="container p-4 mt-6 bg-pink-800 rounded-md shadow-md">
     <div class="flex text-gray-200">
-        <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current" width="20" height="20" viewBox="0 0 24 24"
-             stroke-width="2.25" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current" width="20" height="20" viewBox="0 0 24 24" stroke-width="2.25" fill="none" stroke-linecap="round" stroke-linejoin="round">
             <path d="M0 0h24v24H0z" stroke="none"/>
             <circle cx="12" cy="12" r="9"/>
             <path d="M12 8v4M12 16h.01"/>
@@ -45,8 +44,10 @@
 {% endif %}
 
 
-<div class="container justify-between my-6 md:flex" x-data="{ 'showReportPostModal': false }"
-     @keydown.escape="showReportPostModal = false">
+<div
+    class="container justify-between my-6 md:flex"
+    x-data="{ 'showReportPostModal': false }"
+    @keydown.escape="showReportPostModal = false">
     <div id="left" class="pt-4 md:w-3/4 md:mr-6">
         <div class="text-white">
             <h1 class="mb-2 text-3xl md:text-5xl text-shadow">{{listing.business_name}}</h1>
@@ -56,7 +57,7 @@
                 <button
                         @click="addLike()"
                         :disabled="liking"
-                        class="flex disabled:opacity-50 disabled:pointer-events-none px-6 py-2 text-xs font-medium text-center text-white uppercase transition bg-blue-700 hover:bg-blue-800 shadow ripple hover:shadow-lg focus:outline-none">
+                        class="flex px-6 py-2 text-xs font-medium text-center text-white uppercase transition bg-blue-700 shadow disabled:opacity-50 disabled:pointer-events-none hover:bg-blue-800 ripple hover:shadow-lg focus:outline-none">
                     <span
                             class="mr-1"
                             x-text="userLiked ? 'Unlike' : 'Like'"></span>
@@ -76,21 +77,21 @@
                 {% else %}
                     {% if listing.likes_count > 0 %}
                     <div class="flex flex-row">
-                        <span class="flex disabled:opacity-50 disabled:pointer-events-none px-6 py-2 text-xs font-medium text-center text-white transition bg-blue-700 tooltip">
+                        <span class="flex px-6 py-2 text-xs font-medium text-center text-white transition bg-blue-700 disabled:opacity-50 disabled:pointer-events-none tooltip">
                             {{listing.likes_count}} Like{{listing.likes_count|pluralize:"s"}}
                             <span class="tooltip__inner">
-                                 <p>Sign in to like this listing!</p>
-                                 <span class="triangle"></span>
+                                <p>Sign in to like this listing!</p>
+                                <span class="triangle"></span>
                             </span>
                         </span>
                     </div>
                     {% else %}
                     <div class="flex flex-row">
-                        <span class="flex disabled:opacity-50 disabled:pointer-events-none px-6 py-2 text-xs font-medium text-center text-white transition bg-blue-700 tooltip">
+                        <span class="flex px-6 py-2 text-xs font-medium text-center text-white transition bg-blue-700 disabled:opacity-50 disabled:pointer-events-none tooltip">
                             Like
                             <span class="tooltip__inner">
-                                 <p>Sign in to like this listing!</p>
-                                 <span class="triangle"></span>
+                                <p>Sign in to like this listing!</p>
+                                <span class="triangle"></span>
                             </span>
                         </span>
                     </div>
@@ -102,8 +103,7 @@
             <div x-data="showAllCats()" class="flex flex-col mb-4">
                 <div class="categories" :class="show ? 'overflow-show max-h-full' : 'overflow-hidden max-h-20'">
                     {% for category in categories %}
-                    <a class="inline-block px-2 py-1 mb-2 text-sm text-white duration-150 bg-gray-600 rounded-md shadow-md hover:bg-gray-700 hover:shadow-lg"
-                       href="/listings/?category={{category.category_group|categorize}}&subcategory={{category.title}}">{{category.title}}</a>
+                    <a class="inline-block px-2 py-1 mb-2 text-sm text-white duration-150 bg-gray-600 rounded-md shadow-md hover:bg-gray-700 hover:shadow-lg" href="/listings/?category={{category.category_group|categorize}}&subcategory={{category.title}}">{{category.title}}</a>
                     {% comment %} {% if not forloop.last %} / {% endif %} {% endcomment %}
                     {% endfor %}
                 </div>
@@ -112,14 +112,13 @@
                         @click="showAll"
                         x-text="show ? 'See Less' : 'See More'"
                         :class="show ? 'mt-0' : '-mt-1'"
-                        class="text-xs text-gray-800 mx-auto mt-1 px-8 py-0 bg-gray-200"></button>
+                        class="px-8 py-0 mx-auto mt-1 text-xs text-gray-800 bg-gray-200"></button>
             </div>
             {% endif %}
         </div>
         {% if listing.cover_image %}
         <div class="mb-4 overflow-hidden rounded-md shadow-md">
-            <img class="object-contain w-full mx-auto bg-gray-100 rounded-md" src="{{listing.cover_image.url}}"
-                 alt="{{listing.business_name}} | Frum Philly" width="600" height="400" style="max-height: 600px;">
+            <img class="object-contain w-full mx-auto bg-gray-100 rounded-md" src="{{listing.cover_image.url}}" alt="{{listing.business_name}} | Frum Philly" width="600" height="400" style="max-height: 600px;">
         </div>
         {% endif %}
 
@@ -127,22 +126,41 @@
         <div class="flex items-center justify-between p-3 mb-4 bg-white rounded-md shadow-md">
             <p class="mr-2 text-lg font-semibold text-gray-600">Share Listing</p>
             <div class="flex flex-row">
-                <a href="https://www.facebook.com/sharer/sharer.php?u=https://frumphilly.com{{listing.get_absolute_url}}&t={{listing.business_name|urlencode}}"
-                   onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;"
-                   target="_blank" style="background:#3b5999;" class="flex items-center p-2 text-gray-100">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-facebook"
-                         width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none"
-                         stroke-linecap="round" stroke-linejoin="round">
+                <a
+                    href="https://www.facebook.com/sharer/sharer.php?u=https://frumphilly.com{{listing.get_absolute_url}}&t={{listing.business_name|urlencode}}"
+                    onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;"
+                    target="_blank"
+                    style="background:#3b5999;" class="flex items-center p-2 text-gray-100">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="icon icon-tabler icon-tabler-brand-facebook"
+                        width="24" height="24"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.5"
+                        stroke="currentColor"
+                        fill="none"
+                        stroke-linecap="round"
+                        stroke-linejoin="round">
                         <path d="M0 0h24v24H0z" stroke="none"/>
                         <path d="M7 10v4h3v7h4v-7h3l1-4h-4V8a1 1 0 011-1h3V3h-3a5 5 0 00-5 5v2H7"/>
                     </svg>
                     <span class="hidden sm:inline-block">&nbsp;&nbsp;Facebook</span></a>
 
-                <a href="https://twitter.com/share?url=https://frumphilly.com{{listing.get_absolute_url}}&text={{listing.business_name|urlencode}}"
-                   onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;"
-                   target="_blank" style="background:#55acee;" class="flex items-center p-2 mx-4 text-gray-100">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                         stroke-width="1.5" stroke="#fff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <a
+                    href="https://twitter.com/share?url=https://frumphilly.com{{listing.get_absolute_url}}&text={{listing.business_name|urlencode}}"
+                    onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;"
+                    target="_blank"
+                    style="background:#55acee;"
+                    class="flex items-center p-2 mx-4 text-gray-100">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24" height="24"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.5"
+                        stroke="#fff"
+                        fill="none"
+                        stroke-linecap="round"
+                        stroke-linejoin="round">
                         <path d="M0 0h24v24H0z" stroke="none"/>
                         <path d="M22 4.01c-1 .49-1.98.689-3 .99-1.121-1.265-2.783-1.335-4.38-.737S11.977 6.323 12 8v1c-3.245.083-6.135-1.395-8-4 0 0-4.182 7.433 4 11-1.872 1.247-3.739 2.088-6 2 3.308 1.803 6.913 2.423 10.034 1.517 3.58-1.04 6.522-3.723 7.651-7.742a13.84 13.84 0 00.497-3.753C20.18 7.773 21.692 5.25 22 4.009z"/>
                     </svg>
@@ -156,8 +174,16 @@
                         style="background:#25D366;"
                         class="items-center hidden p-2 text-gray-100 cursor-pointer md:flex"
                 >
-                    <svg xmlns="http://www.w3.org/2000/svg" class="mr-2" width="24" height="24" viewBox="0 0 24 24"
-                         stroke-width="1.5" stroke="#fff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="mr-2"
+                        width="24" height="24"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.5"
+                        stroke="#fff"
+                        fill="none"
+                        stroke-linecap="round"
+                        stroke-linejoin="round">
                         <path d="M0 0h24v24H0z" stroke="none"/>
                         <path d="M3 21l1.65-3.8a9 9 0 113.4 2.9L3 21"/>
                         <path d="M9 10a.5.5 0 001 0V9a.5.5 0 00-1 0v1a5 5 0 005 5h1a.5.5 0 000-1h-1a.5.5 0 000 1"/>
@@ -171,8 +197,16 @@
                         style="background:#25D366;"
                         class="flex items-center p-2 text-gray-100 cursor-pointer md:hidden"
                 >
-                    <svg xmlns="http://www.w3.org/2000/svg" class="sm:mr-2" width="24" height="24" viewBox="0 0 24 24"
-                         stroke-width="1.5" stroke="#fff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="sm:mr-2"
+                        width="24" height="24"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.5"
+                        stroke="#fff"
+                        fill="none"
+                        stroke-linecap="round"
+                        stroke-linejoin="round">
                         <path d="M0 0h24v24H0z" stroke="none"/>
                         <path d="M3 21l1.65-3.8a9 9 0 113.4 2.9L3 21"/>
                         <path d="M9 10a.5.5 0 001 0V9a.5.5 0 00-1 0v1a5 5 0 005 5h1a.5.5 0 000-1h-1a.5.5 0 000 1"/>
@@ -189,7 +223,7 @@
         {% endif %}
 
 
-        <div class="grid gap-4 mb-4 moreinfo" style="">
+        <div class="grid gap-4 mb-4 moreinfo">
             <style>
                 .moreinfo { grid-template-columns: repeat( auto-fit, minmax(288px, 1fr) ) }
                 @media (min-width: 540px) {
@@ -204,7 +238,7 @@
                 {% if listing.website %}
                 <div class="flex items-center leading-loose">
                     <svg xmlns="http://www.w3.org/2000/svg" class="mr-2" width="20" height="20" viewBox="0 0 24 24"
-                         stroke-width="1.5" stroke="#607D8B" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        stroke-width="1.5" stroke="#607D8B" fill="none" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M0 0h24v24H0z" stroke="none"/>
                         <circle cx="12" cy="12" r="9"/>
                         <path d="M3.6 9h16.8M3.6 15h16.8M11.5 3a17 17 0 000 18M12.5 3a17 17 0 010 18"/>
@@ -217,7 +251,7 @@
                 {% if listing.phone %}
                 <div class="flex items-center leading-loose">
                     <svg xmlns="http://www.w3.org/2000/svg" class="mr-2" width="16" height="16" viewBox="0 0 24 24"
-                         stroke-width="1.5" stroke="#607D8B" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        stroke-width="1.5" stroke="#607D8B" fill="none" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M0 0h24v24H0z" stroke="none"/>
                         <path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2M15 7a2 2 0 012 2M15 3a6 6 0 016 6"/>
                     </svg>
@@ -230,7 +264,7 @@
                 {% if listing.mobile %}
                 <div class="flex items-center leading-loose">
                     <svg xmlns="http://www.w3.org/2000/svg" class="mr-2" width="16" height="16" viewBox="0 0 24 24"
-                         stroke-width="1.5" stroke="#607D8B" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        stroke-width="1.5" stroke="#607D8B" fill="none" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M0 0h24v24H0z" stroke="none"/>
                         <rect x="4" y="4" width="10" height="16" rx="1"/>
                         <path d="M8 5h2M9 17v.01M20 6l-2 3 2 3-2 3 2 3"/>
@@ -244,7 +278,7 @@
                 {% if listing.whatsapp %}
                 <div class="flex items-center leading-loose">
                     <svg xmlns="http://www.w3.org/2000/svg" class="mr-2" width="16" height="16" viewBox="0 0 24 24"
-                         stroke-width="1.5" stroke="#607D8B" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        stroke-width="1.5" stroke="#607D8B" fill="none" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M0 0h24v24H0z" stroke="none"/>
                         <path d="M3 21l1.65-3.8a9 9 0 113.4 2.9L3 21"/>
                         <path d="M9 10a.5.5 0 001 0V9a.5.5 0 00-1 0v1a5 5 0 005 5h1a.5.5 0 000-1h-1a.5.5 0 000 1"/>
@@ -258,8 +292,8 @@
                 {% if listing.email %}
                 <div class="flex items-center leading-loose">
                     <svg xmlns="http://www.w3.org/2000/svg" class="mr-2" width="16" width="16" height="16"
-                         viewBox="0 0 24 24" stroke-width="1.5" stroke="#607D8B" fill="none" stroke-linecap="round"
-                         stroke-linejoin="round">
+                        viewBox="0 0 24 24" stroke-width="1.5" stroke="#607D8B" fill="none" stroke-linecap="round"
+                        stroke-linejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                         <rect x="3" y="5" width="18" height="14" rx="2"/>
                         <polyline points="3 7 12 13 21 7"/>
@@ -276,11 +310,10 @@
             <div class="p-3 bg-white rounded-md shadow-md">
                 <div class="mb-2 text-lg font-semibold text-gray-600">Connect with {{listing.business_name}}</div>
                 {% if listing.facebook %}
-                <a href="{{ listing.facebook }}" target="_blank"
-                   class="flex items-center justify-center block p-4 mb-2 text-white" style="background:#3b5999;">
+                <a href="{{ listing.facebook }}" target="_blank" class="flex items-center justify-center p-4 mb-2 text-white" style="background:#3b5999;">
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-facebook"
-                         width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none"
-                         stroke-linecap="round" stroke-linejoin="round">
+                        width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none"
+                        stroke-linecap="round" stroke-linejoin="round">
                         <path d="M0 0h24v24H0z" stroke="none"/>
                         <path d="M7 10v4h3v7h4v-7h3l1-4h-4V8a1 1 0 011-1h3V3h-3a5 5 0 00-5 5v2H7"/>
                     </svg>
@@ -289,11 +322,10 @@
                 {% endif %}
 
                 {% if listing.twitter %}
-                <a href="{{ listing.twitter }}" target="_blank"
-                   class="flex items-center justify-center block p-4 mb-2 text-white" style="background:#55acee;">
+                <a href="{{ listing.twitter }}" target="_blank" class="flex items-center justify-center p-4 mb-2 text-white" style="background:#55acee;">
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter"
-                         width="24" height="24" stroke-width="1.5" stroke="#FFF" fill="none" stroke-linecap="round"
-                         stroke-linejoin="round">
+                        width="24" height="24" stroke-width="1.5" stroke="#FFF" fill="none" stroke-linecap="round"
+                        stroke-linejoin="round">
                         <path d="M0 0h24v24H0z" stroke="none"/>
                         <path d="M22 4.01c-1 .49-1.98.689-3 .99-1.121-1.265-2.783-1.335-4.38-.737S11.977 6.323 12 8v1c-3.245.083-6.135-1.395-8-4 0 0-4.182 7.433 4 11-1.872 1.247-3.739 2.088-6 2 3.308 1.803 6.913 2.423 10.034 1.517 3.58-1.04 6.522-3.723 7.651-7.742a13.84 13.84 0 00.497-3.753C20.18 7.773 21.692 5.25 22 4.009z"/>
                     </svg>
@@ -302,11 +334,10 @@
                 {% endif %}
 
                 {% if listing.instagram %}
-                <a href="{{ listing.instagram }}" target="_blank"
-                   class="flex items-center justify-center block p-4 mb-2 text-white" style="background:#e4405f;">
+                <a href="{{ listing.instagram }}" target="_blank" class="flex items-center justify-center p-4 mb-2 text-white" style="background:#e4405f;">
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-instagram"
-                         width="24" height="24" stroke-width="1.5" stroke="#FFF" fill="none" stroke-linecap="round"
-                         stroke-linejoin="round">
+                        width="24" height="24" stroke-width="1.5" stroke="#FFF" fill="none" stroke-linecap="round"
+                        stroke-linejoin="round">
                         <path d="M0 0h24v24H0z" stroke="none"/>
                         <rect x="4" y="4" width="16" height="16" rx="4"/>
                         <circle cx="12" cy="12" r="3"/>
@@ -346,7 +377,7 @@
                 {% if listing.kashrut %}
                 <div class="flex items-center leading-loose">
                     <svg xmlns="http://www.w3.org/2000/svg" class="mr-2" width="24" height="24" stroke-width="1.5"
-                         stroke="#607D8B" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        stroke="#607D8B" fill="none" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M0 0h24v24H0z" stroke="none"/>
                         <circle cx="15" cy="15" r="3"/>
                         <path d="M13 17.5V22l2-1.5 2 1.5v-4.5"/>
@@ -358,7 +389,7 @@
                 {% if listing.accept_cc %}
                 <div class="flex items-center leading-loose">
                     <svg xmlns="http://www.w3.org/2000/svg" class="mr-2" width="24" height="24" viewBox="0 0 24 24"
-                         stroke-width="1.5" stroke="#607D8B" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        stroke-width="1.5" stroke="#607D8B" fill="none" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M0 0h24v24H0z" stroke="none"/>
                         <rect x="3" y="5" width="18" height="14" rx="3"/>
                         <path d="M3 10h18M7 15h.01M11 15h2"/>
@@ -369,7 +400,7 @@
                 {% if listing.delivers %}
                 <div class="flex items-center leading-loose">
                     <svg xmlns="http://www.w3.org/2000/svg" class="mr-2" width="24" height="24" stroke-width="1.5"
-                         stroke="#607D8B" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        stroke="#607D8B" fill="none" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M0 0h24v24H0z" stroke="none"/>
                         <circle cx="7" cy="17" r="2"/>
                         <circle cx="17" cy="17" r="2"/>
@@ -381,7 +412,7 @@
                 {% if listing.wheelchair_access %}
                 <div class="flex items-center leading-loose">
                     <svg xmlns="http://www.w3.org/2000/svg" class="mr-2" width="24" height="24" stroke-width="1.5"
-                         stroke="#607D8B" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        stroke="#607D8B" fill="none" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M0 0h24v24H0z" stroke="none"/>
                         <circle cx="11" cy="5" r="2"/>
                         <path d="M11 7v8h4l4 5M11 11h5M7 11.5a5 5 0 106 7.5"/>
@@ -436,14 +467,14 @@
                 this.liking = true;
                 fetch('/listings/like/', {
                     method: 'POST',
-                    body: JSON.stringify({id: {{listing.id}}})
+                    body: JSON.stringify({ id: {{ listing.id }} })
                 })
-                    .then(response => response.json())
-                    .then(data => {
-                        this.likes = data.likes;
-                        this.userLiked = JSON.parse(data.user_liked);
-                        this.liking = false;
-                    })
+                .then(response => response.json())
+                .then(data => {
+                    this.likes = data.likes;
+                    this.userLiked = JSON.parse(data.user_liked);
+                    this.liking = false;
+                })
             }
         }
     }
