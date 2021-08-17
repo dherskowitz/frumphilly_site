@@ -60,7 +60,7 @@
                         class="flex px-6 py-2 text-xs font-medium text-center text-white uppercase transition bg-blue-700 shadow disabled:opacity-50 disabled:pointer-events-none hover:bg-blue-800 ripple hover:shadow-lg focus:outline-none">
                     <span
                             class="mr-1"
-                            x-text="userLiked ? 'Unlike' : 'Like'"></span>
+                            x-text="userLiked ? 'Remove Recommendation' : 'Recommend'"></span>
                     <svg
                             class="mr-1"
                             :stroke="userLiked ? 'red' : 'white'"
@@ -78,9 +78,20 @@
                     {% if listing.likes_count > 0 %}
                     <div class="flex flex-row">
                         <span class="flex px-6 py-2 text-xs font-medium text-center text-white transition bg-blue-700 disabled:opacity-50 disabled:pointer-events-none tooltip">
-                            {{listing.likes_count}} Like{{listing.likes_count|pluralize:"s"}}
-                            <span class="tooltip__inner">
-                                <p>Sign in to like this listing!</p>
+                            {{listing.likes_count}} Recommendation{{listing.likes_count|pluralize:"s"}}
+                            <svg
+                                class="ml-1"
+                                stroke="red"
+                                xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                stroke-width="1.5"
+                                stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M0 0h24v24H0z" stroke="none"/>
+                                <path
+                                        fill="red"
+                                        d="M19.5 13.572L12 21l-7.5-7.428m0 0A5 5 0 1112 7.006a5 5 0 117.5 6.572"/>
+                            </svg>
+                            <span class="tooltip__inner" x-cloak>
+                                <p>Sign in to Recommend this listing!</p>
                                 <span class="triangle"></span>
                             </span>
                         </span>
@@ -88,9 +99,9 @@
                     {% else %}
                     <div class="flex flex-row">
                         <span class="flex px-6 py-2 text-xs font-medium text-center text-white transition bg-blue-700 disabled:opacity-50 disabled:pointer-events-none tooltip">
-                            Like
+                            Recommend
                             <span class="tooltip__inner">
-                                <p>Sign in to like this listing!</p>
+                                <p>Sign in to Recommend this listing!</p>
                                 <span class="triangle"></span>
                             </span>
                         </span>
