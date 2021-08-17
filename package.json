@@ -58,7 +58,7 @@
         "singleQuote": false
     },
     "dependencies": {
-        "alpinejs": "^2.8.0",
+        "alpinejs": "^2.8.2",
         "postcss": "^8.3.0",
         "tailwindcss": "^2.0.2"
     },
