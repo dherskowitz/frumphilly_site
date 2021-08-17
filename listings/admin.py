@@ -33,6 +33,7 @@ class ListingAdmin(admin.ModelAdmin):
         "created_at",
         "status",
         "created_by",
+        "likes_count",
     )
     exclude = ('likes',)
     # ordering = (
