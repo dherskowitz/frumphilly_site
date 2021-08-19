@@ -24,9 +24,9 @@ def forum_thread(request, category, thread):
     # TODO paginate posts
     t = ForumThread.objects.get(slug=thread)
     c = ForumCategory.objects.get(slug=category)
-    posts = ForumPost.objects.filter(thread=t.id).all()
+    posts = ForumPost.objects.filter(thread=t.id).order_by("created_at").all()
     context = {
-        "category": c.title,
+        "category": c,
         "thread": t.title,
         "posts": posts
     }
