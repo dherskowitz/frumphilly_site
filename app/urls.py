@@ -29,5 +29,6 @@ urlpatterns = [
     path("listings/", include("listings.urls"), name="listings"),
     path("", include("ads.urls"), name="ads"),
     path("payments/", include("payments.urls"), name="payments"),
+    path("forum/", include("forum.urls"), name="forum"),
     path("ads.txt", TemplateView.as_view(template_name="ads.txt", content_type="text/plain")),
 ]
