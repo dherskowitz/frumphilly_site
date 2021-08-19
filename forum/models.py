@@ -58,13 +58,13 @@ class ForumThread(models.Model):
 class ForumPost(models.Model):
     # Post goes in a thread
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    title = models.ForeignKey(ForumThread, on_delete=models.CASCADE, related_name='posts')
+    thread = models.ForeignKey(ForumThread, on_delete=models.CASCADE, related_name='posts')
     content = models.TextField(max_length=30000, blank=False, unique=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return self.title
+        return f"{self.author.email} replied to {self.thread.title} at {self.created_at}"
 
     class Meta:
         verbose_name = 'Post'
