@@ -1,9 +1,20 @@
+
 {% extends 'base.html' %}
 {% load webpack_static from webpack_loader %}
 {% load my_tags %}
+{% load humanize %}
 
 {% block meta_title %}Listings | Frum Philly{% endblock meta_title %}
 {% block meta_description %}Frum Philly Business Listings{% endblock meta_description %}
+
+{% block pagebanner %}
+<section class="py-4 bg-purple-900">
+    <div class="container text-white">
+        <span><a href="{% url 'forum' %}">Forum</a></span> /  <span><a href="/forum/{{category.slug}}">{{category.title}}</a></span>
+        <h2 class="text-3xl font-bold">{{thread}}</h2>
+    </div>
+</section>
+{% endblock pagebanner %}
 
 
 {% block main %}
@@ -11,15 +22,28 @@
 <section class="container">
     <div class="justify-between my-6 md:flex">
         <div class="md:w-3/4 md:mr-6">
-            <h2>Posts in {{thread}} in {{category}}</h2>
-
             {% for post in posts %}
-                {{post.content}}
-                {{post.author.first_name}}
-                {{post.author.last_name}}
-                {{post.author.email}}
+            <div class="flex p-4 mb-4 bg-white rounded-md shadow-md">
+                <div class="flex items-center">
+                    <div>
+                        <img src="{{post.author.avatar.url}}" alt="" class="w-12 h-12 rounded-full">
+                    </div>
+                    <div class="ml-2 text-gray-500">
+                        <div>{{post.author.first_name}} {{post.author.last_name}}</div>
+                        <div>{{post.author.email}}</div>
+                    </div>
+                </div>
 
-            <br>
+                <div class="ml-12">
+                    <div class="text-gray-500">
+                        {{post.created_at|naturaltime}}
+                    </div>
+                    <div>
+                        {{post.content}}
+                    </div>
+                </div>
+
+            </div>
             {% endfor %}
 
             {% include 'components/banner_ads.html' %}
