@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load webpack_static from webpack_loader %}
+{% load my_tags %}
+
+{% block meta_title %}Listings | Frum Philly{% endblock meta_title %}
+{% block meta_description %}Frum Philly Business Listings{% endblock meta_description %}
+
+
+{% block main %}
+
+<section class="container">
+    <div class="justify-between my-6 md:flex">
+        <div class="md:w-3/4 md:mr-6">
+            <h2>Threads</h2>
+
+            {% for thread in threads %}
+                {{thread.title}}
+            {% endfor %}
+
+            {% include 'components/banner_ads.html' %}
+        </div>
+
+        {% include 'components/sidebar_ads.html' %}
+    </div>
+</section>
+
+{% endblock main %}
