@@ -22,11 +22,11 @@
 {% endblock opengraph %}
 
 {% block pagebanner %}
-<section class="py-4 bg-purple-900">
+<section class="py-8 bg-purple-900">
     <div class="container flex items-center justify-between">
         <div class="container text-white">
-            <a href="{% url 'forum' %}" class="underline hover:text-pink-600">Forum</a> /
-            <h2 class="text-3xl font-bold">{{category.title}}</h2>
+            <a href="{% url 'forum' %}" class="underline hover:text-pink-600">Forum</a> / {{category.title}}
+            <h2 class="mt-6 text-3xl font-bold">{{category.title}}</h2>
         </div>
         <a class="px-6 py-2 text-lg font-semibold text-center text-white bg-gray-600 rounded-md shadow-md min-w-max hover:bg-gray-500" href="">Start a Conversation</a>
     </div>
