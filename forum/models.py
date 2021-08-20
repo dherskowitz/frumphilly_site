@@ -17,7 +17,13 @@ class ForumCategory(models.Model):
         return self.title
 
     def get_absolute_url(self):
-        return reverse('category', kwargs={'slug': self.slug})
+        return f"/forum/{self.slug}"
+
+    def get_thread_count(self):
+        return ForumThread.objects.filter(category__slug=self.slug).count()
+
+    def get_post_count(self):
+        return ForumPost.objects.filter(thread__category__slug=self.slug).count()
 
     def save(self, *args, **kwargs):
         if not self.pk:
@@ -43,7 +49,10 @@ class ForumThread(models.Model):
         return self.title
 
     def get_absolute_url(self):
-        return reverse("thread", kwargs={'slug': self.slug})
+        return f"/forum/{self.category.slug}/{self.slug}"
+
+    def get_post_count(self):
+        return ForumPost.objects.filter(thread__slug=self.slug).count()
 
     def save(self, *args, **kwargs):
         if not self.pk:
