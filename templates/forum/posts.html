@@ -24,10 +24,13 @@
 
 {% block pagebanner %}
 <section class="py-4 bg-purple-900">
-    <div class="container text-white">
-        <a href="{% url 'forum' %}" class="underline hover:text-pink-600">Forum</a> /
-        <a href="/forum/{{category.slug}}" class="underline hover:text-pink-600">{{category.title}}</a>
-        <h2 class="mt-6 text-3xl font-bold">{{thread}}</h2>
+    <div class="container flex items-center justify-between">
+        <div class="container text-white">
+            <a href="{% url 'forum' %}" class="underline hover:text-pink-600">Forum</a> /
+            <a href="/forum/{{category.slug}}" class="underline hover:text-pink-600">{{category.title}}</a>
+            <h2 class="mt-6 text-3xl font-bold">{{thread}}</h2>
+        </div>
+        <a class="px-6 py-2 text-lg font-semibold text-center text-white bg-gray-600 rounded-md shadow-md min-w-max hover:bg-gray-500" href="">Start a Conversation</a>
     </div>
 </section>
 {% endblock pagebanner %}
@@ -60,6 +63,17 @@
                 </div>
 
             </div>
+            {% empty %}
+                <div class="relative flex flex-col items-center justify-center col-span-2 p-4 my-16">
+                    <div class="absolute flex flex-col items-center justify-center">
+                        <div class="text-4xl leading-snug text-center text-gray-200 uppercase text-shadow">
+                            <div>There are no post in</div>
+                            <div class="font-bold">{{thread.title}}</div>
+                            <a class="block py-4 text-lg font-semibold text-center btn btn-md lg:inline" href="">Start a Conversation</a>
+                        </div>
+                    </div>
+                    <img class="" width="400" src="{% webpack_static 'img/illustrations/empty.svg' %}" alt="">
+                </div>
             {% endfor %}
 
             {% include 'components/banner_ads.html' %}
