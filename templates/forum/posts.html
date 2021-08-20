@@ -4,14 +4,30 @@
 {% load my_tags %}
 {% load humanize %}
 
-{% block meta_title %}Listings | Frum Philly{% endblock meta_title %}
-{% block meta_description %}Frum Philly Business Listings{% endblock meta_description %}
+{% block meta_title %}{{thread.title}} | {{category.title}} | Frum Philly Forum{% endblock meta_title %}
+{% block meta_description %}{{thread}}. On the Frum Philly Forum.{% endblock meta_description %}
+
+{% block opengraph %}
+<meta property="og:title" content="{{thread.title}} | {{category.title}} | Frum Philly Forum"/>
+<meta property="og:description" content="{{thread}}. On the Frum Philly Forum."/>
+<meta property="og:image" content="">
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="http://frumphilly.com/forum/{{category.slug}}/{{thread.slug}}/"/>
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:site" content="http://frumphilly.com/forum/{{category.slug}}/{{thread.slug}}/"/>
+<meta name="twitter:title" content="{{thread.title}} | {{category.title}} | Frum Philly Forum"/>
+<meta name="twitter:description" content="{{thread.title}}. On the Frum Philly Forum."/>
+<meta name="twitter:image" content=""/>
+{% endblock opengraph %}
 
 {% block pagebanner %}
 <section class="py-4 bg-purple-900">
     <div class="container text-white">
-        <span><a href="{% url 'forum' %}">Forum</a></span> /  <span><a href="/forum/{{category.slug}}">{{category.title}}</a></span>
-        <h2 class="text-3xl font-bold">{{thread}}</h2>
+        <a href="{% url 'forum' %}" class="underline hover:text-pink-600">Forum</a> /
+        <a href="/forum/{{category.slug}}" class="underline hover:text-pink-600">{{category.title}}</a>
+        <h2 class="mt-6 text-3xl font-bold">{{thread}}</h2>
     </div>
 </section>
 {% endblock pagebanner %}
@@ -24,7 +40,7 @@
         <div class="md:w-3/4 md:mr-6">
             {% for post in posts %}
             <div class="flex p-4 mb-4 bg-white rounded-md shadow-md">
-                <div class="flex items-center">
+                <div class="flex items-start">
                     <div>
                         <img src="{{post.author.avatar.url}}" alt="" class="w-12 h-12 rounded-full">
                     </div>
@@ -38,7 +54,7 @@
                     <div class="text-gray-500">
                         {{post.created_at|naturaltime}}
                     </div>
-                    <div>
+                    <div class="mt-6">
                         {{post.content}}
                     </div>
                 </div>

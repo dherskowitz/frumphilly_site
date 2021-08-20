@@ -1,20 +1,72 @@
 {% extends 'base.html' %}
 {% load webpack_static from webpack_loader %}
 {% load my_tags %}
+{% load humanize %}
 
-{% block meta_title %}Listings | Frum Philly{% endblock meta_title %}
-{% block meta_description %}Frum Philly Business Listings{% endblock meta_description %}
+{% block meta_title %}{{category.title}} | Frum Philly Forum{% endblock meta_title %}
+{% block meta_description %}Read the latest threads in {{category.title}} on the Frum Philly Forum.{% endblock meta_description %}
 
+{% block opengraph %}
+<meta property="og:title" content="{{category.title}} | Frum Philly Forum"/>
+<meta property="og:description" content="Read the latest threads in {{category.title}} on the Frum Philly Forum."/>
+<meta property="og:image" content="">
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="http://frumphilly.com/forum/{{category.slug}}/"/>
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:site" content="http://frumphilly.com/forum/{{category.slug}}/"/>
+<meta name="twitter:title" content="{{category.title}} | Frum Philly Forum"/>
+<meta name="twitter:description" content="Read the latest threads in {{category.title}} on the Frum Philly Forum."/>
+<meta name="twitter:image" content=""/>
+{% endblock opengraph %}
+
+{% block pagebanner %}
+<section class="py-4 bg-purple-900">
+    <div class="container flex items-center justify-between">
+        <div class="container text-white">
+            <a href="{% url 'forum' %}" class="underline hover:text-pink-600">Forum</a> /
+            <h2 class="text-3xl font-bold">{{category.title}}</h2>
+        </div>
+        <a class="px-6 py-2 text-lg font-semibold text-center text-white bg-gray-600 rounded-md shadow-md min-w-max hover:bg-gray-500" href="">Start a Conversation</a>
+    </div>
+</section>
+{% endblock pagebanner %}
 
 {% block main %}
 
 <section class="container">
     <div class="justify-between my-6 md:flex">
         <div class="md:w-3/4 md:mr-6">
-            <h2>Threads</h2>
 
             {% for thread in threads %}
-                {{thread.title}}
+            <a href="{{thread.get_absolute_url}}" class="flex justify-between p-4 mb-4 text-gray-700 bg-white rounded-md shadow-md hover:bg-purple-900 group-hover:text-white hover:text-white">
+                    <div class="">
+                        <div class="text-xl font-semibold">{{thread.title}}</div>
+                        <div class="text-sm capitalize">{{thread.created_at|naturaltime}}</div>
+                        <div class="text-sm">{{thread.get_post_count}} Posts</div>
+                    </div>
+                    <div class="flex items-center ml-2">
+                        <div>
+                            <img src="{{thread.owner.avatar.url}}" alt="" class="w-12 h-12 rounded-full">
+                        </div>
+                        <div class="ml-4">
+                            <div>{{thread.owner.first_name}} {{thread.owner.last_name}}</div>
+                            <div>{{thread.owner.email}}</div>
+                        </div>
+                    </div>
+            </a>
+            {% empty %}
+                <div class="relative flex flex-col items-center justify-center col-span-2 p-4 my-16">
+                    <div class="absolute flex flex-col items-center justify-center">
+                        <div class="text-4xl leading-snug text-center text-gray-200 uppercase text-shadow">
+                            <div>There are no threads in</div>
+                            <div class="font-bold">{{category.title}}</div>
+                            <a class="block py-4 text-lg font-semibold text-center btn btn-md lg:inline" href="">Start a Conversation</a>
+                        </div>
+                    </div>
+                    <img class="" width="400" src="{% webpack_static 'img/illustrations/empty.svg' %}" alt="">
+                </div>
             {% endfor %}
 
             {% include 'components/banner_ads.html' %}
