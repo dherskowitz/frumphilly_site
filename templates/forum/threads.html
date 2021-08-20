@@ -28,7 +28,7 @@
             <a href="{% url 'forum' %}" class="underline hover:text-pink-600">Forum</a> / {{category.title}}
             <h2 class="mt-6 text-3xl font-bold">{{category.title}}</h2>
         </div>
-        <a class="px-6 py-2 text-lg font-semibold text-center text-white bg-gray-600 rounded-md shadow-md min-w-max hover:bg-gray-500" href="">Start a Conversation</a>
+        <a class="px-6 py-2 text-lg font-semibold text-center text-white bg-gray-600 rounded-md shadow-md min-w-max hover:bg-gray-500" href="{% url 'forum_thread_create' category=category.slug %}">Start a Conversation</a>
     </div>
 </section>
 {% endblock pagebanner %}
@@ -43,8 +43,8 @@
             <a href="{{thread.get_absolute_url}}" class="flex justify-between p-4 mb-4 text-gray-700 bg-white rounded-md shadow-md hover:bg-purple-900 group-hover:text-white hover:text-white">
                     <div class="">
                         <div class="text-xl font-semibold">{{thread.title}}</div>
-                        <div class="text-sm capitalize">{{thread.created_at|naturaltime}}</div>
                         <div class="text-sm">{{thread.get_post_count}} Posts</div>
+                        <div class="text-sm capitalize">Created {{thread.created_at|naturaltime}}</div>
                     </div>
                     <div class="flex items-center ml-2">
                         <div>

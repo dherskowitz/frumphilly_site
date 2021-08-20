@@ -30,7 +30,7 @@
             <a href="/forum/{{category.slug}}" class="underline hover:text-pink-600">{{category.title}}</a>
             <h2 class="mt-6 text-3xl font-bold">{{thread}}</h2>
         </div>
-        <a class="px-6 py-2 text-lg font-semibold text-center text-white bg-gray-600 rounded-md shadow-md min-w-max hover:bg-gray-500" href="">Start a Conversation</a>
+        <a class="px-6 py-2 text-lg font-semibold text-center text-white bg-gray-600 rounded-md shadow-md min-w-max hover:bg-gray-500" href="{% url 'forum_post_create' category=category.slug thread=thread.slug %}">Add a Reply</a>
     </div>
 </section>
 {% endblock pagebanner %}
@@ -41,14 +41,59 @@
 <section class="container">
     <div class="justify-between my-6 md:flex">
         <div class="md:w-3/4 md:mr-6">
+
+            <div class="flex p-4 mb-4 bg-white rounded-md shadow-md">
+                <div class="flex items-start">
+                    <div>
+                    {% if thread.owner.avatar %}
+                    <img class="object-cover w-10 h-10 rounded-full" src="{{ thread.owner.avatar.url }}" alt="User Avatar" width="10" height="10">
+                    {% elif thread.owner.socialaccount_set.all.0.get_avatar_url %}
+                    <img class="object-cover w-10 h-10 rounded-full" src="{{ thread.owner.socialaccount_set.all.0.get_avatar_url }}" alt="User Avatar" width="10" height="10">
+                    {% else %}
+                    <img class="object-cover w-10 h-10 rounded-full" src="{% webpack_static 'img/images/blank_avatar.jpg' %}" alt="User Avatar" width="10" height="10">
+                    {% endif %}
+                    </div>
+                    <div class="ml-2 text-gray-500">
+                        {% if thread.owner.first_name or thread.owner.last_name %}
+                        <div>
+                            {% if thread.owner.first_name %}{{thread.owner.first_name}} {% endif %}
+                            {% if thread.owner.last_name %}{{thread.owner.last_name}} {% endif %}
+                        </div>
+                        {% endif %}
+                        <div>{{thread.owner.email}}</div>
+                    </div>
+                </div>
+
+                <div class="ml-12">
+                    <div class="text-gray-500">
+                        {{thread.created_at|naturaltime}}
+                    </div>
+                    <div class="mt-6">
+                        {{thread.description}}
+                    </div>
+                </div>
+
+            </div>
+
             {% for post in posts %}
             <div class="flex p-4 mb-4 bg-white rounded-md shadow-md">
                 <div class="flex items-start">
                     <div>
-                        <img src="{{post.author.avatar.url}}" alt="" class="w-12 h-12 rounded-full">
+                        {% if post.author.avatar %}
+                        <img class="object-cover w-10 h-10 rounded-full" src="{{ post.author.avatar.url }}" alt="User Avatar" width="10" height="10">
+                        {% elif post.author.socialaccount_set.all.0.get_avatar_url %}
+                        <img class="object-cover w-10 h-10 rounded-full" src="{{ post.author.socialaccount_set.all.0.get_avatar_url }}" alt="User Avatar" width="10" height="10">
+                        {% else %}
+                        <img class="object-cover w-10 h-10 rounded-full" src="{% webpack_static 'img/images/blank_avatar.jpg' %}" alt="User Avatar" width="10" height="10">
+                        {% endif %}
                     </div>
                     <div class="ml-2 text-gray-500">
-                        <div>{{post.author.first_name}} {{post.author.last_name}}</div>
+                        {% if post.author.first_name or post.author.last_name %}
+                        <div>
+                            {% if post.author.first_name %}{{post.author.first_name}} {% endif %}
+                            {% if post.author.last_name %}{{post.author.last_name}} {% endif %}
+                        </div>
+                        {% endif %}
                         <div>{{post.author.email}}</div>
                     </div>
                 </div>
@@ -58,22 +103,11 @@
                         {{post.created_at|naturaltime}}
                     </div>
                     <div class="mt-6">
-                        {{post.content}}
+                        {{post.content|safe}}
                     </div>
                 </div>
 
             </div>
-            {% empty %}
-                <div class="relative flex flex-col items-center justify-center col-span-2 p-4 my-16">
-                    <div class="absolute flex flex-col items-center justify-center">
-                        <div class="text-4xl leading-snug text-center text-gray-200 uppercase text-shadow">
-                            <div>There are no posts in</div>
-                            <div class="font-bold">{{thread.title}}</div>
-                            <a class="block py-4 text-lg font-semibold text-center btn btn-md lg:inline" href="">Start a Conversation</a>
-                        </div>
-                    </div>
-                    <img class="" width="400" src="{% webpack_static 'img/illustrations/empty.svg' %}" alt="">
-                </div>
             {% endfor %}
 
             {% if posts.has_other_pages %}

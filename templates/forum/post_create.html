@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load webpack_static from webpack_loader %}
+{% load my_tags %}
+{% load humanize %}
+
+{% block meta_title %}{{category.title}} | Frum Philly Forum{% endblock meta_title %}
+{% block meta_description %}Read the latest threads in {{category.title}} on the Frum Philly Forum.{% endblock meta_description %}
+
+{% block opengraph %}
+<meta property="og:title" content="{{category.title}} | Frum Philly Forum"/>
+<meta property="og:description" content="Read the latest threads in {{category.title}} on the Frum Philly Forum."/>
+<meta property="og:image" content="">
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="http://frumphilly.com/forum/{{category.slug}}/"/>
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:site" content="http://frumphilly.com/forum/{{category.slug}}/"/>
+<meta name="twitter:title" content="{{category.title}} | Frum Philly Forum"/>
+<meta name="twitter:description" content="Read the latest threads in {{category.title}} on the Frum Philly Forum."/>
+<meta name="twitter:image" content=""/>
+{% endblock opengraph %}
+
+{% block pagebanner %}
+<section class="py-8 bg-purple-900">
+    <div class="container text-white">
+        <a href="{% url 'forum' %}" class="underline hover:text-pink-600">Forum</a> / 
+        <a href="{{category.get_absolute_url}}" class="underline hover:text-pink-600">{{category.title}}</a> / Add Thread
+        <h2 class="mt-6 text-3xl font-bold">Create a thread in {{category.title}}</h2>
+    </div>
+</section>
+{% endblock pagebanner %}
+
+{% block main %}
+
+<section class="container">
+    <div class="justify-between my-6 md:flex">
+        <div class="md:w-3/4 md:mr-6">
+
+            {% include 'components/errors.html' %}
+
+            <form class="form" action="{% url 'forum_post_create' category=category.slug thread=thread.slug %}" method="POST" enctype='multipart/form-data' novalidate>
+                {% csrf_token %}
+                {% for field in form %}
+                    <div class="m-0 form-field">
+                        <label class="form-field__label" for="{{field.id_for_label}}">{{ field.label }} {% if field.field.required %}<span class="form-field__label--required">(required)</span>{% endif %}</label>
+                        {{ field }}
+                        <div class="form-field__help-text">{{ field.help_text }}</div>
+                    </div>
+                {% endfor %}
+                {% include 'components/submit_btn.html' with value='Submit Reply' class="mt-0 btn btn-block btn-lg btn--form-submit" %}
+            </form>
+
+            {% include 'components/banner_ads.html' %}
+        </div>
+
+        {% include 'components/sidebar_ads.html' %}
+    </div>
+</section>
+
+{% endblock main %}
