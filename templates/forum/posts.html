@@ -76,6 +76,30 @@
                 </div>
             {% endfor %}
 
+            {% if posts.has_other_pages %}
+            <div class="flex items-center my-10">
+                {% if posts.has_previous %}
+                <a class="btn btn-md" href="?{% param_replace page=1 %}">&laquo; First</a>
+                <a class="ml-2 btn btn-md" href="?{% param_replace page=posts.previous_page_number %}">&lt; Prev</a>
+                {% else %}
+                <a class="opacity-50 cursor-not-allowed pointer-events-none btn btn-md" href="?{% param_replace page=1 %}">&laquo; First</a>
+                <a class="ml-2 opacity-50 cursor-not-allowed pointer-events-none btn btn-md" >&lt; Prev</a>
+                {% endif %}
+    
+                <span class="flex-grow text-center">
+                    {{ posts.number }} of {{ posts.paginator.num_pages }}
+                </span>
+    
+                {% if posts.has_next %}
+                <a class="mr-2 btn btn-md" href="?{% param_replace page=posts.next_page_number %}">Next &gt;</a>
+                <a class="btn btn-md" href="?{% param_replace page=posts.paginator.num_pages %}">Last &raquo;</a>
+                {% else %}
+                <a class="mr-2 opacity-50 cursor-not-allowed pointer-events-none btn btn-md">Next &gt;</a>
+                <a class="opacity-50 cursor-not-allowed pointer-events-none btn btn-md" href="?{% param_replace page=posts.paginator.num_pages %}">Last &raquo;</a>
+                {% endif %}
+            </div>
+            {% endif %}
+
             {% include 'components/banner_ads.html' %}
         </div>
 
