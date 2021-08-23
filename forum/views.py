@@ -101,3 +101,13 @@ def forum_post_create(request, category, thread):
             messages.success(request, "Post added successfully!")
             return redirect(f"/forum/{c.slug}/{t.slug}")
     return render(request, "forum/post_create.html", context)
+
+
+def forum_user_posts(request, user):
+    posts = ForumPost.objects.filter(author__email=user).order_by("-created_at")
+    context = {
+        "posts": posts,
+        "user": user,
+        "posts_count": posts.count()
+    }
+    return render(request, "forum/user_posts.html", context)

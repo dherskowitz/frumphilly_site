@@ -44,7 +44,7 @@
 
             <div class="flex p-4 mb-4 bg-white rounded-md shadow-md">
                 <div class="flex items-start">
-                    <div>
+                    <a href="/forum/{{thread.owner}}">
                     {% if thread.owner.avatar %}
                     <img class="object-cover w-10 h-10 rounded-full" src="{{ thread.owner.avatar.url }}" alt="User Avatar" width="10" height="10">
                     {% elif thread.owner.socialaccount_set.all.0.get_avatar_url %}
@@ -52,7 +52,7 @@
                     {% else %}
                     <img class="object-cover w-10 h-10 rounded-full" src="{% webpack_static 'img/images/blank_avatar.jpg' %}" alt="User Avatar" width="10" height="10">
                     {% endif %}
-                    </div>
+                    </a>
                     <div class="ml-2 text-gray-500">
                         {% if thread.owner.first_name or thread.owner.last_name %}
                         <div>
@@ -119,11 +119,11 @@
                 <a class="opacity-50 cursor-not-allowed pointer-events-none btn btn-md" href="?{% param_replace page=1 %}">&laquo; First</a>
                 <a class="ml-2 opacity-50 cursor-not-allowed pointer-events-none btn btn-md" >&lt; Prev</a>
                 {% endif %}
-    
+
                 <span class="flex-grow text-center">
                     {{ posts.number }} of {{ posts.paginator.num_pages }}
                 </span>
-    
+
                 {% if posts.has_next %}
                 <a class="mr-2 btn btn-md" href="?{% param_replace page=posts.next_page_number %}">Next &gt;</a>
                 <a class="btn btn-md" href="?{% param_replace page=posts.paginator.num_pages %}">Last &raquo;</a>
