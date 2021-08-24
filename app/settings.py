@@ -58,6 +58,9 @@ INSTALLED_APPS = [
     # Honeypot
     "honeypot",
     "admin_honeypot",
+    # CKEditor
+    "ckeditor",
+    "ckeditor_uploader",
     # Local
     "payments.apps.PaymentsConfig",
     "events.apps.EventsConfig",
@@ -163,6 +166,40 @@ if config("ENV") != "local":
     STATIC_ROOT = config("CLOUDFRONT_URL")
 DEFAULT_FILE_STORAGE = "app.storage_backends.S3StaticStorage"
 
+# CK Editor
+CKEDITOR_UPLOAD_PATH = "form_uploads/"
+CKEDITOR_IMAGE_BACKEND = "pillow"
+CKEDITOR_FORCE_JPEG_COMPRESSION = True
+CKEDITOR_BROWSE_SHOW_DIRS = False
+CKEDITOR_THUMBNAIL_SIZE = (500,)
+CKEDITOR_IMAGE_QUALITY = 30
+CKEDITOR_RESTRICT_BY_USER = True
+CKEDITOR_BROWSE_SHOW_DIRS = False
+AWS_QUERYSTRING_AUTH = False
+CKEDITOR_ALLOW_NONIMAGE_FILES = False
+CKEDITOR_CONFIGS = {
+    'default': {
+        'width': '150%',
+        'toolbar': 'Custom',
+        'toolbar_Custom': [
+            ['Format'],
+            ['Bold', 'Italic', 'Underline', 'Strike', 'Undo', 'Redo'],
+            ['Link', 'Unlink'],
+            ['Image', 'Table', 'HorizontalRule', 'Smiley'],
+            ['NumberedList','BulletedList'],
+            ['Indent','Outdent'],
+        ],
+        # Remove Dialog Tabs
+        'removeDialogTabs':'image:advanced;link:target;link:upload;link:advanced',
+        'stylesSet': [
+            {
+                "name": 'Lead',
+                "element": 'p',
+                "attributes": {'class': 'lead'},
+            },
+        ],
+    }
+}
 
 # Custom User Model
 AUTH_USER_MODEL = "users.CustomUser"
