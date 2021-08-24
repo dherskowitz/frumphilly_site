@@ -1,8 +1,14 @@
 from django.contrib import messages
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
 from forum.forms import ThreadCreateForm, PostCreateForm
 from forum.models import ForumCategory, ForumThread, ForumPost
+
+
+def check_username(request, context):
+    if not request.user.username:
+        messages.error(request, "A username is required to post in the Frum Philly Forum. &nbsp;<a href='/user/settings/' class='underline'>Click here</a>&nbsp;to update your profile.")
 
 
 def forum(request):
@@ -55,6 +61,7 @@ def forum_thread(request, category, thread):
     return render(request, "forum/posts.html", context)
 
 
+@login_required
 def forum_thread_create(request, category):
     c = ForumCategory.objects.get(slug=category)
     form = ThreadCreateForm()
@@ -62,22 +69,26 @@ def forum_thread_create(request, category):
         "category": c,
         "form": form
     }
+    check_username(request, context)
 
     if request.method == "POST":
         form = ThreadCreateForm(request.POST, request.FILES)
         context["form"] = form
 
         if form.is_valid():
+            if not request.user.username:
+                return render(request, "forum/thread_create.html", context)
             thread = form.save(commit=False)
             thread.category = c
             thread.owner = request.user
             thread.save()
             form.save_m2m()
-            messages.success(request, "Thread created successfully!")
+            messages.success(request, "Thread added successfully!")
             return redirect(f"/forum/{c.slug}/")
     return render(request, "forum/thread_create.html", context)
 
 
+@login_required
 def forum_post_create(request, category, thread):
     t = ForumThread.objects.get(slug=thread)
     c = ForumCategory.objects.get(slug=category)
@@ -87,18 +98,21 @@ def forum_post_create(request, category, thread):
         "thread": t,
         "form": form
     }
+    check_username(request, context)
 
     if request.method == "POST":
         form = PostCreateForm(request.POST, request.FILES)
         context["form"] = form
 
         if form.is_valid():
+            if not request.user.username:
+                return render(request, "forum/post_create.html", context)
             post = form.save(commit=False)
             post.thread = t
             post.author = request.user
             post.save()
             form.save_m2m()
-            messages.success(request, "Post added successfully!")
+            messages.success(request, "Reply added successfully!")
             return redirect(f"/forum/{c.slug}/{t.slug}")
     return render(request, "forum/post_create.html", context)
 
