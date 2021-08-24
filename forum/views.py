@@ -1,9 +1,10 @@
 from django.contrib import messages
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from forum.forms import ThreadCreateForm, PostCreateForm
 from forum.models import ForumCategory, ForumThread, ForumPost
+from users.models import CustomUser
 
 
 def check_username(request, context):
@@ -118,10 +119,11 @@ def forum_post_create(request, category, thread):
 
 
 def forum_user_posts(request, user):
-    posts = ForumPost.objects.filter(author__email=user).order_by("-created_at")
+    u = get_object_or_404(CustomUser, username=user)
+    posts = ForumPost.objects.filter(author_id=u.id).order_by("-created_at")
     context = {
         "posts": posts,
-        "user": user,
+        "user": u,
         "posts_count": posts.count()
     }
     return render(request, "forum/user_posts.html", context)
