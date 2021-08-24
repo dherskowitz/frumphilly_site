@@ -1,0 +1,79 @@
+
+{% extends 'base.html' %}
+{% load webpack_static from webpack_loader %}
+{% load my_tags %}
+{% load humanize %}
+
+{% block meta_title %}{{thread.title}} | {{category.title}} | Frum Philly Forum{% endblock meta_title %}
+{% block meta_description %}{{thread}}. On the Frum Philly Forum.{% endblock meta_description %}
+
+{% block opengraph %}
+<meta property="og:title" content="{{thread.title}} | {{category.title}} | Frum Philly Forum"/>
+<meta property="og:description" content="{{thread}}. On the Frum Philly Forum."/>
+<meta property="og:image" content="">
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="http://frumphilly.com/forum/{{category.slug}}/{{thread.slug}}/"/>
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:site" content="http://frumphilly.com/forum/{{category.slug}}/{{thread.slug}}/"/>
+<meta name="twitter:title" content="{{thread.title}} | {{category.title}} | Frum Philly Forum"/>
+<meta name="twitter:description" content="{{thread.title}}. On the Frum Philly Forum."/>
+<meta name="twitter:image" content=""/>
+{% endblock opengraph %}
+
+{% block pagebanner %}
+<section class="py-8 bg-purple-900">
+    <div class="container flex items-center justify-between">
+        <div class="container text-white">
+            <a href="{% url 'forum' %}" class="underline hover:text-pink-600">Forum</a> / Posts by {{user.username}}
+            <h2 class="mt-6 text-3xl font-bold truncate">{{user.username}}</h2>
+            <p>{{posts_count}} Posts</p>
+        </div>
+    </div>
+</section>
+{% endblock pagebanner %}
+
+
+{% block main %}
+
+<section class="container">
+    <div class="justify-between my-6 md:flex">
+        <div class="md:w-3/4 md:mr-6">
+
+            {% for post in posts %}
+            {% include "forum/_post.html" with post=post is_user_view=True %}
+            {% endfor %}
+
+            {% if posts.has_other_pages %}
+            <div class="flex items-center my-10">
+                {% if posts.has_previous %}
+                <a class="btn btn-md" href="?{% param_replace page=1 %}">&laquo; First</a>
+                <a class="ml-2 btn btn-md" href="?{% param_replace page=posts.previous_page_number %}">&lt; Prev</a>
+                {% else %}
+                <a class="opacity-50 cursor-not-allowed pointer-events-none btn btn-md" href="?{% param_replace page=1 %}">&laquo; First</a>
+                <a class="ml-2 opacity-50 cursor-not-allowed pointer-events-none btn btn-md" >&lt; Prev</a>
+                {% endif %}
+
+                <span class="flex-grow text-center">
+                    {{ posts.number }} of {{ posts.paginator.num_pages }}
+                </span>
+
+                {% if posts.has_next %}
+                <a class="mr-2 btn btn-md" href="?{% param_replace page=posts.next_page_number %}">Next &gt;</a>
+                <a class="btn btn-md" href="?{% param_replace page=posts.paginator.num_pages %}">Last &raquo;</a>
+                {% else %}
+                <a class="mr-2 opacity-50 cursor-not-allowed pointer-events-none btn btn-md">Next &gt;</a>
+                <a class="opacity-50 cursor-not-allowed pointer-events-none btn btn-md" href="?{% param_replace page=posts.paginator.num_pages %}">Last &raquo;</a>
+                {% endif %}
+            </div>
+            {% endif %}
+
+            {% include 'components/banner_ads.html' %}
+        </div>
+
+        {% include 'components/sidebar_ads.html' %}
+    </div>
+</section>
+
+{% endblock main %}

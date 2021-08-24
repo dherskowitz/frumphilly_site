@@ -1,8 +1,4 @@
-
 {% extends 'base.html' %}
-{% load webpack_static from webpack_loader %}
-{% load my_tags %}
-{% load humanize %}
 
 {% block meta_title %}{{thread.title}} | {{category.title}} | Frum Philly Forum{% endblock meta_title %}
 {% block meta_description %}{{thread}}. On the Frum Philly Forum.{% endblock meta_description %}
@@ -40,99 +36,19 @@
 
 <section class="container">
     <div class="justify-between my-6 md:flex">
-        <div class="md:w-3/4 md:mr-6">
+        <div class="md:w-3/4 md:mr-6 ">
 
-            <div class="flex p-4 mb-4 bg-white rounded-md shadow-md">
-                <div class="flex items-start">
-                    <a href="/forum/{{thread.owner}}">
-                    {% if thread.owner.avatar %}
-                    <img class="object-cover w-10 h-10 rounded-full" src="{{ thread.owner.avatar.url }}" alt="User Avatar" width="10" height="10">
-                    {% elif thread.owner.socialaccount_set.all.0.get_avatar_url %}
-                    <img class="object-cover w-10 h-10 rounded-full" src="{{ thread.owner.socialaccount_set.all.0.get_avatar_url }}" alt="User Avatar" width="10" height="10">
-                    {% else %}
-                    <img class="object-cover w-10 h-10 rounded-full" src="{% webpack_static 'img/images/blank_avatar.jpg' %}" alt="User Avatar" width="10" height="10">
-                    {% endif %}
-                    </a>
-                    <div class="ml-2 text-gray-500">
-                        {% if thread.owner.first_name or thread.owner.last_name %}
-                        <div>
-                            {% if thread.owner.first_name %}{{thread.owner.first_name}} {% endif %}
-                            {% if thread.owner.last_name %}{{thread.owner.last_name}} {% endif %}
-                        </div>
-                        {% endif %}
-                        <div>{{thread.owner.email}}</div>
-                    </div>
-                </div>
-
-                <div class="ml-12">
-                    <div class="text-gray-500">
-                        {{thread.created_at|naturaltime}}
-                    </div>
-                    <div class="mt-6">
-                        {{thread.description}}
-                    </div>
-                </div>
-
-            </div>
+            {% include "forum/_post.html" with post=thread %}
 
             {% for post in posts %}
-            <div class="flex p-4 mb-4 bg-white rounded-md shadow-md">
-                <div class="flex items-start">
-                    <div>
-                        {% if post.author.avatar %}
-                        <img class="object-cover w-10 h-10 rounded-full" src="{{ post.author.avatar.url }}" alt="User Avatar" width="10" height="10">
-                        {% elif post.author.socialaccount_set.all.0.get_avatar_url %}
-                        <img class="object-cover w-10 h-10 rounded-full" src="{{ post.author.socialaccount_set.all.0.get_avatar_url }}" alt="User Avatar" width="10" height="10">
-                        {% else %}
-                        <img class="object-cover w-10 h-10 rounded-full" src="{% webpack_static 'img/images/blank_avatar.jpg' %}" alt="User Avatar" width="10" height="10">
-                        {% endif %}
-                    </div>
-                    <div class="ml-2 text-gray-500">
-                        {% if post.author.first_name or post.author.last_name %}
-                        <div>
-                            {% if post.author.first_name %}{{post.author.first_name}} {% endif %}
-                            {% if post.author.last_name %}{{post.author.last_name}} {% endif %}
-                        </div>
-                        {% endif %}
-                        <div>{{post.author.email}}</div>
-                    </div>
-                </div>
-
-                <div class="ml-12">
-                    <div class="text-gray-500">
-                        {{post.created_at|naturaltime}}
-                    </div>
-                    <div class="mt-6">
-                        {{post.content|safe}}
-                    </div>
-                </div>
-
-            </div>
+                {% include "forum/_post.html" with post=post %}
             {% endfor %}
 
-            {% if posts.has_other_pages %}
-            <div class="flex items-center my-10">
-                {% if posts.has_previous %}
-                <a class="btn btn-md" href="?{% param_replace page=1 %}">&laquo; First</a>
-                <a class="ml-2 btn btn-md" href="?{% param_replace page=posts.previous_page_number %}">&lt; Prev</a>
-                {% else %}
-                <a class="opacity-50 cursor-not-allowed pointer-events-none btn btn-md" href="?{% param_replace page=1 %}">&laquo; First</a>
-                <a class="ml-2 opacity-50 cursor-not-allowed pointer-events-none btn btn-md" >&lt; Prev</a>
-                {% endif %}
-
-                <span class="flex-grow text-center">
-                    {{ posts.number }} of {{ posts.paginator.num_pages }}
-                </span>
-
-                {% if posts.has_next %}
-                <a class="mr-2 btn btn-md" href="?{% param_replace page=posts.next_page_number %}">Next &gt;</a>
-                <a class="btn btn-md" href="?{% param_replace page=posts.paginator.num_pages %}">Last &raquo;</a>
-                {% else %}
-                <a class="mr-2 opacity-50 cursor-not-allowed pointer-events-none btn btn-md">Next &gt;</a>
-                <a class="opacity-50 cursor-not-allowed pointer-events-none btn btn-md" href="?{% param_replace page=posts.paginator.num_pages %}">Last &raquo;</a>
-                {% endif %}
+            <div class="flex justify-end my-6">
+                <a class="px-6 py-2 text-lg font-semibold text-center text-white bg-gray-600 rounded-md shadow-md min-w-max hover:bg-gray-500" href="{% url 'forum_post_create' category=category.slug thread=thread.slug %}">Add a Reply</a>
             </div>
-            {% endif %}
+
+            {% include "forum/_pagination.html" with post=post %}
 
             {% include 'components/banner_ads.html' %}
         </div>

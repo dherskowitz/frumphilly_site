@@ -1,0 +1,42 @@
+{% load webpack_static from webpack_loader %}
+{% load humanize %}
+
+<div class="p-4 mb-4 bg-white rounded-md shadow-md">
+    <div class="flex items-start">
+        {% if post.author.username %}
+            <a href="/forum/u/{{post.author.username}}">
+        {% else %}
+        <a>
+        {% endif %}
+        {% if post.author.avatar %}
+        <img class="object-cover w-10 h-10 rounded-full" src="{{ post.author.avatar.url }}" alt="User Avatar" width="10" height="10">
+        {% elif post.author.socialaccount_set.all.0.get_avatar_url %}
+        <img class="object-cover w-10 h-10 rounded-full" src="{{ post.author.socialaccount_set.all.0.get_avatar_url }}" alt="User Avatar" width="10" height="10">
+        {% else %}
+        <img class="object-cover w-10 h-10 rounded-full" src="{% webpack_static 'img/images/blank_avatar.jpg' %}" alt="User Avatar" width="10" height="10">
+        {% endif %}
+        </a>
+        <div class="ml-4 text-sm text-gray-500">
+            <div class="truncate" style="max-width: 12rem;">
+            {% if post.author.username %}
+                {{post.author.username}}
+                {% else %}
+                anonymous
+                {% endif %}
+            </div>
+            <div class="text-gray-500">
+                {{post.created_at|naturaltime}}
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-8">
+        {% if is_user_view %}
+        <div class="pb-6 text-sm ">
+            <a href="{{post.thread.get_absolute_url}}" class="text-gray-600">{{post.thread.title}}</a> <span>in <a href="{{post.thread.category.get_absolute_url}}" class="text-pink-400 underline">{{post.thread.category}}</a></span>
+        </div>
+        {% endif %}
+        {{post.content|safe}}
+    </div>
+
+</div>
