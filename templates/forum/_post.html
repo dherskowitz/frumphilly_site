@@ -36,7 +36,9 @@
             <a href="{{post.thread.get_absolute_url}}" class="text-gray-600">{{post.thread.title}}</a> <span>in <a href="{{post.thread.category.get_absolute_url}}" class="text-pink-400 underline">{{post.thread.category}}</a></span>
         </div>
         {% endif %}
-        {{post.content|safe}}
+        <div class="editor-content">
+            {{post.content|safe}}
+        </div>
     </div>
 
 </div>
