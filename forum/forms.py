@@ -12,7 +12,7 @@ class ThreadCreateForm(forms.ModelForm):
     class Meta:
         model = ForumThread
         fields = "__all__"
-        exclude = ("owner", "slug", "category")
+        exclude = ("author", "slug", "category")
 
     def __init__(self, *args, **kwargs):
         super(ThreadCreateForm, self).__init__(*args, **kwargs)
