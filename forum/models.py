@@ -1,8 +1,8 @@
 from django.conf import settings
 from django.db import models
-from django.urls import reverse
 from django.utils.text import slugify
 from app.storage_backends import S3SiteImagesStorage
+from ckeditor_uploader.fields import RichTextUploadingField
 
 
 class ForumCategory(models.Model):
@@ -41,7 +41,7 @@ class ForumThread(models.Model):
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="threads")
     title = models.CharField(max_length=150, unique=True)
     slug = models.SlugField(max_length=150, unique=True, editable=False)
-    content = models.TextField(max_length=50000, blank=False, unique=True)
+    content = RichTextUploadingField(max_length=50000, blank=False, unique=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -68,7 +68,7 @@ class ForumPost(models.Model):
     # Post goes in a thread
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     thread = models.ForeignKey(ForumThread, on_delete=models.CASCADE, related_name='posts')
-    content = models.TextField(max_length=30000, blank=False, unique=True)
+    content = RichTextUploadingField(max_length=30000, blank=False, unique=False)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
