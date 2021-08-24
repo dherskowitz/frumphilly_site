@@ -81,7 +81,7 @@ def forum_thread_create(request, category):
                 return render(request, "forum/thread_create.html", context)
             thread = form.save(commit=False)
             thread.category = c
-            thread.owner = request.user
+            thread.author = request.user
             thread.save()
             form.save_m2m()
             messages.success(request, "Thread added successfully!")
