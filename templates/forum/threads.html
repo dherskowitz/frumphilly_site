@@ -47,9 +47,13 @@
                         <div class="text-sm capitalize">Created {{thread.created_at|naturaltime}}</div>
                     </div>
                     <div class="flex items-center ml-2">
-                        <div>
-                            <img src="{{thread.owner.avatar.url}}" alt="" class="w-12 h-12 rounded-full">
-                        </div>
+                        {% if thread.owner.avatar %}
+                        <img class="object-cover w-10 h-10 rounded-full" src="{{ thread.owner.avatar.url }}" alt="User Avatar" width="10" height="10">
+                        {% elif thread.owner.socialaccount_set.all.0.get_avatar_url %}
+                        <img class="object-cover w-10 h-10 rounded-full" src="{{ thread.owner.socialaccount_set.all.0.get_avatar_url }}" alt="User Avatar" width="10" height="10">
+                        {% else %}
+                        <img class="object-cover w-10 h-10 rounded-full" src="{% webpack_static 'img/images/blank_avatar.jpg' %}" alt="User Avatar" width="10" height="10">
+                        {% endif %}
                         <div class="ml-4">
                             <div>{{thread.owner.first_name}} {{thread.owner.last_name}}</div>
                             <div>{{thread.owner.email}}</div>
@@ -62,7 +66,7 @@
                         <div class="text-4xl leading-snug text-center text-gray-200 uppercase text-shadow">
                             <div>There are no threads in</div>
                             <div class="font-bold">{{category.title}}</div>
-                            <a class="block py-4 text-lg font-semibold text-center btn btn-md lg:inline" href="">Start a Conversation</a>
+                            <a class="block py-4 text-lg font-semibold text-center btn btn-md lg:inline" href="{% url 'forum_thread_create' category=category.slug %}">Start a Conversation</a>
                         </div>
                     </div>
                     <img class="" width="400" src="{% webpack_static 'img/illustrations/empty.svg' %}" alt="">
@@ -78,11 +82,11 @@
                 <a class="opacity-50 cursor-not-allowed pointer-events-none btn btn-md" href="?{% param_replace page=1 %}">&laquo; First</a>
                 <a class="ml-2 opacity-50 cursor-not-allowed pointer-events-none btn btn-md" >&lt; Prev</a>
                 {% endif %}
-    
+
                 <span class="flex-grow text-center">
                     {{ threads.number }} of {{ threads.paginator.num_pages }}
                 </span>
-    
+
                 {% if threads.has_next %}
                 <a class="mr-2 btn btn-md" href="?{% param_replace page=threads.next_page_number %}">Next &gt;</a>
                 <a class="btn btn-md" href="?{% param_replace page=threads.paginator.num_pages %}">Last &raquo;</a>
