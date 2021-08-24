@@ -15,7 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.views.decorators.cache import never_cache
 from django.views.generic.base import TemplateView
+from django.contrib.auth.decorators import login_required
+
+from ckeditor_uploader import views
 
 
 urlpatterns = [
@@ -31,4 +35,6 @@ urlpatterns = [
     path("payments/", include("payments.urls"), name="payments"),
     path("forum/", include("forum.urls"), name="forum"),
     path("ads.txt", TemplateView.as_view(template_name="ads.txt", content_type="text/plain")),
+    path("ckeditor/upload/", login_required(views.upload), name='ckeditor_upload'),
+    path("ckeditor/browse/", never_cache(login_required(views.browse)), name='ckeditor_browse'),
 ]
