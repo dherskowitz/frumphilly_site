@@ -21,9 +21,14 @@
                 </h2>
                 {% include 'components/errors.html' %}
 
-                <form method="post" id="signup-form" class="p-0 form">
+                <form method="post" id="signup-form" class="p-0 form" novalidate>
                     {% csrf_token %}
                     <div class="m-0 form-field">
+                        <label class="form-field__label" for="{{field.id_for_label}}">{{ form.username.label }}</label>
+                        {{ form.username }}
+                    </div>
+
+                    <div class="m-0 my-4 form-field">
                         <label class="form-field__label" for="{{field.id_for_label}}">{{ form.email.label }}</label>
                         {{ form.email }}
                     </div>
