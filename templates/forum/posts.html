@@ -58,3 +58,10 @@
 </section>
 
 {% endblock main %}
+
+{% block template_js %}
+<script>
+    const links = document.querySelectorAll(".editor-content a");
+    [...links].map(link => link.setAttribute('target', '_blank'));
+</script>
+{% endblock template_js %}
