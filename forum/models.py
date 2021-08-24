@@ -38,10 +38,10 @@ class ForumCategory(models.Model):
 class ForumThread(models.Model):
     # Thread belongs to a category
     category = models.ForeignKey(ForumCategory, on_delete=models.CASCADE, related_name="threads")
-    owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="threads")
+    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="threads")
     title = models.CharField(max_length=150, unique=True)
     slug = models.SlugField(max_length=150, unique=True, editable=False)
-    description = models.TextField(max_length=50000, blank=False, unique=True)
+    content = models.TextField(max_length=50000, blank=False, unique=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
