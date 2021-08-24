@@ -42,13 +42,20 @@
 
             <form class="form" action="{% url 'forum_post_create' category=category.slug thread=thread.slug %}" method="POST" enctype='multipart/form-data' novalidate>
                 {% csrf_token %}
-                {% for field in form %}
-                    <div class="m-0 form-field">
-                        <label class="form-field__label" for="{{field.id_for_label}}">{{ field.label }} {% if field.field.required %}<span class="form-field__label--required">(required)</span>{% endif %}</label>
-                        {{ field }}
-                        <div class="form-field__help-text">{{ field.help_text }}</div>
-                    </div>
-                {% endfor %}
+                <div class="form-field ckeditor-field my-0 mb-2">
+                    <label class="form-field__label" for="{{form.content.id_for_label}}">{{ form.content.label }} {% if form.content.field.required %}<span class="form-field__label--required">(required)</span>{% endif %}</label>
+                    {{ form.content }}
+                    <div class="form-field__help-text">{{ field.help_text }}</div>
+                </div>
+
+<!--                {% for field in form %}-->
+<!--                    <div class="m-0 ">-->
+<!--                        <label class="form-field__label" for="{{field.id_for_label}}">{{ field.label }} {% if field.field.required %}<span class="form-field__label&#45;&#45;required">(required)</span>{% endif %}</label>-->
+<!--                        {{ field }}-->
+<!--                        <div class="form-field__help-text">{{ field.help_text }}</div>-->
+<!--                    </div>-->
+<!--                {% endfor %}-->
+
                 {% include 'components/submit_btn.html' with value='Submit Reply' class="mt-0 btn btn-block btn-lg btn--form-submit" %}
             </form>
 
@@ -60,3 +67,9 @@
 </section>
 
 {% endblock main %}
+
+
+{% block template_js %}
+<script type="text/javascript" src="{% webpack_static 'ckeditor/ckeditor-init.js' %}"></script>
+<script type="text/javascript" src="{% webpack_static 'ckeditor/ckeditor/ckeditor.js' %}"></script>
+{% endblock template_js %}

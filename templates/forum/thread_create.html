@@ -24,7 +24,7 @@
 {% block pagebanner %}
 <section class="py-8 bg-purple-900">
     <div class="container text-white">
-        <a href="{% url 'forum' %}" class="underline hover:text-pink-600">Forum</a> / 
+        <a href="{% url 'forum' %}" class="underline hover:text-pink-600">Forum</a> /
         <a href="{{category.get_absolute_url}}" class="underline hover:text-pink-600">{{category.title}}</a> / Add Thread
         <h2 class="mt-6 text-3xl font-bold">Create a thread in {{category.title}}</h2>
     </div>
@@ -41,13 +41,19 @@
 
             <form class="form" action="{% url 'forum_thread_create' category=category.slug %}" method="POST" enctype='multipart/form-data' novalidate>
                 {% csrf_token %}
-                {% for field in form %}
-                    <div class="m-0 form-field">
-                        <label class="form-field__label" for="{{field.id_for_label}}">{{ field.label }} {% if field.field.required %}<span class="form-field__label--required">(required)</span>{% endif %}</label>
-                        {{ field }}
-                        <div class="form-field__help-text">{{ field.help_text }}</div>
-                    </div>
-                {% endfor %}
+
+                <div class="form-field my-0">
+                    <label class="form-field__label" for="{{form.title.id_for_label}}">{{ form.title.label }} {% if form.title.field.required %}<span class="form-field__label--required">(required)</span>{% endif %}</label>
+                    {{ form.title }}
+                    <div class="form-field__help-text">{{ field.help_text }}</div>
+                </div>
+
+                <div class="form-field ckeditor-field my-0 mb-2">
+                    <label class="form-field__label" for="{{form.content.id_for_label}}">{{ form.content.label }} {% if form.content.field.required %}<span class="form-field__label--required">(required)</span>{% endif %}</label>
+                    {{ form.content }}
+                    <div class="form-field__help-text">{{ field.help_text }}</div>
+                </div>
+
                 {% include 'components/submit_btn.html' with value='Create Thread' class="mt-0 btn btn-block btn-lg btn--form-submit" %}
             </form>
 
@@ -59,3 +65,8 @@
 </section>
 
 {% endblock main %}
+
+{% block template_js %}
+<script type="text/javascript" src="{% webpack_static 'ckeditor/ckeditor-init.js' %}"></script>
+<script type="text/javascript" src="{% webpack_static 'ckeditor/ckeditor/ckeditor.js' %}"></script>
+{% endblock template_js %}
