@@ -314,9 +314,9 @@ if config("ENV") != "local":
 MESSAGE_TAGS = {
     message_constants.DEBUG: "messages__debug",
     message_constants.INFO: "messages__info",
-    message_constants.SUCCESS: "messages__success",
-    message_constants.WARNING: "messages__warning",
-    message_constants.ERROR: "messages__error",
+    message_constants.SUCCESS: " bg-green-400",
+    message_constants.WARNING: " bg-yellow-500",
+    message_constants.ERROR: " bg-red-500",
 }
 
 # Rollbar
