@@ -166,6 +166,9 @@ if config("ENV") != "local":
     STATIC_ROOT = config("CLOUDFRONT_URL")
 DEFAULT_FILE_STORAGE = "app.storage_backends.S3StaticStorage"
 
+MEDIA_ROOT = '/media/'
+MEDIA_URL = AWS_S3_CUSTOM_DOMAIN + MEDIA_ROOT
+
 # CK Editor
 CKEDITOR_UPLOAD_PATH = "form_uploads/"
 CKEDITOR_IMAGE_BACKEND = "pillow"
@@ -177,6 +180,7 @@ CKEDITOR_RESTRICT_BY_USER = True
 CKEDITOR_BROWSE_SHOW_DIRS = False
 AWS_QUERYSTRING_AUTH = False
 CKEDITOR_ALLOW_NONIMAGE_FILES = False
+CKEDITOR_STORAGE_BACKEND = 'app.storage_backends.S3StaticStorage'
 CKEDITOR_CONFIGS = {
     'default': {
         'width': '150%',
