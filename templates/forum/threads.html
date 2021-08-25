@@ -47,16 +47,16 @@
                         <div class="text-sm capitalize">Created {{thread.created_at|naturaltime}}</div>
                     </div>
                     <div class="flex items-center ml-2">
-                        {% if thread.owner.avatar %}
-                        <img class="object-cover w-10 h-10 rounded-full" src="{{ thread.owner.avatar.url }}" alt="User Avatar" width="10" height="10">
-                        {% elif thread.owner.socialaccount_set.all.0.get_avatar_url %}
-                        <img class="object-cover w-10 h-10 rounded-full" src="{{ thread.owner.socialaccount_set.all.0.get_avatar_url }}" alt="User Avatar" width="10" height="10">
+                        {% if thread.author.avatar %}
+                        <img class="object-cover w-10 h-10 rounded-full" src="{{ thread.author.avatar.url }}" alt="User Avatar" width="10" height="10">
+                        {% elif thread.author.socialaccount_set.all.0.get_avatar_url %}
+                        <img class="object-cover w-10 h-10 rounded-full" src="{{ thread.author.socialaccount_set.all.0.get_avatar_url }}" alt="User Avatar" width="10" height="10">
                         {% else %}
                         <img class="object-cover w-10 h-10 rounded-full" src="{% webpack_static 'img/images/blank_avatar.jpg' %}" alt="User Avatar" width="10" height="10">
                         {% endif %}
                         <div class="ml-4">
-                            <div>{{thread.owner.first_name}} {{thread.owner.last_name}}</div>
-                            <div>{{thread.owner.email}}</div>
+                            <div>{{thread.author.first_name}} {{thread.author.last_name}}</div>
+                            <div>{{thread.author.email}}</div>
                         </div>
                     </div>
             </a>
