@@ -1,7 +1,13 @@
 const plugin = require("tailwindcss/plugin");
 
 module.exports = {
-    purge: [],
+    purge: {
+        safelist:[
+            'bg-green-400',
+            'bg-yellow-500',
+            'bg-red-500',
+        ]
+    },
     theme: {
         extend: {
             colors: {
