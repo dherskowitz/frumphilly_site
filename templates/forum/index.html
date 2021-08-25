@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load webpack_static from webpack_loader %}
+{% load my_tags %}
+
+{% block meta_title %}Forum | Frum Philly{% endblock meta_title %}
+{% block meta_description %}Frum Philly Forum. Where the yantas are!{% endblock meta_description %}
+
+{% block opengraph %}
+<meta property="og:title" content="Frum Philly Forum"/>
+<meta property="og:description" content="Check out the Forum on Frum Philly."/>
+<meta property="og:image" content="">
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="http://frumphilly.com/forum/"/>
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:site" content="http://frumphilly.com/forum/"/>
+<meta name="twitter:title" content="Frum Philly Forum"/>
+<meta name="twitter:description" content="Check out the Forum on Frum Philly"/>
+<meta name="twitter:image" content=""/>
+{% endblock opengraph %}
+
+{% block pagebanner %}
+<section class="relative flex items-center justify-center h-half-screen curved-bottom" style="background-image: url({% webpack_static 'img/images/forum-bg.jpg' %});background-size: cover;background-repeat:no-repeat;background-position:center;">
+    <div class="absolute top-0 left-0 w-full h-full bg-purple-600 bg-opacity-25"></div>
+    <div class="z-20 text-center text-white text-shadow">
+        <h1 class="text-6xl font-bold md:text-9xl">Frum Philly Forum</h1>
+        <p class="mt-4 text-2xl md:text-6xl">For the neighborhood yentas!</p>
+    </div>
+</section>
+{% endblock pagebanner %}
+
+
+{% block main %}
+
+<section class="container">
+    <div class="justify-between my-6 md:flex">
+        <div class="md:w-3/4 md:mr-6">
+
+            {% for cat in categories %}
+            <a href="{{cat.get_absolute_url}}" class="flex items-center justify-between mb-4 overflow-hidden text-gray-700 transition-all duration-100 ease-in bg-white rounded shadow-md hover:bg-purple-900 hover:text-white group-hover:text-white">
+                <div class="p-4">
+                    <h3 class="text-4xl font-bold ">{{cat.title}}</h3>
+                    <p>{{cat.description}}</p>
+                </div>
+                <div class="p-4">
+                    <p>{{cat.get_thread_count}} Threads</p>
+                    <p>{{cat.get_post_count}} Posts</p>
+                </div>
+                {% if cat.icon %}
+                    <!-- <div>
+                        <img class="w-36" src="" alt="Frum Philly Forum">
+                    </div> -->
+                    {% endif %}
+            </a>
+            {% endfor %}
+
+            {% include 'components/banner_ads.html' %}
+        </div>
+
+        {% include 'components/sidebar_ads.html' %}
+    </div>
+</section>
+
+{% endblock main %}

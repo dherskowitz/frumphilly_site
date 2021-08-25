@@ -58,12 +58,16 @@ INSTALLED_APPS = [
     # Honeypot
     "honeypot",
     "admin_honeypot",
+    # CKEditor
+    "ckeditor",
+    "ckeditor_uploader",
     # Local
     "payments.apps.PaymentsConfig",
     "events.apps.EventsConfig",
     "listings.apps.ListingsConfig",
     "pages.apps.PagesConfig",
     "ads.apps.AdsConfig",
+    "forum.apps.ForumConfig",
     # Django Cleanup - stay at bottom
     "django_cleanup.apps.CleanupConfig",
     # 3rd Party
@@ -162,6 +166,40 @@ if config("ENV") != "local":
     STATIC_ROOT = config("CLOUDFRONT_URL")
 DEFAULT_FILE_STORAGE = "app.storage_backends.S3StaticStorage"
 
+# CK Editor
+CKEDITOR_UPLOAD_PATH = "form_uploads/"
+CKEDITOR_IMAGE_BACKEND = "pillow"
+CKEDITOR_FORCE_JPEG_COMPRESSION = True
+CKEDITOR_BROWSE_SHOW_DIRS = False
+CKEDITOR_THUMBNAIL_SIZE = (500,)
+CKEDITOR_IMAGE_QUALITY = 30
+CKEDITOR_RESTRICT_BY_USER = True
+CKEDITOR_BROWSE_SHOW_DIRS = False
+AWS_QUERYSTRING_AUTH = False
+CKEDITOR_ALLOW_NONIMAGE_FILES = False
+CKEDITOR_CONFIGS = {
+    'default': {
+        'width': '150%',
+        'toolbar': 'Custom',
+        'toolbar_Custom': [
+            ['Format'],
+            ['Bold', 'Italic', 'Underline', 'Strike', 'Undo', 'Redo'],
+            ['Link', 'Unlink'],
+            ['Image', 'Table', 'HorizontalRule', 'Smiley'],
+            ['NumberedList','BulletedList'],
+            ['Indent','Outdent'],
+        ],
+        # Remove Dialog Tabs
+        'removeDialogTabs':'image:advanced;link:target;link:upload;link:advanced',
+        'stylesSet': [
+            {
+                "name": 'Lead',
+                "element": 'p',
+                "attributes": {'class': 'lead'},
+            },
+        ],
+    }
+}
 
 # Custom User Model
 AUTH_USER_MODEL = "users.CustomUser"
@@ -183,10 +221,10 @@ AUTHENTICATION_BACKENDS = (
 )
 SITE_ID = 1
 ACCOUNT_EMAIL_REQUIRED = True
-ACCOUNT_USERNAME_REQUIRED = False
+ACCOUNT_USERNAME_REQUIRED = True
 ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = True
 ACCOUNT_SESSION_REMEMBER = True
-ACCOUNT_AUTHENTICATION_METHOD = "email"
+ACCOUNT_AUTHENTICATION_METHOD = "username_email"
 ACCOUNT_UNIQUE_EMAIL = True
 LOGIN_REDIRECT_URL = "home"
 ACCOUNT_LOGOUT_REDIRECT_URL = "home"
@@ -202,6 +240,58 @@ ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS = 3
 ACCOUNT_SESSION_REMEMBER = None
 ACCOUNT_EMAIL_SUBJECT_PREFIX = "Frum Philly "
 ACCOUNT_DEFAULT_HTTP_PROTOCOL = "https"
+ACCOUNT_USERNAME_BLACKLIST = [
+    "admin",
+    "administration",
+    "administrator",
+    "root",
+    "system",
+    "user",
+    "help",
+    "service",
+    "webmaster",
+    "support",
+    "staff",
+    "frumphilly",
+    "frum-philly",
+    "frum_philly",
+    "fromphilly",
+    "from-philly",
+    "from_philly",
+    "advertising",
+    "anonymous",
+    "authentication",
+    "connect",
+    "contact",
+    "contact-us",
+    "contact_us",
+    "contactus",
+    "dev",
+    "devel",
+    "developer",
+    "developers",
+    "editor",
+    "facebook",
+    "forum",
+    "forums",
+    "founder",
+    "guest",
+    "guests",
+    "host",
+    "hosting",
+    "hostmaster",
+    "hostname",
+    "instagram",
+    "intranet",
+    "notification",
+    "notifications",
+    "sysadmin",
+    "sysadministrator",
+    "system",
+    "user",
+    "username",
+    "users",
+]
 
 SOCIALACCOUNT_PROVIDERS = {
     "google": {
@@ -261,9 +351,9 @@ if config("ENV") != "local":
 MESSAGE_TAGS = {
     message_constants.DEBUG: "messages__debug",
     message_constants.INFO: "messages__info",
-    message_constants.SUCCESS: "messages__success",
-    message_constants.WARNING: "messages__warning",
-    message_constants.ERROR: "messages__error",
+    message_constants.SUCCESS: " bg-green-400",
+    message_constants.WARNING: " bg-yellow-500",
+    message_constants.ERROR: " bg-red-500",
 }
 
 # Rollbar

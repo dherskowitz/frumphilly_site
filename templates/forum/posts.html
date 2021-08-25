@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{% block meta_title %}{{thread.title}} | {{category.title}} | Frum Philly Forum{% endblock meta_title %}
+{% block meta_description %}{{thread}}. On the Frum Philly Forum.{% endblock meta_description %}
+
+{% block opengraph %}
+<meta property="og:title" content="{{thread.title}} | {{category.title}} | Frum Philly Forum"/>
+<meta property="og:description" content="{{thread}}. On the Frum Philly Forum."/>
+<meta property="og:image" content="">
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="http://frumphilly.com/forum/{{category.slug}}/{{thread.slug}}/"/>
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:site" content="http://frumphilly.com/forum/{{category.slug}}/{{thread.slug}}/"/>
+<meta name="twitter:title" content="{{thread.title}} | {{category.title}} | Frum Philly Forum"/>
+<meta name="twitter:description" content="{{thread.title}}. On the Frum Philly Forum."/>
+<meta name="twitter:image" content=""/>
+{% endblock opengraph %}
+
+{% block pagebanner %}
+<section class="py-8 bg-purple-900">
+    <div class="container flex items-center justify-between">
+        <div class="container text-white">
+            <a href="{% url 'forum' %}" class="underline hover:text-pink-600">Forum</a> /
+            <a href="/forum/{{category.slug}}" class="underline hover:text-pink-600">{{category.title}}</a>
+            <h2 class="mt-6 text-3xl font-bold">{{thread}}</h2>
+        </div>
+        <a class="px-6 py-2 text-lg font-semibold text-center text-white bg-gray-600 rounded-md shadow-md min-w-max hover:bg-gray-500" href="{% url 'forum_post_create' category=category.slug thread=thread.slug %}">Add a Reply</a>
+    </div>
+</section>
+{% endblock pagebanner %}
+
+
+{% block main %}
+
+<section class="container">
+    <div class="justify-between my-6 md:flex">
+        <div class="md:w-3/4 md:mr-6 ">
+
+            {% include "forum/_post.html" with post=thread %}
+
+            {% for post in posts %}
+                {% include "forum/_post.html" with post=post %}
+            {% endfor %}
+
+            <div class="flex justify-end my-6">
+                <a class="px-6 py-2 text-lg font-semibold text-center text-white bg-gray-600 rounded-md shadow-md min-w-max hover:bg-gray-500" href="{% url 'forum_post_create' category=category.slug thread=thread.slug %}">Add a Reply</a>
+            </div>
+
+            {% include "forum/_pagination.html" with post=post %}
+
+            {% include 'components/banner_ads.html' %}
+        </div>
+
+        {% include 'components/sidebar_ads.html' %}
+    </div>
+</section>
+
+{% endblock main %}
+
+{% block template_js %}
+<script>
+    const links = document.querySelectorAll(".editor-content a");
+    [...links].map(link => link.setAttribute('target', '_blank'));
+</script>
+{% endblock template_js %}
