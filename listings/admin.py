@@ -1,7 +1,8 @@
 from django.contrib import admin
 from django.db import models
 from django.forms import CheckboxSelectMultiple
-from .models import Listing, Category, CategoryGroup
+from django.contrib.contenttypes.admin import GenericTabularInline
+from .models import Listing, Category, CategoryGroup, ListingLike
 
 
 def make_published(modeladmin, request, queryset):
@@ -18,9 +19,14 @@ def make_draft(modeladmin, request, queryset):
 make_draft.short_description = "Mark selected listings as draft"
 
 
+class LikesInline(GenericTabularInline):
+    model = ListingLike
+
+
 # Register your models here.
 class ListingAdmin(admin.ModelAdmin):
-    def likes_count(self, obj):
+    @staticmethod
+    def likes_count(obj):
         return obj.likes.count()
 
     actions = [make_published, make_draft]
@@ -43,6 +49,9 @@ class ListingAdmin(admin.ModelAdmin):
     # )
     # search_fields = ('name', 'created_by__id')
     list_filter = ("status", "categories__category_group")
+    inlines = [
+        LikesInline,
+    ]
 
 
 class CategoryAdmin(admin.ModelAdmin):

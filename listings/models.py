@@ -2,6 +2,8 @@ import utils
 from django.db import models
 from django.conf import settings
 from django.utils.text import slugify
+from django.contrib.contenttypes.fields import GenericForeignKey, GenericRelation
+from django.contrib.contenttypes.models import ContentType
 from itertools import chain
 from app.storage_backends import S3ListingsMediaStorage, S3SiteImagesStorage
 
@@ -217,7 +219,7 @@ class Listing(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     categories = models.ManyToManyField(Category)
-    likes = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='listing_like', null=True, blank=True)
+    likes = GenericRelation('ListingLike', related_query_name='likes')
 
     class Meta:
         verbose_name = "listing"
@@ -272,3 +274,28 @@ class Listing(models.Model):
 
     def likes_count(self):
         return self.likes.count()
+
+    def like(self, user):
+        return self.likes.create(user=user)
+
+    def dislike(self, user):
+        return self.likes.filter(user=user).delete()
+
+    def is_liked_by(self, user):
+        liked_list = self.likes.values_list('user__id', flat=True)
+        return user.id in liked_list
+
+
+class ListingLike(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
+    object_id = models.PositiveIntegerField()
+    content_object = GenericForeignKey('content_type', 'object_id')
+
+    class Meta:
+        verbose_name = "like"
+        verbose_name_plural = "likes"
+
+    def __str__(self):
+        listing = Listing.objects.get(id=self.object_id)
+        return f"{self.user.email} liked {listing.business_name}"

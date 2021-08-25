@@ -102,7 +102,7 @@ def listings_all(request, category=None):
 def listing_single(request, slug, pk):
     ads = Ad.get_active_ads()
     listing = get_object_or_404(Listing, slug=slug, id=pk)
-    user_liked = listing.likes.filter(id=request.user.id).exists()
+    user_liked = listing.is_liked_by(request.user)
     if listing.status == 'draft' and request.user != listing.created_by:
         return render(request, "private.html")
     report_post_form = ReportPostForm()
@@ -227,9 +227,11 @@ def listing_categories(request):
 def listing_like(request):
     json_data = json.loads(request.body)
     listing = get_object_or_404(Listing, id=json_data["id"])
-    if listing.likes.filter(id=request.user.id).exists():
-        listing.likes.remove(request.user)
+    current_user = request.user
+
+    if listing.is_liked_by(current_user):
+        listing.dislike(current_user)
         return JsonResponse({"likes": listing.likes_count(), "user_liked": "false"}, status=200)
     else:
-        listing.likes.add(request.user)
+        listing.like(current_user)
         return JsonResponse({"likes": listing.likes_count(), "user_liked": "true"}, status=200)
