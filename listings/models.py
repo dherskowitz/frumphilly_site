@@ -217,7 +217,7 @@ class Listing(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     categories = models.ManyToManyField(Category)
-    likes = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='listing_like')
+    likes = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='listing_like', null=True, blank=True)
 
     class Meta:
         verbose_name = "listing"

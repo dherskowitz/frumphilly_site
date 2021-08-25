@@ -50,7 +50,7 @@ class ListingForm(forms.ModelForm):
     class Meta:
         model = Listing
         fields = "__all__"
-        exclude = ("created_by", "slug", "claimed", "premium", "approved")
+        exclude = ("created_by", "slug", "claimed", "premium", "approved", "likes")
 
     def __init__(self, *args, **kwargs):
         category_group = kwargs.pop("category_group", [])
