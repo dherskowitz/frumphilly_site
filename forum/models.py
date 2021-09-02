@@ -8,7 +8,7 @@ from ckeditor_uploader.fields import RichTextUploadingField
 class ForumCategory(models.Model):
     title = models.CharField(max_length=200, unique=True)
     slug = models.SlugField(max_length=200, unique=True, editable=False)
-    description = models.CharField(max_length=300)
+    description = models.CharField(max_length=300, blank=True, null=True)
     icon = models.ImageField(storage=S3SiteImagesStorage(), default=None, null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
