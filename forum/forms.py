@@ -33,8 +33,12 @@ allowed_tags = [
     "img",
     "s",
     "u",
+    "hr"
 ]
 allowed_attrs = {'a': ['href', 'rel'], 'img': ['src', 'alt', 'style']}
+styles = ["width", "height", "border-color", "background-color", "white-space", "vertical-align", "text-align",
+          "border-style", "border-width", "float", "margin", "margin-bottom", "margin-left", "margin-right",
+          "margin-top"]
 
 
 class ThreadCreateForm(forms.ModelForm):
@@ -50,7 +54,7 @@ class ThreadCreateForm(forms.ModelForm):
 
     def clean_content(self):
         content = self.cleaned_data["content"]
-        clean_content = bleach.clean(content, tags=allowed_tags, attributes=allowed_attrs)
+        clean_content = bleach.clean(content, tags=allowed_tags, attributes=allowed_attrs, styles=styles)
         return clean_content
 
 
@@ -67,5 +71,5 @@ class PostCreateForm(forms.ModelForm):
 
     def clean_content(self):
         content = self.cleaned_data["content"]
-        clean_content = bleach.clean(content, tags=allowed_tags, attributes=allowed_attrs)
+        clean_content = bleach.clean(content, tags=allowed_tags, attributes=allowed_attrs, styles=styles)
         return clean_content
