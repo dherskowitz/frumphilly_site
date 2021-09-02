@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django_summernote.admin import SummernoteModelAdmin
 from .models import ForumCategory, ForumThread, ForumPost
 
 
@@ -11,8 +12,9 @@ class ThreadAdmin(admin.ModelAdmin):
     list_display = ("title", "slug")
 
 
-class PostsAdmin(admin.ModelAdmin):
+class PostsAdmin(SummernoteModelAdmin):
     list_display = ("title",)
+    summernote_fields = ('content',)
 
     @staticmethod
     def title(obj):

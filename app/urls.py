@@ -35,6 +35,5 @@ urlpatterns = [
     path("payments/", include("payments.urls"), name="payments"),
     path("forum/", include("forum.urls"), name="forum"),
     path("ads.txt", TemplateView.as_view(template_name="ads.txt", content_type="text/plain")),
-    path("ckeditor/upload/", login_required(views.upload), name='ckeditor_upload'),
-    path("ckeditor/browse/", never_cache(login_required(views.browse)), name='ckeditor_browse'),
+    path('summernote/', include('django_summernote.urls')),
 ]
