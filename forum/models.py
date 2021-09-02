@@ -2,7 +2,6 @@ from django.conf import settings
 from django.db import models
 from django.utils.text import slugify
 from app.storage_backends import S3SiteImagesStorage
-from ckeditor_uploader.fields import RichTextUploadingField
 
 
 class ForumCategory(models.Model):
