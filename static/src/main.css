@@ -30,22 +30,25 @@ pre {
     background-color: rgba(211, 67, 62, 0.1);
     @apply pr-2 pl-2 pb-2;
 }
-
-#cke_id_content {
+#id_content_iframe {
+    display: block !important;
     width: 100% !important;
 }
-
-body.cke_editable.cke_editable_themed.cke_contents_ltr.cke_show_borders {
-    background-color: rgba(211, 67, 62, 0.1) !important;
-}
-
-.django-ckeditor-widget {
+.note-editor.note-frame {
     display: block !important;
+    width: 100% !important;
+}
+.summernote-div {
     @apply pt-12;
 }
 /*! purgecss end ignore */
 
 /* style basic html from form editor */
+.editor-content {
+    min-height: 100%;
+    overflow: hidden;
+    position: relative;
+}
 .editor-content h1 {
     @apply text-4xl;
 }

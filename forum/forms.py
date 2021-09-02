@@ -1,6 +1,7 @@
 import bleach
 from django import forms
 from .models import ForumThread, ForumPost
+from django_summernote.widgets import SummernoteWidget, SummernoteInplaceWidget
 
 FILE_CONTENT_TYPES = ["pdf"]
 IMAGE_CONTENT_TYPES = ["image"]
@@ -37,6 +38,8 @@ allowed_attrs = {'a': ['href', 'rel'], 'img': ['src', 'alt', 'style']}
 
 
 class ThreadCreateForm(forms.ModelForm):
+    content = forms.CharField(widget=SummernoteWidget())
+
     class Meta:
         model = ForumThread
         fields = "__all__"
@@ -52,6 +55,8 @@ class ThreadCreateForm(forms.ModelForm):
 
 
 class PostCreateForm(forms.ModelForm):
+    content = forms.CharField(widget=SummernoteWidget())
+
     class Meta:
         model = ForumPost
         fields = "__all__"

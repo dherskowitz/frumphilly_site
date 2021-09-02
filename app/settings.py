@@ -19,7 +19,6 @@ from django.contrib.messages import constants as message_constants
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
@@ -30,7 +29,6 @@ SECRET_KEY = config("SECRET_KEY")
 DEBUG = config("DEBUG", default=False, cast=bool)
 
 ALLOWED_HOSTS = config("ALLOWED_HOSTS", cast=Csv())
-
 
 # Application definition
 
@@ -58,9 +56,7 @@ INSTALLED_APPS = [
     # Honeypot
     "honeypot",
     "admin_honeypot",
-    # CKEditor
-    "ckeditor",
-    "ckeditor_uploader",
+    "django_summernote",
     # Local
     "payments.apps.PaymentsConfig",
     "events.apps.EventsConfig",
@@ -107,7 +103,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "app.wsgi.application"
 
-
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
@@ -127,7 +122,6 @@ AUTH_PASSWORD_VALIDATORS = [
     {"NAME": "django.contrib.auth.password_validation.NumericPasswordValidator"},
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
 
@@ -140,7 +134,6 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
@@ -166,43 +159,18 @@ if config("ENV") != "local":
     STATIC_ROOT = config("CLOUDFRONT_URL")
 DEFAULT_FILE_STORAGE = "app.storage_backends.S3StaticStorage"
 
-MEDIA_ROOT = '/media/'
-MEDIA_URL = AWS_S3_CUSTOM_DOMAIN + MEDIA_ROOT
-
-# CK Editor
-CKEDITOR_UPLOAD_PATH = "form_uploads/"
-CKEDITOR_IMAGE_BACKEND = "pillow"
-CKEDITOR_FORCE_JPEG_COMPRESSION = True
-CKEDITOR_BROWSE_SHOW_DIRS = False
-# CKEDITOR_THUMBNAIL_SIZE = (500,)
-CKEDITOR_IMAGE_QUALITY = 30
-CKEDITOR_RESTRICT_BY_USER = True
-CKEDITOR_BROWSE_SHOW_DIRS = False
-AWS_QUERYSTRING_AUTH = False
-CKEDITOR_ALLOW_NONIMAGE_FILES = False
-CKEDITOR_STORAGE_BACKEND = 'app.storage_backends.S3StaticStorage'
-CKEDITOR_CONFIGS = {
-    'default': {
-        'width': '150%',
-        'toolbar': 'Custom',
-        'toolbar_Custom': [
-            ['Format'],
-            ['Bold', 'Italic', 'Underline', 'Strike', 'Undo', 'Redo'],
-            ['Link', 'Unlink'],
-            ['Image', 'Table', 'HorizontalRule', 'Smiley'],
-            ['NumberedList','BulletedList'],
-            ['Indent','Outdent'],
-        ],
-        # Remove Dialog Tabs
-        'removeDialogTabs':'image:advanced;link:target;link:upload;link:advanced',
-        'stylesSet': [
-            {
-                "name": 'Lead',
-                "element": 'p',
-                "attributes": {'class': 'lead'},
-            },
-        ],
-    }
+MEDIA_URL = 'media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+SUMMERNOTE_THEME = 'bs4'
+SUMMERNOTE_CONFIG = {
+    'attachment_require_authentication': True,
+    'width': '100%',
+    'toolbar': [
+        ['style', ['bold', 'italic', 'underline', 'strikethrough', 'clear', 'fontsize']],
+        ['color', ['color']],
+        ['para', ['ul', 'ol', 'paragraph', 'table']],
+        ['insert', ['picture', 'link', 'hr', 'help']],
+    ],
 }
 
 # Custom User Model
@@ -350,7 +318,6 @@ if config("ENV") != "local":
     SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
     PREPEND_WWW = True
 
-
 # Override Message Tags
 MESSAGE_TAGS = {
     message_constants.DEBUG: "messages__debug",
@@ -367,3 +334,5 @@ ROLLBAR = {
     'root': BASE_DIR,
 }
 rollbar.init(**ROLLBAR)
+
+X_FRAME_OPTIONS = 'SAMEORIGIN'
