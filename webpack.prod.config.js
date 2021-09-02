@@ -51,7 +51,9 @@ module.exports = {
                                     require("autoprefixer"),
                                     purgecss({
                                         content: ["./templates/**/*.html"],
-                                        whitelist: ['trix-editor', 'blockquote', 'textarea'],
+                                        whitelist: ['trix-editor', 'blockquote', 'textarea', 'bg-green-400',
+                                            'bg-yellow-500',
+                                            'bg-red-500',],
                                         defaultExtractor: (content) => content.match(/[\w-/:]+(?<!:)/g) || [],
                                     }),
                                     cssnano({
