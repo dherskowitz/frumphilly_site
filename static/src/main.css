@@ -390,7 +390,7 @@ input[type="checkbox"]:checked {
 ins.adsbygoogle {
     text-align: center;
 }
-ins.adsbygoogle:not(:first-child) {
+ins.adsbygoogle:not(:first-of-type) {
     margin-top: 1rem;
 }
 /*! purgecss end ignore */
