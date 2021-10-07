@@ -41,7 +41,7 @@
             <a href="{{cat.get_absolute_url}}" class="flex items-center justify-between mb-4 overflow-hidden text-gray-700 transition-all duration-100 ease-in bg-white rounded shadow-md hover:bg-purple-900 hover:text-white group-hover:text-white">
                 <div class="p-4">
                     <h3 class="text-4xl font-bold ">{{cat.title}}</h3>
-                    <p>{{cat.description}}</p>
+                    <p>{{cat.description|default_if_none:""}}</p>
                 </div>
                 <div class="p-4">
                     <p>{{cat.get_thread_count}} Threads</p>
