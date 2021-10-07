@@ -20,6 +20,10 @@
 
 {% block main %}
 <div class="container mx-auto my-5">
+    <section>
+        <a href="{% url 'forum' %}"><img src="{% webpack_static 'img/images/forum-banner.gif' %}" alt="Frum Philly Forum"></a>
+    </section>
+    
     <section class="mx-4 my-24 md:mx-0">
         <h2 class="title section-title">
             <span class="section-title__text">recent listings</span>
