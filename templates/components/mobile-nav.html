@@ -11,6 +11,8 @@
         {% with url_name=request.resolver_match.url_name  %}
         <a class=" mobilelink{% if url_name == 'home' %} active{% endif %}" href="{% url 'home' %}" href="{% url 'home' %}">Home</a>
 
+        <a class=" mobilelink{% if url_name == 'forum' %} active{% endif %}" href="{% url 'forum' %}" href="{% url 'forum' %}">Forum</a>
+
         <a class="mobilelink{% if url_name == 'events' %} active{% endif %}" href="{% url 'events_all' %}" href="{% url 'events_all' %}">Events</a>
         
         <a class="mobilelink{% if url_name == 'listings_all' %} active{% endif %}" href="{% url 'listings_all' %}" href="{% url 'listings_all' %}">Listings</a>

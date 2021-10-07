@@ -9,7 +9,9 @@
         <nav class="items-center justify-center hidden h-full md:flex">
             {% with url_name=request.resolver_match.url_name  %}
             <a class="navlink{% if url_name == 'home' %} active{% endif %}" href="{% url 'home' %}">Home</a>
-            
+
+            <a class="navlink{% if url_name == 'forum' %} active{% endif %}" href="{% url 'forum' %}">Forum</a>
+
             <a class="navlink{% if url_name == 'listings_all' %} active{% endif %}" href="{% url 'listings_all' %}">Listings</a>
 
             <a class="navlink{% if url_name == 'events_all' %} active{% endif %}" href="{% url 'events_all' %}">Events</a>
