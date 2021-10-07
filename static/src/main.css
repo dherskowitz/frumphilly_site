@@ -41,7 +41,7 @@ pre {
 
 /* style basic html from form editor */
 .editor-content {
-    min-height: 100%;
+    /*min-height: 100%;*/
     overflow: hidden;
     position: relative;
 }
