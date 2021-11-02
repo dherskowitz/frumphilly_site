@@ -33,12 +33,13 @@ allowed_tags = [
     "img",
     "s",
     "u",
-    "hr"
+    "hr",
+    "span"
 ]
 allowed_attrs = {'a': ['href', 'rel'], 'img': ['src', 'alt', 'style']}
 styles = ["width", "height", "border-color", "background-color", "white-space", "vertical-align", "text-align",
           "border-style", "border-width", "float", "margin", "margin-bottom", "margin-left", "margin-right",
-          "margin-top"]
+          "margin-top", "font-family", "font-size"]
 
 
 class ThreadCreateForm(forms.ModelForm):
