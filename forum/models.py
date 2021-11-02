@@ -2,6 +2,7 @@ from django.conf import settings
 from django.db import models
 from django.utils.text import slugify
 from app.storage_backends import S3SiteImagesStorage
+from uuid import uuid4
 
 
 class ForumCategory(models.Model):
@@ -55,7 +56,7 @@ class ForumThread(models.Model):
 
     def save(self, *args, **kwargs):
         if not self.pk:
-            self.slug = slugify(self.title)
+            self.slug = slugify(self.title + "-" + uuid4().hex[-8:])
         super().save(*args, **kwargs)
 
     class Meta:
