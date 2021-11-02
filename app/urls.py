@@ -19,9 +19,6 @@ from django.views.decorators.cache import never_cache
 from django.views.generic.base import TemplateView
 from django.contrib.auth.decorators import login_required
 
-from ckeditor_uploader import views
-
-
 urlpatterns = [
     path('admin/', include('admin_honeypot.urls', namespace='admin_honeypot')),
     path('manage/', admin.site.urls),
