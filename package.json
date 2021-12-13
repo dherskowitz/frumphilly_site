@@ -9,7 +9,7 @@
         "clean:prod": "del-cli static/dist/**/*.css && del-cli static/dist/**/*.js && del-cli static/dist/**/*.map",
         "build:dev": "./node_modules/.bin/webpack --config webpack.config.js --watch --mode=development",
         "build:prod": "./node_modules/.bin/webpack --config webpack.prod.config.js --mode=production --optimize-minimize",
-        "watch": "npm run build:dev",
+        "watch": "npm run clean:dev && npm run build:dev",
         "prod": "npm run clean:prod && npm run build:prod"
     },
     "repository": {
@@ -26,7 +26,7 @@
         "@babel/core": "^7.12.10",
         "@babel/preset-env": "^7.12.11",
         "@fullhuman/postcss-purgecss": "^2.3.0",
-        "autoprefixer": "^10.1.0",
+        "autoprefixer": "^10.4.0",
         "babel": "^6.23.0",
         "babel-loader": "^8.2.2",
         "browser-sync": "^2.26.14",
@@ -39,11 +39,13 @@
         "mini-css-extract-plugin": "^0.8.0",
         "node-sass": "^4.14.1",
         "optimize-css-assets-webpack-plugin": "^5.0.4",
+        "postcss": "^8.4.5",
         "postcss-import": "^12.0.1",
         "postcss-loader": "^4.1.0",
         "purgecss-webpack-plugin": "^2.3.0",
         "sass-loader": "^7.1.0",
         "source-map-loader": "^0.2.4",
+        "tailwindcss": "^3.0.2",
         "terser-webpack-plugin": "^4.2.3",
         "webpack": "^4.44.2",
         "webpack-bundle-tracker": "^0.4.2-beta",
@@ -58,9 +60,7 @@
         "singleQuote": false
     },
     "dependencies": {
-        "alpinejs": "^2.8.2",
-        "postcss": "^8.3.0",
-        "tailwindcss": "^2.0.2"
+        "alpinejs": "^2.8.2"
     },
     "engines": {
         "node": "^12.16.1",
