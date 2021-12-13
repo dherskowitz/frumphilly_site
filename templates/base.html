@@ -42,11 +42,11 @@
     {% include 'components/navbar.html' with classes="md:container"  %}
 
     <main class="flex-1">
-        {% with url_name=request.resolver_match.url_name  %}
-            {% if url_name != 'home' and  'forum' not in url_name %}
-                {% include 'components/alert.html' %}
-            {% endif %}
-        {% endwith %}
+<!--        {% with url_name=request.resolver_match.url_name  %}-->
+<!--            {% if url_name != 'home' and  'forum' not in url_name %}-->
+<!--                {% include 'components/alert.html' %}-->
+<!--            {% endif %}-->
+<!--        {% endwith %}-->
 
         {% block pagebanner %}
         {% endblock pagebanner %}
