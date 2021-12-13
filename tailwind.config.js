@@ -1,13 +1,12 @@
 const plugin = require("tailwindcss/plugin");
 
 module.exports = {
-    purge: {
-        safelist:[
-            'bg-green-400',
-            'bg-yellow-500',
-            'bg-red-500',
-        ]
-    },
+    content: ['./templates/**/*.html'],
+    safelist:[
+        'bg-green-400',
+        'bg-yellow-500',
+        'bg-red-500',
+    ],
     theme: {
         extend: {
             colors: {
@@ -44,20 +43,20 @@ module.exports = {
             padding: "1rem",
         },
     },
-    variants: {
-        textShadow: ["responsive"],
-        extend: {
-            opacity: ['disabled'],
-            pointerEvents: ['disabled'],
-            stroke: ['hover'],
-            textColor: ["group-hover", "hover"],
-            translate: ["hover", "group-hover"],
-            scale: ["responsive", "hover", "group-hover"],
-            letterSpacing: ["group-hover"],
-            backgroundSize: ["responsive", "hover", "group-hover"],
-            backgroundColor: ["responsive", "hover", "even"],
-        },
-    },
+    // variants: {
+    //     textShadow: ["responsive"],
+    //     extend: {
+    //         opacity: ['disabled'],
+    //         pointerEvents: ['disabled'],
+    //         stroke: ['hover'],
+    //         textColor: ["group-hover", "hover"],
+    //         translate: ["hover", "group-hover"],
+    //         scale: ["responsive", "hover", "group-hover"],
+    //         letterSpacing: ["group-hover"],
+    //         backgroundSize: ["responsive", "hover", "group-hover"],
+    //         backgroundColor: ["responsive", "hover", "even"],
+    //     },
+    // },
     textShadow: {
         default: "2px 2px 3px #000",
     },
