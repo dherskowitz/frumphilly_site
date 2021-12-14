@@ -14,7 +14,7 @@ from ads.models import Ad
 
 def listings_all(request, category=None):
     ads = Ad.get_active_ads()
-    listings = Listing.objects.all()
+    listings = Listing.objects.all().order_by("-created_at")
     cities = listings.values_list('city', flat=True).distinct().order_by('city')
     # categories = Category.objects.all(category_group=listing_group).order_by('title')
     categories = CategoryGroup.objects.all().order_by('title')
