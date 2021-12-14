@@ -252,20 +252,6 @@ class Listing(models.Model):
             status="published"
         ).distinct("business_name")
 
-    # def get_listings_by_category_or_group(slug):
-    #     is_category = Category.objects.filter(slug=slug).exists()
-    #     is_category_group = CategoryGroup.objects.filter(slug=slug).exists()
-
-    #     if is_category:
-    #         listings = Listing.objects.filter(categories__slug=slug).distinct(
-    #             "business_name"
-    #         )
-    #     if is_category_group:
-    #         listings = Listing.objects.filter(
-    #             categories__category_group__slug=slug
-    #         ).distinct("business_name")
-    #     return listings
-
     def filter_by_city(city):
         return Listing.objects.filter(city__icontains=city).order_by("-business_name")
 
