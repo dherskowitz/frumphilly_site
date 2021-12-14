@@ -60,6 +60,14 @@
     {% render_bundle 'main' 'js' %}
     {% block template_js %}{% endblock template_js %}
 
+
+    <script src="https://unpkg.com/htmx.org@1.1.0"></script>
+    <script>
+      document.body.addEventListener('htmx:configRequest', (event) => {
+        event.detail.headers['X-CSRFToken'] = '{{ csrf_token }}';
+      })
+    </script>
+
 <!--    <script>-->
 <!--        (adsbygoogle = window.adsbygoogle || []).push({});-->
 <!--    </script>-->
