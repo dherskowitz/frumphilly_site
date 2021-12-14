@@ -4,7 +4,7 @@ from django.contrib import messages
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponseForbidden
 from decouple import config
 from pages.forms import ReportPostForm
 from .models import Listing, CategoryGroup, Category
@@ -108,7 +108,7 @@ def listing_single(request, slug, pk):
     report_post_form = ReportPostForm()
     categories = [{"title": cat.title, "category_group": cat.category_group.title} for cat in listing.categories.all()]
     context = {"listing": listing, "categories": categories, "report_post_form": report_post_form, "ads": ads,
-               "user_liked": json.dumps(user_liked)}
+               "user_liked": user_liked}
     return render(request, "listings/single.html", context)
 
 
@@ -223,15 +223,22 @@ def listing_categories(request):
 #     }
 #     return render(request, "listings/index.html", context)
 
-@csrf_exempt
-def listing_like(request):
-    json_data = json.loads(request.body)
-    listing = get_object_or_404(Listing, id=json_data["id"])
+# @csrf_exempt
+def listing_like(request, listing_id):
     current_user = request.user
+    if not current_user.is_authenticated:
+        return HttpResponseForbidden()
+    listing = get_object_or_404(Listing, id=listing_id)
 
     if listing.is_liked_by(current_user):
         listing.dislike(current_user)
-        return JsonResponse({"likes": listing.likes_count(), "user_liked": "false"}, status=200)
     else:
         listing.like(current_user)
-        return JsonResponse({"likes": listing.likes_count(), "user_liked": "true"}, status=200)
+
+    context = {
+        "user_liked": listing.is_liked_by(request.user),
+        "listing": listing,
+    }
+
+    return render(request, "listings/_like.html", context)
+

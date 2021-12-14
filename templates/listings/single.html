@@ -52,63 +52,7 @@
         <div class="text-white">
             <h1 class="mb-2 text-3xl md:text-5xl text-shadow">{{listing.business_name}}</h1>
 
-            <div x-data="likes()" class="flex mb-2">
-                {% if user.is_authenticated %}
-                <button
-                        @click="addLike()"
-                        :disabled="liking"
-                        class="flex px-6 py-2 text-xs font-medium text-center text-white uppercase transition bg-blue-700 shadow disabled:opacity-50 disabled:pointer-events-none hover:bg-blue-800 ripple hover:shadow-lg focus:outline-none">
-                    <span
-                            class="mr-1"
-                            x-text="userLiked ? 'Remove Recommendation' : 'Recommend'"></span>
-                    <svg
-                            class="mr-1"
-                            :stroke="userLiked ? 'red' : 'white'"
-                            xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
-                            stroke-width="1.5"
-                            stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M0 0h24v24H0z" stroke="none"/>
-                        <path
-                                :fill="userLiked ? 'red' : 'none'"
-                                d="M19.5 13.572L12 21l-7.5-7.428m0 0A5 5 0 1112 7.006a5 5 0 117.5 6.572"/>
-                    </svg>
-                    <span class="mr-1" x-text="likes" x-show="likes > 0"></span>
-                </button>
-                {% else %}
-                    {% if listing.likes_count > 0 %}
-                    <div class="flex flex-row">
-                        <span class="flex px-6 py-2 text-xs font-medium text-center text-white transition bg-blue-700 disabled:opacity-50 disabled:pointer-events-none tooltip">
-                            {{listing.likes_count}} Recommendation{{listing.likes_count|pluralize:"s"}}
-                            <svg
-                                class="ml-1"
-                                stroke="red"
-                                xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
-                                stroke-width="1.5"
-                                stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M0 0h24v24H0z" stroke="none"/>
-                                <path
-                                        fill="red"
-                                        d="M19.5 13.572L12 21l-7.5-7.428m0 0A5 5 0 1112 7.006a5 5 0 117.5 6.572"/>
-                            </svg>
-                            <span class="tooltip__inner" x-cloak>
-                                <p>Sign in to Recommend this listing!</p>
-                                <span class="triangle"></span>
-                            </span>
-                        </span>
-                    </div>
-                    {% else %}
-                    <div class="flex flex-row">
-                        <span class="flex px-6 py-2 text-xs font-medium text-center text-white transition bg-blue-700 disabled:opacity-50 disabled:pointer-events-none tooltip">
-                            Recommend
-                            <span class="tooltip__inner">
-                                <p>Sign in to Recommend this listing!</p>
-                                <span class="triangle"></span>
-                            </span>
-                        </span>
-                    </div>
-                    {% endif %}
-                {% endif %}
-            </div>
+            {% include 'listings/_like.html' with listing=listing%}
 
             {% if categories %}
             <div x-data="showAllCats()" class="flex flex-col mb-4">
@@ -468,27 +412,6 @@
 <script>
     const links = document.querySelectorAll(".editor-content a");
     [...links].map(link => link.setAttribute('target', '_blank'));
-
-    function likes() {
-        return {
-            likes: {{listing.likes_count}},
-            liking: false,
-            userLiked: {{user_liked}},
-            addLike() {
-                this.liking = true;
-                fetch('/listings/like/', {
-                    method: 'POST',
-                    body: JSON.stringify({ id: {{ listing.id }} })
-                })
-                .then(response => response.json())
-                .then(data => {
-                    this.likes = data.likes;
-                    this.userLiked = JSON.parse(data.user_liked);
-                    this.liking = false;
-                })
-            }
-        }
-    }
 
     function showAllCats() {
         return {
