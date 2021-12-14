@@ -26,6 +26,17 @@
 
     <section class="mx-4 my-24 md:mx-0">
         <h2 class="title section-title">
+            <span class="section-title__text">latest from the forum</span>
+        </h2>
+        <div class="columns-1 sm:columns-2 md:columns-3 mt-16">
+            {% for thread in latest_forum_activity %}
+                {% include "forum/_thread.html" with thread=thread home=1 %}
+            {% endfor %}
+        </div>
+    </section>
+
+    <section class="mx-4 my-24 md:mx-0">
+        <h2 class="title section-title">
             <span class="section-title__text">recent listings</span>
         </h2>
 

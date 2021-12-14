@@ -7,6 +7,7 @@ from django.http import JsonResponse
 from honeypot.decorators import check_honeypot
 from events.models import Event
 from listings.models import Listing
+from forum.models import ForumPost, ForumThread
 from .models import ReportPost
 from .forms import ContactForm, AdvertisingContactForm
 from ads.models import Ad
@@ -16,10 +17,12 @@ def home(request):
     ads = Ad.get_active_ads()
     listings = Listing.objects.filter(status="published").order_by("-created_at")[:15]
     upcoming_events = Event.get_upcoming_events()
+    latest_forum_activity = ForumThread.get_latest()
     context = {
         "ads": ads,
         "listings": listings,
         "upcoming_events": upcoming_events,
+        "latest_forum_activity": latest_forum_activity
     }
     return render(request, "pages/home.html", context)
 
