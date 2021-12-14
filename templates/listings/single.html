@@ -178,14 +178,7 @@
         {% endif %}
 
 
-        <div class="grid gap-4 mb-4 moreinfo">
-            <style>
-                .moreinfo { grid-template-columns: repeat( auto-fit, minmax(288px, 1fr) ) }
-                @media (min-width: 540px) {
-                    .moreinfo { grid-template-columns: repeat( auto-fit, minmax(300px, 1fr) ) }
-                }
-
-            </style>
+        <div class="grid gap-4 grid-cols-1 md:grid-cols-2 mb-4 moreinfo">
             {% if listing.website or listing.phone or listing.mobile or listing.whatsapp or listing.email %}
             <div class="p-3 bg-white rounded-md shadow-md">
                 <div class="mb-2 text-lg font-semibold text-gray-600">Contact Information</div>
