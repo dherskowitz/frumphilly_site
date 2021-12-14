@@ -42,10 +42,17 @@
             <form class="form" action="{% url 'forum_thread_create' category=category.slug %}" method="POST" enctype='multipart/form-data' novalidate>
                 {% csrf_token %}
 
-                <div class="form-field my-0">
-                    <label class="form-field__label" for="{{form.title.id_for_label}}">{{ form.title.label }} {% if form.title.field.required %}<span class="form-field__label--required">(required)</span>{% endif %}</label>
+                <div class="form-field my-0 relative">
+                    <label class="form-field__label" for="{{form.title.id_for_label}}">
+                        {{ form.title.label }}
+                        {% if form.title.field.required %}<span class="form-field__label--required">(required)</span>{% endif %}
+                    </label>
                     {{ form.title }}
                     <div class="form-field__help-text">{{ field.help_text }}</div>
+                    <span class="text-sm font-light absolute top-2 right-2">
+                        Characters:
+                        <span id="titleCount">150</span>
+                    </span>
                 </div>
 
                 <div class="form-field ckeditor-field my-0 mb-2">
@@ -65,3 +72,18 @@
 </section>
 
 {% endblock main %}
+
+{% block template_js %}
+<script>
+    let titleLimit = 150;
+    const title = document.querySelector("#id_title");
+    const titleCount = document.querySelector("#titleCount");
+
+    function updateCount(el, counter, limit) {
+        let target = el.value.length;
+        counter.innerHTML = String(limit - target);
+    }
+
+    title.addEventListener("keyup", () => updateCount(title, titleCount, titleLimit));
+</script>
+{% endblock template_js %}

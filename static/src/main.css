@@ -362,7 +362,7 @@ input[type="checkbox"]:checked {
     justify-content: center;
     align-items: center;
     left: calc(100% + 1rem);
-    width: 210px;
+    width: 260px;
     padding: 0.5rem;
     top: 50%;
     transform: translateY(-50%);
@@ -384,6 +384,10 @@ input[type="checkbox"]:checked {
     top: 50%;
     left: -1rem;
     transform: translateY(-50%);
+}
+
+.waiting.htmx-request {
+    @apply bg-blue-500 pointer-events-none;
 }
 
 /*! purgecss start ignore */

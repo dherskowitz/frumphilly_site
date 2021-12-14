@@ -1,0 +1,25 @@
+<div class="tooltip inline-block mb-4">
+    <button
+            hx-post="{% url 'listing_like' listing_id=listing.id  %}" hx-swap="outerHTML"
+            hx-indicator=".waiting"
+            class="waiting flex px-6 py-2 text-xs font-medium text-center text-white uppercase transition bg-blue-700 shadow disabled:opacity-50 disabled:pointer-events-none hover:bg-blue-800 ripple hover:shadow-lg focus:outline-none{% if not user.is_authenticated %} pointer-events-none{% endif %}">
+        <span class="mr-1">{% if user_liked %}Remove Recommendation{% else %}Recommend{% endif %}</span>
+        <svg
+                class="mr-1"
+                stroke="{% if user_liked %}red{% else %}white{% endif %}"
+                xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M0 0h24v24H0z" stroke="none"/>
+            <path
+                    fill="{% if user_liked %}red{% else %}none{% endif %}"
+                    d="M19.5 13.572L12 21l-7.5-7.428m0 0A5 5 0 1112 7.006a5 5 0 117.5 6.572"/>
+        </svg>
+        <span class="mr-1">{% if listing.likes_count %}{{listing.likes_count}}{% endif %}</span>
+
+    </button>
+    <span class="tooltip__inner">
+        <p>Sign in to Recommend this listing!</p>
+        <span class="triangle"></span>
+    </span>
+</div>
