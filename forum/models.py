@@ -63,6 +63,10 @@ class ForumThread(models.Model):
         verbose_name = 'Thread'
         verbose_name_plural = "Threads"
 
+    @staticmethod
+    def get_latest():
+        return ForumThread.objects.order_by('-created_at')[:20]
+
 
 class ForumPost(models.Model):
     # Post goes in a thread
