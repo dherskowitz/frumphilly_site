@@ -60,9 +60,46 @@ def contact_submissions(request):
     return render(request, "admin/contact_submissions/list.html", context)
 
 
+@login_required
 def contact_message(request, contact_id):
     message = Contact.objects.get(id=contact_id)
     context = {
         "message": message,
     }
     return render(request, "admin/contact_submissions/single.html", context)
+
+
+@login_required
+def mark_read(request, message_id):
+    message = Contact.objects.get(id=message_id)
+    context = {
+        "contact": message
+    }
+    if request.htmx:
+        message.status = "read"
+        message.save()
+        return render(request, "admin/contact_submissions/contact_row.html", context)
+
+
+@login_required
+def mark_unread(request, message_id):
+    message = Contact.objects.get(id=message_id)
+    context = {
+        "contact": message
+    }
+    if request.htmx:
+        message.status = "unread"
+        message.save()
+        return render(request, "admin/contact_submissions/contact_row.html", context)
+
+
+@login_required
+def mark_spam(request, message_id):
+    message = Contact.objects.get(id=message_id)
+    context = {
+        "contact": message
+    }
+    if request.htmx:
+        message.status = "spam"
+        message.save()
+        return render(request, "admin/contact_submissions/contact_row.html", context)
