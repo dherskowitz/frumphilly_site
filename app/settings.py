@@ -65,6 +65,7 @@ INSTALLED_APPS = [
     "pages.apps.PagesConfig",
     "ads.apps.AdsConfig",
     "forum.apps.ForumConfig",
+    "management.apps.ManagementConfig",
     # Django Cleanup - stay at bottom
     "django_cleanup.apps.CleanupConfig",
     # 3rd Party
