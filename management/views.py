@@ -70,36 +70,16 @@ def contact_message(request, contact_id):
 
 
 @login_required
-def mark_read(request, message_id):
-    message = Contact.objects.get(id=message_id)
-    context = {
-        "contact": message
-    }
+def toggle_status(request):
     if request.htmx:
-        message.status = "read"
-        message.save()
-        return render(request, "admin/contact_submissions/contact_row.html", context)
+        message_id = request.GET.get('message_id')
+        new_status = request.GET.get('message_status')
 
+        message = Contact.objects.get(id=message_id)
+        context = {
+            "contact": message
+        }
 
-@login_required
-def mark_unread(request, message_id):
-    message = Contact.objects.get(id=message_id)
-    context = {
-        "contact": message
-    }
-    if request.htmx:
-        message.status = "unread"
-        message.save()
-        return render(request, "admin/contact_submissions/contact_row.html", context)
-
-
-@login_required
-def mark_spam(request, message_id):
-    message = Contact.objects.get(id=message_id)
-    context = {
-        "contact": message
-    }
-    if request.htmx:
-        message.status = "spam"
+        message.status = new_status
         message.save()
         return render(request, "admin/contact_submissions/contact_row.html", context)

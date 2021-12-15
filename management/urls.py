@@ -7,7 +7,5 @@ urlpatterns = [
     path("ads/", views.admin_all_ads, name="admin_all_ads", ),
     path("contacts/", views.contact_submissions, name="contact_submissions", ),
     path("contacts/<int:contact_id>", views.contact_message, name="contact_message", ),
-    path("contacts/mark_message_read/<int:message_id>/", views.mark_read, name="contact_mark_read", ),
-    path("contacts/mark_message_unread/<int:message_id>/", views.mark_unread, name="contact_mark_unread", ),
-    path("contacts/mark_message_spam/<int:message_id>/", views.mark_spam, name="contact_mark_spam", ),
+    path("contacts/contact_toggle_status/", views.toggle_status, name="contact_toggle_status", ),
 ]
