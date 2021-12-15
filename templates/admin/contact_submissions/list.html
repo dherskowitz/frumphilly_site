@@ -14,7 +14,7 @@
     <section class="container my-10">
         <div class="overflow-x-auto">
             <div class="inline-block min-w-full shadow rounded-lg overflow-hidden">
-                <table class="min-w-full leading-normal border-0 border-collapse">
+                <table class="min-w-full leading-normal border-0 border-collapse loading">
                     <thead>
                         <tr class="border-b border-gray-200">
                             <th
@@ -38,47 +38,7 @@
                     </thead>
                     <tbody>
                         {% for contact in contacts %}
-                            <tr class="border-b border-gray-200">
-                                <td class="px-5 py-5 bg-white text-sm" style="border: none">
-                                    <div class="flex items-center">
-                                        <div class="ml-3">
-                                            <p class="text-gray-900 whitespace-no-wrap">
-                                                {{ contact.name }}
-                                            </p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="px-5 py-5 bg-white text-sm" style="border: none">
-                                    <p class="text-gray-900 whitespace-no-wrap">{{ contact.subject }}</p>
-                                </td>
-                                <td class="px-5 py-5 bg-white text-sm" style="border: none">
-                                    <p class="text-gray-900 whitespace-no-wrap">
-                                        {{ contact.created_at|naturaltime }}
-                                    </p>
-                                </td>
-                                <td class="px-5 py-5 bg-white text-sm" style="border: none">
-                                    <span
-                                        class="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
-                                        {% if contact.status == 'unread' %}<span aria-hidden class="absolute inset-0 bg-orange-200 opacity-50 rounded-full"></span>{% endif %}
-                                        {% if contact.status == 'read' %}<span aria-hidden class="absolute inset-0 bg-green-600 opacity-50 rounded-full"></span>{% endif %}
-                                        {% if contact.status == 'spam' %}<span aria-hidden class="absolute inset-0 bg-red-600 opacity-50 rounded-full"></span>{% endif %}
-                                        <span class="relative">{{ contact.status }}</span>
-                                    </span>
-                                </td>
-                                <td class="px-5 py-5 bg-white text-sm" style="border: none">
-                                    <p class="text-gray-900 whitespace-no-wrap">
-                                        <div x-data="{ open: false }" class="relative w-full">
-                                            <button @click="open = true" class="border border-black rounded-md px-2 py-1 flex">Actions<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-caret-down" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M0 0h24v24H0z" stroke="none"/><path d="m6 9 6 6 6-6H6"/></svg></button>
-
-                                            <div x-show="open" x-cloak @click.away="open = !open" class="absolute top-8 left-0 bg-white w-full z-20 rounded-md shadow-md py-2">
-                                                <a href="{{ contact.get_absolute_url }}" class="inline-block px-2 py-1 w-full text-left hover:bg-gray-200">View Message</a>
-                                                <button class="px-2 py-1 w-full text-left hover:bg-gray-200">Mark Read</button>
-                                                <button class="px-2 py-1 w-full text-left hover:bg-gray-200">Delete Message</button>
-                                            </div>
-                                        </div>
-                                    </p>
-                                </td>
-                            </tr>
+                            {% include "admin/contact_submissions/contact_row.html" %}
                         {% endfor %}
                     </tbody>
                 </table>
