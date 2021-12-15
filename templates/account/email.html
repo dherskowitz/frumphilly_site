@@ -7,7 +7,7 @@
 
 
 <div class="container my-10 p-0">
-    <section class="">
+    <section class="container">
         <h1 class="text-2xl sm:text-4xl text-white text-shadow mb-4">Email Addresses</h1>
 
         {% if user.emailaddress_set.all %}
@@ -51,7 +51,7 @@
         </p>
         {% endif %}
     </section>
-    <section class="my-10">
+    <section class="container my-10">
 
         <form method="post" action="{% url 'account_email' %}" class="add_email form">
             <h2 class="">Add Email Address</h2>

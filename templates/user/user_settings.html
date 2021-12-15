@@ -4,7 +4,7 @@
 {% block meta_description %}Manage the Frum Philly user settings.{% endblock meta_description %}
 
 {% block main %}
-<section class="my-5">
+<section class="container my-5">
     <h1 class="mb-4 text-4xl text-white capitalize text-shadow">user settings</h1>
     {% include 'components/errors.html' %}
     <form class="form" action="{% url 'user_settings' %}" method="POST" enctype='multipart/form-data'>
