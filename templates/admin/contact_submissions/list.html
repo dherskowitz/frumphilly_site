@@ -1,0 +1,109 @@
+{% extends "dashboard.html" %}
+{% load my_tags %}
+{% load humanize %}
+
+{% block main %}
+    <section class="pt-4 pb-8 bg-purple-900">
+        <div class="container flex items-center justify-between">
+            <div class="container text-white">
+                <h2 class="mt-6 text-3xl font-bold">Contact Form Submissions</h2>
+            </div>
+        </div>
+    </section>
+
+    <section class="container my-10">
+        <div class="overflow-x-auto">
+            <div class="inline-block min-w-full shadow rounded-lg overflow-hidden">
+                <table class="min-w-full leading-normal border-0 border-collapse">
+                    <thead>
+                        <tr class="border-b border-gray-200">
+                            <th
+                                class="px-5 py-3 border-b-0 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider" style="border: none">
+                                Name
+                            </th>
+                            <th
+                                class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider" style="border: none">
+                                Subject
+                            </th>
+                            <th
+                                class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider" style="border: none">
+                                Created at
+                            </th>
+                            <th
+                                class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider" style="border: none">
+                                Status
+                            </th>
+                            <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider" style="border: none"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for contact in contacts %}
+                            <tr class="border-b border-gray-200">
+                                <td class="px-5 py-5 bg-white text-sm" style="border: none">
+                                    <div class="flex items-center">
+                                        <div class="ml-3">
+                                            <p class="text-gray-900 whitespace-no-wrap">
+                                                {{ contact.name }}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="px-5 py-5 bg-white text-sm" style="border: none">
+                                    <p class="text-gray-900 whitespace-no-wrap">{{ contact.subject }}</p>
+                                </td>
+                                <td class="px-5 py-5 bg-white text-sm" style="border: none">
+                                    <p class="text-gray-900 whitespace-no-wrap">
+                                        {{ contact.created_at|naturaltime }}
+                                    </p>
+                                </td>
+                                <td class="px-5 py-5 bg-white text-sm" style="border: none">
+                                    <span
+                                        class="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
+                                        {% if contact.status == 'unread' %}<span aria-hidden class="absolute inset-0 bg-orange-200 opacity-50 rounded-full"></span>{% endif %}
+                                        {% if contact.status == 'read' %}<span aria-hidden class="absolute inset-0 bg-green-600 opacity-50 rounded-full"></span>{% endif %}
+                                        {% if contact.status == 'spam' %}<span aria-hidden class="absolute inset-0 bg-red-600 opacity-50 rounded-full"></span>{% endif %}
+                                        <span class="relative">{{ contact.status }}</span>
+                                    </span>
+                                </td>
+                                <td class="px-5 py-5 bg-white text-sm" style="border: none">
+                                    <p class="text-gray-900 whitespace-no-wrap">
+                                        <div x-data="{ open: false }" class="relative w-full">
+                                            <button @click="open = true" class="border border-black rounded-md px-2 py-1 flex">Actions<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-caret-down" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M0 0h24v24H0z" stroke="none"/><path d="m6 9 6 6 6-6H6"/></svg></button>
+
+                                            <div x-show="open" x-cloak @click.away="open = !open" class="absolute top-8 left-0 bg-white w-full z-20 rounded-md shadow-md py-2">
+                                                <a href="{{ contact.get_absolute_url }}" class="inline-block px-2 py-1 w-full text-left hover:bg-gray-200">View Message</a>
+                                                <button class="px-2 py-1 w-full text-left hover:bg-gray-200">Mark Read</button>
+                                                <button class="px-2 py-1 w-full text-left hover:bg-gray-200">Delete Message</button>
+                                            </div>
+                                        </div>
+                                    </p>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+
+        <div
+            class="px-5 py-5 mt-4 bg-white border-t flex flex-col xs:flex-row items-center xs:justify-between rounded-md">
+            <span class="text-xs xs:text-sm text-gray-900">
+                Showing {{ contacts.number }} of {{ count }} Entries
+            </span>
+            <div class="inline-flex mt-2 xs:mt-0">
+                {% if contacts.has_previous %}
+                <a class="ml-2 btn btn-md" href="?{% param_replace page=contacts.previous_page_number %}">&lt; Prev</a>
+                {% else %}
+                <a class="ml-2 opacity-50 cursor-not-allowed pointer-events-none btn btn-md" >&lt; Prev</a>
+                {% endif %}
+
+                {% if contacts.has_next %}
+                <a class="mr-2 btn btn-md ml-4" href="?{% param_replace page=contacts.next_page_number %}">Next</a>
+                {% else %}
+                <a class="mr-2 opacity-50 cursor-not-allowed pointer-events-none btn btn-md ml-4">Next</a>
+                {% endif %}
+            </div>
+        </div>
+    </section>
+{% endblock main %}

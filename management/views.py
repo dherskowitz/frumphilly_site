@@ -1,4 +1,5 @@
 from django.contrib.auth.decorators import login_required
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.shortcuts import render
 
 from ads.models import Ad, ad_prices
@@ -36,3 +37,32 @@ def admin_all_ads(request):
         "ads": Ad.objects.all().order_by("-created_at")
     }
     return render(request, "admin/ads_all.html", context)
+
+
+@login_required
+def contact_submissions(request):
+    contacts = Contact.objects.all().order_by("-created_at")
+    count = contacts.count()
+
+    page = request.GET.get("page", 1)
+    paginator = Paginator(contacts, 10)
+    try:
+        contacts = paginator.page(page)
+    except PageNotAnInteger:
+        contacts = paginator.page(1)
+    except EmptyPage:
+        contacts = paginator.page(paginator.num_pages)
+
+    context = {
+        "contacts": contacts,
+        "count": count
+    }
+    return render(request, "admin/contact_submissions/list.html", context)
+
+
+def contact_message(request, contact_id):
+    message = Contact.objects.get(id=contact_id)
+    context = {
+        "message": message,
+    }
+    return render(request, "admin/contact_submissions/single.html", context)
