@@ -1,7 +1,7 @@
 {% load humanize %}
 
-<tr class="border-b border-gray-200" id="contact-row-{{ contact.id }}">
-    <td class="px-5 py-5 bg-white text-sm" style="border: none">
+<tr class="border-b border-gray-200 group" id="contact-row-{{ contact.id }}">
+    <td class="px-5 py-5 bg-white group-hover:bg-gray-100 text-sm" style="border: none">
         <div class="flex items-center">
             <div class="ml-3">
                 <p class="text-gray-900 whitespace-no-wrap">
@@ -10,15 +10,15 @@
             </div>
         </div>
     </td>
-    <td class="px-5 py-5 bg-white text-sm" style="border: none">
+    <td class="px-5 py-5 bg-white group-hover:bg-gray-100 text-sm" style="border: none">
         <p class="text-gray-900 whitespace-no-wrap">{{ contact.subject }}</p>
     </td>
-    <td class="px-5 py-5 bg-white text-sm" style="border: none">
+    <td class="px-5 py-5 bg-white group-hover:bg-gray-100 text-sm" style="border: none">
         <p class="text-gray-900 whitespace-no-wrap">
             {{ contact.created_at|naturaltime }}
         </p>
     </td>
-    <td class="px-5 py-5 bg-white text-sm" style="border: none">
+    <td class="px-5 py-5 bg-white group-hover:bg-gray-100 text-sm" style="border: none">
         <span
             class="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
             {% if contact.status == 'unread' %}<span aria-hidden class="absolute inset-0 bg-orange-200 opacity-50 rounded-full"></span>{% endif %}
@@ -27,7 +27,7 @@
             <span class="relative">{{ contact.status }}</span>
         </span>
     </td>
-    <td class="px-5 py-5 bg-white text-sm" style="border: none">
+    <td class="px-5 py-5 bg-white group-hover:bg-gray-100 text-sm" style="border: none">
         <p class="text-gray-900 whitespace-no-wrap">
             <div x-data="{ open: false }" class="relative w-full">
                 <button @click="open = true" class="border border-black rounded-md px-2 py-1 flex">Actions<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-caret-down" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M0 0h24v24H0z" stroke="none"/><path d="m6 9 6 6 6-6H6"/></svg></button>
