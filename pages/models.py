@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.urls import reverse
 
 SUBJECT_CHOICES = [
     ("", "Choose Subject"),
@@ -46,6 +46,9 @@ class Contact(models.Model):
 
     def __str__(self):
         return self.email
+
+    def get_absolute_url(self):
+        return reverse("contact_message", kwargs={"contact_id": self.id})
 
 
 class ReportPost(models.Model):
