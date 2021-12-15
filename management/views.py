@@ -42,8 +42,6 @@ def admin_all_ads(request):
 @login_required
 def contact_submissions(request):
     contacts = Contact.objects.all().order_by("-created_at")
-    count = contacts.count()
-
     page = request.GET.get("page", 1)
     paginator = Paginator(contacts, 10)
     try:
@@ -55,7 +53,6 @@ def contact_submissions(request):
 
     context = {
         "contacts": contacts,
-        "count": count
     }
     return render(request, "admin/contact_submissions/list.html", context)
 
