@@ -19,39 +19,7 @@
         </p>
     </td>
     <td class="px-5 py-5 bg-white group-hover:bg-gray-100 text-sm" style="border: none">
-        <div x-data="{ open: false }" class="relative w-full">
-            <div @click="open = true" class="flex rounded-full py-1 font-semibold text-green-900 cursor-pointer">
-                <span class="relative flex items-center justify-center inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
-                    {% if contact.status == 'unread' %}<span aria-hidden class="absolute inset-0 bg-orange-200 rounded-full"></span>{% endif %}
-                    {% if contact.status == 'read' %}<span aria-hidden class="absolute inset-0 bg-green-600 rounded-full"></span>{% endif %}
-                    {% if contact.status == 'spam' %}<span aria-hidden class="absolute inset-0 bg-red-600 rounded-full"></span>{% endif %}
-                    <span class="relative">{{ contact.status }}</span>
-                    <svg xmlns="http://www.w3.org/2000/svg" class="z-10" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M0 0h24v24H0z" stroke="none"/><path d="m6 9 6 6 6-6H6"/>
-                    </svg>
-                </span>
-            </div>
-            <div x-show="open" x-cloak @click.away="open = !open" class="absolute top-8 left-0 bg-white w-full z-20 rounded-md shadow-md p-2">
-                <button
-                        hx-post="{% url 'contact_toggle_status' %}?message_id={{ contact.id }}&message_status=unread"
-                        hx-swap="outerHTML"
-                        hx-target="#contact-row-{{ contact.id }}"
-                        hx-indicator=".loading"
-                        @click="open = true" class="flex w-full bg-orange-200 hover:bg-orange-100 rounded-full justify-center py-1 font-semibold text-green-900">mark unread</button>
-                <button
-                        hx-post="{% url 'contact_toggle_status' %}?message_id={{ contact.id }}&message_status=read"
-                        hx-swap="outerHTML"
-                        hx-target="#contact-row-{{ contact.id }}"
-                        hx-indicator=".loading"
-                        @click="open = true" class="flex w-full bg-green-600 hover:bg-green-500 rounded-full justify-center py-1 font-semibold text-green-900 mt-1">mark read</button>
-                <button
-                        hx-post="{% url 'contact_toggle_status' %}?message_id={{ contact.id }}&message_status=spam"
-                        hx-swap="outerHTML"
-                        hx-target="#contact-row-{{ contact.id }}"
-                        hx-indicator=".loading"
-                        @click="open = true" class="flex w-full bg-red-600 hover:bg-red-500 rounded-full justify-center py-1 font-semibold text-green-900 mt-1">mark spam</button>
-            </div>
-        </div>
+        {% include "admin/contact_submissions/_contact_status.html" %}
     </td>
     <td class="px-5 py-5 bg-white group-hover:bg-gray-100 text-sm" style="border: none">
         <p class="text-gray-900 whitespace-no-wrap">

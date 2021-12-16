@@ -87,7 +87,7 @@ def contact_message(request, contact_id):
         return render(request, "403.html")
     message = Contact.objects.get(id=contact_id)
     context = {
-        "message": message,
+        "contact": message,
     }
     return render(request, "admin/contact_submissions/single.html", context)
 
@@ -107,7 +107,7 @@ def toggle_status(request):
 
         message.status = new_status
         message.save()
-        return render(request, "admin/contact_submissions/_contact_row.html", context)
+        return render(request, "admin/contact_submissions/_contact_status.html", context)
 
 
 @login_required
