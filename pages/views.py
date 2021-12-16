@@ -38,8 +38,8 @@ def contact(request):
     if request.method == "POST":
         form = ContactForm(request.POST)
         if form.is_valid():
-            contact = form.save(commit=False)
-            contact.save()
+            contact_obj = form.save(commit=False)
+            contact_obj.save()
             messages.success(request, "Your message was sent sucessfully!")
             return redirect(home)
     context = {
