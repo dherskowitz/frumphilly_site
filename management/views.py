@@ -79,4 +79,4 @@ def toggle_status(request):
 
         message.status = new_status
         message.save()
-        return render(request, "admin/contact_submissions/contact_row.html", context)
+        return render(request, "admin/contact_submissions/_contact_row.html", context)
