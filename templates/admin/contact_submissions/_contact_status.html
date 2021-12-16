@@ -5,12 +5,12 @@
             {% if contact.status == 'read' %}<span aria-hidden class="absolute inset-0 bg-green-600 rounded-full"></span>{% endif %}
             {% if contact.status == 'spam' %}<span aria-hidden class="absolute inset-0 bg-red-600 rounded-full"></span>{% endif %}
             <span class="relative">{{ contact.status }}</span>
-            <svg xmlns="http://www.w3.org/2000/svg" class="z-10" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <svg xmlns="http://www.w3.org/2000/svg" style="z-index:1" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M0 0h24v24H0z" stroke="none"/><path d="m6 9 6 6 6-6H6"/>
             </svg>
         </span>
     </div>
-    <div x-show="open" x-cloak @click.away="open = !open" class="absolute top-8 left-0 bg-white z-20 rounded-md shadow-md p-2">
+    <div x-show="open" x-cloak @click.away="open = !open" class="absolute top-8 left-0 bg-white z-10 rounded-md shadow-md p-2">
         <button
                 hx-post="{% url 'contact_toggle_status' %}?message_id={{ contact.id }}&message_status=unread"
                 hx-swap="outerHTML"
