@@ -1,69 +1,11 @@
 {% extends "dashboard.html" %}
-{% load my_tags %}
-{% load humanize %}
 
 {% block main %}
     <section class="pt-4 pb-8 bg-purple-900">
-        <div class="container flex items-center justify-between">
-            <div class="container text-white">
-                <h2 class="mt-6 text-3xl font-bold">Contact Form Submissions</h2>
-            </div>
+        <div class="flex items-center justify-between p-0 flex-col md:flex-row">
+            <h2 class="mt-6 px-4 text-white text-3xl font-bold">Contact Form Submissions</h2>
+            {% include "admin/contact_submissions/_contact_filters.html" %}
         </div>
     </section>
-
-    <section class="container my-10">
-        <div class="overflow-x-auto">
-            <div class="inline-block min-w-full shadow rounded-lg overflow-hidden">
-                <table class="min-w-full leading-normal border-0 border-collapse loading">
-                    <thead>
-                        <tr class="border-b border-gray-200">
-                            <th
-                                class="px-5 py-3 border-b-0 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider" style="border: none">
-                                Name
-                            </th>
-                            <th
-                                class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider" style="border: none">
-                                Subject
-                            </th>
-                            <th
-                                class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider" style="border: none">
-                                Created at
-                            </th>
-                            <th
-                                class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider" style="border: none">
-                                Status
-                            </th>
-                            <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider" style="border: none"></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for contact in contacts %}
-                            {% include "admin/contact_submissions/_contact_row.html" %}
-                        {% endfor %}
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-
-        <div
-            class="px-5 py-5 mt-4 bg-white border-t flex flex-col xs:flex-row items-center xs:justify-between rounded-md">
-            <span class="text-xs xs:text-sm text-gray-900">
-                Showing {{ contacts.start_index }} - {{ contacts.end_index }} of {{ contacts.paginator.count }} Submissions
-            </span>
-            <div class="flex mt-2 xs:mt-0">
-                {% if contacts.has_previous %}
-                <a class="ml-2 btn btn-md" href="?{% param_replace page=contacts.previous_page_number %}">&lt; Prev</a>
-                {% else %}
-                <a class="ml-2 opacity-50 cursor-not-allowed pointer-events-none btn btn-md" >&lt; Prev</a>
-                {% endif %}
-
-                {% if contacts.has_next %}
-                <a class="mr-2 btn btn-md ml-4" href="?{% param_replace page=contacts.next_page_number %}">Next</a>
-                {% else %}
-                <a class="mr-2 opacity-50 cursor-not-allowed pointer-events-none btn btn-md ml-4">Next</a>
-                {% endif %}
-            </div>
-        </div>
-    </section>
+    {% include "admin/contact_submissions/_contact_submissions.html" %}
 {% endblock main %}

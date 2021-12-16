@@ -1,0 +1,70 @@
+<section class="container mt-4 md:w-3/5 mr-4">
+    <form method="get" class="px-2 py-2 flex flex-col sm:flex-row justify-center items-center bg-transparent">
+        <input
+            class="block w-full sm:w-auto px-4 py-2 text-sm bg-white border border-gray-300 rounded-md hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:ring active:bg-gray-50 active:text-gray-800"
+            type="text" name="name" placeholder="Search name..." value="{% if filtered_name %}{{ filtered_name }}{% else %}{% endif %}">
+
+        <div class="flex flex-row">
+            <div class="relative block mt-2 text-left sm:mt-0 md:ml-2" x-data="{ showEventLocationFilter: false }">
+                <div @click="showEventLocationFilter = !showEventLocationFilter">
+                    <span class="rounded-md shadow-sm">
+                        <button type="button" class="inline-flex justify-center w-full px-4 py-2 text-sm font-medium leading-5 text-gray-700 transition duration-150 ease-in-out bg-white border border-gray-300 rounded-md hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:ring active:bg-gray-50 active:text-gray-800" id="options-menu" aria-haspopup="true" aria-expanded="true">
+                            Filter By Subject
+                            <svg class="w-5 h-5 ml-2 -mr-1" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                            </svg>
+                        </button>
+                    </span>
+                </div>
+
+                <div class="absolute left-0 z-20 w-full mt-2 overflow-auto origin-top-right rounded-md shadow-lg sm:w-56" style="max-height: 20rem;" x-show="showEventLocationFilter" @click.away="showEventLocationFilter = false" x-transition:enter="transition ease-in duration-100" x-transition:enter-start="opacity-0 transform translate-y-4" x-transition:enter-end="opacity-100 transform translate-y-0" x-transition:leave="transition ease-in duration-100" x-transition:leave-start="opacity-100 transform translate-y-0" x-transition:leave-end="opacity-0 transform translate-y-4" x-cloak>
+                    <div class="bg-white rounded-md ring-1 ring-black ring-opacity-5">
+                        <div class="py-1" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
+                            {% for subject in subjects %}
+                                <div class="p-2 hover:bg-gray-200">
+                                    <label class="inline-flex items-center w-full cursor-pointer">
+                                        <input type="checkbox" name="subject" value="{{ subject.1 }}" class="form-checkbox" {% if subject.1 in filtered_subject %}checked{% endif %}>
+                                        <span class="w-full ml-2">{{ subject.1 }}</span>
+                                    </label>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="relative block mt-2 text-left sm:mt-0 md:ml-2" x-data="{ showEventLocationFilter: false }">
+                <div @click="showEventLocationFilter = !showEventLocationFilter">
+                    <span class="rounded-md shadow-sm">
+                        <button type="button" class="inline-flex justify-center w-full px-4 py-2 text-sm font-medium leading-5 text-gray-700 transition duration-150 ease-in-out bg-white border border-gray-300 rounded-md hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:ring active:bg-gray-50 active:text-gray-800" id="options-menu" aria-haspopup="true" aria-expanded="true">
+                            Filter By Status
+                            <svg class="w-5 h-5 ml-2 -mr-1" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                            </svg>
+                        </button>
+                    </span>
+                </div>
+
+                <div class="absolute left-0 z-20 w-full mt-2 overflow-auto origin-top-right rounded-md shadow-lg sm:w-56" style="max-height: 20rem;" x-show="showEventLocationFilter" @click.away="showEventLocationFilter = false" x-transition:enter="transition ease-in duration-100" x-transition:enter-start="opacity-0 transform translate-y-4" x-transition:enter-end="opacity-100 transform translate-y-0" x-transition:leave="transition ease-in duration-100" x-transition:leave-start="opacity-100 transform translate-y-0" x-transition:leave-end="opacity-0 transform translate-y-4" x-cloak>
+                    <div class="bg-white rounded-md ring-1 ring-black ring-opacity-5">
+                        <div class="py-1" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
+                            {% for status in statuses %}
+                                <div class="p-2 hover:bg-gray-200">
+                                    <label class="inline-flex items-center w-full cursor-pointer">
+                                        <input type="checkbox" name="status" value="{{ status.0 }}" class="form-checkbox" {% if status.0 in filtered_status %}checked{% endif %}>
+                                        <span class="w-full ml-2">{{ status.1 }}</span>
+                                    </label>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="flex flex-row md:block mt-2 lg:mt-0">
+            <button type="submit" class="md:ml-2 bg-orange-400 text-white rounded-md px-4 py-[6px] shadow-md">Search</button>
+            <a class="block text-sm font-semibold text-center text-red-600 transition duration-200 ease-in-out bg-transparent shadow-none btn btn-md sm:inline-block ml-1 hover:bg-red-200 hover:text-black" href="{% url "contact_submissions" %}">Clear Filters</a>
+        </div>
+    </form>
+</section>

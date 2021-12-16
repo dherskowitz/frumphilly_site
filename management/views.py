@@ -3,7 +3,7 @@ from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.shortcuts import render
 
 from ads.models import Ad, ad_prices
-from pages.models import Contact
+from pages.models import Contact, SUBJECT_CHOICES
 from payments.models import Payment
 
 
@@ -44,9 +44,22 @@ def contact_submissions(request):
     if not request.user.has_perm('pages.change_contact') and not request.user.has_perm('pages.delete_contact'):
         return render(request, "403.html")
 
+    # Get all contacts sorted by create date
     contacts = Contact.objects.all().order_by("-created_at")
+
+    filtered_name = request.GET.get('name', None)
+    if filtered_name:
+        contacts = contacts.filter(name__icontains=filtered_name)
+    filtered_subject = request.GET.getlist('subject', None)
+    if filtered_subject:
+        contacts = contacts.filter(subject__in=filtered_subject)
+    filtered_status = request.GET.getlist('status', None)
+    if filtered_status:
+        contacts = contacts.filter(status__in=filtered_status)
+
+    # set pagination
     page = request.GET.get("page", 1)
-    paginator = Paginator(contacts, 10)
+    paginator = Paginator(contacts, 15)
     try:
         contacts = paginator.page(page)
     except PageNotAnInteger:
@@ -54,9 +67,16 @@ def contact_submissions(request):
     except EmptyPage:
         contacts = paginator.page(paginator.num_pages)
 
+    # add data to context and return
     context = {
         "contacts": contacts,
+        "subjects": SUBJECT_CHOICES[1::],
+        "statuses": Contact.STATUS_CHOICES,
+        "filtered_name": filtered_name,
+        "filtered_subject": filtered_subject,
+        "filtered_status": filtered_status,
     }
+
     return render(request, "admin/contact_submissions/list.html", context)
 
 

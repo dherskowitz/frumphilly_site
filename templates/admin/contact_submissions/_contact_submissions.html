@@ -1,0 +1,56 @@
+{% load my_tags %}
+{% load humanize %}
+
+<section class="" id="contact_submissions">
+    <div  style="max-height: calc(100vh - 15.5rem);overflow-y: scroll">
+        <div class="min-w-full overflow-hidden">
+            <table class="min-w-full leading-normal border-0 border-collapse ">
+                <thead>
+                    <tr class="border-b border-gray-200">
+                        <th
+                            class="px-5 py-3 border-b-0 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider sticky top-0" style="border: none">
+                            Name
+                        </th>
+                        <th
+                            class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider sticky top-0" style="border: none">
+                            Subject
+                        </th>
+                        <th
+                            class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider sticky top-0" style="border: none">
+                            Created at
+                        </th>
+                        <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider sticky top-0" style="border: none">Status</th>
+                        <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider sticky top-0" style="border: none"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for contact in contacts %}
+                        {% include "admin/contact_submissions/_contact_row.html" %}
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    {% if contacts.has_other_pages %}
+        <div
+            class="p-2 bg-white border-t flex flex-col xs:flex-row items-center xs:justify-between">
+            <span class="text-xs xs:text-sm text-gray-900">
+                Showing {{ contacts.start_index }} - {{ contacts.end_index }} of {{ contacts.paginator.count }} Submissions
+            </span>
+            <div class="mt-2 xs:mt-0">
+                {% if contacts.has_previous %}
+                <a class="ml-2 bg-purple-900 text-white px-2 py-1 rounded-md shadow-md" href="?{% param_replace page=contacts.previous_page_number %}">&lt; Prev</a>
+                {% else %}
+                <a class="ml-2 opacity-50 cursor-not-allowed pointer-events-none bg-purple-900 text-white px-2 py-1 rounded-md shadow-md">&lt; Prev</a>
+                {% endif %}
+
+                {% if contacts.has_next %}
+                <a class="mr-2 ml-4 bg-purple-900 text-white px-2 py-1 rounded-md shadow-md" href="?{% param_replace page=contacts.next_page_number %}">Next &gt;</a>
+                {% else %}
+                <a class="mr-2 opacity-50 cursor-not-allowed pointer-events-none ml-4 bg-purple-900 text-white px-2 py-1 rounded-md shadow-md">Next &gt;</a>
+                {% endif %}
+            </div>
+        </div>
+    {% endif %}
+</section>
