@@ -1,6 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
-from django.shortcuts import render
+from django.shortcuts import render, redirect, get_object_or_404
+from django.urls import reverse
 
 from ads.models import Ad, ad_prices
 from pages.models import Contact, SUBJECT_CHOICES
@@ -107,3 +108,17 @@ def toggle_status(request):
         message.status = new_status
         message.save()
         return render(request, "admin/contact_submissions/_contact_row.html", context)
+
+
+@login_required
+def delete_message(request, message_id):
+    if not request.user.has_perm('pages.change_contact') and not request.user.has_perm('pages.delete_contact'):
+        return render(request, "403.html")
+
+    if request.method == "POST":
+        message = get_object_or_404(Contact, id=message_id)
+        message.delete()
+        success_url = reverse("contact_submissions")
+        if request.htmx:
+            return render(request, "admin/contact_submissions/_message_deleted.html")
+        return redirect(success_url)

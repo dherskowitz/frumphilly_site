@@ -60,7 +60,13 @@
 
                 <div x-show="open" x-cloak @click.away="open = !open" class="absolute top-8 left-0 bg-white w-full z-20 rounded-md shadow-md py-2">
                     <a href="{{ contact.get_absolute_url }}" class="inline-block px-2 py-1 w-full text-left hover:bg-gray-200">View Message</a>
-                    <button class="px-2 py-1 w-full text-left hover:bg-gray-200">Delete Message</button>
+                    <button
+                        hx-post="{% url 'contact_delete_message' message_id=contact.id %}"
+                        hx-swap="outerHTML"
+                        hx-target="#contact-row-{{ contact.id }}"
+                        hx-indicator=".loading"
+                        hx-confirm="Delete this message? This action cannot be undone!"
+                        class="px-2 py-1 w-full text-left hover:bg-gray-200">Delete Message</button>
                 </div>
             </div>
         </p>
