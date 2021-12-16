@@ -41,7 +41,7 @@ def admin_all_ads(request):
 
 @login_required
 def contact_submissions(request):
-    if not request.user.has_perm('pages.can_change_contact') and not request.user.has_perm('pages.can_delete_contact'):
+    if not request.user.has_perm('pages.change_contact') and not request.user.has_perm('pages.delete_contact'):
         return render(request, "403.html")
 
     contacts = Contact.objects.all().order_by("-created_at")
@@ -73,7 +73,7 @@ def contact_message(request, contact_id):
 
 @login_required
 def toggle_status(request):
-    if not request.user.has_perm('pages.can_change_contact') and not request.user.has_perm('pages.can_delete_contact'):
+    if not request.user.has_perm('pages.change_contact') and not request.user.has_perm('pages.delete_contact'):
         return render(request, "403.html")
     if request.htmx:
         message_id = request.GET.get('message_id')
