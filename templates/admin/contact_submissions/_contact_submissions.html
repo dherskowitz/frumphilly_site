@@ -4,6 +4,7 @@
 <section class="" id="contact_submissions">
     <div id="contact-submission-table-wrapper">
         <div class="min-w-full overflow-x-auto">
+            {% if contacts %}
             <table class="min-w-full leading-normal border-0 border-collapse ">
                 <thead>
                     <tr class="border-b border-gray-200">
@@ -29,6 +30,9 @@
                     {% endfor %}
                 </tbody>
             </table>
+            {% else %}
+                <div class="flex justify-center mt-10">No messages found!</div>
+            {% endif %}
         </div>
     </div>
 
