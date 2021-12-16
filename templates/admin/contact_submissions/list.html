@@ -1,7 +1,7 @@
 {% extends "dashboard.html" %}
 
 {% block main %}
-    <section class="pt-4 pb-8 bg-purple-900">
+    <section class="pt-4 pb-8 bg-purple-900" id="contact-submissions-header">
         <div class="flex items-center justify-between p-0 flex-col md:flex-row">
             <h2 class="mt-6 px-4 text-white text-3xl font-bold">Contact Form Submissions</h2>
             {% include "admin/contact_submissions/_contact_filters.html" %}
@@ -9,3 +9,19 @@
     </section>
     {% include "admin/contact_submissions/_contact_submissions.html" %}
 {% endblock main %}
+
+{% block template_js %}
+    <script>
+    function resizeContactSubmissionsTable() {
+        const siteHeader = document.querySelector("#navbar");
+        const header = document.querySelector("#contact-submissions-header");
+        const footer = document.querySelector("#contact-submissions-footer");
+        const wrapper = document.querySelector("#contact-submission-table-wrapper");
+        wrapper.style.maxHeight = `calc(100vh - ${siteHeader.offsetHeight +  header.offsetHeight + footer.offsetHeight}px)`;
+        wrapper.style.overflowY = "scroll";
+    }
+    window.addEventListener('resize', resizeContactSubmissionsTable, true);
+    window.addEventListener('load', resizeContactSubmissionsTable, true);
+    window.removeEventListener("beforeunload",resizeContactSubmissionsTable);
+    </script>
+{% endblock %}

@@ -2,8 +2,8 @@
 {% load humanize %}
 
 <section class="" id="contact_submissions">
-    <div  style="max-height: calc(100vh - 15.5rem);overflow-y: scroll">
-        <div class="min-w-full overflow-hidden">
+    <div id="contact-submission-table-wrapper">
+        <div class="min-w-full overflow-x-auto">
             <table class="min-w-full leading-normal border-0 border-collapse ">
                 <thead>
                     <tr class="border-b border-gray-200">
@@ -34,6 +34,7 @@
 
     {% if contacts.has_other_pages %}
         <div
+            id="contact-submissions-footer"
             class="p-2 bg-white border-t flex flex-col xs:flex-row items-center xs:justify-between">
             <span class="text-xs xs:text-sm text-gray-900">
                 Showing {{ contacts.start_index }} - {{ contacts.end_index }} of {{ contacts.paginator.count }} Submissions
