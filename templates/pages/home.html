@@ -33,6 +33,10 @@
                 {% include "forum/_thread.html" with thread=thread home=1 %}
             {% endfor %}
         </div>
+
+        <div class="flex justify-center mt-8">
+            <a href="{% url 'forum' %}" class="px-8 text-xl font-semibold transition-all duration-150 ease-in btn btn-md hover:bg-purple-800">Visit the Forum</a>
+        </div>
     </section>
 
     <section class="mx-4 my-24 md:mx-0">
