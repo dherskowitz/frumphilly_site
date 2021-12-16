@@ -3,56 +3,67 @@
 {% load humanize %}
 
 {% block main %}
-    <section class="pt-4 pb-8 bg-purple-900">
-        <div class="container flex items-center justify-between">
-            <div class="text-white">
-                <a href="{% url 'contact_submissions' %}" class="underline hover:text-pink-600">< Back to Contact Submissions</a>
-                <h2 class="mt-6 text-3xl font-bold">Message From {{ contact.name }}</h2>
-            </div>
-        </div>
-    </section>
-
-    <section class="container my-10" id="contact-row-{{ contact.id }}">
-        <div class="bg-white rounded-md shadow-md">
-            <div class="flex flex-col justify-between p-4 text-gray-600 border-b-2 sm:p-8 sm:items-center sm:flex-row">
-                <div class="text-2xl font-semibold">{{contact.name}}</div>
-
-                <div class="sm:w-2/3">
-                    {% include "admin/contact_submissions/_contact_status.html" %}
+    <div id="message-container" class="loading">
+        <section class="pt-4 pb-8 bg-purple-900">
+            <div class="container flex items-center justify-between">
+                <div class="text-white">
+                    <a href="{% url 'contact_submissions' %}" class="underline hover:text-pink-600">< Back to Contact Submissions</a>
+                    <h2 class="mt-6 text-3xl font-bold">Message From {{ contact.name }}</h2>
+                </div>
+                <div>
+                    <a
+                        hx-post="{% url 'contact_delete_message' message_id=contact.id %}"
+                        hx-swap="outerHTML"
+                        hx-target="#message-container"
+                        hx-indicator=".loading"
+                        hx-confirm="Delete this message? This action cannot be undone!"
+                        class="font-semibold text-center btn btn-md bg-red-600 hover:bg-red-700">Delete Message!</a>
                 </div>
             </div>
+        </section>
 
-            <div class="flex flex-col px-4 py-4 bg-gray-100 sm:px-8 sm:flex-row">
-                <div class="text-sm font-semibold text-gray-600 sm:w-1/3">Subject</div>
-                <div class="mt-2 sm:w-2/3 sm:mt-0">{{contact.subject}} Ad</div>
-            </div>
+        <section class="container my-10" id="contact-row-{{ contact.id }}">
+            <div class="bg-white rounded-md shadow-md">
+                <div class="flex flex-col justify-between p-4 text-gray-600 border-b-2 sm:p-8 sm:items-center sm:flex-row">
+                    <div class="text-2xl font-semibold">{{contact.name}}</div>
 
-            <div class="flex flex-col px-4 py-4 sm:px-8 sm:flex-row">
-                <div class="text-sm font-semibold text-gray-600 sm:w-1/3">Email</div>
-                <div class="mt-2 sm:w-2/3 sm:mt-0">{{contact.email}}</div>
-            </div>
+                    <div class="sm:w-2/3">
+                        {% include "admin/contact_submissions/_contact_status.html" %}
+                    </div>
+                </div>
 
-            <div class="flex flex-col px-4 py-4 bg-gray-100 sm:px-8 sm:flex-row">
-                <div class="text-sm font-semibold text-gray-600 sm:w-1/3">Phone</div>
-                <div class="mt-2 sm:w-2/3 sm:mt-0">{{contact.phone}}</div>
-            </div>
+                <div class="flex flex-col px-4 py-4 bg-gray-100 sm:px-8 sm:flex-row">
+                    <div class="text-sm font-semibold text-gray-600 sm:w-1/3">Subject</div>
+                    <div class="mt-2 sm:w-2/3 sm:mt-0">{{contact.subject}} Ad</div>
+                </div>
 
-            <div class="flex flex-col px-4 py-4 sm:px-8 sm:flex-row">
-                <div class="text-sm font-semibold text-gray-600 sm:w-1/3">Created</div>
-                <div class="mt-2 sm:w-2/3 sm:mt-0">{{contact.created_at}}.00</div>
-            </div>
+                <div class="flex flex-col px-4 py-4 sm:px-8 sm:flex-row">
+                    <div class="text-sm font-semibold text-gray-600 sm:w-1/3">Email</div>
+                    <div class="mt-2 sm:w-2/3 sm:mt-0">{{contact.email}}</div>
+                </div>
 
-            <div class="flex flex-col px-4 py-4 bg-gray-100 sm:px-8 sm:flex-row">
-                <div class="text-sm font-semibold text-gray-600 sm:w-1/3">Message</div>
-                <div class="mt-2 sm:w-2/3 sm:mt-0">{{contact.contact}}.00</div>
-            </div>
+                <div class="flex flex-col px-4 py-4 bg-gray-100 sm:px-8 sm:flex-row">
+                    <div class="text-sm font-semibold text-gray-600 sm:w-1/3">Phone</div>
+                    <div class="mt-2 sm:w-2/3 sm:mt-0">{{contact.phone}}</div>
+                </div>
 
-            <div class="flex flex-col px-4 py-4 sm:px-8 sm:flex-row">
-                <div class="text-sm font-semibold text-gray-600 sm:w-1/3"></div>
-                <div class="mt-2 sm:w-2/3 sm:mt-0">
-                    <a class="font-semibold text-center btn btn-md" href="mailto:{{ contact.email }}?subject={{ contact.subject }}&body=%0D%0A{{ contact.created_at }} {{ contact.name }} <{{ contact.email }}> wrote:%0D%0A%0D%0A{{ contact.message }}" target="_blank">Respond To Message</a>
+                <div class="flex flex-col px-4 py-4 sm:px-8 sm:flex-row">
+                    <div class="text-sm font-semibold text-gray-600 sm:w-1/3">Created</div>
+                    <div class="mt-2 sm:w-2/3 sm:mt-0">{{contact.created_at}}.00</div>
+                </div>
+
+                <div class="flex flex-col px-4 py-4 bg-gray-100 sm:px-8 sm:flex-row">
+                    <div class="text-sm font-semibold text-gray-600 sm:w-1/3">Message</div>
+                    <div class="mt-2 sm:w-2/3 sm:mt-0">{{contact.contact}}.00</div>
+                </div>
+
+                <div class="flex flex-col px-4 py-4 sm:px-8 sm:flex-row">
+                    <div class="text-sm font-semibold text-gray-600 sm:w-1/3">Reply to Message</div>
+                    <div class="mt-2 sm:w-2/3 sm:mt-0">
+                        <a class="font-semibold text-center btn btn-md" href="mailto:{{ contact.email }}?subject={{ contact.subject }}&body=%0D%0A{{ contact.created_at }} {{ contact.name }} <{{ contact.email }}> wrote:%0D%0A%0D%0A{{ contact.message }}" target="_blank">Respond To Message</a>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </div>
 {% endblock main %}

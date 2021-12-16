@@ -85,7 +85,7 @@ def contact_submissions(request):
 def contact_message(request, contact_id):
     if not request.user.has_perm('pages.change_contact') and not request.user.has_perm('pages.delete_contact'):
         return render(request, "403.html")
-    message = Contact.objects.get(id=contact_id)
+    message = get_object_or_404(Contact, id=contact_id)
     context = {
         "contact": message,
     }
