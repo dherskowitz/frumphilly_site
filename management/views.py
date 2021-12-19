@@ -4,7 +4,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
 
 from ads.models import Ad, ad_prices
-from pages.models import Contact, SUBJECT_CHOICES
+from pages.models import Contact, SUBJECT_CHOICES, ReportPost, REPORT_REASON_CHOICES
 from payments.models import Payment
 
 
@@ -122,3 +122,52 @@ def delete_message(request, message_id):
         if request.htmx:
             return render(request, "admin/contact_submissions/_message_deleted.html")
         return redirect(success_url)
+
+
+@login_required
+def reported_posts(request):
+    if not request.user.has_perm('pages.change_reportpost') and not request.user.has_perm('pages.delete_reportpost'):
+        return render(request, "403.html")
+
+    # Get all contacts sorted by create date
+    obj = ReportPost.objects.all().order_by("-created_at")
+    post_types = obj.values_list('post_type').distinct()
+
+    filtered_type = request.GET.getlist('post_type', None)
+    if filtered_type:
+        obj = obj.filter(post_type__in=filtered_type)
+    filtered_reason = request.GET.getlist('report_reason', None)
+    if filtered_reason:
+        obj = obj.filter(report_reason__in=filtered_reason)
+
+    # set pagination
+    page = request.GET.get("page", 1)
+    paginator = Paginator(obj, 15)
+    try:
+        obj = paginator.page(page)
+    except PageNotAnInteger:
+        obj = paginator.page(1)
+    except EmptyPage:
+        obj = paginator.page(paginator.num_pages)
+
+    # add data to context and return
+    context = {
+        "posts": obj,
+        "post_types": post_types,
+        "report_reasons": REPORT_REASON_CHOICES[1::],
+        "filtered_type": filtered_type,
+        "filtered_reason": filtered_reason,
+    }
+
+    return render(request, "admin/reported_posts/list.html", context)
+
+
+@login_required
+def reported_post(request, post_id):
+    if not request.user.has_perm('pages.change_reportpost') and not request.user.has_perm('pages.delete_reportpost'):
+        return render(request, "403.html")
+    post = get_object_or_404(ReportPost, id=post_id)
+    context = {
+        "post": post,
+    }
+    return render(request, "admin/reported_posts/single.html", context)
