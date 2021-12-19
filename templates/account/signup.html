@@ -5,51 +5,51 @@
 {% block meta_description %}Create an account on Frum Philly{% endblock meta_description %}
 
 {% block main %}
-<section class="container flex flex-col items-center justify-center p-0 mx-auto my-10">
-    <div class="flex flex-col w-11/12 p-3 bg-white rounded-md shadow-md lg:w-full lg:flex-row md:p-6">
-        <section class="items-center justify-center hidden object-cover h-64 mb-6 lg:w-1/2 lg:h-auto lg:mb-0 md:flex" style="background-image: url({% webpack_static 'img/illustrations/signup.svg' %});background-size:contain;background-repeat:no-repeat;background-position:center;">
-            <h2 class="text-6xl font-bold text-center text-white text-shadow">Create Account</h2>
+<section class="h-cust-screen flex relative lg:container">
+
+    <section class="w-1/2 h-full bg-center bg-top opacity-75 hidden md:block" style="background-image: url({% webpack_static 'img/images/philly-skyline.jpg' %})"></section>
+
+    <section class="w-full md:w-1/2 h-full bg-white px-10  flex flex-col justify-center">
+        <h1 class="text-3xl text-gray-600 font-semibold pt-4 px-4">Create your account!</h1>
+
+        <div class="lg:my-6 lg:mx-3">
+            {% include 'components/social-signin.html' %}
+        </div>
+
+        <div class="lg:ml-6">
+            <h2 class="relative flex items-center justify-center max-w-md mx-auto my-12 text-base font-semibold text-center text-gray-600 border-t-2 border-gray-800 sm:text-lg">
+                <span class="absolute text-lg font-semibold bg-white -top-4">Or Sign up with Email</span>
+            </h2>
+            {% include 'components/errors.html' %}
+
+            <form method="post" id="signup-form" class="p-0 form" novalidate>
+                {% csrf_token %}
+                <div class="m-0 form-field">
+                    <label class="form-field__label" for="{{field.id_for_label}}">{{ form.username.label }}</label>
+                    {{ form.username }}
+                </div>
+
+                <div class="m-0 my-4 form-field">
+                    <label class="form-field__label" for="{{field.id_for_label}}">{{ form.email.label }}</label>
+                    {{ form.email }}
+                </div>
+
+                <div class="m-0 my-4 form-field">
+                    <label class="form-field__label" for="{{field.id_for_label}}">{{ form.password1.label }}</label>
+                    {{ form.password1 }}
+                </div>
+
+                <div class="m-0 my-4 form-field">
+                    <label class="form-field__label" for="{{field.id_for_label}}">{{ form.password2.label }}</label>
+                    {{ form.password2 }}
+                </div>
+
+                {% include 'components/submit_btn.html' with value='Sign Up' class="btn btn-lg btn--form-submit btn-block" %}
+
+                <p class="mt-6 text-sm font-bold text-center text-gray-700 underline"><a href="{% url 'account_login' %}">I already have an account!</a></p>
+            </form>
+        </div>
         </section>
-        <section class="lg:w-1/2">
-            <section class="lg:my-6 lg:mx-3">
-                {% include 'components/social-signin.html' %}
-            </section>
-
-            <section class="lg:ml-6">
-                <h2 class="relative flex items-center justify-center max-w-md mx-auto my-12 text-base font-semibold text-center text-gray-600 border-t-2 border-gray-800 sm:text-lg">
-                    <span class="absolute text-lg font-semibold bg-white -top-4">Sign up with Email</span>
-                </h2>
-                {% include 'components/errors.html' %}
-
-                <form method="post" id="signup-form" class="p-0 form" novalidate>
-                    {% csrf_token %}
-                    <div class="m-0 form-field">
-                        <label class="form-field__label" for="{{field.id_for_label}}">{{ form.username.label }}</label>
-                        {{ form.username }}
-                    </div>
-
-                    <div class="m-0 my-4 form-field">
-                        <label class="form-field__label" for="{{field.id_for_label}}">{{ form.email.label }}</label>
-                        {{ form.email }}
-                    </div>
-
-                    <div class="m-0 my-4 form-field">
-                        <label class="form-field__label" for="{{field.id_for_label}}">{{ form.password1.label }}</label>
-                        {{ form.password1 }}
-                    </div>
-
-                    <div class="m-0 my-4 form-field">
-                        <label class="form-field__label" for="{{field.id_for_label}}">{{ form.password2.label }}</label>
-                        {{ form.password2 }}
-                    </div>
-
-                    {% include 'components/submit_btn.html' with value='Sign Up' class="btn btn-lg btn--form-submit btn-block" %}
-
-                    <p class="mt-6 text-sm font-bold text-center text-gray-700 underline"><a href="{% url 'account_login' %}">I already have an account!</a></p>
-                </form>
-            </section>
-        </section>
-    </div>
 </section>
 {% endblock main %}
 

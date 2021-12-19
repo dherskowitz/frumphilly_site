@@ -6,19 +6,18 @@
 {% block meta_description %}Sign In to Frum Philly{% endblock meta_description %}
 
 {% block main %}
-<section class="container flex flex-col items-center justify-center p-0 mx-auto my-10">
-    <div class="flex flex-col w-11/12 p-3 bg-white rounded-md shadow-md lg:w-full lg:flex-row md:p-6">
+<section class="h-cust-screen flex relative lg:container">
 
-        <section class="items-center justify-center hidden object-cover h-64 mb-6 lg:w-1/2 lg:h-auto lg:mb-0 md:flex" style="background-image: url({% webpack_static 'img/illustrations/authentication.svg' %});background-size:contain;background-repeat:no-repeat;background-position:center;">
-            <h2 class="text-6xl font-bold text-white text-shadow">Sign In</h2>
-        </section>
+        <section class="w-1/2 h-full bg-center bg-top opacity-75 hidden md:block" style="background-image: url({% webpack_static 'img/images/philly-skyline.jpg' %})"></section>
 
-        <section class="lg:w-1/2">
-            <div class="lg:my-6 lg:mx-3">
+        <section class="w-full md:w-1/2 h-full bg-white px-10  flex flex-col justify-center">
+
+            <div class="">
+                <h2 class="text-gray-600 p-2 text-xl">Sign in with</h2>
                 {% include 'components/social-signin.html' %}
             </div>
 
-            <div class="lg:ml-6">
+            <div class="">
                 <h2 class="relative max-w-md mx-auto my-10 text-base font-semibold text-center text-gray-600 border border-gray-800 sm:text-lg">
                     <span class="absolute bg-white" style="top:-0.9rem;left: 50%;transform: translateX(-50%);">or</span>
                 </h2>
@@ -51,8 +50,6 @@
                 </form>
             </div>
         </section>
-
-    </div>
 </section>
 {% endblock main %}
 

@@ -24,7 +24,7 @@ module.exports = {
                 50: "50vh",
                 60: "60vh",
                 100: "100vh",
-                // "cust-screen": "calc(100vh - 15.25rem)",
+                "cust-screen": "calc(100vh - 15.25rem)",
                 "half-screen": "60vh",
                 "vh-full": "100vh",
             },
