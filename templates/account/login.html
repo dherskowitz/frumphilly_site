@@ -8,7 +8,9 @@
 {% block main %}
 <section class="h-cust-screen flex relative lg:container">
 
-        <section class="w-1/2 h-full bg-center bg-top opacity-75 hidden md:block" style="background-image: url({% webpack_static 'img/images/philly-skyline.jpg' %})"></section>
+        <section class="relative w-1/2 h-full bg-center bg-top hidden md:block" style="background-image: url({% webpack_static 'img/images/philly-skyline.jpg' %})">
+            <div class="absolute top-0 left-0 w-full h-full bg-purple-600 bg-opacity-25"></div>
+        </section>
 
         <section class="w-full md:w-1/2 h-full bg-white px-10  flex flex-col justify-center">
 
