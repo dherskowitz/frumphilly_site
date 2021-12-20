@@ -88,3 +88,15 @@ def activate_ad(request, uuid):
 
     messages.success(request, f'Ad "{ad.title}" was set to active!')
     return redirect("/manage/review-ads/")
+
+
+@login_required
+def ad_details(request, uuid):
+    ad = Ad.objects.filter(redirect_uuid=uuid).first()
+    price_info = ad_prices[f"{ad.contract_length}"]
+    # if request.user != ad.user or ad.status not in ["inactive", "expired"]:
+    #     return render(request, "403.html")
+    context = {
+        "ad": ad,
+    }
+    return render(request, 'ads/details.html', context)
