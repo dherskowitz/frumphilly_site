@@ -24,8 +24,36 @@ def admin_review_ad(request, uuid):
 
 @login_required
 def admin_all_ads(request):
+    ads_obj = Ad.objects.all().order_by("-created_at")
+
+    filtered_type = request.GET.getlist('type', None)
+    if filtered_type:
+        ads_obj = ads_obj.filter(type__in=filtered_type)
+    filtered_status = request.GET.getlist('status', None)
+    if filtered_status:
+        ads_obj = ads_obj.filter(status__in=filtered_status)
+    filtered_term = request.GET.getlist('term', None)
+    if filtered_term:
+        ads_obj = ads_obj.filter(contract_length__in=filtered_term)
+
+    # set pagination
+    page = request.GET.get("page", 1)
+    paginator = Paginator(ads_obj, 15)
+    try:
+        ads_obj = paginator.page(page)
+    except PageNotAnInteger:
+        ads_obj = paginator.page(1)
+    except EmptyPage:
+        ads_obj = paginator.page(paginator.num_pages)
+
     context = {
-        "ads": Ad.objects.all().order_by("-created_at")
+        "ads": ads_obj,
+        "filtered_type": filtered_type,
+        "filtered_status": filtered_status,
+        "filtered_term": filtered_term,
+        "status_choices": Ad.STATUS_CHOICES,
+        "type_choices": Ad.TYPE_CHOICES,
+        "term_choices": Ad.TERM_CHOICES
     }
     return render(request, "admin/ads/all.html", context)
 
