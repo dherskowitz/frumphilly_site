@@ -2,8 +2,8 @@
 {% load my_tags %}
 {% load humanize %}
 
-<section class="" id="contact_submissions">
-    <div id="contact-submission-table-wrapper">
+<section class="">
+    <div class="admin-table-wrapper">
         <div class="min-w-full">
             {% if ads %}
             <table class="min-w-full leading-normal border-0 border-collapse ">
@@ -48,8 +48,7 @@
 
     {% if ads.has_other_pages %}
         <div
-            id="contact-submissions-footer"
-            class="pb-2 bg-white border-t flex flex-col xs:flex-row items-center xs:justify-between">
+            class="admin-table-footer pb-2 bg-white border-t flex flex-col xs:flex-row items-center xs:justify-between">
             <div class="mt-2 xs:mt-0 flex items-center">
                 {% if ads.has_previous %}
                 <a class="ml-2 mr-2 bg-purple-900 text-white px-2 py-1 rounded-md shadow-md" href="?{% param_replace page=ads.previous_page_number %}">&lt; Prev</a>

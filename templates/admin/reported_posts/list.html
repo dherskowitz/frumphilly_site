@@ -1,7 +1,7 @@
 {% extends "dashboard.html" %}
 
 {% block main %}
-    <section class="bg-purple-900" id="contact-submissions-header">
+    <section class="bg-purple-900 admin-table-header">
         <div class="py-2 flex items-center justify-between flex-col md:flex-row">
             <h2 class="px-4 text-white text-2xl font-bold">Reported Posts</h2>
             {% include "admin/reported_posts/_table_filters.html" %}
@@ -11,17 +11,7 @@
 {% endblock main %}
 
 {% block template_js %}
-    <script>
-    {#function resizeContactSubmissionsTable() {#}
-    {#    const siteHeader = document.querySelector("#navbar");#}
-    {#    const header = document.querySelector("#contact-submissions-header");#}
-    {#    const footer = document.querySelector("#contact-submissions-footer");#}
-    {#    const wrapper = document.querySelector("#contact-submission-table-wrapper");#}
-    {#    wrapper.style.maxHeight = `calc(100vh - ${siteHeader.offsetHeight +  header.offsetHeight + footer.offsetHeight}px)`;#}
-    {#    wrapper.style.overflowY = "scroll";#}
-    {#}#}
-    {#window.addEventListener('resize', resizeContactSubmissionsTable, true);#}
-    {#window.addEventListener('load', resizeContactSubmissionsTable, true);#}
-    {#window.removeEventListener("beforeunload",resizeContactSubmissionsTable);#}
-    </script>
+    {% if posts.has_other_pages %}
+        {% include "admin/admin-table-js.html" %}
+    {% endif %}
 {% endblock %}
