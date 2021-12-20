@@ -51,11 +51,11 @@
                                                 </p>
                                             {% elif ad.status == 'review' %}
                                                 <p class="text-gray-600 font-semibold text-sm whitespace-no-wrap mt-2">
-                                                    Your ad has been created and paid for and is under review by the Frum Philly management. The start of the ads term will only start once management has made it active. If you have any questions or concerns you can <a class="text-blue-600 underline" href="{% url 'contact' %}">contact us</a>.
+                                                    Your ad has been created and paid for and is under review by Frum Philly management. The start of the ad's term will only begin once management has made it active. If you have any questions or concerns please <a class="text-blue-600 underline" href="{% url 'contact' %}">contact us</a>.
                                                 </p>
                                             {% elif ad.status == 'paused' %}
                                                 <p class="text-gray-600 font-semibold text-sm whitespace-no-wrap mt-2">
-                                                    Your ad has been paused. There are {{ ad.time_remaining }} day{{ ad.time_remaining|pluralize }} remaining. If you have any questions or concerns you can <a class="text-blue-600 underline" href="{% url 'contact' %}">contact us</a>.
+                                                    Your ad has been paused. There are {{ ad.time_remaining }} day{{ ad.time_remaining|pluralize }} remaining. If you have any questions or concerns please <a class="text-blue-600 underline" href="{% url 'contact' %}">contact us</a>.
                                                 </p>
                                             {% elif ad.status == 'expired' %}
                                                 <p class="text-gray-600 font-semibold text-sm whitespace-no-wrap mt-2">
