@@ -26,7 +26,7 @@
                 </h2>
                 {% include 'components/errors.html' %}
 
-                <form class="p-0 form" method="post" id="login-form">
+                <form class="p-0 form mt-4" method="post" id="login-form">
                     {% csrf_token %}
                     <div class="m-0 form-field">
                         <label class="form-field__label" for="{{field.id_for_label}}">{{ form.login.label }}</label>
