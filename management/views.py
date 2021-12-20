@@ -9,16 +9,6 @@ from payments.models import Payment
 
 
 @login_required
-def admin_review_ads(request):
-    ads = Ad.objects.filter(status='review').order_by("-created_at")
-
-    context = {
-        "ads": ads,
-    }
-    return render(request, "admin/ads/review.html", context)
-
-
-@login_required
 def admin_review_ad(request, uuid):
     ad = Ad.objects.get(redirect_uuid=uuid)
     payments = Payment.objects.filter(ad_uuid=ad.redirect_uuid)
