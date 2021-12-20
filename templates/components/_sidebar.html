@@ -52,18 +52,18 @@
         {% if user.is_authenticated and request.user.is_staff %}
             <div class="border-2 border-gray-200"></div>
             <div class="mx-4 mt-4 mb-2 text-sm font-light text-gray-200 ">Admin</div>
+            <a class="w-full block p-4 my-1 hover:bg-gray-900{% if url_name == 'admin_all_ads' %} bg-gray-900 border-r-4 border-white{% endif %}" href="{% url 'admin_all_ads' %}">
+                <span class="font-medium">Ads</span>
+            </a>
             <a class="w-full block p-4 my-1 hover:bg-gray-900{% if url_name == 'contact_submissions' %} bg-gray-900 border-r-4 border-white{% endif %}" href="{% url 'contact_submissions' %}">
                 <span class="font-medium">Contact Submissions</span>
             </a>
             <a class="w-full block p-4 my-1 hover:bg-gray-900{% if url_name == 'reported_posts' %} bg-gray-900 border-r-4 border-white{% endif %}" href="{% url 'reported_posts' %}">
                 <span class="font-medium">Reported Posts</span>
             </a>
-            <a class="w-full block p-4 my-1 hover:bg-gray-900{% if url_name == 'admin_review_ads' %} bg-gray-900 border-r-4 border-white{% endif %}" href="{% url 'admin_review_ads' %}">
-                <span class="font-medium">Ads to Review</span>
-            </a>
-            <a class="w-full block p-4 my-1 hover:bg-gray-900{% if url_name == 'admin_all_ads' %} bg-gray-900 border-r-4 border-white{% endif %}" href="{% url 'admin_all_ads' %}">
-                <span class="font-medium">All Ads</span>
-            </a>
+{#            <a class="w-full block p-4 my-1 hover:bg-gray-900{% if url_name == 'admin_review_ads' %} bg-gray-900 border-r-4 border-white{% endif %}" href="{% url 'admin_review_ads' %}">#}
+{#                <span class="font-medium">Ads to Review</span>#}
+{#            </a>#}
         {% endif %}
 
         {% comment %} <div class="absolute bottom-0">
