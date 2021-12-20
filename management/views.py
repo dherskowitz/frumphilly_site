@@ -55,7 +55,7 @@ def admin_all_ads(request):
         "type_choices": Ad.TYPE_CHOICES,
         "term_choices": Ad.TERM_CHOICES
     }
-    return render(request, "admin/ads/all.html", context)
+    return render(request, "admin/ads/list.html", context)
 
 
 @login_required
