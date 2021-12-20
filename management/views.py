@@ -15,7 +15,7 @@ def admin_review_ads(request):
     context = {
         "ads": ads,
     }
-    return render(request, "admin/ad_review_all.html", context)
+    return render(request, "admin/ads/review.html", context)
 
 
 @login_required
@@ -29,7 +29,7 @@ def admin_review_ad(request, uuid):
         "payments": payments,
         "price_info": price_info
     }
-    return render(request, "admin/ad_review_single.html", context)
+    return render(request, "admin/ads/single.html", context)
 
 
 @login_required
@@ -37,7 +37,7 @@ def admin_all_ads(request):
     context = {
         "ads": Ad.objects.all().order_by("-created_at")
     }
-    return render(request, "admin/ads_all.html", context)
+    return render(request, "admin/ads/all.html", context)
 
 
 @login_required
