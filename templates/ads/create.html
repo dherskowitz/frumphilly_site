@@ -2,14 +2,21 @@
 {% load webpack_static from webpack_loader %}
 
 {% block main %}
+    <section class="bg-purple-900 admin-table-header">
+        <div class="py-2 mx-4 flex items-center justify-between flex-col md:flex-row text-white">
+            <div>
+                <a href="{% url 'user_ads' %}" class="underline hover:text-pink-600 text-sm">< Back to My Ads</a>
+                <h2 class="text-4xl text-white text-shadow my-4">Create New Ad</h2>
+            </div>
+        </div>
+    </section>
 
-<section class="my-5">
-    <div class="mb-4">
-        <h2 class="text-4xl text-white text-shadow">Create New Ad</h2>
+<section class="">
+    <div class="p-4 bg-white m-0">
+        {% include 'components/errors.html' %}
     </div>
-    {% include 'components/errors.html' %}
     <div>
-        <form class="form" action="{% url 'create_ad' %}" method="POST" enctype='multipart/form-data'>
+        <form class="form pt-0" action="{% url 'create_ad' %}" method="POST" enctype='multipart/form-data'>
             {% include "ads/_form.html" %}
         </form>
     </div>

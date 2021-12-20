@@ -3,26 +3,34 @@
 
 {% block main %}
 
-<section class="my-5" x-data="{ 'showAdImageModal': false }" @keydown.escape="showAdImageModal = false">
-    <div class="mb-4">
-        <h2 class="text-4xl text-white text-shadow">Update Your Ad</h2>
-    </div>
-    {% include 'components/errors.html' %}
-    <div>
-        <form class="form" action="{% url 'edit_ad' ad.redirect_uuid %}" method="POST" enctype='multipart/form-data'>
-            {% include "ads/_form.html" %}
-        </form>
-        {% if ad.image %}
-        <!-- Modal -->
-        <div class="overflow-auto" style="background-color: rgba(0,0,0,0.5)" x-show="showAdImageModal" :class="{ 'fixed inset-0 z-50 flex items-center justify-center h-screen': showAdImageModal }">
-            <div class="max-w-3xl m-4 sm:m-8" x-show="showAdImageModal" @click.away="showAdImageModal = false">
-                <img id="ad_image_modal_preview" class="object-cover w-full mx-auto mr-2" src="{{ ad.image.url }}" alt="Preview image for this event">
-                <button type="button" class="block mx-auto mt-4 text-lg text-center btn btn-md" @click="showAdImageModal = false" style="">Close Preview</button>
+    <section class="bg-purple-900 admin-table-header">
+        <div class="py-2 mx-4 flex items-center justify-between flex-col md:flex-row text-white">
+            <div>
+                <a href="{% url 'user_ads' %}" class="underline hover:text-pink-600 text-sm">< Back to My Ads</a>
+                <h2 class="text-4xl text-white text-shadow my-4">Update Your Ad</h2>
             </div>
         </div>
-        {% endif %}
-    </div>
-</section>
+    </section>
+
+    <section class="" x-data="{ 'showAdImageModal': false }" @keydown.escape="showAdImageModal = false">
+        <div class="p-4 bg-white m-0">
+            {% include 'components/errors.html' %}
+        </div>
+        <div>
+            <form class="form pt-0" action="{% url 'edit_ad' ad.redirect_uuid %}" method="POST" enctype='multipart/form-data'>
+                {% include "ads/_form.html" %}
+            </form>
+            {% if ad.image %}
+            <!-- Modal -->
+            <div class="overflow-auto" style="background-color: rgba(0,0,0,0.5)" x-show="showAdImageModal" :class="{ 'fixed inset-0 z-50 flex items-center justify-center h-screen': showAdImageModal }">
+                <div class="max-w-3xl m-4 sm:m-8" x-show="showAdImageModal" @click.away="showAdImageModal = false">
+                    <img id="ad_image_modal_preview" class="object-cover w-full mx-auto mr-2" src="{{ ad.image.url }}" alt="Preview image for this event">
+                    <button type="button" class="block mx-auto mt-4 text-lg text-center btn btn-md" @click="showAdImageModal = false" style="">Close Preview</button>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </section>
 
 {% endblock main %}
 
