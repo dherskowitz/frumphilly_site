@@ -1,3 +1,4 @@
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
@@ -38,6 +39,16 @@ def user_settings(request):
 @login_required
 def user_events(request):
     events = Event.objects.filter(created_by=request.user).order_by("-created_at", "name")
+
+    page = request.GET.get("page", 1)
+    paginator = Paginator(events, 12)
+    try:
+        events = paginator.page(page)
+    except PageNotAnInteger:
+        events = paginator.page(1)
+    except EmptyPage:
+        events = paginator.page(paginator.num_pages)
+
     context = {
         "events": events,
     }
