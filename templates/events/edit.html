@@ -19,29 +19,39 @@
 {% endblock template_scripts %}
 
 {% block main %}
-<section class="my-8" x-data="{ 'showEventImageModal': false }" @keydown.escape="showEventImageModal = false">
-    <div class="text-white text-shadow my-4">
-        <h2 class="text-3xl">Edit Event</h2>
-        <p class="text-xl">Edit the details of your event.</p>
-    </div>
-    {% include 'components/errors.html' %}
-    <form class="form" action="{% url 'events_edit' event.slug event.id %}" method="POST" enctype='multipart/form-data'>
-        {% csrf_token %}
-        {% include 'events/_form.html' %}
-        <div class="flex items-center mt-4">
-            {% include 'components/submit_btn.html' with value='Save Changes' class="btn btn-md btn-block btn--form-submit" %}
-            <a class="inline-block w-1/3 py-2 px-4 ml-4 rounded-md text-center text-red-400 hover:bg-gray-300 hover:shadow-md" href="{% url 'user_events' %}">Cancel</a>
+
+    <section class="bg-purple-900 admin-table-header">
+        <div class="py-6 mx-4 flex items-center justify-between flex-col md:flex-row">
+            <div class="text-white">
+                <h2 class="text-white text-2xl font-bold">Edit Event</h2>
+                <p class="text-xl">Edit the details of your event.</p>
+            </div>
         </div>
-    </form>
-    {% if event.image %}
-    <!-- Modal -->
-    <div class="overflow-auto" style="background-color: rgba(0,0,0,0.5)" x-show="showEventImageModal" :class="{ 'fixed inset-0 z-50 flex items-center justify-center h-screen': showEventImageModal }">
-        <div class="m-4 sm:m-8 max-w-3xl" x-show="showEventImageModal" @click.away="showEventImageModal = false">
-            <img id="event_image_modal_preview" class="w-full mr-2 mx-auto object-cover" src="{{ event.image.url }}" alt="Preview image for this event">
-            <button type="button" class="text-lg text-center btn btn-md mt-4 block mx-auto" @click="showEventImageModal = false" style="">Close Preview</button>
-        </div>
+    </section>
+
+<section class="" x-data="{ 'showEventImageModal': false }" @keydown.escape="showEventImageModal = false">
+    <div class="p-4 pb-0 bg-white m-0">
+        {% include 'components/errors.html' %}
     </div>
-    {% endif %}
+    <div>
+        <form class="form" action="{% url 'events_edit' event.slug event.id %}" method="POST" enctype='multipart/form-data'>
+            {% csrf_token %}
+            {% include 'events/_form.html' %}
+            <div class="flex items-center mt-4">
+                {% include 'components/submit_btn.html' with value='Save Changes' class="btn btn-md btn-block btn--form-submit" %}
+                <a class="inline-block w-1/3 py-2 px-4 ml-4 rounded-md text-center text-red-400 hover:bg-gray-300 hover:shadow-md" href="{% url 'user_events' %}">Cancel</a>
+            </div>
+        </form>
+        {% if event.image %}
+        <!-- Modal -->
+        <div class="overflow-auto" style="background-color: rgba(0,0,0,0.5)" x-show="showEventImageModal" :class="{ 'fixed inset-0 z-50 flex items-center justify-center h-screen': showEventImageModal }">
+            <div class="m-4 sm:m-8 max-w-3xl" x-show="showEventImageModal" @click.away="showEventImageModal = false">
+                <img id="event_image_modal_preview" class="w-full mr-2 mx-auto object-cover" src="{{ event.image.url }}" alt="Preview image for this event">
+                <button type="button" class="text-lg text-center btn btn-md mt-4 block mx-auto" @click="showEventImageModal = false" style="">Close Preview</button>
+            </div>
+        </div>
+        {% endif %}
+    </div>
 </section>
 
 
