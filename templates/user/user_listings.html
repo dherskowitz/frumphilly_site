@@ -1,42 +1,113 @@
 {% extends 'dashboard.html' %}
 {% load humanize %}
+{% load my_tags %}
+{% load webpack_static from webpack_loader %}
 {% block meta_title %}Manage Your Listings | Frum Philly{% endblock meta_title %}
 {% block meta_description %}Manage the listings you have published on Frum Philly.{% endblock meta_description %}
 
 {% block main %}
-<div class="container my-5">
-    <div class="flex flex-row justify-between mb-4 align-center">
-        <div class="text-3xl text-white sm:text-4xl text-shadow">My Listing</div>
-        <a class="flex items-center btn btn-md" href="{% url 'listings_select' %}">Create Listing</a>
-    </div>
-    <section class="w-full my-6 md:rounded-md md:shadow-md">
-        {% for listing in listings %}
-        <div class="grid grid-cols-1 gap-4 px-4 pt-4 pb-6 m-0 mb-6 bg-white border rounded-md shadow-md md:items-start sm:grid-cols-3 sm:gap-8 lg:gap-0 lg:grid-cols-5 sm:pt-8 md:mb-0 md:shadow-none md:rounded-none md:even:bg-teal-200">
-            <span class="relative pt-2 text-center lg:text-left">
-                <div class="flex justify-center text-sm font-bold uppercase lg:absolute -top-3">Listing Name</div>
-                <a href="{% url 'listing_single' listing.slug listing.id %}" class="underline hover:text-pink-400">{{listing.business_name}}</a>
-            </span>
-            <span class="relative pt-2 text-center lg:text-left">
-                <div class="flex justify-center text-sm font-bold uppercase lg:absolute -top-3">Posted</div>
-                {{listing.created_at|naturalday}}
-            </span>
-            <span class="relative pt-2 text-center lg:text-left">
-                <div class="flex justify-center text-sm font-bold uppercase lg:absolute -top-3">Status</div>
-                {{listing.status}}
-            </span>
-            <span class="pt-2 my-6 text-center lg:text-left sm:my-0">
-                <a class="px-4 py-2 text-white bg-purple-700 rounded-md shadow-md hover:bg-purple-900 hover:shadow-lg" href="{% url 'listings_edit' listing.slug listing.id %}">Edit Listing</a>
-            </span>
-            <span class="pt-2 text-center lg:text-left">
-                <a class="px-4 py-2 text-white bg-red-500 rounded-md shadow-md hover:bg-red-700 hover:shadow-lg" href="{% url 'listings_delete' listing.slug listing.id %}">Delete Listing</a>
-            </span>
+
+    <section class="bg-purple-900 admin-table-header">
+        <div class="py-2 mx-4 flex items-center justify-between flex-col md:flex-row">
+            <h2 class="py-3 text-white text-2xl font-bold">My Listing</h2>
+            <a class="flex items-center bg-white rounded-md border border-gray-200 px-4 py-1" href="{% url 'listings_select' %}">Create Listing</a>
         </div>
-        {% empty %}
-        <div class="justify-between px-4 pt-4 pb-6 mb-6 bg-white rounded-md shadow-md sm:pt-8 md:mb-0 lg:flex">
-            <p class="mb-8 text-2xl text-center lg:mb-0 lg:text-left">You have not posted any listings yet.</p>
-            <a class="block text-center btn btn-md lg:inline" href="{% url 'listings_select' %}">Create a Listing</a>
-        </div>
-        {% endfor %}
     </section>
-</div>
+
+    <section class="">
+        <div class="min-w-full admin-table-wrapper">
+            {% if listings %}
+            <table class="min-w-full leading-normal border-0 border-collapse ">
+                <thead>
+                    <tr class="border-b border-gray-200">
+                        <th
+                            class="px-5 py-3 border-b-0 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider sticky top-0 z-10" style="border: none">
+                            Listing Name
+                        </th>
+                        <th
+                            class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider sticky top-0 z-10" style="border: none">
+                            Status
+                        </th>
+                        <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider sticky top-0 z-10" style="border: none">Created</th>
+                        <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider sticky top-0 z-10" style="border: none"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for listing in listings %}
+                        <tr class="border-b border-gray-200 group" id="post-row-{{ listing.id }}">
+                            <td class="px-5 py-5 bg-white group-hover:bg-gray-100 text-base" style="border: none">
+                                <div class="flex items-center">
+                                    <div class="ml-3">
+                                        <p class="text-gray-900 whitespace-no-wrap font-bold">
+                                            {{ listing.business_name }}
+                                        </p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="px-5 py-5 bg-white group-hover:bg-gray-100 text-sm" style="border: none">
+                                {% if listing.status == 'published' %}
+                                    <p class="text-gray-900 font-semibold w-20 whitespace-no-wrap bg-green-500 capitalize py-1 rounded text-center">{{ listing.status }}</p>
+                                {% elif listing.status == 'draft' %}
+                                    <p class="text-gray-900 font-semibold w-20 whitespace-no-wrap bg-red-400 capitalize py-1 rounded text-center">{{ listing.status }}</p>
+                                {% endif %}
+                            </td>
+                            <td class="px-5 py-5 bg-white group-hover:bg-gray-100 text-sm" style="border: none">
+                                {{ listing.created_at|naturaltime }}
+                            </td>
+                            <td class="px-5 py-5 bg-white group-hover:bg-gray-100 text-sm" style="border: none">
+                                <p class="text-gray-900 whitespace-no-wrap">
+                                    <div x-data="{ open: false }" class="relative w-full">
+                                        <button @click="open = true" class="border border-black rounded-md px-2 py-1 flex">Actions<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-caret-down" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M0 0h24v24H0z" stroke="none"/><path d="m6 9 6 6 6-6H6"/></svg></button>
+
+                                        <div x-show="open" x-cloak @click.away="open = !open" class="absolute top-8 left-0 bg-white w-full z-20 rounded-md shadow-md py-2">
+                                            <a href="{% url 'listing_single' listing.slug listing.id %}" class="inline-block px-2 py-1 w-full text-left hover:bg-gray-200" target="_blank">View Listing</a>
+                                            <a href="{% url 'listings_edit' listing.slug listing.id %}" class="inline-block px-2 py-1 w-full text-left hover:bg-gray-200">Edit Listing</a>
+                                            <a href="{% url 'listings_delete' listing.slug listing.id %}" class="inline-block px-2 py-1 w-full text-left hover:bg-gray-200"> Delete Listing</a>
+                                        </div>
+                                    </div>
+                                </p>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% else %}
+                <div class="relative flex flex-col items-center justify-center col-span-2 p-4 mt-16">
+                    <div class="absolute flex flex-col items-center justify-center">
+                        <h2 class="text-4xl text-gray-200 uppercase text-shadow">You have no listings!</h2>
+                    </div>
+                    <img class="" width="400" src="{% webpack_static 'img/illustrations/empty.svg' %}" alt="">
+                </div>
+            {% endif %}
+        </div>
+
+        {% if listings.has_other_pages %}
+            <div
+                class="admin-table-footer pb-2 bg-white border-t flex flex-col xs:flex-row items-center xs:justify-between">
+                <div class="mt-2 xs:mt-0 flex items-center">
+                    {% if listings.has_previous %}
+                    <a class="ml-2 mr-2 bg-purple-900 text-white px-2 py-1 rounded-md shadow-md" href="?{% param_replace page=listings.previous_page_number %}">&lt; Prev</a>
+                    {% else %}
+                    <a class="ml-2 mr-2 opacity-50 cursor-not-allowed pointer-events-none bg-purple-900 text-white px-2 py-1 rounded-md shadow-md">&lt; Prev</a>
+                    {% endif %}
+
+                    <span class="text-xs xs:text-sm text-gray-900">
+                        Showing {{ listings.start_index }} - {{ listings.end_index }} of {{ listings.paginator.count }} Listings
+                    </span>
+
+                    {% if listings.has_next %}
+                    <a class="mr-2 ml-2 bg-purple-900 text-white px-2 py-1 rounded-md shadow-md" href="?{% param_replace page=listings.next_page_number %}">Next &gt;</a>
+                    {% else %}
+                    <a class="mr-2 ml-2 opacity-50 cursor-not-allowed pointer-events-none ml-4 bg-purple-900 text-white px-2 py-1 rounded-md shadow-md">Next &gt;</a>
+                    {% endif %}
+                </div>
+            </div>
+        {% endif %}
+    </section>
 {% endblock main %}
+
+{% block template_js %}
+    {% if listings.has_other_pages %}
+        {% include "admin-table-js.html" %}
+    {% endif %}
+{% endblock %}
