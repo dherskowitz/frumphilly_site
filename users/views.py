@@ -41,7 +41,7 @@ def user_events(request):
     events = Event.objects.filter(created_by=request.user).order_by("-created_at", "name")
 
     page = request.GET.get("page", 1)
-    paginator = Paginator(events, 12)
+    paginator = Paginator(events, 15)
     try:
         events = paginator.page(page)
     except PageNotAnInteger:
