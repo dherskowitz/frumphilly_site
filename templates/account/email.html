@@ -5,10 +5,16 @@
 
 {% block main %}
 
+    <section class="bg-purple-900 admin-table-header">
+        <div class="py-2 mx-4 flex items-center justify-between flex-col md:flex-row text-white">
+            <div>
+                <h2 class="text-4xl text-white text-shadow my-4 capitalize">Manage Email Addresses</h2>
+            </div>
+        </div>
+    </section>
 
 <div class="container my-10 p-0">
     <section class="container">
-        <h1 class="text-2xl sm:text-4xl text-white text-shadow mb-4">Email Addresses</h1>
 
         {% if user.emailaddress_set.all %}
 
@@ -36,7 +42,7 @@
                 </div>
                 {% endfor %}
 
-                <div class="flex flex-col sm:flex-row justify-between mt-10">
+                <div class="flex flex-col sm:flex-row space-x-4 mt-10">
                     <button class="btn btn-md" type="submit" name="action_primary">Make Primary</button>
                     <button class="btn btn-md my-3 sm:my-0 bg-gray-400 text-black" type="submit" name="action_send">Re-send Verification</button>
                     <button class="btn btn-md bg-red-600" type="submit" name="action_remove">Remove</button>

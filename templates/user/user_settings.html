@@ -1,32 +1,40 @@
 {% extends 'dashboard.html' %}
 {% load humanize %}
 {% block meta_title %}Manage Your Settings | Frum Philly{% endblock meta_title %}
-{% block meta_description %}Manage the Frum Philly user settings.{% endblock meta_description %}
+{% block meta_description %}Manage the Frum Philly profile settings.{% endblock meta_description %}
 
 {% block main %}
+
+    <section class="bg-purple-900 admin-table-header">
+        <div class="py-2 mx-4 flex items-center justify-between flex-col md:flex-row text-white">
+            <div>
+                <h2 class="text-4xl text-white text-shadow my-4 capitalize">profile settings</h2>
+            </div>
+        </div>
+    </section>
+
 <section class="container my-5">
-    <h1 class="mb-4 text-4xl text-white capitalize text-shadow">user settings</h1>
     {% include 'components/errors.html' %}
     <form class="form" action="{% url 'user_settings' %}" method="POST" enctype='multipart/form-data'>
         {% csrf_token %}
 
-        <div class="m-0 my-4 form-field">
+        <div class="form-field">
             <label class="form-field__label" for="{{form.username.id_for_label}}">{{ form.username.label }}</label>
             {{ form.username }}
         </div>
 
-        <div class="m-0 my-4 form-field">
+        <div class="form-field">
             <label class="form-field__label" for="{{form.first_name.id_for_label}}">{{ form.first_name.label }}</label>
             {{ form.first_name }}
         </div>
 
-        <div class="m-0 my-4 form-field">
+        <div class="form-field">
             <label class="form-field__label" for="{{form.last_name.id_for_label}}">{{ form.last_name.label }}</label>
             {{ form.last_name }}
         </div>
         {% for field in form %}
             {% if field.name == '_avatar' %}
-                <div class="my-2 form-field">
+                <div class="form-field">
                     <div class="relative ">
                         <label class="form-field__label" for="{{field.id_for_label}}">{{ field.label|title }}</label>
                         <input type="file" name="{{ field.html_name }}" id="{{ field.id_for_label }}" accept="image/png,image/jpg,image/jpeg">
