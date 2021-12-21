@@ -2,11 +2,11 @@
 <button
         hx-post="{% url 'listing_like' listing_id=listing.id  %}" hx-swap="outerHTML"
         hx-indicator=".waiting"
-        class="waiting flex px-6 py-2 mb-4 text-xs font-medium text-center text-white uppercase transition bg-blue-700 shadow disabled:opacity-50 disabled:pointer-events-none hover:bg-blue-800 ripple hover:shadow-lg focus:outline-none{% if not user.is_authenticated %} pointer-events-none{% endif %}">
+        class="waiting flex px-6 py-2 mb-4 text-xs text-center text-gray-800 font-semibold uppercase transition bg-rose-50 rounded disabled:opacity-50 disabled:pointer-events-none hover:bg-rose-200 ripple hover:shadow-lg focus:outline-none{% if not user.is_authenticated %} pointer-events-none{% endif %}">
     <span class="mr-1">{% if user_liked %}Remove Recommendation{% else %}Recommend{% endif %}</span>
     <svg
             class="mr-1"
-            stroke="{% if user_liked %}red{% else %}white{% endif %}"
+            stroke="{% if user_liked %}red{% else %}black{% endif %}"
             xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
             stroke-width="1.5"
             stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
