@@ -70,4 +70,4 @@ class ReportPost(models.Model):
         verbose_name_plural = "Reported Posts"
 
     def __str__(self):
-        return f"Post {self.post_id} reported for {self.report_reason}"
+        return f"Post {self.post_title} reported for {self.report_reason}"
