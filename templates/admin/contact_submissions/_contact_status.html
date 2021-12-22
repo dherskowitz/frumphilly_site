@@ -16,18 +16,18 @@
                 hx-swap="outerHTML"
                 hx-target="#contact-row-{{ contact.id }} .contact-status-chip"
                 hx-indicator=".loading"
-                @click="open = true" class="flex w-full bg-orange-200 hover:bg-orange-100 rounded-full justify-center py-1 px-2 font-semibold text-green-900">mark unread</button>
+                @click="open = true" class="flex w-full bg-orange-200 hover:bg-orange-100 rounded-full justify-center py-1 px-2 font-semibold text-green-900 capitalize">mark unread</button>
         <button
                 hx-post="{% url 'contact_toggle_status' %}?message_id={{ contact.id }}&message_status=read"
                 hx-swap="outerHTML"
                 hx-target="#contact-row-{{ contact.id }} .contact-status-chip"
                 hx-indicator=".loading"
-                @click="open = true" class="flex w-full bg-green-600 hover:bg-green-500 rounded-full justify-center py-1 px-2 font-semibold text-green-900 mt-1">mark read</button>
+                @click="open = true" class="flex w-full bg-green-600 hover:bg-green-500 rounded-full justify-center py-1 px-2 font-semibold text-green-900 capitalize mt-1">mark read</button>
         <button
                 hx-post="{% url 'contact_toggle_status' %}?message_id={{ contact.id }}&message_status=spam"
                 hx-swap="outerHTML"
                 hx-target="#contact-row-{{ contact.id }} .contact-status-chip"
                 hx-indicator=".loading"
-                @click="open = true" class="flex w-full bg-red-600 hover:bg-red-500 rounded-full justify-center py-1 px-2 font-semibold text-green-900 mt-1">mark spam</button>
+                @click="open = true" class="flex w-full bg-red-600 hover:bg-red-500 rounded-full justify-center py-1 px-2 font-semibold text-green-900 capitalize mt-1">mark spam</button>
     </div>
 </div>
