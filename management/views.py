@@ -149,7 +149,7 @@ def reported_posts(request):
 
     # Get all contacts sorted by create date
     obj = ReportPost.objects.all().order_by("-created_at")
-    post_types = obj.values_list('post_type').distinct()
+    post_types = ReportPost.objects.values_list('post_type').distinct()
 
     filtered_type = request.GET.getlist('post_type', None)
     if filtered_type:
