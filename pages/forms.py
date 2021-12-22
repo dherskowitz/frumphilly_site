@@ -107,6 +107,7 @@ class ReportPostForm(forms.ModelForm):
     class Meta:
         model = ReportPost
         fields = "__all__"
+        exclude = ('status',)
 
     def __init__(self, *args, **kwargs):
         super(ReportPostForm, self).__init__(*args, **kwargs)

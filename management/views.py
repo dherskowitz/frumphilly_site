@@ -157,6 +157,9 @@ def reported_posts(request):
     filtered_reason = request.GET.getlist('report_reason', None)
     if filtered_reason:
         obj = obj.filter(report_reason__in=filtered_reason)
+    filtered_status = request.GET.getlist('report_status', None)
+    if filtered_status:
+        obj = obj.filter(status__in=filtered_status)
 
     # set pagination
     page = request.GET.get("page", 1)
@@ -173,8 +176,10 @@ def reported_posts(request):
         "posts": obj,
         "post_types": post_types,
         "report_reasons": REPORT_REASON_CHOICES[1::],
+        "report_statuses": ReportPost.REPORT_STATUS_CHOICES,
         "filtered_type": filtered_type,
         "filtered_reason": filtered_reason,
+        "filtered_status": filtered_status,
     }
 
     return render(request, "admin/reported_posts/list.html", context)
