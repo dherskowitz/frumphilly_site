@@ -271,6 +271,12 @@ class Listing(models.Model):
         liked_list = self.likes.values_list('user__id', flat=True)
         return user.id in liked_list
 
+    def class_name(self):
+        return self.__class__.__name__
+
+    def title(self):
+        return self.business_name
+
 
 class ListingLike(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)

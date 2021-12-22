@@ -219,3 +219,9 @@ class Event(models.Model):
 
     def get_events_by_city(city):
         return Event.objects.filter(city__iexact=city)
+
+    def class_name(self):
+        return self.__class__.__name__
+
+    def title(self):
+        return self.name
