@@ -72,6 +72,7 @@ class ReportPost(models.Model):
     user_id = models.IntegerField(default=None, blank=True, null=True)
     name = models.CharField(default=None, blank=True, max_length=255, null=True)
     email = models.EmailField(max_length=255, default=None, blank=True, null=True)
+    form_email = models.EmailField(max_length=255, default=None, blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 

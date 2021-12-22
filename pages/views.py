@@ -106,6 +106,7 @@ def report_post(request):
             if request.user.is_authenticated:
                 report.user_id = request.user.id
                 report.email = request.user.email
+                report.form_email = request.POST.get("email")
                 report.name = f"{request.user.first_name} {request.user.last_name}"
                 report.post_url = request.POST.get("post_url")
             report.save()
