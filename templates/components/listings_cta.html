@@ -1,15 +1,13 @@
 {% load webpack_static from webpack_loader %}
 
-<section class="relative my-16 sm:mx-4 md:mx-0 bg-gray-600 rounded-md shadow-md font-bold flex items-center justify-center text-center md:text-left{% if value %} {{ value }}{% else %} flex-col md:flex-row{% endif %}">
-    <div class="absolute z-10 w-full p-2 text-white opacity-100 md:relative md:ml-6 md:w-1/2 text-shadow md:text-shadow-0">
-        <h4 class="text-6xl xl:text-8xl">Want people to see your business?</h4>
-        {% if user.is_authenticated %}
-        <a class="mt-4 text-xl uppercase btn btn-lg" href="{% url 'listings_select' %}">Create your listing!</a>
-        {% else %}
-        <a class="mt-4 text-xl uppercase btn btn-lg" href="/accounts/signup">Create your listing!</a>
-        {% endif %}
+<section class="relative md:bg-purple-600 rounded-md shadow-md my-10 overflow-hidden">
+    <div class="absolute top-0 left-0 w-full h-full bg-purple-600 bg-opacity-25"></div>
+    <div class="text-white py-16 text-center relative md:w-1/2 md:text-left">
+        <div class="px-4">
+            <h4 class="text-2xl lg:text-4xl font-bold">Discover your Community!</h4>
+            <p class="text-sm lg:text-base mt-2 font-semibold">Frum Philly is a growing community whose goal is to help you discover more about the Jewish community near you. Visit our listings to find businesses, restaurants, and professional services in your area. Want more people to know about your business or service?</p>
+        </div>
+        <a class="mt-4 uppercase bg-purple-900 hover:bg-purple-800 px-4 py-2 inline-block rounded-md shadow-md font-bold text-center md:mx-4" href="{% url 'listings_select' %}">Create your listing!</a>
     </div>
-    <div class="w-full md:w-1/2">
-        <img class="object-cover h-full rounded-md opacity-75 md:rounded-tl-none md:rounded-bl-none md:rounded-tr-md md:rounded-br-md xl:w-full" src="{% webpack_static 'img/images/listings_cta.jpg' %}" alt="Add your listing to Frum Philly">
-    </div>
+    <img class="absolute top-0 -z-1  md:z-10 opacity-50 object-cover w-full md:w-1/2 md:right-0 h-full" src="{% webpack_static 'img/images/listings_cta.jpg' %}" alt="Add your listing to Frum Philly">
 </section>
