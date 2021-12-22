@@ -397,9 +397,13 @@ input[type="checkbox"]:checked {
 .loading {
     position: relative;
 }
+
+.report-modal.htmx-request .modal-content.loading::before,
 .loading.htmx-request::before {
-    content: "updating...";
-    @apply bg-gray-300 opacity-80 absolute w-full h-full z-50 flex justify-center items-center text-2xl font-bold uppercase;
+    content: "";
+    background-image: url('/static/img/icons/loader.svg');
+    background-size: 40px 40px;
+    @apply bg-gray-300 opacity-80 absolute w-full h-full z-50 flex justify-center items-center text-2xl font-bold uppercase bg-no-repeat bg-center;
 }
 
 /*! purgecss start ignore */
@@ -605,6 +609,56 @@ ins.adsbygoogle:not(:first-of-type) {
     text-align: center
   }
 
+}
+
+
+
+#modal {
+	/* Animate when opening */
+	animation-name: fadeIn;
+	animation-duration:150ms;
+	animation-timing-function: ease;
+}
+
+#modal > .modal-content {
+	/* Animate when opening */
+	animation-name:zoomIn;
+	animation-duration:150ms;
+	animation-timing-function: ease;
+}
+
+#modal.closing {
+	/* Animate when closing */
+	animation-name: fadeOut;
+	animation-duration:150ms;
+	animation-timing-function: ease;
+}
+
+#modal.closing > .modal-content {
+	/* Aniate when closing */
+	animation-name: zoomOut;
+	animation-duration:150ms;
+	animation-timing-function: ease;
+}
+
+@keyframes fadeIn {
+	0% {opacity: 0;}
+	100% {opacity: 1;}
+}
+
+@keyframes fadeOut {
+	0% {opacity: 1;}
+	100% {opacity: 0;}
+}
+
+@keyframes zoomIn {
+	0% {transform: scale(0.9);}
+	100% {transform: scale(1);}
+}
+
+@keyframes zoomOut {
+	0% {transform: scale(1);}
+	100% {transform: scale(0.9);}
 }
 /*! purgecss end ignore */
 @tailwind utilities;

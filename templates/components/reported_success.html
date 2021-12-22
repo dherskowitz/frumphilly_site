@@ -1,0 +1,31 @@
+<div id="modal"
+     class="fixed w-full h-full top-0 left-0 flex flex-col items-center z-20">
+	<div class="modal-underlay absolute -z-1 w-full h-full top-0 left-0 bg-gray-200 opacity-75"></div>
+	<div class="modal-content mt-[10vh] max-w-xl bg-white p-6 text-center rounded-md shadow-md">
+        <p class="mb-6 text-lg">The post <span class="font-semibold">{{ post.title }}</span> was reported successfully!</p>
+        <p class="mb-2">Frum Philly management will review this post. If you submitted your email address you will be updated about our decision.</p>
+        <p class="mb-2">Thank you for caring about our community.</p>
+
+        <button
+            type="button"
+            id="modalCloseBtn"
+            class="bg-blue-600 rounded-md text-gray-100 px-6 py-1">
+            Close
+        </button>
+	</div>
+</div>
+
+<script>
+    const modal = document.querySelector("#modal");
+    const closeBtn = document.querySelector("#modalCloseBtn");
+    const underlay = document.querySelector(".modal-underlay");
+    function closeModal() {
+        modal.classList.add("closing");
+        modal.addEventListener("animationend", () => {
+            modal.remove()
+        });
+    }
+
+    closeBtn.addEventListener("click", closeModal);
+    underlay.addEventListener("click", closeModal);
+</script>

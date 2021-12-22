@@ -393,9 +393,12 @@
         </div>
 
         <div>
-            <button class="p-2 mb-4 text-sm text-red-700 bg-red-200 rounded-sm shadow-sm" type="button"
-                    @click="showReportPostModal = true">Report Listing
-            </button>
+            <button
+                class="p-2 mb-4 text-sm text-red-700 bg-red-200 rounded-sm shadow-sm" type="button"
+                id="openModalBtn"
+                hx-get="{% url 'report_post' %}?post_type={{ listing.class_name }}&post_id={{ listing.id }}"
+                hx-target="body"
+                hx-swap="beforeend">Report {{ listing.class_name }}</button>
         </div>
 
         {% include 'components/banner_ads.html' %}
@@ -403,8 +406,6 @@
     </div>
 
     {% include 'components/sidebar_ads.html' %}
-
-    {% include 'components/report_post_modal.html' with form=report_post_form post_type="Listing" post_id=listing.id post_title=listing.business_name %}
 </div>
 <div class="container">
     {% include 'components/listings_cta.html' %}

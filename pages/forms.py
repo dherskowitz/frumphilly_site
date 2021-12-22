@@ -102,7 +102,7 @@ class ContactForm(forms.ModelForm):
 
 
 class ReportPostForm(forms.ModelForm):
-    subject = forms.ChoiceField(choices=REPORT_REASON_CHOICES)
+    # subject = forms.ChoiceField(choices=REPORT_REASON_CHOICES)
 
     class Meta:
         model = ReportPost

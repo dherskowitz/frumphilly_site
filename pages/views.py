@@ -1,15 +1,15 @@
 import json
 import bleach
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.views.decorators.http import require_POST
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
 from honeypot.decorators import check_honeypot
 from events.models import Event
 from listings.models import Listing
 from forum.models import ForumPost, ForumThread
 from .models import ReportPost
-from .forms import ContactForm, AdvertisingContactForm
+from .forms import ContactForm, AdvertisingContactForm, ReportPostForm
 from ads.models import Ad
 
 
@@ -77,37 +77,32 @@ def ad_terms(request):
     return render(request, "pages/ad-terms.html")
 
 
-@require_POST
 def report_post(request):
-    data = json.loads(request.body)
-
-    missing = []
-    for field in data:
-        if data[field] == "":
-            missing.append(field)
-
-    missing_auto_fields = []
-    if 'post_type' in missing:
-        missing_auto_fields.append('post_type')
-    if 'post_id' in missing:
-        missing_auto_fields.append('post_id')
-    if 'post_title' in missing:
-        missing_auto_fields.append('post_title')
-
-    if 'report_reason' in missing:
-        return JsonResponse({"status": "errors", "errors": ['Report Reason is required']}, status=400)
-    elif missing_auto_fields:
-        return JsonResponse({"status": "errors", "errors": ['Something went wrong. Please refresh the page and try again.']}, status=400)
+    if request.method == "POST":
+        post_type = request.POST.get("post_type")
+        post_id = request.POST.get("post_id")
     else:
-        report = ReportPost()
-        report.post_type = data['post_type']
-        report.post_id = data['post_id']
-        report.post_title = data['post_title']
-        report.message = bleach.clean(data['message'])
-        report.report_reason = data['report_reason']
-        report.email = data['email']
-        if request.user.is_authenticated:
-            report.user_id = request.user.id
-            report.email = request.user.email
-        report.save()
-        return JsonResponse({"status": "success"}, status=200)
+        post_type = request.GET.get("post_type")
+        post_id = request.GET.get("post_id")
+
+    if post_type == 'Listing':
+        obj = get_object_or_404(Listing, id=post_id)
+    elif post_type == 'Event':
+        obj = get_object_or_404(Event, id=post_id)
+
+    form = ReportPostForm(request.POST or None)
+    context = {
+        "form": form,
+        "post": obj
+    }
+
+    if request.method == "POST":
+        if form.is_valid():
+            report = form.save(commit=False)
+            if request.user.is_authenticated:
+                report.user_id = request.user.id
+                report.email = request.user.email
+            report.save()
+            return render(request, "components/reported_success.html", context)
+        return render(request, "components/report_post_modal.html", context)
+    return render(request, "components/report_post_modal.html", context)
