@@ -52,9 +52,19 @@ class Contact(models.Model):
 
 
 class ReportPost(models.Model):
+    REPORT_STATUS_CHOICES = [
+        ("reported", "Requires Review"),
+        ("reviewing", "Under Review"),
+        ("approved", "Approved"),
+        ("rejected", "Rejected"),
+    ]
     post_type = models.CharField(default=None, blank=False, max_length=255)
     post_id = models.IntegerField(default=None, blank=False)
     post_title = models.CharField(default=None, blank=False, max_length=255)
+    post_url = models.CharField(default=None, blank=False, max_length=255, null=True)
+    status = models.CharField(
+        max_length=50, choices=REPORT_STATUS_CHOICES, blank=False, null=True, default='reported'
+    )
     report_reason = models.CharField(
         max_length=50, choices=REPORT_REASON_CHOICES, blank=False,
     )
