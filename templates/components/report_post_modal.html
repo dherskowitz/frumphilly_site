@@ -28,9 +28,11 @@
                     {{ form.email }}
                     <div class="form-field__help-text">This field is optional. If you want to be updated about the status of the decision you can enter your email address.</div>
                 </div>
+
                 <input type="hidden" name="{{form.post_type.name}}" id="{{form.post_type.id_for_label}}" value="{{post.class_name}}">
                 <input type="hidden" name="{{form.post_id.name}}" id="{{form.post_id.id_for_label}}" value="{{post.id}}">
                 <input type="hidden" name="{{form.post_title.name}}" id="{{form.post_title.id_for_label}}" value="{{post.title}}">
+                <input type="hidden" name="{{form.post_url.name}}" id="{{form.post_url.id_for_label}}" value="{{ path }}">
 
                 <div class="flex flex-col sm:flex-row mt-4">
                     <button

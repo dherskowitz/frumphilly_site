@@ -1,5 +1,6 @@
 import json
 import bleach
+from urllib.parse import urlparse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.views.decorators.http import require_POST
@@ -90,10 +91,13 @@ def report_post(request):
     elif post_type == 'Event':
         obj = get_object_or_404(Event, id=post_id)
 
+    parsed_url = urlparse(request.META['HTTP_REFERER'])
+
     form = ReportPostForm(request.POST or None)
     context = {
         "form": form,
-        "post": obj
+        "post": obj,
+        "path": parsed_url.path
     }
 
     if request.method == "POST":
@@ -102,6 +106,7 @@ def report_post(request):
             if request.user.is_authenticated:
                 report.user_id = request.user.id
                 report.email = request.user.email
+                report.post_url = request.POST.get("post_url")
             report.save()
             return render(request, "components/reported_success.html", context)
         return render(request, "components/report_post_modal.html", context)
