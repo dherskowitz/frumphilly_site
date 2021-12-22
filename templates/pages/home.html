@@ -7,7 +7,7 @@
 {% block meta_description %}{% endblock meta_description %}
 
 {% block pagebanner %}
-<section class="relative px-2 bg-indigo-600 bg-center bg-no-repeat bg-cover h-half-screen" style="background-image:url({% webpack_static 'img/images/philly-skyline.jpg' %});opacity:75;">
+<section class="relative px-2 bg-center bg-no-repeat bg-cover h-half-screen" style="background-image:url({% webpack_static 'img/images/philly-skyline.jpg' %});opacity:75;">
     <div class="absolute top-0 left-0 w-full h-full bg-purple-600 bg-opacity-25"></div>
     <div class="container top-0 flex flex-col items-start justify-center h-full px-2 mx-auto">
         <h1 class="z-20 font-bold text-white text-8xl md:text-9xl text-shadow">Frum Philly</h1>
@@ -38,6 +38,8 @@
             <a href="{% url 'forum' %}" class="px-8 text-xl font-semibold transition-all duration-150 ease-in btn btn-md hover:bg-purple-800">Visit the Forum</a>
         </div>
     </section>
+
+    {% include 'components/forum_cta.html' %}
 
     <section class="mx-4 my-24 md:mx-0">
         <h2 class="title section-title">
