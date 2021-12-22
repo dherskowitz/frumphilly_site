@@ -4,7 +4,7 @@ function resizeAdminTable() {
     const header = document.querySelector(".admin-table-header");
     const footer = document.querySelector(".admin-table-footer");
     const wrapper = document.querySelector(".admin-table-wrapper");
-    wrapper.style.maxHeight = `calc(100vh - ${siteHeader.offsetHeight +  header.offsetHeight + footer.offsetHeight}px)`;
+    wrapper.style.maxHeight = `calc(100vh - ${siteHeader.offsetHeight +  header.offsetHeight + footer.offsetHeight + 2}px)`;
     wrapper.style.overflowY = "scroll";
 }
 window.addEventListener('resize', resizeAdminTable, true);
