@@ -1,5 +1,6 @@
 {% extends 'dashboard.html' %}
 {% load humanize %}
+{% load webpack_static from webpack_loader %}
 {% block meta_title %}Manage Your Settings | Frum Philly{% endblock meta_title %}
 {% block meta_description %}Manage the Frum Philly profile settings.{% endblock meta_description %}
 
@@ -34,17 +35,33 @@
         </div>
         {% for field in form %}
             {% if field.name == '_avatar' %}
-                <div class="form-field">
-                    <div class="relative ">
-                        <label class="form-field__label" for="{{field.id_for_label}}">{{ field.label|title }}</label>
-                        <input type="file" name="{{ field.html_name }}" id="{{ field.id_for_label }}" accept="image/png,image/jpg,image/jpeg">
-                        {% if user.avatar.url is not Null %}
-                        <span class="absolute right-0 ml-4 pointer-events-none">
-                            <p class="mt-3 mr-2 text-xs">Current Avatar</p>
-                            <img class="object-cover w-12 h-12 mx-auto mt-3 rounded-full" src="{{ user.avatar.url }}" alt="User Avatar" width="40" height="40">
-                        </span>
+{#                <div class="form-field">#}
+{#                    <div class="relative">#}
+{#                        <label class="form-field__label" for="{{field.id_for_label}}">{{ field.label|title }}</label>#}
+{#                        <input type="file" name="{{ field.html_name }}" id="{{ field.id_for_label }}" accept="image/png,image/jpg,image/jpeg">#}
+{#                        {% if user.avatar.url is not Null %}#}
+{#                        <span class="absolute right-0 ml-4 pointer-events-none">#}
+{#                            <p class="mt-3 mr-2 text-xs">Current Avatar</p>#}
+{#                            <img class="object-cover w-12 h-12 mx-auto mt-3 rounded-full" src="{{ user.avatar.url }}" alt="User Avatar" width="40" height="40">#}
+{#                        </span>#}
+{#                    </div>#}
+{#                    {% endif %}#}
+{#                </div>#}
+
+                <div class="flex items-center">
+                    <div class="shrink-0 mr-4">
+                        <img class="h-16 w-16 object-cover rounded-full" src="{% if user.avatar.url is not Null %}{{ user.avatar.url }}{% else %}{% webpack_static 'img/images/blank_avatar.jpg' %}{% endif %}" alt="Current profile photo" />
                     </div>
-                    {% endif %}
+                    <div class="relative flex items-center form-field w-full">
+                        <label class="form-field__label" for="{{field.id_for_label}}">
+                            <span class="">{{ field.label|title }}</span>
+                        </label>
+                        <input
+                            type="file"
+                            name="{{ field.html_name }}"
+                            id="{{ field.id_for_label }}"
+                            class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-violet-50 file:text-violet-700 hover:file:bg-violet-100"/>
+                    </div>
                 </div>
             {% endif %}
         {% endfor %}
