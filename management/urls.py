@@ -11,4 +11,5 @@ urlpatterns = [
 
     path("reported-posts/", views.reported_posts, name="reported_posts", ),
     path("reported-posts/<int:post_id>", views.reported_post, name="reported_post", ),
+    path("reported-posts/toggle-status", views.reported_posts_toggle_status, name="reported_posts_toggle_status", ),
 ]

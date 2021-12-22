@@ -1,0 +1,40 @@
+<div x-data="{ open: false }" class="relative w-full status-chip">
+    <div @click="open = true" class="flex rounded-full py-1 font-semibold text-green-900 cursor-pointer">
+        <span class="relative flex items-center justify-center inline-block px-3 pt-1 font-semibold text-sm text-green-900 leading-tight">
+            {% if post.status == 'reported' %}<span aria-hidden class="absolute inset-0 bg-orange-400 rounded-full"></span>{% endif %}
+            {% if post.status == 'reviewing' %}<span aria-hidden class="absolute inset-0 bg-yellow-400 rounded-full"></span>{% endif %}
+            {% if post.status == 'approved' %}<span aria-hidden class="absolute inset-0 bg-green-400 rounded-full"></span>{% endif %}
+            {% if post.status == 'rejected' %}<span aria-hidden class="absolute inset-0 bg-red-600 rounded-full"></span>{% endif %}
+            <span class="relative">{{ post.get_status_display }}</span>
+            <svg xmlns="http://www.w3.org/2000/svg" style="z-index:1" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M0 0h24v24H0z" stroke="none"/><path d="m6 9 6 6 6-6H6"/>
+            </svg>
+        </span>
+    </div>
+    <div x-show="open" x-cloak @click.away="open = !open" class="absolute top-8 left-0 bg-white z-10 rounded-md shadow-md p-2">
+        <button
+                hx-post="{% url 'reported_posts_toggle_status' %}?post_id={{ post.id }}&post_status=reported"
+                hx-swap="outerHTML"
+                hx-target="#post-row-{{ post.id }} .status-chip"
+                hx-indicator=".waiting"
+                @click="open = true" class="flex w-full bg-orange-400 hover:bg-orange-100 rounded-full justify-center py-1 px-2 font-semibold text-green-900 capitalize">requires review</button>
+        <button
+                hx-post="{% url 'reported_posts_toggle_status' %}?post_id={{ post.id }}&post_status=reviewing"
+                hx-swap="outerHTML"
+                hx-target="#post-row-{{ post.id }} .status-chip"
+                hx-indicator=".waiting"
+                @click="open = true" class="flex w-full bg-yellow-400 hover:bg-green-500 rounded-full justify-center py-1 px-2 font-semibold text-green-900 capitalize mt-1">under review</button>
+        <button
+                hx-post="{% url 'reported_posts_toggle_status' %}?post_id={{ post.id }}&post_status=approved"
+                hx-swap="outerHTML"
+                hx-target="#post-row-{{ post.id }} .status-chip"
+                hx-indicator=".waiting"
+                @click="open = true" class="flex w-full bg-green-400 hover:bg-red-500 rounded-full justify-center py-1 px-2 font-semibold text-green-900 capitalize mt-1">approved</button>
+        <button
+                hx-post="{% url 'reported_posts_toggle_status' %}?post_id={{ post.id }}&post_status=rejected"
+                hx-swap="outerHTML"
+                hx-target="#post-row-{{ post.id }} .status-chip"
+                hx-indicator=".waiting"
+                @click="open = true" class="flex w-full bg-red-600 hover:bg-red-500 rounded-full justify-center py-1 px-2 font-semibold text-green-900 capitalize mt-1">rejected</button>
+    </div>
+</div>

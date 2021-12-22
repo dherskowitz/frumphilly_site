@@ -22,12 +22,8 @@
         {{ post.report_reason }}
     </td>
     <td class="px-5 py-5 bg-white group-hover:bg-gray-100 text-sm" style="border: none">
-
-        {% if post.status == 'reported' %}<div class="bg-orange-400 rounded-full w-32 text-center p-1">{{ post.get_status_display }}</div>{% endif %}
-        {% if post.status == 'reviewing' %}<div class="bg-yellow-400 rounded-full w-32 text-center p-1">{{ post.get_status_display }}</div>{% endif %}
-        {% if post.status == 'approved' %}<div class="bg-green-400 rounded-full w-32 text-center p-1">{{ post.get_status_display }}</div>{% endif %}
-        {% if post.status == 'rejected' %}<div class="bg-red-600 rounded-full w-32 text-center p-1">{{ post.get_status_display }}</div>{% endif %}
-</td>
+        {% include "admin/reported_posts/_status.html" %}
+    </td>
     <td class="px-5 py-5 bg-white group-hover:bg-gray-100 text-sm" style="border: none">
         <p class="text-gray-900 whitespace-no-wrap">
             <div x-data="{ open: false }" class="relative w-full">

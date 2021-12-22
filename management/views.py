@@ -4,6 +4,8 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
 
 from ads.models import Ad, ad_prices
+from events.models import Event
+from listings.models import Listing
 from pages.models import Contact, SUBJECT_CHOICES, ReportPost, REPORT_REASON_CHOICES
 from payments.models import Payment
 
@@ -126,6 +128,24 @@ def toggle_status(request):
         message.status = new_status
         message.save()
         return render(request, "admin/contact_submissions/_contact_status.html", context)
+
+
+@login_required
+def reported_posts_toggle_status(request):
+    if not request.user.has_perm('pages.change_reportpost') and not request.user.has_perm('pages.delete_reportpost'):
+        return render(request, "403.html")
+    if request.htmx:
+        post_id = request.GET.get('post_id')
+        new_status = request.GET.get('post_status')
+
+        post = get_object_or_404(ReportPost, id=post_id)
+        context = {
+            "post": post
+        }
+
+        post.status = new_status
+        post.save()
+        return render(request, "admin/reported_posts/_status.html", context)
 
 
 @login_required
