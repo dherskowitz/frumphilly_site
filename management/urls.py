@@ -7,6 +7,7 @@ urlpatterns = [
     path("contacts/", views.contact_submissions, name="contact_submissions", ),
     path("contacts/<int:contact_id>", views.contact_message, name="contact_message", ),
     path("contacts/contact_toggle_status/", views.toggle_status, name="contact_toggle_status", ),
+    path("contacts/confirm-delete/<int:message_id>", views.delete_message_confirm, name="delete_message_confirm", ),
     path("contacts/delete-message/<int:message_id>", views.delete_message, name="contact_delete_message", ),
 
     path("reported-posts/", views.reported_posts, name="reported_posts", ),

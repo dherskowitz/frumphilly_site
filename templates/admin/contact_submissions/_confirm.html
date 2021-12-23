@@ -1,0 +1,60 @@
+{% load humanize %}
+
+<div id="modal"
+     class="report-modal fixed w-full h-full top-0 left-0 flex flex-col items-center z-20">
+	<div class="modal-underlay absolute -z-1 w-full h-full top-0 left-0 bg-gray-200 opacity-75"></div>
+	<div class="modal-content mt-[10vh] w-1/3 max-w-xl bg-white rounded-md shadow-md loading">
+        <div class="p-6">
+            <div class="mb-4 text-red-600 border-b-2 border-red-600">
+                <h2 class="text-xl font-bold">Delete Message?</h2>
+                <p class="font-semibold">This action cannot be undone</p>
+            </div>
+
+            <div class="form_container">
+                <div class="pb-4">
+                    <p class="font-semibold pb-1">Message from:</p>
+                    <p>{{ message.email }}</p>
+                </div>
+                <div class="pb-4">
+                    <p class="font-semibold pb-1">Message Recieved:</p>
+                    <p>{{ message.created_at|naturaltime }}</p>
+                </div>
+                <div class="pb-4">
+                    <p class="font-semibold pb-1">Message:</p>
+                    <p>{{ message.message }}</p>
+                </div>
+
+                <div class="flex flex-col sm:flex-row mt-4">
+                    <button
+                        hx-post="{% url "contact_delete_message" message_id=message.id %}"
+                        hx-target="#modal"
+                        hx-swap="innertHTML"
+                        hx-indicator=".modal-content.loading"
+                        class="bg-red-600 hover:bg-red-700 w-full text-white rounded-md shadow-md py-2">Delete Message</button>
+
+                    <button
+                        type="button"
+                        id="modalCloseBtn"
+                        class="mt-6 sm:mt-0 sm:ml-6 sm:w-6/12 hover:bg-red-200 rounded-md hover:shadow-md text-gray-800">
+                        Cancel
+                    </button>
+                </div>
+            </div>
+        </div>
+	</div>
+</div>
+
+<script>
+    const modal = document.querySelector("#modal");
+    const closeBtn = document.querySelector("#modalCloseBtn");
+    const underlay = document.querySelector(".modal-underlay");
+    function closeModal() {
+        modal.classList.add("closing");
+        modal.addEventListener("animationend", () => {
+            modal.remove()
+        });
+    }
+
+    closeBtn.addEventListener("click", closeModal);
+    underlay.addEventListener("click", closeModal);
+</script>

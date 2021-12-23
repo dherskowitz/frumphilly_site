@@ -149,6 +149,15 @@ def reported_posts_toggle_status(request):
 
 
 @login_required
+def delete_message_confirm(request, message_id):
+    if not request.user.has_perm('pages.change_contact') and not request.user.has_perm('pages.delete_contact'):
+        return render(request, "403.html")
+    if request.htmx:
+        message = get_object_or_404(Contact, id=message_id)
+        return render(request, "admin/contact_submissions/_confirm.html", context={"message": message})
+
+
+@login_required
 def delete_message(request, message_id):
     if not request.user.has_perm('pages.change_contact') and not request.user.has_perm('pages.delete_contact'):
         return render(request, "403.html")
@@ -158,7 +167,7 @@ def delete_message(request, message_id):
         message.delete()
         success_url = reverse("contact_submissions")
         if request.htmx:
-            return render(request, "admin/contact_submissions/_message_deleted.html")
+            return render(request, "admin/contact_submissions/_message_deleted.html", context={"message": message, "message_id": message_id})
         return redirect(success_url)
 
 

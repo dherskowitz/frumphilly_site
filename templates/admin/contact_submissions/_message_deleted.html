@@ -1,11 +1,44 @@
-<tr class="border-b border-gray-200 group" id="contact-row-{{ contact.id }}">
-    <td class="px-5 py-5 bg-white group-hover:bg-gray-100 text-sm" style="border: none"  colspan="5">
-        <div class="flex items-center">
-            <div class="ml-3">
-                <p class="text-red-900 font-semibold whitespace-no-wrap">
-                    Message Deleted!
-                </p>
-            </div>
+<div id="modal"
+     class="report-modal fixed w-full h-full top-0 left-0 flex flex-col items-center z-20">
+	<div class="modal-underlay absolute -z-1 w-full h-full top-0 left-0 bg-gray-200 opacity-75"></div>
+	<div class="modal-content mt-[10vh] max-w-xl bg-white rounded-md shadow-md loading p-6">
+        <div class="mb-4 text-blue-600 border-b-2 border-blue-600">
+            <h2 class="text-xl font-bold">Message Deleted!</h2>
         </div>
-    </td>
-</tr>
+
+        <div class="form_container">
+            <div class="pb-4">
+                <p>The message from {{ message.email }} has been deleted!</p>
+            </div>
+
+            <div class="pb-4">
+                <p class="font-semibold pb-1">Message:</p>
+                <p>{{ message.message }}</p>
+            </div>
+
+            <button
+                type="button"
+                id="modalCloseBtn"
+                class="bg-blue-600 rounded-md text-gray-100 px-6 py-1">
+                Close
+            </button>
+
+        </div>
+	</div>
+</div>
+
+<script>
+    document.querySelector("#contact-row-{{ message_id }}").remove()
+    const modal = document.querySelector("#modal");
+    const closeBtn = document.querySelector("#modalCloseBtn");
+    const underlay = document.querySelector(".modal-underlay");
+    function closeModal() {
+        modal.classList.add("closing");
+        modal.addEventListener("animationend", () => {
+            modal.remove()
+        });
+    }
+
+    closeBtn.addEventListener("click", closeModal);
+    underlay.addEventListener("click", closeModal);
+</script>
