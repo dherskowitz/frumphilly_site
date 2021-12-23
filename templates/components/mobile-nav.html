@@ -7,7 +7,7 @@
         <div class="bar2"></div>
         <div class="bar3"></div>
     </div>
-    <div x-show="showMobileMenu" @click.away="showMobileMenu = false" class="fixed left-0 z-50 w-full h-full p-4 overflow-y-auto shadow-md pointer-events-none top-16 bg-bgGrey" :class="{ 'block pointer-events-auto' : showMobileMenu}" x-transition:enter="transition ease-in duration-100" x-transition:enter-start="opacity-0 transform translate-y-4" x-transition:enter-end="opacity-100 transform translate-y-0" x-transition:leave="transition ease-in duration-100" x-transition:leave-start="opacity-100 transform translate-y-0" x-transition:leave-end="opacity-0 transform translate-y-4">
+fix     <div x-show="showMobileMenu" @click.away="showMobileMenu = false" class="fixed left-0 w-full h-full p-4 overflow-y-auto shadow-md pointer-events-none top-16 bg-bgGrey" :class="{ 'block pointer-events-auto' : showMobileMenu}" x-transition:enter="transition ease-in duration-100" x-transition:enter-start="opacity-0 transform translate-y-4" x-transition:enter-end="opacity-100 transform translate-y-0" x-transition:leave="transition ease-in duration-100" x-transition:leave-start="opacity-100 transform translate-y-0" x-transition:leave-end="opacity-0 transform translate-y-4">
         {% with url_name=request.resolver_match.url_name  %}
         <a class=" mobilelink{% if url_name == 'home' %} active{% endif %}" href="{% url 'home' %}" href="{% url 'home' %}">Home</a>
 

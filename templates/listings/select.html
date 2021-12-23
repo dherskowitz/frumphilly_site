@@ -1,5 +1,8 @@
 {% extends 'dashboard.html' %}
 
+{% block meta_title %}Select Listing Category | Frum Philly{% endblock meta_title %}
+{% block meta_description %}Select a Category for your Frum Philly Listing{% endblock meta_description %}
+
 {% block main %}
 
     <section class="bg-purple-900">
@@ -19,7 +22,7 @@
             {% if option.image %}
                 <a href="{% url 'listings_create' option.slug %}" class="relative flex items-center justify-center h-64 overflow-hidden bg-white bg-no-repeat bg-cover rounded-md shadow-md group hover:bg-gray-300 text-center" style="background-image: url({{option.image.url}})">
                     <span class="z-10 bg-purple-900 opacity-50 h-full w-full flex justify-center items-center"></span>
-                    <div class="absolute mb-2 text-4xl text-gray-50 z-50 opacity-100">{{ option.title }}</div>
+                    <div class="absolute mb-2 text-4xl text-gray-50 z-20 opacity-100">{{ option.title }}</div>
                 </a>
             {% else %}
                 <a href="{% url 'listings_create' option.slug %}" class="p-4 bg-white rounded-md shadow-md hover:bg-gray-300">
