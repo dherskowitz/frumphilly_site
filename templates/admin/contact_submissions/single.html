@@ -12,11 +12,15 @@
                 </div>
                 <div>
                     <a
-                        hx-post="{% url 'contact_delete_message' message_id=contact.id %}"
-                        hx-swap="outerHTML"
-                        hx-target="#message-container"
-                        hx-indicator=".loading"
-                        hx-confirm="Delete this message? This action cannot be undone!"
+                        id="contact-single-delete-btn"
+                        hx-get="{% url 'delete_message_confirm' message_id=contact.id %}"
+                        hx-target="body"
+                        hx-swap="beforeend"
+{#                        hx-post="{% url 'contact_delete_message' message_id=contact.id %}"#}
+{#                        hx-swap="outerHTML"#}
+{#                        hx-target="#message-container"#}
+{#                        hx-indicator=".loading"#}
+{#                        hx-confirm="Delete this message? This action cannot be undone!"#}
                         class="font-semibold text-center btn btn-md bg-red-600 hover:bg-red-700">Delete Message!</a>
                 </div>
             </div>

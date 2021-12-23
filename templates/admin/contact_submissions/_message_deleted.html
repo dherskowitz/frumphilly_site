@@ -13,7 +13,7 @@
 
             <div class="pb-4">
                 <p class="font-semibold pb-1">Message:</p>
-                <p>{{ message.message }}</p>
+                <p>{{ message.message|truncatechars:500 }}</p>
             </div>
 
             <button
@@ -27,15 +27,29 @@
 	</div>
 </div>
 
+<template id="message_deleted">
+    <section class="container my-5 mx-auto text-center" id="contact-row-{{ contact.id }}">
+        <h1 class="text-4xl font-bold my-10">The message was deleted!</h1>
+        <a href="{% url 'contact_submissions' %}" class="bg-purple-900 hover:bg-purple-800 p-4 text-gray-50 font-semibold text-lg rounded-md shadow-md">⬅ Go back to Contact Submissions.</a>
+    </section>
+</template>
+
 <script>
     document.querySelector("#contact-row-{{ message_id }}").remove()
+    if (document.querySelector("#contact-single-delete-btn")) {
+        document.querySelector("#contact-single-delete-btn").remove();
+    }
     const modal = document.querySelector("#modal");
     const closeBtn = document.querySelector("#modalCloseBtn");
     const underlay = document.querySelector(".modal-underlay");
+    const template = document.querySelector('#message_deleted');
     function closeModal() {
         modal.classList.add("closing");
         modal.addEventListener("animationend", () => {
-            modal.remove()
+            if (document.querySelector("#message-container")) {
+                document.querySelector("#message-container").appendChild(template.content.cloneNode(true))
+            }
+            modal.remove();
         });
     }
 
